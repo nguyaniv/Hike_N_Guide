@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
  class _HomePage extends Component {
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
     <div>
         <h2>hello from HomePage !</h2>
+        <p>hello from test-branch !</p>
 
     </div>
 )
