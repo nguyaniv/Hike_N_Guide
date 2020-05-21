@@ -23,7 +23,7 @@ export const GuidePreview = props => {
     <Link to={ `/guide/${_id}` }>
       <img className="guide-preview-image" src={ imgUrl } alt={ fullName }/>
       <div className="guide-preview-info">
-        <h2 className="guide-preview-name fs-24">{ fullName }</h2>
+        <h2 className="guide-preview-name fs24">{ fullName }</h2>
       </div>
     </Link>
   </article>);

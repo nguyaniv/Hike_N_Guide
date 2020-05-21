@@ -1,14 +1,10 @@
-.guide-preview {
-  width: calc((100% - 1rem) / 2);
-  min-width: calc((100% - 1rem) / 2);
+.trail-preview {
+  width: 100%;
+  min-width: 100%;
   border-radius: 0.5rem;
   border: 1px solid $clr3;
   transition: all 0.3s;
   margin-block-end: 1rem;
-
-  &:not(:nth-child(2n)) {
-    margin-inline-end: 1rem;
-  }
 
   &-image {
     width: 100%;
@@ -25,29 +21,29 @@
   }
 
   @media (min-width: $desktop) {
-    width: calc((100% - 3rem) / 4);
-    min-width: calc((100% - 3rem) / 4);
+    width: calc((100% - 2rem) / 3);
+    min-width: calc((100% - 2rem) / 3);
 
-    &-image {
-      filter: none;
+    &:not(:nth-child(3n)) {
+      margin-inline-end: 1rem;
     }
 
     &-info {
       display: none;
     }
 
-    &:not(:nth-child(4n)) {
-      margin-inline-end: 1rem;
+    &-image {
+      filter: none;
     }
 
     &:hover {
       transform: scale(1.01);
 
-      .guide-preview-image {
-        filter: brightness(50%);
+      .trail-preview-image {
+        filter: brightness(75%);
       }
 
-      .guide-preview-info {
+      .trail-preview-info {
         display: block;
       }
     }
