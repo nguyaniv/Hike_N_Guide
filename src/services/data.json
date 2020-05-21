@@ -9,8 +9,9 @@ var user = {
     "isAdmin": false,
     "imgUrl": "",
     "rating": 5,
+    "reviewers_count": 30,
     "languages": ["he", "en"],
-    "trails": [{ "mini-trail" }] // id, name, country
+    "trails": [{ "mini-trail" }], // id, name, country
 }
 
 //Trail collection
