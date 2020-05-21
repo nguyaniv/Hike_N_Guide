@@ -1,0 +1,65 @@
+// Users collection
+
+//User
+var user = {
+    "_id": "1234",
+    "userName": "poiki123",
+    "fullName": "shoka koko",
+    "password": "1234",
+    "isAdmin": false,
+    "languages": ["he", "en"],
+    "trails": [{ "mini-trail" }] // id, name, country
+}
+
+//Trail collection
+
+var trail = {
+    "_id": "fg3d",
+    "name": "Sahara desert",
+    "location": {
+        "lat": 3213412423423,
+        "lng": 8473984760564,
+    },
+    "country": "Egypt",
+    "difficulty": "easy/medium/hard",
+    "distance": 30,
+    "days": 3,
+    "imgUrls": ["", ""]
+}
+
+
+//Reviews collection
+
+var reviews [
+    {
+        "_id": "5l4f",
+        "by": "mini-user",
+        "rate": 3,
+        "at": 7678,
+        "trail": "mini-trail", //{_id : "t11", name: 'dsd'}
+        "txt": "Great Trail!"
+        },
+    {
+        "_id": "2332",
+        "by": "mini-user",
+        "rate": 3,
+        "at": 7678,
+        "guide": "mini-user",
+        "txt": "Great Guide!"
+        }
+]
+
+
+//Order collection 
+
+var order =
+{
+    "_id": "3214",
+    "createdAt": 276276,
+    "buyer": "mini-user",
+    "trail": "mini-trail",
+    "guide": "mini-user",
+    "trailAt": 3878922,
+    "price": 300
+}
+
