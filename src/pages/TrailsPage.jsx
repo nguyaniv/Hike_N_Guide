@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TrailsFilter from '../cmps/TrailsFilter'
+import {List} from '../cmps/List'
 class _TrailsPage extends Component {
 
     render() {
@@ -29,7 +30,8 @@ class _TrailsPage extends Component {
 
                         {/* previews */}
 
-
+                            {/* uncomment when previews are ready */}
+                                {/* <List /> */}
 
 
 
