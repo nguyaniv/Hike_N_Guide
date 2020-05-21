@@ -1,6 +1,6 @@
 import React from 'react';
 import './style/global.scss';
-import {  Switch, Route} from 'react-router';
+import {  Switch, Route} from 'react-router-dom';
 import {HomePage} from './pages/HomePage'
 
 function App() {
