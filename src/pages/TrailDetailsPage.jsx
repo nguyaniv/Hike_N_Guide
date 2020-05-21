@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 
 class _TrailDetailsPage extends Component {
 
+    state = {
+       
+             
+            _id: "fg3d",
+            name: "Sahara desert",
+            location: {
+                lat: 3213412423423,
+                lng: 8473984760564,
+            },
+            country: "Egypt",
+            difficulty: "for beginners",
+           
+            distance: 30,
+            days: 3,
+            imgUrls: ["https://i.picsum.photos/id/319/536/354.jpg", "https://i.picsum.photos/id/970/536/354.jpg",
+             "https://i.picsum.photos/id/450/536/354.jpg", "https://i.picsum.photos/id/408/536/354.jpg"],
+             descriptions: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt nesciunt cupiditate voluptatibus itaque dignissimos doloremque beatae quo, minima atque veritatis eos ex fugit ipsam nostrum maxime inventore velit magnam commodi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea ipsum facere, fugiat repudiandae excepturi ducimus vel perferendis repellendus, odio sequi rem fugit distinctio accusantium. Quia voluptates odio consequuntur mollitia. "
+        }
+    
+
+
     render() {
+
+
+              const  {imgUrls,distance,country,name,difficulty,days,descriptions,rating} = this.state
         return (
 
             <main>
@@ -15,21 +40,21 @@ class _TrailDetailsPage extends Component {
 
                 {/* imgs starts here */}
                 <div>
-                    <img src="https://i.picsum.photos/id/319/536/354.jpg" />
-                    <img src="https://i.picsum.photos/id/970/536/354.jpg" />
-                    <img src="https://i.picsum.photos/id/450/536/354.jpg" />
-                    <img src="https://i.picsum.photos/id/408/536/354.jpg" />
+                    <img src={imgUrls[0]} />
+                    <img src={imgUrls[1]} />
+                    <img src={imgUrls[2]} />
+                    <img src={imgUrls[3]} />
                 </div>
-
                 {/* imgs ends here */}
 
 
                 {/* trail genertal info starts here */}
                 <section>
-                    <p>difficulty: some difficulty level</p>
-                    <p>days: number</p>
-                    <p> Distance: number +km</p>
-                    <p>rating: some stars</p>
+                    <p>difficulty: {difficulty}</p>
+                    <p>country: {country}</p>
+                    <p>days: {days}</p>
+                    <p> Distance: {distance}</p>
+                    <p>rating: {rating}</p>
                 </section>
 
 
@@ -57,9 +82,7 @@ class _TrailDetailsPage extends Component {
 
 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue interdum interdum. Nullam nec tellus facilisis nulla lobortis aliquet sit amet molestie urna. Phasellus sagittis vel dolor id molestie. Etiam mi lorem, ultricies quis maximus eu, auctor in nibh. Maecenas luctus quam sed neque hendrerit porttitor. Aliquam dignissim vestibulum enim a ornare. Etiam vel justo sit amet sapien dignissim lacinia at vitae erat. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi rutrum varius nisi, id tempus massa bibendum id.
-                    Phasellus vulputate varius est, vel interdum ligula ultricies in. Nulla egestas leo eu nulla hendrerit rhoncus. Nunc commodo urna eu aliquam luctus. Quisque tempor lacus aliquam risus volutpat, non elementum sem mattis. Duis vitae ligula lacinia, dictum lacus ac, sollicitudin quam. Sed quis consectetur lectus, a efficitur libero. Fusce egestas lobortis turpis et varius. Integer ante ante, mollis nec porta vel, eleifend sit amet urna. Nunc vitae urna quis tortor aliquet tempus vel malesuada lectus. Quisque ut ex quam. Aenean fermentum ut quam at malesuada. Nunc efficitur nisi ac ex volutpat elementum. Cras vitae nisi interdum risus auctor aliquam. Nulla lobortis vitae purus congue aliquam. Praesent malesuada suscipit urna, eget maximus augue feugiat in. Mauris volutpat sed purus sit amet porttitor.
-
+                        {descriptions}
                 </p>
 
                 {/* trails information and map ends here*/}
@@ -77,9 +100,9 @@ class _TrailDetailsPage extends Component {
                 <section>
                     <form action="">
 
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-
-                    <button>Submit</button>
+                        <textarea name="" id="" cols="80" rows="15"></textarea>
+                            <br/>
+                        <button>Submit</button>
                     </form>
 
 

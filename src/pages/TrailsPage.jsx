@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
- class _TrailsPage extends Component {
+import TrailsFilter from '../cmps/TrailsFilter'
+class _TrailsPage extends Component {
 
     render() {
 
         return (
 
-    <div>
-        <h2>hello from TrailsPage !</h2>
-            
+            <main>
+                <h2>hello from TrailsPage !</h2>
 
-    </div>
-)
+                {/* country filter section starts here */}
+
+                <section>
+                <input name="country" value="country" type="text" placeholder="search trails in country" />
+                </section>
+
+                {/* country filter section ends here */}
+
+
+
+                {/* side-filter starts here */}
+                    <TrailsFilter />
+                {/* side-filter ends here */}
+
+
+
+                        {/* previews */}
+
+
+
+
+
+            </main>
+        )
 
 
     }
@@ -31,5 +52,4 @@ import { Link } from 'react-router-dom';
 //   const mapDispatchToProps = {
 
 //   };
-  export const TrailsPage = connect()(_TrailsPage);
-  
+export const TrailsPage = connect()(_TrailsPage);
