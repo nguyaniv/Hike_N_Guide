@@ -7,6 +7,8 @@ var user = {
     "fullName": "shoka koko",
     "password": "1234",
     "isAdmin": false,
+    "imgUrl": "",
+    "rating": 5,
     "languages": ["he", "en"],
     "trails": [{ "mini-trail" }] // id, name, country
 }
@@ -24,13 +26,12 @@ var trail = {
     "difficulty": "easy/medium/hard",
     "distance": 30,
     "days": 3,
-    "imgUrls": ["", ""]
 }
 
 
 //Reviews collection
 
-var reviews [
+var reviews= [
     {
         "_id": "5l4f",
         "by": "mini-user",
