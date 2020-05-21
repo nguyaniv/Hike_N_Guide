@@ -8,7 +8,8 @@ var user = {
     "password": "1234",
     "isAdmin": false,
     "languages": ["he", "en"],
-    "trails": [{ "mini-trail" }] // id, name, country
+    "trails": [{ "mini-trail" }], // id, name, country
+    "imgUrl": "me.jpg"
 }
 
 //Trail collection

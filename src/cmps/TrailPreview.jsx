@@ -15,18 +15,22 @@ import { Link } from 'react-router-dom';
 //   "imgUrls": ["", ""]
 // }
 
-export const TrailPreview = ({
-  _id,
-  name,
-  country,
-  imgUrls,
-}) => (
+export const TrailPreview = (props) => {
+  const {
+    _id,
+    name,
+    country,
+    imgUrls,
+  } = props.trail;
+  return (
   <article className="trail-preview">
     <Link to={ `/trail/${_id}` }>
       {/* <img className="trail-preview-image" src={ imgUrls[0] } alt={ name }/> */}
       <img className="trail-preview-image" src={ "" } alt={ name }/>
-      <h2 className="trail-preview-name">{ name }</h2>
-      <h3 className="trail-preview-country">{ country }</h3>
+      <div className="trail-preview-info">
+        <h2 className="trail-preview-name">{ name }</h2>
+        <h3 className="trail-preview-country">{ country }</h3>
+      </div>
     </Link>
-  </article>
-);
+  </article>);
+};
