@@ -7,14 +7,11 @@ import { Link } from 'react-router-dom';
     render() {
 
         return (
-
-    <div>
+    <div className="home-page">
         <h2>hello from HomePage !</h2>
-        <p>hello from test-branch !</p>
-                <p>Hello from Yossi</p>
-                <p>Hello from Lior</p>
-                
-
+        <p className="home-page-para"> hello from test-branch !</p>
+        <p>Hello from Yossi</p>
+        <p>Hello from Lior</p>
     </div>
 )
 

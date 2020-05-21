@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: montserrat;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+select,
+input,
+a {
+  outline: none;
+}
