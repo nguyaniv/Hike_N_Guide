@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { List } from '../cmps/List';
 
 class _HomePage extends Component {
   render() {
     return (
       <section className="homepage">
+        <h2 className="homepage-list-heading">Popular Trails</h2>
+        <List items={ exampleTrails }/>
         <h2 className="homepage-list-heading">Popular Guides</h2>
         <List items={ exampleGuides }/>
       </section>
@@ -105,5 +107,85 @@ const exampleGuides = [
     trails: [], // id, name, country,
     imgUrl: 'img/stam.png',
   },
+];
 
+const exampleTrails = [
+  {
+    _id: 'fg3d',
+    name: 'Sahara desert',
+    location: {
+      lat: 3213412423423,
+      lng: 8473984760564,
+    },
+    country: 'Egypt',
+    difficulty: 'easy/medium/hard',
+    distance: 30,
+    days: 3,
+    imgUrls: ['img/stam-trail.jpg', ''],
+  },
+  {
+    _id: 'shvijsavoibiosfnv',
+    name: 'Sahara desert',
+    location: {
+      lat: 3213412423423,
+      lng: 8473984760564,
+    },
+    country: 'Egypt',
+    difficulty: 'easy/medium/hard',
+    distance: 30,
+    days: 3,
+    imgUrls: ['img/stam-trail.jpg', ''],
+  },
+  {
+    _id: 'sadvksamnv',
+    name: 'Sahara desert',
+    location: {
+      lat: 3213412423423,
+      lng: 8473984760564,
+    },
+    country: 'Egypt',
+    difficulty: 'easy/medium/hard',
+    distance: 30,
+    days: 3,
+    imgUrls: ['img/stam-trail.jpg', ''],
+  },
+  {
+    _id: 'slmvmsnkan',
+    name: 'Sahara desert',
+    location: {
+      lat: 3213412423423,
+      lng: 8473984760564,
+    },
+    country: 'Egypt',
+    difficulty: 'easy/medium/hard',
+    distance: 30,
+    days: 3,
+    imgUrls: ['img/stam-trail.jpg', ''],
+  },
+  {
+    _id: 'slknvlkn',
+    name: 'Sahara desert',
+    location: {
+      lat: 3213412423423,
+      lng: 8473984760564,
+    },
+    country: 'Egypt',
+    difficulty: 'easy/medium/hard',
+    distance: 30,
+    days: 3,
+    imgUrls: ['img/stam-trail.jpg', ''],
+  },
+  {
+    _id: 'amnslkvnisnaldk',
+    name: 'Sahara desert',
+    location: {
+      lat: 3213412423423,
+      lng: 8473984760564,
+    },
+    country: 'Egypt',
+    difficulty: 'easy/medium/hard',
+    distance: 30,
+    days: 3,
+    imgUrls: ['img/stam-trail.jpg', ''],
+  },
 ];
