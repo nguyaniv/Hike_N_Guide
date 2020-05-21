@@ -1,0 +1,12 @@
+.preview-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+
+  @media (min-width: $desktop) {
+    padding-inline-start: 20vw;
+    padding-inline-end: 20vw;
+  }
+}
