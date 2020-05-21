@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 
+=======
+>>>>>>> c803b39cd2802a4ac83d67532b9a5da07bf119d4
 
 
 
