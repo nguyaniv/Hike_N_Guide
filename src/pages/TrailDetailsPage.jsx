@@ -2,98 +2,122 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> c803b39cd2802a4ac83d67532b9a5da07bf119d4
 
+=======
+import trailService from '../services/trail.service'
+>>>>>>> eca7dd4d44f5e3ca42191666ecabb2aa91010a59
 
 
 class _TrailDetailsPage extends Component {
 
+    state = {
+        trail: ''
+
+    }
+
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        // const id = '5u3'
+        var trail = trailService.getById(id)
+        this.loadTrail(trail)
+
+    }
+
+    loadTrail = (trail) => {
+
+        this.setState({ trail })
+    }
+
+
     render() {
+
+
+        // const { imgUrls, distance, country, name, difficulty, days, descriptions, rating, trail} = this.state
+        const { trail } = this.state
+
+        if (!this.state.trail) return 'hello'
+        console.log(this.state.trail);
         return (
 
             <main>
 
+                {trail && <React.Fragment>
 
-                <h2>Trail name</h2>
+                    <h2>Trail name</h2>
 
-                {/* imgs starts here */}
-                <div>
-                    <img src="https://i.picsum.photos/id/319/536/354.jpg" />
-                    <img src="https://i.picsum.photos/id/970/536/354.jpg" />
-                    <img src="https://i.picsum.photos/id/450/536/354.jpg" />
-                    <img src="https://i.picsum.photos/id/408/536/354.jpg" />
-                </div>
+                    {/* imgs starts here */}
+                    <div>
+                        <img width="740" height="405" src={trail.imgUrls[0]} />
+                        <img width="740" height="405" src={trail.imgUrls[1]} />
+                        <img width="740" height="405" src={trail.imgUrls[2]} />
+                        <img width="740" height="405" src={trail.imgUrls[3]} />
+                    </div>
+                    {/* imgs ends here */}
 
-                {/* imgs ends here */}
-
-
-                {/* trail genertal info starts here */}
-                <section>
-                    <p>difficulty: some difficulty level</p>
-                    <p>days: number</p>
-                    <p> Distance: number +km</p>
-                    <p>rating: some stars</p>
-                </section>
-
-
-                {/* trail genertal info ends here */}
+                    {/* trail genertal info starts here */}
+                    <section>
+                        <p>difficulty: {trail.difficulty}</p>
+                        <p>country: {trail.country}</p>
+                        <p>days: {trail.days}</p>
+                        <p> Distance: {trail.distance}</p>
+                        <p>rating: {trail.rating}</p>
+                    </section>
 
 
-                {/* popular guids and link for all the guides of the trail starts here */}
-                <section>
-                    <h2>popular guids for this trail</h2>
-
-                    <Link> <li>a guide picture</li></Link>
-                    <Link>  <li>a guide picture</li></Link>
-                    <Link>  <li>a guide picture</li></Link>
-
-                    <button>Show more</button>
-                </section>
-
-                {/* popular guids and link for all the guides of the trail ends here */}
+                    {/* trail genertal info ends here */}
 
 
+                    {/* popular guids and link for all the guides of the trail starts here */}
+                    <section>
+                        <h2>popular guids for this trail</h2>
+
+                        <Link> <li>a guide picture</li></Link>
+                        <Link>  <li>a guide picture</li></Link>
+                        <Link>  <li>a guide picture</li></Link>
+
+                        <button>Show more</button>
+                    </section>
+
+                    {/* popular guids and link for all the guides of the trail ends here */}
 
 
 
-                {/* trails information and map starts here*/}
 
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue interdum interdum. Nullam nec tellus facilisis nulla lobortis aliquet sit amet molestie urna. Phasellus sagittis vel dolor id molestie. Etiam mi lorem, ultricies quis maximus eu, auctor in nibh. Maecenas luctus quam sed neque hendrerit porttitor. Aliquam dignissim vestibulum enim a ornare. Etiam vel justo sit amet sapien dignissim lacinia at vitae erat. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi rutrum varius nisi, id tempus massa bibendum id.
-                    Phasellus vulputate varius est, vel interdum ligula ultricies in. Nulla egestas leo eu nulla hendrerit rhoncus. Nunc commodo urna eu aliquam luctus. Quisque tempor lacus aliquam risus volutpat, non elementum sem mattis. Duis vitae ligula lacinia, dictum lacus ac, sollicitudin quam. Sed quis consectetur lectus, a efficitur libero. Fusce egestas lobortis turpis et varius. Integer ante ante, mollis nec porta vel, eleifend sit amet urna. Nunc vitae urna quis tortor aliquet tempus vel malesuada lectus. Quisque ut ex quam. Aenean fermentum ut quam at malesuada. Nunc efficitur nisi ac ex volutpat elementum. Cras vitae nisi interdum risus auctor aliquam. Nulla lobortis vitae purus congue aliquam. Praesent malesuada suscipit urna, eget maximus augue feugiat in. Mauris volutpat sed purus sit amet porttitor.
-
-                </p>
-
-                {/* trails information and map ends here*/}
+                    {/* trails information and map starts here*/}
 
 
-                {/* map  */}
-                <div>
-                    {/* here will be map */}
-                </div>
-                {/* map  */}
+                    <p>
+                        {trail.descriptions}
+                    </p>
+
+                    {/* trails information and map ends here*/}
 
 
-                {/* reviews form starts here */}
+                    {/* map  */}
+                    <div>
+                        {/* here will be map */}
+                    </div>
+                    {/* map  */}
+                    
+                    {/* reviews form starts here */}
 
-                <section>
-                    <form action="">
-
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-
-                    <button>Submit</button>
-                    </form>
-
-
-                </section>
+                    <section>
+                        <form action="">
+                            <textarea name="" id="" cols="80" rows="15"></textarea>
+                            <br />
+                            <button>Submit</button>
+                        </form>
+                    </section>
 
 
-                {/* reviews form ends here */}
+                    {/* reviews form ends here */}
 
-
+                </React.Fragment>}
             </main>
 
         )
