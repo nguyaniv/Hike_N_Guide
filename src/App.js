@@ -12,11 +12,9 @@ function App() {
 
       <Route path="/" component={HomePage} />
 
-
       </Switch>
         
 
-      <h2>test</h2>
     </div>
   );
 }
