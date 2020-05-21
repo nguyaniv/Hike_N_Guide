@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {  Switch, Route} from 'react-router';
+import {  Switch, Route} from 'react-router-dom';
 import {HomePage} from './pages/HomePage'
 
 function App() {
@@ -13,11 +13,9 @@ function App() {
 
       <Route path="/" component={HomePage} />
 
-
       </Switch>
         
 
-      <h2>test</h2>
     </div>
   );
 }
