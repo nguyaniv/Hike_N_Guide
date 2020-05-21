@@ -7,9 +7,11 @@ var user = {
     "fullName": "shoka koko",
     "password": "1234",
     "isAdmin": false,
+    "imgUrl": "",
+    "rating": 5,
+    "reviewers_count": 30,
     "languages": ["he", "en"],
     "trails": [{ "mini-trail" }], // id, name, country
-    "imgUrl": "me.jpg"
 }
 
 //Trail collection
@@ -25,14 +27,17 @@ var trail = {
     "difficulty": "easy/medium/hard",
     "distance": 30,
     "days": 3,
+<<<<<<< HEAD
+=======
     "imgUrls": ["", ""],
     "descriptions":""
+>>>>>>> eca7dd4d44f5e3ca42191666ecabb2aa91010a59
 }
 
 
 //Reviews collection
 
-var reviews [
+var reviews= [
     {
         "_id": "5l4f",
         "by": "mini-user",
@@ -65,3 +70,7 @@ var order =
     "price": 300
 }
 
+
+
+
+//http://www.filltext.com/?rows=10&_id={string|10}&fname={firstName}&lname={lastName}&password={string|8}&isAdmin=false&imgUrl=&rating={numberRange|1,5}&reviewers_count={numberRange|3,15}&languages=[%22he%22,%20%22en%22]&trails={}

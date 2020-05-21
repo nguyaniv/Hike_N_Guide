@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux';
-// import ReviewReducer from './ReviewReducer'
-// import UserReducer from './UserReducer'
-import SystemReducer from './loadingReducer';
+import UserReducer from './userReducer'
 
 const rootReducer = combineReducers({
-  // system: SystemReducer,
-  // review: ReviewReducer,
-  // user: UserReducer
+  user: UserReducer
 })
 
 export default rootReducer;
