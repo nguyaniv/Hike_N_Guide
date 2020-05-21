@@ -9,10 +9,9 @@ export default class TrailsFilter extends Component {
 
             <section>
 
-            
+
                 <div>
                     <p>Hike level</p>
-
                     <ul>
                         <li>Expert</li>
                         <li>Advanced</li>
@@ -33,7 +32,6 @@ export default class TrailsFilter extends Component {
                         <li> daily</li>
                     </ul>
                 </div>
-
             </section>
 
 

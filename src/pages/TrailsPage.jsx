@@ -2,37 +2,67 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TrailsFilter from '../cmps/TrailsFilter'
-import {List} from '../cmps/List'
+import { List } from '../cmps/List'
+import trailService from '../services/trail.service'
+
+
+
+
+
+
+
 class _TrailsPage extends Component {
 
-    render() {
+    state = {
+        trails :[]
+    }
 
+
+    componentDidMount(){
+        this.loadTrails()
+    }
+    
+
+    loadTrails = () => {
+        const trails = trailService.query()
+        this.setState({ trails })
+    }
+
+    
+
+    render() {
+        const {trails} = this.state
+        console.log(trails);
+        
         return (
 
             <main>
-                <h2>hello from TrailsPage !</h2>
 
-                {/* country filter section starts here */}
+                {trails && <React.Fragment>
+                    <h2>hello from TrailsPage !</h2>
 
-                <section>
-                <input name="country" value="country" type="text" placeholder="search trails in country" />
-                </section>
+                    {/* country filter section starts here */}
 
-                {/* country filter section ends here */}
+                    <section>
+                        {/* <input name="country"  type="text" placeholder="search trails in country" /> */}
+                    </section>
 
-
-
-                {/* side-filter starts here */}
-                    <TrailsFilter />
-                {/* side-filter ends here */}
+                    {/* country filter section ends here */}
 
 
 
-                        {/* previews */}
+                    {/* side-filter starts here */}
+                    {/* <TrailsFilter /> */}
+                    {/* side-filter ends here */}
 
-                            {/* uncomment when previews are ready */}
-                                {/* <List /> */}
 
+
+                    {/* previews */}
+
+                    {/* uncomment when previews are ready */}
+                    <List items={trails}  />
+
+                </React.Fragment>}
 
 
             </main>

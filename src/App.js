@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       {/* <Header /> */}
       <Switch>
-        <Route path="/trail/id" component={ TrailDetailsPage } />
+        <Route path="/trail/:id" component={ TrailDetailsPage } />
         <Route path="/trail" component={ TrailsPage } />
-        <Route path="/" component={ HomePage } />
+        <Route exact path="/" component={ HomePage } />
       </Switch>
       {/* <Footer /> */}
     </div>
