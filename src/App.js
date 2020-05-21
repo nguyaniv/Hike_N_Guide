@@ -9,13 +9,13 @@ import {Footer} from './cmps/Footer'
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route path="/trail/id" component={ TrailDetailsPage } />
         <Route path="/trail" component={ TrailsPage } />
         <Route path="/" component={ HomePage } />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
