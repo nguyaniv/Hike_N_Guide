@@ -16,6 +16,14 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -7,18 +7,11 @@ function App() {
   return (
     <div className="App">
       {/* <NavBar /> */}
-
       <Switch>
-
-      <Route path="/" component={HomePage} />
-
+        <Route path="/" component={ HomePage } />
       </Switch>
-        
-
     </div>
   );
 }
-
-
 
 export default App;
