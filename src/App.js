@@ -1,15 +1,18 @@
 import React from 'react';
 import './style/global.scss';
-import {  Switch, Route} from 'react-router-dom';
-import {HomePage} from './pages/HomePage'
+import { Switch, Route} from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { Header } from './cmps/Header';
+import { Footer } from './cmps/Footer';
 
 function App() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
+      <Header />
       <Switch>
         <Route path="/" component={ HomePage } />
       </Switch>
+      <Footer />
     </div>
   );
 }

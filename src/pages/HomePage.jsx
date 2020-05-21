@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { TrailPreview } from '../cmps/TrailPreview';
+import { List } from '../cmps/List';
 
- class _HomePage extends Component {
+class _HomePage extends Component {
   render() {
     return (
-      <div className="home-page">
-      </div>
+      <section className="home-page">
+      </section>
     );
   }
 }
