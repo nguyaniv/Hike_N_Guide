@@ -1,21 +1,21 @@
 // Setup
-@import "setup/variables.scss";
-@import "setup/functions.scss";
-@import "setup/mixins.scss";
-@import "setup/typography.scss"; //Fonts
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography"; //Fonts
 
 // Basics
-@import "basics/helpers.scss";
-@import "basics/layout.scss";
-@import "basics/base.scss";
-@import "basics/links.scss";
-@import "basics/buttons.scss";
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/buttons";
 
 // Cmps (Components)
-@import "./cmps/filter.scss";
+@import "./cmps/List";
+@import "./cmps/GuidePreviev";
+@import "./cmps/TrailPreview";
 
 // Pages
-@import "./pages/homePage.scss";
-
-
-
+@import "./pages/App";
+@import "./pages/HomePage";

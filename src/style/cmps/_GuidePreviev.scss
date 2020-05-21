@@ -1,0 +1,55 @@
+.guide-preview {
+  width: calc((100% - 1rem) / 2);
+  min-width: calc((100% - 1rem) / 2);
+  border-radius: 0.5rem;
+  border: 1px solid $clr3;
+  transition: all 0.3s;
+  margin-block-end: 1rem;
+
+  &:not(:nth-child(2n)) {
+    margin-inline-end: 1rem;
+  }
+
+  &-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(75%);
+  }
+
+  &-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+  }
+
+  @media (min-width: $desktop) {
+    width: calc((100% - 3rem) / 4);
+    min-width: calc((100% - 3rem) / 4);
+
+    &-image {
+      filter: none;
+    }
+
+    &-info {
+      display: none;
+    }
+
+    &:not(:nth-child(4n)) {
+      margin-inline-end: 1rem;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+
+      .guide-preview-image {
+        filter: brightness(50%);
+      }
+
+      .guide-preview-info {
+        display: block;
+      }
+    }
+  }
+}
