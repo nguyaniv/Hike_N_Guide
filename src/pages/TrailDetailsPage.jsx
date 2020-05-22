@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> c803b39cd2802a4ac83d67532b9a5da07bf119d4
-
-=======
-import trailService from '../services/trail.service'
->>>>>>> eca7dd4d44f5e3ca42191666ecabb2aa91010a59
-
+import trailService from '../services/trail.service';
 
 class _TrailDetailsPage extends Component {
 
