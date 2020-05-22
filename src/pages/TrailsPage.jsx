@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TrailsFilter from '../cmps/TrailsFilter'
 import { List } from '../cmps/List'
-import trailService from '../services/trail.service'
 
+import { loadTrails } from '../store/actions/trailsActions'
 
 
 
@@ -13,32 +13,18 @@ import trailService from '../services/trail.service'
 
 class _TrailsPage extends Component {
 
-    state = {
-        trails :[]
+    componentDidMount() {
+      this.props.loadTrails()
+                               
     }
-
-
-    componentDidMount(){
-        this.loadTrails()
-    }
-    
-
-    loadTrails = () => {
-        const trails = trailService.query()
-        this.setState({ trails })
-    }
-
-    
 
     render() {
-        const {trails} = this.state
-        console.log(trails);
-        
+        const { trails } = this.props
         return (
 
             <main>
 
-                {trails && <React.Fragment>
+                {this.props.trails && <React.Fragment>
                     <h2>hello from TrailsPage !</h2>
 
                     {/* country filter section starts here */}
@@ -60,7 +46,7 @@ class _TrailsPage extends Component {
                     {/* previews */}
 
                     {/* uncomment when previews are ready */}
-                    <List items={trails}  />
+                    <List items={trails} />
 
                 </React.Fragment>}
 
@@ -76,12 +62,12 @@ class _TrailsPage extends Component {
 
 
 
-// const mapStateToProps = state => {
-//     return {
-
-//     };
-//   };
-//   const mapDispatchToProps = {
-
-//   };
-export const TrailsPage = connect()(_TrailsPage);
+const mapStateToProps = state => {
+    return {
+        trails: state.trail.trails
+    };
+};
+const mapDispatchToProps = {
+    loadTrails
+};
+export const TrailsPage = connect(mapStateToProps, mapDispatchToProps)(_TrailsPage);
