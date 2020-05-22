@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import TrailsFilter from '../cmps/TrailsFilter'
 import { List } from '../cmps/List'
 
-import { loadTrails } from '../store/actions/trailsActions'
+import { loadTrails } from '../store/actions/trailsActions';
 
 
 

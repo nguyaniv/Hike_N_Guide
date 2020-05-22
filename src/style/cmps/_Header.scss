@@ -4,12 +4,10 @@
   z-index: 100;
   width: 100%;
   height: 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   background-color: transparent;
   font-size: 1rem;
-  transition: all 0.8s ease 0s;
+  transition: all 0.3s ease 0s;
 
   &-home-link {
     text-decoration: none;
@@ -18,6 +16,7 @@
 
   &-logo {
     height: 100%;
+    float: left;
     color: $clr2;
     text-transform: uppercase;
     margin: 0;
@@ -25,25 +24,91 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: drop-shadow(0 0 10px $clr5);
+    font-size: 1rem;
   }
 
   &-nav {
-    height: 100%;
-    margin-inline-end: 1rem;
+    position: absolute;
+    top: -100vh;
+    z-index: 101;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    background-color: $clr5;
+    transition: all 0.3s ease 0s;
   }
 
   &-link {
-    height: 100%;
-    margin-inline-start: 1rem;
+    width: 100%;
+    height: 4rem;
     color: $clr2;
-    text-transform: uppercase;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid $clr2;
+    filter: drop-shadow(0 0 10px $clr5);
+    font-size: 1rem;
+
+    &:hover,
+    &:active,
+    &focus {
+      color: $clr4;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-nav {
+      position: static;
+      width: auto;
+      height: 100%;
+      margin-inline-end: 1rem;
+      flex-flow: row nowrap;
+      justify-content: start;
+      align-items: center;
+      background-color: transparent;
+    }
+
+    &-link {
+      height: 100%;
+      width: max-content;
+      margin-inline-start: 1rem;
+      border-bottom: none;
+    }
   }
 }
 
 .header-colored {
   background-color: $clr5;
+}
+
+.hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  display: block;
+  z-index: 101;
+
+  @media (min-width: $tablet) {
+    display: none;
+  }
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  background-color: $clr2 !important;
+}
+
+.main-header-nav.opened {
+  top: 0;
 }

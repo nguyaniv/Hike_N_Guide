@@ -2,6 +2,7 @@
 const users = [
     {
         "_id": "aRmDjhBd4b",
+        "userName": "rogeliog",
         "fullName": "Rogelio Geisbauer",
         "password": "5zxjlm9A",
         "isAdmin": false,
@@ -13,6 +14,7 @@ const users = [
     },
     {
         "_id": "ZfRlDUZwJB",
+        "userName": "reneed",
         "fullName": "Renee Denard",
         "password": "EbxjfZaj",
         "isAdmin": false,
@@ -24,6 +26,7 @@ const users = [
     },
     {
         "_id": "ECE1MhOgcP",
+        "userName": "aisham",
         "fullName": "Aisha Magano",
         "password": "N4USCZ5B",
         "isAdmin": false,
@@ -35,6 +38,7 @@ const users = [
     },
     {
         "_id": "K8JCRHqN21",
+        "userName": "meerac",
         "fullName": "Meera Crewell",
         "password": "7MbgtkpJ",
         "isAdmin": false,
@@ -46,6 +50,7 @@ const users = [
     },
     {
         "_id": "JyHAWrdfz1",
+        "userName": "pennyc",
         "fullName": "Penny Curtis",
         "password": "b9At4B2f",
         "isAdmin": false,
@@ -57,6 +62,7 @@ const users = [
     },
     {
         "_id": "wvahkUajdo",
+        "userName": "sherryk",
         "fullName": "Sherry Kluger",
         "password": "8Z7vHGSa",
         "isAdmin": false,
@@ -68,10 +74,11 @@ const users = [
     },
     {
         "_id": "nIa1jDhYo0",
+        "userName": "jacquieh",
         "fullName": "Jacquie Hill",
         "password": "YEPQi3eU",
         "isAdmin": false,
-        "imgUrl": "http://randomuser.me/api/portraits/men/59.jpg",
+        "imgUrl": "http://randomuser.me/api/portraits/men/58.jpg",
         "rating": 4,
         "reviewers_count": 10,
         "languages": ["en"],
@@ -79,6 +86,7 @@ const users = [
     },
     {
         "_id": "ZmaX5EXPfv",
+        "userName": "jessicag",
         "fullName": "Jessica Grigsby",
         "password": "Hmp9nhEy",
         "isAdmin": false,
@@ -90,6 +98,7 @@ const users = [
     },
     {
         "_id": "nbQBvvXdIu",
+        "userName": "melodyt",
         "fullName": "Melody Tubbytelly",
         "password": "HX238PyM",
         "isAdmin": false,
@@ -100,7 +109,9 @@ const users = [
         "trails": {}
     },
     {
-        "_id": "0NwTpQ2Iz5", "fullName": "Abdul Feldman",
+        "_id": "0NwTpQ2Iz5",
+        "userName": "abdulf",
+        "fullName": "Abdul Feldman",
         "password": "Y3OittiF",
         "isAdmin": false,
         "imgUrl": "http://randomuser.me/api/portraits/women/17.jpg",
