@@ -57,7 +57,7 @@ const gTrails = [
 
 
 function query() {
-    return gTrails
+    return  Promise.resolve(gTrails)
 }
 
 

@@ -4,8 +4,8 @@ import {  Switch, Route} from 'react-router-dom';
 import {HomePage} from './pages/HomePage'
 import {TrailDetailsPage} from './pages/TrailDetailsPage'
 import {TrailsPage} from './pages/TrailsPage'
-import {Header} from './cmps/Header'
-import {Footer} from './cmps/Footer'
+// import {Header} from './cmps/Header'
+// import {Footer} from './cmps/Footer'
 function App() {
   return (
     <div className="App">
