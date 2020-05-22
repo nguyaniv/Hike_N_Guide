@@ -27,11 +27,8 @@ var trail = {
     "difficulty": "easy/medium/hard",
     "distance": 30,
     "days": 3,
-<<<<<<< HEAD
-=======
     "imgUrls": ["", ""],
     "descriptions":""
->>>>>>> eca7dd4d44f5e3ca42191666ecabb2aa91010a59
 }
 
 

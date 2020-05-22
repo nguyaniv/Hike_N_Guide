@@ -39,6 +39,11 @@ class _BookingPage extends Component {
         }
     }
 
+    componentDidMount() {
+        // const { id } = this.props.match.params;
+
+    }
+
     render() {
         const { guide, user } = this.state
         return (
@@ -62,7 +67,7 @@ class _BookingPage extends Component {
                 <p>need to be here description</p>
 
                 <p>Write a review about {guide.fullName}</p>
-                <ReviewAdd user={user} guide={guide} reviewAbout={"guide"}/>
+                <ReviewAdd user={user} guide={guide} />
             </section>
         )
     }
