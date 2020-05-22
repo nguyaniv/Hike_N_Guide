@@ -11,25 +11,27 @@ class _ReviewAdd extends Component {
     state = {
         rating: 1,
         txt: '',
-        user: '',
-        guide: ''
+        by: {}
     }
 
     componentDidMount() {
-        const { user, guide } = this.props
-        this.setState(prevState => ({ review: { user, guide } }))
+        const { user } = this.props
+        if (this.props.guide) {
+            this.setState({ by: user, guide: this.props.guide })
+        } else if (this.props.user) {
+            this.setState({ by: user, user: this.props.user })
+        }
+
     }
 
-    handledChange = ({ target }) => {
-        const { name, review } = target
-        this.setState(preState => ({ review: { ...preState.review, [name]: review }, }))
+    handledChange = (ev) => {
+        const { name, value } = ev.target;
+        this.setState({ [name]: value })
     }
 
     onSend = (ev) => {
         ev.preventDefault()
-
         const review = this.state
-
     }
 
     render() {
@@ -43,12 +45,12 @@ class _ReviewAdd extends Component {
                     emptySymbol={<img src={star} width="30" />}
                     fullSymbol={<img src={star_o} width="30" />}
                     onChange={(rate) => {
-                        this.setState(prevState => ({ rating: rate }))
+                        this.setState({ rating: rate })
                     }}
                 />
                 <form onSubmit={this.onSend}>
-                    <textarea name="review" value={txt} onChange={this.handledChange}
-                        cols="30" rows="10" onChange={this.handledChange} placeholder="What do you think about me?" required>
+                    <textarea name="txt" value={txt} onChange={this.handledChange}
+                        cols="30" rows="10" placeholder="What do you think about me?" required>
                     </textarea>
                     <button>Send</button>
                 </form>

@@ -112,25 +112,67 @@ const users = [
 ]
 
 
+export default {
+    query,
+    update,
+    remove,
+    createUser,
+    getById
+}
+
 function query() {
-    return users;
+    const userToSet = users.map(user => {
+        user.password = null
+        return user
+    })
+    return Promise.resolve(userToSet);
 }
 
-function update() {
-
+function update(user) {
+    users.map(currUser => {
+        if (currUser._id === user._id) {
+            if (!user.password) user.password = currUser.password
+            return user
+        }
+        return currUser
+    })
+    return Promise.resolve(user)
 }
 
-function remove() {
-
+function remove(userID) {
+    const userIdx = users.findIndex(user => user._id === userID)
+    let userDeleted = users.splice(userIdx, 1)
+    userDeleted.password = null
+    return Promise.resolve(userDeleted)
 }
+
+function update(user) {
+    users.map(currUser =>
+        currUser._id === user._id ? user : currUser)
+}
+
 
 function createUser(user) {
-    
+    user._id = _makeId(10)
+    users.push(user)
+    user.password = null
+    return Promise.resolve(user)
 }
 
-function getUserById(userId) {
-
+function getById(userId) {
+    const user = users.map(user => user._id === userId)
+    return Promise.resolve(user)
 }
 
 
 
+function _makeId(length = 3) {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+}
