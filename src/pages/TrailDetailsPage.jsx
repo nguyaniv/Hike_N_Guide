@@ -4,35 +4,30 @@ import { connect } from 'react-redux';
 import trailService from '../services/trail.service';
 
 class _TrailDetailsPage extends Component {
-
     state = {
-        trail: ''
+      trail: '',
 
     }
 
     componentDidMount() {
-        const { id } = this.props.match.params;
-        // const id = '5u3'
-        var trail = trailService.getById(id)
-        this.loadTrail(trail)
-
+      const { id } = this.props.match.params;
+      // const id = '5u3'
+      const trail = trailService.getById(id);
+      this.loadTrail(trail);
     }
 
-    loadTrail = (trail) => {
-
-        this.setState({ trail })
+    loadTrail = trail => {
+      this.setState({ trail });
     }
 
 
     render() {
+      // const { imgUrls, distance, country, name, difficulty, days, descriptions, rating, trail} = this.state
+      const { trail } = this.state;
 
-
-        // const { imgUrls, distance, country, name, difficulty, days, descriptions, rating, trail} = this.state
-        const { trail } = this.state
-
-        if (!this.state.trail) return 'hello'
-        console.log(this.state.trail);
-        return (
+      if (!this.state.trail) return 'hello';
+      console.log(this.state.trail);
+      return (
 
             <main>
 
@@ -42,10 +37,10 @@ class _TrailDetailsPage extends Component {
 
                     {/* imgs starts here */}
                     <div>
-                        <img width="740" height="405" src={trail.imgUrls[0]} />
-                        <img width="740" height="405" src={trail.imgUrls[1]} />
-                        <img width="740" height="405" src={trail.imgUrls[2]} />
-                        <img width="740" height="405" src={trail.imgUrls[3]} />
+                        <img width="740" height="405" src={ trail.imgUrls[0] } />
+                        <img width="740" height="405" src={ trail.imgUrls[1] } />
+                        <img width="740" height="405" src={ trail.imgUrls[2] } />
+                        <img width="740" height="405" src={ trail.imgUrls[3] } />
                     </div>
                     {/* imgs ends here */}
 
@@ -76,9 +71,6 @@ class _TrailDetailsPage extends Component {
                     {/* popular guids and link for all the guides of the trail ends here */}
 
 
-
-
-
                     {/* trails information and map starts here*/}
 
 
@@ -94,7 +86,7 @@ class _TrailDetailsPage extends Component {
                         {/* here will be map */}
                     </div>
                     {/* map  */}
-                    
+
                     {/* reviews form starts here */}
 
                     <section>
@@ -111,11 +103,8 @@ class _TrailDetailsPage extends Component {
                 </React.Fragment>}
             </main>
 
-        )
+      );
     }
-
-
-
 }
 
 
