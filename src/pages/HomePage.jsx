@@ -6,12 +6,14 @@ import { List } from '../cmps/List';
 class _HomePage extends Component {
   render() {
     return (
-      <section className="homepage">
+      <main className="homepage">
+        <img src="/img/main-background.jpg" alt="" className="homepage-background"/>
+        <h2 className="homepage-main-heading">Find hiking trails and guides worldwide</h2>
         <h2 className="homepage-list-heading">Popular Trails</h2>
         <List items={ exampleTrails }/>
         <h2 className="homepage-list-heading">Popular Guides</h2>
         <List items={ exampleGuides }/>
-      </section>
+      </main>
     );
   }
 }
