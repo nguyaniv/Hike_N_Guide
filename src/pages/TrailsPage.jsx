@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import TrailsFilter from '../cmps/TrailsFilter'
+import TrailsFilter from '../cmps/TrailsFilter';
+import TrailAdd from '../cmps/TrailAdd';
 import { List } from '../cmps/List'
 
 import { loadTrails } from '../store/actions/trailsActions';
@@ -29,7 +30,7 @@ class _TrailsPage extends Component {
                     <h2>hello from TrailsPage !</h2>
 
                     <React.Fragment>
-                        < AddTrail />
+                        < TrailAdd />
 
                     </React.Fragment>
 
