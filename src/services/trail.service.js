@@ -2,7 +2,9 @@
 
 export default {
     query,
-    getById
+    getById,
+    deleteTrail,
+    save
 }
 
 const gTrails = [
@@ -34,7 +36,7 @@ const gTrails = [
         days: 3,
         location: 'x',
         imgUrls: [
-            ' https://images.discerningassets.com/image/upload/c_fill,h_1000,w_1000/c_fit,fl_relative,h_1.0,o_100,w_1.0/c_fill,w_3648,h_3648/v1543811053/Mount_Olympus_Sunset_vhnlib.jpg',
+            'https://hikingbeast.com/wp-content/uploads/2019/06/olympus-weather-1024x768.jpg',
             'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2018/02/DSC7966-975x550.jpg',
             'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2019/02/river-trekking-rema-toy-orlia-7-720x405.jpg',
             'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2018/02/Olympus-9-720x405.jpg'
@@ -48,7 +50,128 @@ const gTrails = [
         
         Ideal for: nature lovers, hike and climb enthusiasts, flora and fauna beauty admirers.
         `
+    },
+    {
+        _id: 'zl4',
+        name: 'Tour de Monte Rosa',
+        country: 'Italy',
+        difficulty: 'advanced',
+        distance: '163km',
+        days: 9,
+        location: 'x',
+        imgUrls: [
+            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2673-800x600-q40.jpg',
+            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2679-800x600-q40.jpg',
+            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2707-800x600-q40.jpg',
+            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2715-800x600-q40.jpg'
+        ],
+        descriptions: 'The view into the different valleys in Switzerland and Italy is unforgettable. Hikers see not only the highest and most beautiful mountains in the Alps, but also mountain villages with different cultures and of incomparable character. The stage destinations are well-known: Zermatt, over the Theodul Pass to Cervinia, Alagna, Macugnaga, and back into Switzerland via the Monte Moro Pass, to Saas-Fee and Grächen.'
+    },
+
+    {
+        _id: 'v4g',
+        name: 'GR20',
+        country: 'France',
+        difficulty: 'Expert',
+        distance: '180km',
+        days: 14,
+        location: 'x',
+        imgUrls: [
+            'https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c5.jpg',
+            'https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c7.jpg',
+            'https://cdn1.sipurderech.co.il/512x512_fill_90/1429287072_990.jpeg',
+            'https://cdn1.sipurderech.co.il/512x512_fill_90/1440694242_30.jpeg'
+        ],
+        descriptions: `The 200km trail follows the granite backbone of mountains that
+         divide the island in two, many of which soar above 2000m altitude.  The GR20 is the best 
+         and toughest long distance hike out there!  Stunningly beautiful and varied. If you do a
+          stage per day, it takes roughly 16 days, this will depend, of course, on your fitness and the weather. In the North,
+           you are constantly doing steep ascents and plunging descents. In the South, there are different
+            challenges, such as, long technical exposed ridges.`
+    },
+
+    {
+        _id: 's9j',
+        name: 'Herzogstand',
+        country: 'Germany',
+        distance: '14km',
+        days: 'daily',
+        location: 'x',
+        imgUrls: [
+            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/pw/pw76k38uu4br17zjfuo5wuy1j2t13h6i9-uhi4527882/0?width=3072&height=2304&crop=&q=70',
+            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/13/13dfpdb7upjqg1q67wbw7sq45o2t13hbex-uhi4527883/0?width=3072&height=2304&crop=&q=70',
+            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/15/158knsjjnsrk41fh7dgpl3kix92ke9avp6-uhi2519085/0?width=3072&height=2304&crop=&q=70',
+            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/1l/1ldgd533wykzp1jmsa64o8gf4o2p0shbpl-uhi3658415/0?width=3072&height=2304&crop=&q=70'
+        ],
+        descriptions: `An amazing hike with splendid views over the Bavarian alps and the lakes (Kochelsee and Walchensee)!
+
+    The Heimgarten/Herzogstand trail is a famous one and there's a reason why: a great hike with outstanding views! Its close vicinity to the Kochelsee and Walchensee only make it even more attractive, since you can cool off with a swim in one of the lakes if you're done hiking and enjoying the views at the top. 
+    
+    To get there, drive towards Walchensee. Drive to the "Herzogstandbahn" (the cable lift to the top of the Herzogstand peak). You can park your car there (there's a fee of €3/car, although, if you start your hike early enough, the park guard won't be there yet, and you can just drive onto the parking lot). The trailhead starts from the parking and is signed with yellow trail signs (H5 trail). The whole trail is signposted very well!
+    
+    It's a contentious uphill hike (approximately 2h30-2h45) to the Heimgarten peak. It's mostly through forested area, although some views in between are open and are just amazing. The view at the top is even better and is great at all 360°.  When you reach the Heimgarten peak, there's a hut where you can buy food/drinks if you please or you can continue your trail towards the Herzogstand. From Heimgarten, it's another 2h (approximately) to the Herzogstand, with some descending/flat/ascending parts. 
+    
+    The cable car goes down from the Herzogstand peak and there's also a hut where you can buy food or have a beer. It's more crowded around the Herzogstand (blame the cable lift). You can also just descend from a trail (takes approximately 1h45).
+    
+    Start your hike early if you want to enjoy the sunrise and if you want to avoid the crowds, it's a popular hike and there's the fact that there's a cable car going up (to the Herzogstand peak). Or start your trail towards the Herzogstand and hike towards the Heimgarten (starting point is the same, just follow the sings towards Herzogstand instead of Heimgarten).
+    
+    Relax and cool down afterwards with a refreshing swim in the beautiful Walchensee.  
+    
+    `
+    },
+
+    {
+        _id: 'j1v',
+        name: '‪Prachovské skály‬',
+        country: 'Czech Republic',
+        distance: '10km',
+        days: 'daily',
+        location: 'x',
+        imgUrls: [
+            'https://live.staticflickr.com/3105/2775104716_74cbb14105_b.jpg',
+            'https://www.cesky-raj.info/galerie/obrazky/imager.php?img=787488&x=1037&y=691&hash=093868d35ac6fc68e56bd0e329748214',
+            'https://podroze.at7.pl/wp-content/uploads/2019/CzeskaSzwajcaria/prachowskie_skaly9.jpg',
+            'https://1.bp.blogspot.com/-4BALSPSR4i8/XpQo4mItVtI/AAAAAAAAC34/_ygnnJxe8ZohF2SKJspXbrMvtUOwhMkIgCLcBGAsYHQ/s1600/DSCN0733.JPG'
+        ],
+        descriptions: `The Prachovské skály nature preserve is one of the most popular regions in the Czech Republic. It is one of the oldest nature preserves in the country.
+        The area was declared a nature preserve in 1933. In 2002, the efforts made by conservationists resulted in incorporation of the Prachovské skály Nature Preserve in the Český Ráj Protected Landscape Area. It is recommended to start a tour round the Prachovské Skály from Jičín, an ancient town with a well-preserved central square and numerous historic monuments. The Prachovské Skály are some 6 km far from Jičín, in the direction towards Sobotka, via Holín and Prachov. There are two car parks at the entrance points.
+        
+        The short round tour is led through a narrow, only 35 cm wide rock gap; from there, you approach two best-known lookout points and return through the Císařská Chodba between robust rock blocks. The tour takes about 3/4 hour.
+        
+        The long round will take you along seven lookout points, you climb various staircases carved in the rocks and squeeze through narrow gaps between huge stones. The tour is 3.5 km long and it takes approximately 2.5 hours.
+        
+        Geology
+        The geological history of the Prachovské skály area is rather varicoloured – the beginnings of the sandstone formations date back to the Mesozoic era when the whole territory was flooded with sea water. Millions of years later, the region was pushed up by the effects of powerful tectonic powers, the flood shrank back and the seabed split into separate blocks on which today's treasure of the Český Ráj region were formed: the Suché skály, the Prachovské skály, the Hruboskalsko, the Příhrazské Skály, etc. By gradual erosion, characteristic and world-unique rock formations were formed, distinctive with tall rock towers and deep rock gaps. During the Tertiary era, volcanic activities reshaped the landscape, leaving its print in the form of (residual) basalt volcanoes – the hills of Velíš, Zebín, Trosky, Vyskeř, etc., today's significant landscape dominant features of the region of Český Ráj.
+        
+        History
+        Some time in the mid 13th century, King Přemysl Otakar I. founded on the basalt hill a magnificent castle named Velíš and the Prachovské Skály became a part of the Royal demesne of Velíš. The demesne was not the Royal property for long: in 1337 it was obtained by the Vartemberk family and then it was possessed by various other noble families. In 1625 the demesne of Velíš was included in the property of the Duke of Frýdlant, Albrecht Eusebius Valdštejn. After his death in 1634 the duchy was devastated. In 1637 the land of Velíš and the Prachovské skály went to Jindřich Schlik, one of the leaders of the uprising in 1620 and the chief commander of the Moravian Army in the Battle of Bílá Hora. After the lost battle, his cousin, Jáchym Ondřej Schlik, was arrested and executed in 1621 at Old Town Square in Prague. However, Jindřich Schlik entered the Imperial Army and developed a great career as a professional soldier. His successors owned the Prachovské Skály until 1948 when the Schlik family property was confiscated.
+        
+        In 1993, it was restituted and since 2000 the Schlik family has operated the tourist area of the Prachovské skály on its own.
+        
+        `
+    },
+
+
+    {
+        _id: 'jmq',
+        name: 'Snieżka',
+        country: 'Czech Republic',
+        difficulty: 'Advanced',
+        distance: '12.5km',
+        days: 'daliy',
+        location: 'x',
+        imgUrls: [
+            'https://www.thenerdyme.com/wp-content/uploads/2019/09/mount-sniezka-in-poland.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/8/8a/%C5%9Anie%C5%BCka_z_zachodu.jpg',
+            'https://farm2.staticflickr.com/1877/30260025348_bf82ef778f_b.jpg',
+            'https://s1.wklcdn.com/image_17/516188/3037323/1253692Master.jpg'
+        ],
+
+        descriptions: `Sněžka has been climbed for nearly or even more than 500 years! In Obří důl (Giant Pit), the uppermost part of the Úpa Valley, metal ores were mined as early as the 16th century. The popularity of Śnieżka soared in the 19th century when it was the highpoint of Prussia. There are a few buildings on the summit, of which the chapel of St.Lawrence, built in 1681, is the oldest. The biggest is the Polish 'UFOs' from 1976, which used to house a weather station, a mountain hut and a restaurant. But in summer 2016 only a buffet was open on the ground floor. Another building is a Czech post office, where you can buy postcards and similar stuff. The fourth structure is the upper station of a Czech cable car. `
     }
+
+
+
 ]
 
 
@@ -57,11 +180,50 @@ const gTrails = [
 
 
 function query() {
-    return  Promise.resolve(gTrails)
+    return Promise.resolve(gTrails)
 }
 
 
 function getById(trailId) {
     const trail = gTrails.find(trail => trail._id === trailId)
     return trail
+}
+
+
+function deleteTrail(id) {
+    const idx = gTrails.findIndex(trail => trail.id === id)
+    gTrails.splice(idx, 1)
+
+}
+
+
+
+function save(trailToSave) {
+
+    if (trailToSave._id) {
+        const trailIdx = getById(trailToSave._id)
+        gTrails[trailIdx] = trailToSave;
+    } else {
+        
+        trailToSave._id = makeId()
+        trailToSave.createdAt = Date.now()
+        console.log(trailToSave);
+        // gTrails.push(trailToSave)
+    }
+    // var res = Promise.resolve(trailToSave)
+    // return res;
+}
+
+
+
+
+function makeId(length=3) {
+    var text = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for(let i=0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
 }

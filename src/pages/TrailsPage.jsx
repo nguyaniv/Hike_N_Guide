@@ -14,8 +14,8 @@ import { loadTrails } from '../store/actions/trailsActions';
 class _TrailsPage extends Component {
 
     componentDidMount() {
-      this.props.loadTrails()
-                               
+        this.props.loadTrails()
+
     }
 
     render() {
@@ -24,8 +24,16 @@ class _TrailsPage extends Component {
 
             <main className="trail-page">
 
+
                 {this.props.trails && <React.Fragment>
                     <h2>hello from TrailsPage !</h2>
+
+                    <React.Fragment>
+                        < AddTrail />
+
+                    </React.Fragment>
+
+
 
                     {/* country filter section starts here */}
 
