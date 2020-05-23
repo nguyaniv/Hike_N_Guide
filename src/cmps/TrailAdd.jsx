@@ -8,10 +8,10 @@ class TrailAdd extends React.Component {
         name: '',
         country: '',
         difficulty: '',
-        distance: null,
-        days: null,
+        distance: '',
+        days: '',
         location: 'x',
-        imgUrls: '',
+        imgUrls: [],
         createdAt: Date.now()
     }
 
@@ -30,9 +30,9 @@ class TrailAdd extends React.Component {
         this.setState({
             name: '',
             country: '',
-            difficulty: 'Funny',
-            distance: null,
-            days: null,
+            difficulty: '',
+            distance: '',
+            days: '',
             location: 'x',
             imgUrls: [],
             createdAt: Date.now()
@@ -56,7 +56,7 @@ class TrailAdd extends React.Component {
 
 
         return (
-            <div className="">
+            <main className="">
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         name:<input type="text" name="name" value={name} onChange={this.inputHandler} />
@@ -79,11 +79,11 @@ class TrailAdd extends React.Component {
                     </label>
 
                     <label>
-                        imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
+                        imgs: <input type="file" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
                     </label>
                     <button className="">Add</button>
                 </form>
-            </div>
+            </main>
 
         )
 
