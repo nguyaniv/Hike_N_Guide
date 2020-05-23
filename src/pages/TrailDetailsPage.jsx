@@ -1,58 +1,63 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import trailService from '../services/trail.service';
+import { loadTrail,removeTrail,loadTrails } from '../store/actions/trailsActions'
 
 class _TrailDetailsPage extends Component {
-    state = {
-      trail: '',
-
-    }
 
     componentDidMount() {
       const { id } = this.props.match.params;
-      // const id = '5u3'
-      const trail = trailService.getById(id);
-      this.loadTrail(trail);
+      this.props.loadTrail(id);
+      this.props.loadTrails();
+
     }
 
-    loadTrail = trail => {
-      this.setState({ trail });
-    }
+    
 
 
     render() {
-      // const { imgUrls, distance, country, name, difficulty, days, descriptions, rating, trail} = this.state
-      const { trail } = this.state;
+      const { selectedTrail } = this.props.trails;
 
-      if (!this.state.trail) return 'hello';
-      console.log(this.state.trail);
       return (
 
             <main>
 
-                {trail && <React.Fragment>
+                {this.props.trails.selectedTrail && <React.Fragment>
+                        
+                    {console.log(this.props.trails)}
 
                     <h2>Trail name</h2>
+                    <Link className="a" to={`/trail`} > Back to List </Link>
 
                     {/* imgs starts here */}
                     <div>
-                        <img width="740" height="405" src={ trail.imgUrls[0] } />
-                        <img width="740" height="405" src={ trail.imgUrls[1] } />
-                        <img width="740" height="405" src={ trail.imgUrls[2] } />
-                        <img width="740" height="405" src={ trail.imgUrls[3] } />
+                        <img width="740" height="471"  src={ selectedTrail.imgUrls[0] } />
+                         <img width="740" height="471"  src={ selectedTrail.imgUrls[1]} />
+                        <img width="740" height="471"  src={ selectedTrail.imgUrls[2] } />
+                        <img width="740"  height="471" src={ selectedTrail.imgUrls[3] } /> 
                     </div>
                     {/* imgs ends here */}
 
                     {/* trail genertal info starts here */}
                     <section>
-                        <p>difficulty: {trail.difficulty}</p>
-                        <p>country: {trail.country}</p>
-                        <p>days: {trail.days}</p>
-                        <p> Distance: {trail.distance}</p>
-                        <p>rating: {trail.rating}</p>
+                        <p>difficulty: {selectedTrail.difficulty}</p>
+                        <p>country: {selectedTrail.country}</p>
+                        <p>days: {selectedTrail.days}</p>
+                        <p> Distance: {selectedTrail.distance}</p>
+                        <p>rating: {selectedTrail.rating}</p>
                     </section>
 
+
+                        <Link to={`/trail`} onClick={()=>
+                       {
+                        console.log(selectedTrail._id)
+                        console.log(this.props.trails)
+                        
+                        this.props.removeTrail(selectedTrail._id)
+                        }
+                      
+                       
+                        }>Delete Trail</Link>
 
                     {/* trail genertal info ends here */}
 
@@ -75,7 +80,7 @@ class _TrailDetailsPage extends Component {
 
 
                     <p>
-                        {trail.descriptions}
+                        {selectedTrail.descriptions}
                     </p>
 
                     {/* trails information and map ends here*/}
@@ -108,4 +113,14 @@ class _TrailDetailsPage extends Component {
 }
 
 
-export const TrailDetailsPage = connect()(_TrailDetailsPage);
+const mapStateToProps = state => {
+    return {
+        trails: state.trail
+    };
+};
+const mapDispatchToProps = {
+    loadTrail,
+    loadTrails,
+    removeTrail
+};
+export const TrailDetailsPage = connect(mapStateToProps, mapDispatchToProps)(_TrailDetailsPage);
