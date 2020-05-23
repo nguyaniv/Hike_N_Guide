@@ -38,6 +38,8 @@ module.exports = {
     "no-underscore-dangle": 0,
     "spaced-comment": 0,
     "no-plusplus": 0,
+    "no-param-reassign": 0,
+    "no-console": 0,
     "react/react-in-jsx-scope": 0,
     "class-methods-use-this": 0,
     "jsx-quotes": 1,

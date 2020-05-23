@@ -27,8 +27,8 @@ export const TrailPreview = (props) => {
     <Link to={ `/trail/${_id}` }>
       <img className="trail-preview-image" src={ imgUrls[0] } alt={ name }/>
       <div className="trail-preview-info">
-        <h2 className="trail-preview-name fs24">{ name }</h2>
-        <h3 className="trail-preview-country fs20">{ country }</h3>
+        <h2 className="trail-preview-name">{ name }</h2>
+        <h3 className="trail-preview-country">{ country }</h3>
       </div>
     </Link>
   </article>);

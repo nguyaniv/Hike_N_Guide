@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import TrailsFilter from '../cmps/TrailsFilter'
+import TrailsFilter from '../cmps/TrailsFilter';
+import TrailAdd from '../cmps/TrailAdd';
 import { List } from '../cmps/List'
-import AddTrail from '../cmps/TrailAdd'
-import { loadTrails } from '../store/actions/trailsActions'
+
+import { loadTrails } from '../store/actions/trailsActions';
 
 
 
@@ -22,14 +23,14 @@ class _TrailsPage extends Component {
         const { trails } = this.props
         return (
 
-            <main>
+            <main className="trail-page">
 
 
                 {this.props.trails && <React.Fragment>
                     <h2>hello from TrailsPage !</h2>
 
                     <React.Fragment>
-                        < AddTrail />
+                        < TrailAdd />
 
                     </React.Fragment>
 

@@ -11,12 +11,17 @@
 @import "basics/links";
 @import "basics/buttons";
 
-// Cmps (Components)
+// Libs
+@import "hamburgers/_sass/hamburgers/hamburgers.scss";
+
+// Components
 @import "./cmps/List";
 @import "./cmps/GuidePreviev";
 @import "./cmps/TrailPreview";
 @import "./cmps/Header";
+@import "./cmps/Footer";
 
 // Pages
 @import "./pages/App";
 @import "./pages/HomePage";
+@import "./pages/TrailPage";
