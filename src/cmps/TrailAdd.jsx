@@ -79,7 +79,7 @@ class TrailAdd extends React.Component {
                     </label>
 
                     <label>
-                        imgs: <input type="file" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
+                        imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
                     </label>
                     <button className="">Add</button>
                 </form>
