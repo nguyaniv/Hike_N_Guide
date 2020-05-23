@@ -35,7 +35,7 @@ export default function (state = initialState, action = {}) {
         case 'SET_TRAIL':
             return {
                 ...state,
-                currtrail: action.trail
+                selectedTrail: action.trail
             }
 
         default:
