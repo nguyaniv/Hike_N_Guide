@@ -22,7 +22,7 @@ class _TrailsPage extends Component {
         const { trails } = this.props
         return (
 
-            <main>
+            <main className="trail-page">
 
                 {this.props.trails && <React.Fragment>
                     <h2>hello from TrailsPage !</h2>

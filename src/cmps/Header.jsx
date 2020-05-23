@@ -15,6 +15,7 @@ export class Header extends React.Component {
       this.setState(prevState => ({ ...prevState, headerColorClass: '' }));
       window.addEventListener('scroll', this.handleScroll);
     } else {
+      window.removeEventListener('scroll', this.handleScroll);
       this.setState(prevState => ({ ...prevState, headerColorClass: 'header-colored' }));
     }
   }
