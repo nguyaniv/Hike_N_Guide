@@ -46,18 +46,26 @@ export class Header extends React.Component {
   render() {
     return (
       <header className={ `main-header ${this.state.headerColorClass}` }>
-          <Link className="main-header-home-link" to="/">
+          <Link
+          className="main-header-home-link"
+          to="/"
+          onClick={ () => { history.push('/'); this.setHeaderColor(); } }>
             <h1 className="main-header-logo">
               Hike & Guide
             </h1>
           </Link>
-          <nav className={ `main-header-nav ${this.state.navOpenedClass}` } onClick={ () => this.toggleMenu() }>
+          <nav
+          className={ `main-header-nav ${this.state.navOpenedClass}` }
+          onClick={ () => this.toggleMenu() }>
             <Link className="main-header-link" to="/">Home</Link>
             <Link className="main-header-link" to="/trail">Trails</Link>
             <Link className="main-header-link" to="/guide">Guides</Link>
             <Link className="main-header-link" to="/login">Login</Link>
           </nav>
-          <button className={ `hamburger hamburger--spin ${this.state.menuActiveClass}` } type="button" onClick={ () => this.toggleMenu() }>
+          <button
+          className={ `hamburger hamburger--spin ${this.state.menuActiveClass}` }
+          type="button"
+          onClick={ () => this.toggleMenu() }>
             <span className="hamburger-box">
               <span className="hamburger-inner"></span>
             </span>
