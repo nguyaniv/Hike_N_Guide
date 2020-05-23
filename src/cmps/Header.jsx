@@ -47,7 +47,7 @@ export class Header extends React.Component {
       <header className={ `main-header ${this.state.headerColorClass}` }>
           <Link className="main-header-home-link" to="/">
             <h1 className="main-header-logo">
-              Hide & Hike
+              Hike & Guide
             </h1>
           </Link>
           <nav className={ `main-header-nav ${this.state.navOpenedClass}` } onClick={ () => this.toggleMenu() }>
