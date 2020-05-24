@@ -1,9 +1,10 @@
+import HttpService from './httpService'
 
 export default {
     query,
     getById,
-    deleteTrail,
-    save
+    remove,
+    add
 }
 
 const gTrails = [
@@ -179,50 +180,61 @@ const gTrails = [
 
 
 function query() {
-    return Promise.resolve(gTrails)
+    return HttpService.get('trails')
 }
+
 
 
 function getById(trailId) {
-    const trail = gTrails.find(trail => trail._id === trailId)
-    return trail
+    return HttpService.get(`trails/${trailId}`)
 }
 
 
-function deleteTrail(id) {
-    const idx = gTrails.findIndex(trail => trail.id === id)
-    gTrails.splice(idx, 1)
-
-}
+function remove(id) {
+    return HttpService.delete(`trails/${id}`)
 
 
-
-function save(trailToSave) {
-
-    if (trailToSave._id) {
-        const trailIdx = getById(trailToSave._id)
-        gTrails[trailIdx] = trailToSave;
-    } else {
-        
-        trailToSave._id = makeId()
-        trailToSave.createdAt = Date.now()
-        console.log(trailToSave);
-        // gTrails.push(trailToSave)
-    }
-    // var res = Promise.resolve(trailToSave)
-    // return res;
 }
 
 
 
+async function add(trail) {
+    const addedTrail = await HttpService.post(`trails`, trail);
+    addedTrail._id = makeId()
+    return addedTrail
+}
 
-function makeId(length=3) {
+
+
+// function save(trailToSave) {
+
+//     if (trailToSave._id) {
+//         const trailIdx = getById(trailToSave._id)
+//         gTrails[trailIdx] = trailToSave;
+//     } else {
+
+//         trailToSave._id = makeId()
+//         trailToSave.createdAt = Date.now()
+//         console.log(trailToSave);
+//         gTrails.push(trailToSave)
+//     }
+//     var res = Promise.resolve(trailToSave)
+//     return res;
+// }
+
+
+
+
+function makeId(length = 3) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for(let i=0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
     return text;
 }
+
+
+//json-server --watch data.json --id=_id
