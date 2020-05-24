@@ -29,6 +29,7 @@ module.exports = {
     "ReactRouterDOM": true,
   },
   "rules": {
+    "linebreak-style": 0,
     "import/no-cycle": 0,
     'import/extensions': ['error', 'always', {
       "js": 'never',
