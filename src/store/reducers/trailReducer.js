@@ -5,8 +5,8 @@ const initialState = {
 
 
 export default function (state = initialState, action = {}) {
-    console.log(action)
-    
+  console.log(action);
+
   switch (action.type) {
     case 'ADD':
       return {
@@ -14,7 +14,7 @@ export default function (state = initialState, action = {}) {
         trails: state.trails.map(trail => {
           if (trail._id === action.trail._id) return action.trail;
           return trail;
-        })
+        }),
       };
     case 'EDIT':
       return {
@@ -22,7 +22,7 @@ export default function (state = initialState, action = {}) {
         trails: state.trails.map(trail => {
           if (trail._id === action.trail._id) return action.trail;
           return trail;
-        })
+        }),
       };
     case 'DELETE':
       return {

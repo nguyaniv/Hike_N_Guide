@@ -43,7 +43,7 @@ class _TrailDetailsPage extends Component {
 
                     <button onClick={ () => {
                       this.props.removeTrail(selectedTrail._id)
-                        .then(() => history.push('/'));
+                        .then(() => history.push('/trail'));
                     }
 
 
