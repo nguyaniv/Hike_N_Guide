@@ -1,6 +1,6 @@
-import HttpService from './httpService'
-const BASE_URL = (process.env.NODE_ENV !== 'development') ?
-  '/api/user' : '//localhost:3000/user';
+import HttpService from './httpService';
+
+const BASE_URL = 'user';
 
 const usersData = [
   {
@@ -133,11 +133,8 @@ export default {
 };
 
 function query(filter = null) {
-  const users = HttpService.get(BASE_URL, filter)
-  const usersToSet = users.map(user => {
-    user.password = null;
-    return usersToSet;
-  });
+  const users = HttpService.get(BASE_URL, filter);
+  return users;
 }
 
 function save(user) {
@@ -149,11 +146,11 @@ function save(user) {
 }
 
 function remove(userID) {
-  return HttpService.delete(`${BASE_URL}/${userID}`)
+  return HttpService.delete(`${BASE_URL}/${userID}`);
 }
 
 function getById(userId) {
-  return HttpService.get(`${BASE_URL}/${userId}`)
+  return HttpService.get(`${BASE_URL}/${userId}`);
 }
 
 function _makeId(length = 3) {
