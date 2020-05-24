@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { saveTrail } from '../store/actions/trailsActions';
+import { saveTrail, loadTrails } from '../store/actions/trailsActions';
 
 class TrailAdd extends React.Component {
     state = {
@@ -16,11 +16,13 @@ class TrailAdd extends React.Component {
 
     inputHandler = ({ target }) => {
       const { name } = target;
-      const { value } = target;
+
+      let { value } = target;
+      if (name === 'imgUrls') value = value.split(',');
       this.setState({ [name]: value });
     }
 
-    restForm = () => {
+    resetForm = () => {
       this.setState({
         name: '',
         country: '',
@@ -37,8 +39,11 @@ class TrailAdd extends React.Component {
     handleSubmit = ev => {
       ev.preventDefault();
       const trail = this.state;
-      this.props.saveTrail(trail);
-      this.restForm();
+      this.props.saveTrail(trail)
+        .then(() => {
+          this.props.loadTrails();
+        });
+      this.resetForm();
     };
 
     render() {
@@ -86,6 +91,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   saveTrail,
+  loadTrails,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrailAdd);

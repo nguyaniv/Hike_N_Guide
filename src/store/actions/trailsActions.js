@@ -27,14 +27,12 @@ export function loadTrail(id) {
 
 export function saveTrail(trail) {
   return async dispatch => {
-
     try {
       const currTrail = await trailService.add(trail);
       dispatch({
         type: 'ADD',
         trail: {
           ...currTrail,
-          imgUrls: currTrail.imgUrls.split(','),
         },
       });
     } catch (err) {
