@@ -1,4 +1,4 @@
-import HttpService from './httpService';
+import HttpService from './http.service';
 
 const BASE_URL = 'user';
 
