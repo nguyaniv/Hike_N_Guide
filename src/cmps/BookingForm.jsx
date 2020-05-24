@@ -1,15 +1,25 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-// function _BookingForm(props) {
+class _BookingForm extends Component {
+  componentDidMount() {
 
-// }
+  }
 
+  render() {
+    return (
+        <main>
+            form 
+        </main>
+    );
+  }
+}
 
-// const mapStateToProps = state => ({
+const mapStateToProps = state => ({
 
-// });
-// const mapDispatchToProps = {
+});
+const mapDispatchToProps = {
 
-// };
-// export const ReviewAdd = connect(mapStateToProps, mapDispatchToProps)(_BookingForm);
+};
+export const ReviewAdd = connect(mapStateToProps, mapDispatchToProps)(_BookingForm);
+
