@@ -1,4 +1,4 @@
-import HttpService from './HttpService'
+import HttpService from './httpService'
 const BASE_URL = (process.env.NODE_ENV !== 'development') ?
   '/api/user' : '//localhost:3000/user';
 
@@ -129,7 +129,6 @@ export default {
   query,
   save,
   remove,
-  createUser,
   getById,
 };
 

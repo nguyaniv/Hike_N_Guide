@@ -29,7 +29,7 @@ export function removeUser(userId) {
 export function addUser(user) {
   return async dispatch => {
     try {
-      const addedUser = await UserService.createUser(user);
+      const addedUser = await UserService.save(user);
       dispatch(_addUser(addedUser));
     } catch (err) {
       console.log('UserActions: err in addUser', err);
