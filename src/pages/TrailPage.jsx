@@ -16,6 +16,8 @@ class _TrailPage extends Component {
 
     componentDidMount() {
         this.props.loadTrails()
+        console.log(this.props.trails);
+        
 
     }
 
