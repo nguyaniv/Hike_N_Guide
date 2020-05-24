@@ -4,9 +4,10 @@ import { Switch, Route } from 'react-router-dom';
 import { Header } from './cmps/Header';
 import { Footer } from './cmps/Footer';
 import { HomePage } from './pages/HomePage';
-import { TrailDetailsPage } from './pages/TrailDetailsPage';
+import { TrailDetails } from './cmps/TrailDetails';
 import { TrailPage } from './pages/TrailPage';
 import { BookingPage } from './pages/BookingPage';
+import { GuidesPage } from './pages/GuidesPage';
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <Header />
       <Switch>
         <Route path="/booking/" component={ BookingPage } />
-        <Route exact path="/" component={ HomePage } />
-        <Route path="/trail/:id" component={ TrailDetailsPage } />
+        <Route path="/guide/:id" component={ GuidesPage } />
         <Route path="/trail" component={ TrailPage } />
+        <Route exact path="/guide" component={ GuidesPage } />
+        <Route exact path="/" component={ HomePage } />
       </Switch>
       <Footer />
     </div>

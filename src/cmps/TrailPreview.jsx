@@ -24,7 +24,7 @@ export const TrailPreview = (props) => {
   } = props.trail;
   return (
   <article className="trail-preview landscape-ratio">
-    <Link to={ `/trail/${_id}` }>
+    <Link to={ `/guide/${_id}` }>
       <img className="trail-preview-image" src={ imgUrls[0] } alt={ name }/>
       <div className="trail-preview-info">
         <h2 className="trail-preview-name">{ name }</h2>

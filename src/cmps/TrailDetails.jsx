@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { loadTrail, removeTrail, loadTrails } from '../store/actions/trailsActions';
 import history from '../history';
 
-class _TrailDetailsPage extends Component {
+class _TrailDetail extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.loadTrail(id);
+    
+    this.props.loadTrail(this.props.id);
   }
 
 
@@ -111,4 +111,4 @@ const mapDispatchToProps = {
   loadTrails,
   removeTrail,
 };
-export const TrailDetailsPage = connect(mapStateToProps, mapDispatchToProps)(_TrailDetailsPage);
+export const TrailDetails = connect(mapStateToProps, mapDispatchToProps)(_TrailDetail);
