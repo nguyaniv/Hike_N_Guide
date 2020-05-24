@@ -27,11 +27,9 @@ export function loadTrail(id) {
 
 export function saveTrail(trail) {
   return async dispatch => {
-    // console.log(trail)
 
     try {
-    const currTrail =  await trailService.add(trail);
-      // dispatch({ type: 'ADD', trail: trail })
+      const currTrail = await trailService.add(trail);
       dispatch({
         type: 'ADD',
         trail: {
@@ -48,7 +46,7 @@ export function saveTrail(trail) {
 
 export function removeTrail(trailId) {
   return async dispatch => {
-    trailService.remove(trailId);
+    await trailService.remove(trailId);
     dispatch(_removeTrail(trailId));
   };
 }

@@ -195,23 +195,6 @@ async function add(trail) {
 }
 
 
-// function save(trailToSave) {
-
-//     if (trailToSave._id) {
-//         const trailIdx = getById(trailToSave._id)
-//         gTrails[trailIdx] = trailToSave;
-//     } else {
-
-//         trailToSave._id = makeId()
-//         trailToSave.createdAt = Date.now()
-//         console.log(trailToSave);
-//         gTrails.push(trailToSave)
-//     }
-//     var res = Promise.resolve(trailToSave)
-//     return res;
-// }
-
-
 function makeId(length = 3) {
   let text = '';
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -222,6 +205,5 @@ function makeId(length = 3) {
 
   return text;
 }
-
 
 //json-server --watch data.json --id=_id
