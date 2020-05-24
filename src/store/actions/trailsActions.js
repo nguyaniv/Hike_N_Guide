@@ -30,13 +30,13 @@ export function saveTrail(trail) {
     // console.log(trail)
 
     try {
-      await trailService.save(trail);
+    const currTrail =  await trailService.add(trail);
       // dispatch({ type: 'ADD', trail: trail })
       dispatch({
         type: 'ADD',
         trail: {
-          ...trail,
-          imgUrls: trail.imgUrls.split(','),
+          ...currTrail,
+          imgUrls: currTrail.imgUrls.split(','),
         },
       });
     } catch (err) {
@@ -48,7 +48,7 @@ export function saveTrail(trail) {
 
 export function removeTrail(trailId) {
   return async dispatch => {
-    trailService.deleteTrail(trailId);
+    trailService.remove(trailId);
     dispatch(_removeTrail(trailId));
   };
 }

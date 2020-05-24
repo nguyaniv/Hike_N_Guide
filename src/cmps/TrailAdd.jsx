@@ -4,14 +4,14 @@ import { saveTrail } from '../store/actions/trailsActions';
 
 class TrailAdd extends React.Component {
     state = {
-      name: '',
-      country: '',
-      difficulty: '',
-      distance: '',
-      days: '',
-      location: 'x',
-      imgUrls: '',
-      createdAt: Date.now(),
+        name: '',
+        country: '',
+        difficulty: '',
+        distance: '',
+        days: '',
+        location: 'x',
+        imgUrls: [],
+        createdAt: Date.now()
     }
 
 
@@ -23,16 +23,17 @@ class TrailAdd extends React.Component {
 
 
     restForm = () => {
-      this.setState({
-        name: '',
-        country: '',
-        difficulty: 'Funny',
-        distance: null,
-        days: null,
-        location: 'x',
-        imgUrls: '',
-        createdAt: Date.now(),
-      });
+        this.setState({
+            name: '',
+            country: '',
+            difficulty: '',
+            distance: '',
+            days: '',
+            location: 'x',
+            imgUrls: [],
+            createdAt: Date.now()
+
+        })
     }
 
 
@@ -51,9 +52,9 @@ class TrailAdd extends React.Component {
       } = this.state;
 
 
-      return (
-            <div className="">
-                <form onSubmit={ this.handleSubmit }>
+        return (
+            <main className="">
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         name:<input type="text" name="name" value={ name } onChange={ this.inputHandler } />
                     </label>
@@ -79,7 +80,7 @@ class TrailAdd extends React.Component {
                     </label>
                     <button className="">Add</button>
                 </form>
-            </div>
+            </main>
 
       );
     }

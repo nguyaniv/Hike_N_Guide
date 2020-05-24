@@ -12,10 +12,12 @@ import { loadTrails } from '../store/actions/trailsActions';
 
 
 
-class _TrailsPage extends Component {
+class _TrailPage extends Component {
 
     componentDidMount() {
         this.props.loadTrails()
+        console.log(this.props.trails);
+        
 
     }
 
@@ -79,4 +81,4 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadTrails
 };
-export const TrailsPage = connect(mapStateToProps, mapDispatchToProps)(_TrailsPage);
+export const TrailPage = connect(mapStateToProps, mapDispatchToProps)(_TrailPage);
