@@ -131,7 +131,7 @@ export default {
   remove,
   getById,
 };
-
+ 
 function query(filter = null) {
   const users = HttpService.get(BASE_URL, filter);
   return users;
