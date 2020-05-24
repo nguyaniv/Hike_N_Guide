@@ -1,1 +1,0 @@
-cmd /k json-server --watch data.json --id=_id
