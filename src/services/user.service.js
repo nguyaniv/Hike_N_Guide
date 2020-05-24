@@ -1,5 +1,8 @@
+import HttpService from './http.service';
 
-const users = [
+const BASE_URL = 'user';
+
+const usersData = [
   {
     _id: 'aRmDjhBd4b',
     userName: 'rogeliog',
@@ -124,53 +127,30 @@ const users = [
 
 export default {
   query,
-  update,
+  save,
   remove,
-  createUser,
   getById,
 };
-
-function query() {
-  const userToSet = users.map(user => {
-    user.password = null;
-    return user;
-  });
-  return Promise.resolve(userToSet);
+ 
+function query(filter = null) {
+  const users = HttpService.get(BASE_URL, filter);
+  return users;
 }
 
-function update(user) {
-  users.map(currUser => {
-    if (currUser._id === user._id) {
-      if (!user.password) user.password = currUser.password;
-      return user;
-    }
-    return currUser;
-  });
-  return Promise.resolve(user);
+function save(user) {
+  if (user._id) {
+    return HttpService.put(`${BASE_URL}/${user._id}`, user);
+  }
+  user._id = _makeId(10)
+  return HttpService.post(`${BASE_URL}`, user);
 }
 
 function remove(userID) {
-  const userIdx = users.findIndex(user => user._id === userID);
-  const userDeleted = users.splice(userIdx, 1);
-  userDeleted.password = null;
-  return Promise.resolve(userDeleted);
-}
-
-// function update(user) {
-//     users.map(currUser =>
-//         currUser._id === user._id ? user : currUser)
-// }
-
-function createUser(user) {
-  user._id = _makeId(10);
-  users.push(user);
-  user.password = null;
-  return Promise.resolve(user);
+  return HttpService.delete(`${BASE_URL}/${userID}`);
 }
 
 function getById(userId) {
-  const user = users.map(currUser => currUser._id === userId);
-  return Promise.resolve(user);
+  return HttpService.get(`${BASE_URL}/${userId}`);
 }
 
 function _makeId(length = 3) {

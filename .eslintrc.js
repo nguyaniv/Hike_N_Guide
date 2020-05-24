@@ -1,12 +1,11 @@
 module.exports = {
-  // "parser": "/usr/local/lib/node_modules/babel-eslint",
   "parser": "babel-eslint",
   "extends": [
     "airbnb/base",
     "plugin:react/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
-],
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -15,7 +14,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js','.jsx']
+        extensions: ['.js', '.jsx']
       }
     }
   },
@@ -25,9 +24,9 @@ module.exports = {
     "browser": true,
   },
   "globals": {
-      "ReactDOM": true,
-      "React": true,
-      "ReactRouterDOM": true,
+    "ReactDOM": true,
+    "React": true,
+    "ReactRouterDOM": true,
   },
   "rules": {
     "linebreak-style": 0,
@@ -50,6 +49,6 @@ module.exports = {
     "no-use-before-define": 0,
     "react/jsx-no-undef": [1, { "allowGlobals": true }],
     "react/prop-types": 0,
-    "react/jsx-curly-spacing": [1, {"when": "always", "allowMultiline": true}]
+    "react/jsx-curly-spacing": [1, { "when": "always", "allowMultiline": true }]
   },
 }

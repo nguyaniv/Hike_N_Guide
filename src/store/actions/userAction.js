@@ -29,7 +29,7 @@ export function removeUser(userId) {
 export function addUser(user) {
   return async dispatch => {
     try {
-      const addedUser = await UserService.createUser(user);
+      const addedUser = await UserService.save(user);
       dispatch(_addUser(addedUser));
     } catch (err) {
       console.log('UserActions: err in addUser', err);
@@ -40,7 +40,7 @@ export function addUser(user) {
 export function updateUser(user) {
   return async dispatch => {
     try {
-      await UserService.updateUser(user);
+      await UserService.save(user);
       dispatch(_updateUser(user));
     } catch (err) {
       console.log('UserActions: err in updateUser', err);
@@ -74,7 +74,6 @@ export function setUser(user) {
 //     };
 // }
 
-
 function _setUsers(users) {
   return {
     type: 'SET_USERS',
@@ -98,7 +97,7 @@ function _addUser(user) {
 
 function _updateUser(user) {
   return {
-    type: 'UPDATE_USER',
+    type: 'SAVE_USER',
     user,
   };
 }

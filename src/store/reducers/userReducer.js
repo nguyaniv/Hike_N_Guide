@@ -1,4 +1,3 @@
-
 const initialState = {
   users: [],
   loggedInUser: '',

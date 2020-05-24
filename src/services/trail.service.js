@@ -1,109 +1,102 @@
-import HttpService from './httpService'
-
-export default {
-    query,
-    getById,
-    remove,
-    add
-}
+import HttpService from './http.service';
 
 const gTrails = [
-    {
-        _id: '1a6',
-        name: 'Triglav National Park',
-        country: 'Slovenia',
-        difficulty: 'Advanced',
-        distance: '65.2km',
-        days: 4,
-        imgUrls: [
-            'https://media.gettyimages.com/photos/wonderful-spring-landscape-with-beautiful-little-waterfall-in-forest-picture-id1164697961?k=6&m=1164697961&s=612x612&w=0&h=eL0tA2xzjgWXVTYIQfFMhtJcTGdUmSXPL-wicG-RMhA=',
-            'https://media.gettyimages.com/photos/stack-of-stones-vri-pass-triglav-national-park-gorenjska-julian-alps-picture-id979035764?k=6&m=979035764&s=612x612&w=0&h=aKRri8Fy2ljtBD3GXs11DKMjGuDQh_zVZmTkbGbZuPI=',
-            'https://media.gettyimages.com/photos/scenic-view-of-calm-lake-against-sky-at-triglav-national-park-during-picture-id611487081?k=6&m=611487081&s=612x612&w=0&h=q-r21I6zDWsvmKUSJQKP_zoD4ff4ermlDZjBV9U5eCE=',
-            'https://media.gettyimages.com/photos/slovenia-gorenjska-national-park-triglav-vintgar-gorge-picture-id597061365?k=6&m=597061365&s=612x612&w=0&h=WVizZMBBGzoNYgMDo23quKlhgmCBVVHygjd-5ok5sr0='
-        ],
-        location: 'x',
+  {
+    _id: '1a6',
+    name: 'Triglav National Park',
+    country: 'Slovenia',
+    difficulty: 'Advanced',
+    distance: '65.2km',
+    days: 4,
+    imgUrls: [
+      'https://media.gettyimages.com/photos/wonderful-spring-landscape-with-beautiful-little-waterfall-in-forest-picture-id1164697961?k=6&m=1164697961&s=612x612&w=0&h=eL0tA2xzjgWXVTYIQfFMhtJcTGdUmSXPL-wicG-RMhA=',
+      'https://media.gettyimages.com/photos/stack-of-stones-vri-pass-triglav-national-park-gorenjska-julian-alps-picture-id979035764?k=6&m=979035764&s=612x612&w=0&h=aKRri8Fy2ljtBD3GXs11DKMjGuDQh_zVZmTkbGbZuPI=',
+      'https://media.gettyimages.com/photos/scenic-view-of-calm-lake-against-sky-at-triglav-national-park-during-picture-id611487081?k=6&m=611487081&s=612x612&w=0&h=q-r21I6zDWsvmKUSJQKP_zoD4ff4ermlDZjBV9U5eCE=',
+      'https://media.gettyimages.com/photos/slovenia-gorenjska-national-park-triglav-vintgar-gorge-picture-id597061365?k=6&m=597061365&s=612x612&w=0&h=WVizZMBBGzoNYgMDo23quKlhgmCBVVHygjd-5ok5sr0=',
+    ],
+    location: 'x',
 
-        descriptions: 'On this trail you can enjoy the beautiful scenery of Julian Alps. Through the journey we conquer a few peaks in the Alps while we rest on each day in a mountain hut. The trail can be done in fewer days if you are that fit, but to really feel the joy of hiking it should be done in more days.'
-    },
+    descriptions: 'On this trail you can enjoy the beautiful scenery of Julian Alps. Through the journey we conquer a few peaks in the Alps while we rest on each day in a mountain hut. The trail can be done in fewer days if you are that fit, but to really feel the joy of hiking it should be done in more days.',
+  },
 
 
-    {
-        _id: '5u3',
-        name: 'Olympus Mountain',
-        country: 'Greece',
-        difficulty: 'Beginner',
-        distance: '20.8km',
-        days: 3,
-        location: 'x',
-        imgUrls: [
-            'https://hikingbeast.com/wp-content/uploads/2019/06/olympus-weather-1024x768.jpg',
-            'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2018/02/DSC7966-975x550.jpg',
-            'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2019/02/river-trekking-rema-toy-orlia-7-720x405.jpg',
-            'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2018/02/Olympus-9-720x405.jpg'
+  {
+    _id: '5u3',
+    name: 'Olympus Mountain',
+    country: 'Greece',
+    difficulty: 'Beginner',
+    distance: '20.8km',
+    days: 3,
+    location: 'x',
+    imgUrls: [
+      'https://hikingbeast.com/wp-content/uploads/2019/06/olympus-weather-1024x768.jpg',
+      'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2018/02/DSC7966-975x550.jpg',
+      'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2019/02/river-trekking-rema-toy-orlia-7-720x405.jpg',
+      'https://trekking.ams3.cdn.digitaloceanspaces.com/uploads/2018/02/Olympus-9-720x405.jpg',
 
-        ],
+    ],
 
-        descriptions: `Mt. Olympus, the highest mountain in Greece, is a place of divine beauty! It was blessed by ancient Greek gods and chosen by Zeus to host their home.
+    descriptions: `Mt. Olympus, the highest mountain in Greece, is a place of divine beauty! It was blessed by ancient Greek gods and chosen by Zeus to host their home.
 
         Discover its spectacular natural diversity. More than 1500 plant species, some of them rare and endemic, as well as wolves, jackals, deer and some endangered bird and butterfly species.
         Explore a monumental natural landscape with thickly forested slopes and steep rocky foggy and cloud covered peaks.
         
         Ideal for: nature lovers, hike and climb enthusiasts, flora and fauna beauty admirers.
-        `
-    },
-    {
-        _id: 'zl4',
-        name: 'Tour de Monte Rosa',
-        country: 'Italy',
-        difficulty: 'advanced',
-        distance: '163km',
-        days: 9,
-        location: 'x',
-        imgUrls: [
-            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2673-800x600-q40.jpg',
-            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2679-800x600-q40.jpg',
-            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2707-800x600-q40.jpg',
-            'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2715-800x600-q40.jpg'
-        ],
-        descriptions: 'The view into the different valleys in Switzerland and Italy is unforgettable. Hikers see not only the highest and most beautiful mountains in the Alps, but also mountain villages with different cultures and of incomparable character. The stage destinations are well-known: Zermatt, over the Theodul Pass to Cervinia, Alagna, Macugnaga, and back into Switzerland via the Monte Moro Pass, to Saas-Fee and Grächen.'
-    },
+        `,
+  },
+  {
+    _id: 'zl4',
+    name: 'Tour de Monte Rosa',
+    country: 'Italy',
+    difficulty: 'advanced',
+    distance: '163km',
+    days: 9,
+    location: 'x',
+    imgUrls: [
+      'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2673-800x600-q40.jpg',
+      'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2679-800x600-q40.jpg',
+      'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2707-800x600-q40.jpg',
+      'https://montblanctreks.com/thumbs/gallery/tour-du-monte-rosa/img_2715-800x600-q40.jpg',
+    ],
+    descriptions: 'The view into the different valleys in Switzerland and Italy is unforgettable. Hikers see not only the highest and most beautiful mountains in the Alps, but also mountain villages with different cultures and of incomparable character. The stage destinations are well-known: Zermatt, over the Theodul Pass to Cervinia, Alagna, Macugnaga, and back into Switzerland via the Monte Moro Pass, to Saas-Fee and Grächen.',
+  },
 
-    {
-        _id: 'v4g',
-        name: 'GR20',
-        country: 'France',
-        difficulty: 'Expert',
-        distance: '180km',
-        days: 14,
-        location: 'x',
-        imgUrls: [
-            'https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c5.jpg',
-            'https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c7.jpg',
-            'https://cdn1.sipurderech.co.il/512x512_fill_90/1429287072_990.jpeg',
-            'https://cdn1.sipurderech.co.il/512x512_fill_90/1440694242_30.jpeg'
-        ],
-        descriptions: `The 200km trail follows the granite backbone of mountains that
+  {
+    _id: 'v4g',
+    name: 'GR20',
+    country: 'France',
+    difficulty: 'Expert',
+    distance: '180km',
+    days: 14,
+    location: 'x',
+    imgUrls: [
+      'https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c5.jpg',
+      'https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c7.jpg',
+      'https://cdn1.sipurderech.co.il/512x512_fill_90/1429287072_990.jpeg',
+      'https://cdn1.sipurderech.co.il/512x512_fill_90/1440694242_30.jpeg',
+    ],
+    descriptions: `The 200km trail follows the granite backbone of mountains that
          divide the island in two, many of which soar above 2000m altitude.  The GR20 is the best 
          and toughest long distance hike out there!  Stunningly beautiful and varied. If you do a
           stage per day, it takes roughly 16 days, this will depend, of course, on your fitness and the weather. In the North,
            you are constantly doing steep ascents and plunging descents. In the South, there are different
-            challenges, such as, long technical exposed ridges.`
-    },
+            challenges, such as, long technical exposed ridges.`,
+  },
 
-    {
-        _id: 's9j',
-        name: 'Herzogstand',
-        country: 'Germany',
-        distance: '14km',
-        days: 'daily',
-        location: 'x',
-        imgUrls: [
-            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/pw/pw76k38uu4br17zjfuo5wuy1j2t13h6i9-uhi4527882/0?width=3072&height=2304&crop=&q=70',
-            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/13/13dfpdb7upjqg1q67wbw7sq45o2t13hbex-uhi4527883/0?width=3072&height=2304&crop=&q=70',
-            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/15/158knsjjnsrk41fh7dgpl3kix92ke9avp6-uhi2519085/0?width=3072&height=2304&crop=&q=70',
-            'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/1l/1ldgd533wykzp1jmsa64o8gf4o2p0shbpl-uhi3658415/0?width=3072&height=2304&crop=&q=70'
-        ],
-        descriptions: `An amazing hike with splendid views over the Bavarian alps and the lakes (Kochelsee and Walchensee)!
+  {
+    _id: 's9j',
+    name: 'Herzogstand',
+    country: 'Germany',
+    distance: '14km',
+    days: 'daily',
+    location: 'x',
+    imgUrls: [
+      'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/pw/pw76k38uu4br17zjfuo5wuy1j2t13h6i9-uhi4527882/0?width=3072&height=2304&crop=&q=70',
+      'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/13/13dfpdb7upjqg1q67wbw7sq45o2t13hbex-uhi4527883/0?width=3072&height=2304&crop=&q=70',
+      'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/15/158knsjjnsrk41fh7dgpl3kix92ke9avp6-uhi2519085/0?width=3072&height=2304&crop=&q=70',
+      'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k2/1l/1ldgd533wykzp1jmsa64o8gf4o2p0shbpl-uhi3658415/0?width=3072&height=2304&crop=&q=70',
+    ],
+    descriptions: `An amazing hike with splendid views over the Bavarian alps and the lakes (Kochelsee and Walchensee)!
 
     The Heimgarten/Herzogstand trail is a famous one and there's a reason why: a great hike with outstanding views! Its close vicinity to the Kochelsee and Walchensee only make it even more attractive, since you can cool off with a swim in one of the lakes if you're done hiking and enjoying the views at the top. 
     
@@ -117,23 +110,23 @@ const gTrails = [
     
     Relax and cool down afterwards with a refreshing swim in the beautiful Walchensee.  
     
-    `
-    },
+    `,
+  },
 
-    {
-        _id: 'j1v',
-        name: '‪Prachovské skály‬',
-        country: 'Czech Republic',
-        distance: '10km',
-        days: 'daily',
-        location: 'x',
-        imgUrls: [
-            'https://live.staticflickr.com/3105/2775104716_74cbb14105_b.jpg',
-            'https://www.cesky-raj.info/galerie/obrazky/imager.php?img=787488&x=1037&y=691&hash=093868d35ac6fc68e56bd0e329748214',
-            'https://podroze.at7.pl/wp-content/uploads/2019/CzeskaSzwajcaria/prachowskie_skaly9.jpg',
-            'https://1.bp.blogspot.com/-4BALSPSR4i8/XpQo4mItVtI/AAAAAAAAC34/_ygnnJxe8ZohF2SKJspXbrMvtUOwhMkIgCLcBGAsYHQ/s1600/DSCN0733.JPG'
-        ],
-        descriptions: `The Prachovské skály nature preserve is one of the most popular regions in the Czech Republic. It is one of the oldest nature preserves in the country.
+  {
+    _id: 'j1v',
+    name: '‪Prachovské skály‬',
+    country: 'Czech Republic',
+    distance: '10km',
+    days: 'daily',
+    location: 'x',
+    imgUrls: [
+      'https://live.staticflickr.com/3105/2775104716_74cbb14105_b.jpg',
+      'https://www.cesky-raj.info/galerie/obrazky/imager.php?img=787488&x=1037&y=691&hash=093868d35ac6fc68e56bd0e329748214',
+      'https://podroze.at7.pl/wp-content/uploads/2019/CzeskaSzwajcaria/prachowskie_skaly9.jpg',
+      'https://1.bp.blogspot.com/-4BALSPSR4i8/XpQo4mItVtI/AAAAAAAAC34/_ygnnJxe8ZohF2SKJspXbrMvtUOwhMkIgCLcBGAsYHQ/s1600/DSCN0733.JPG',
+    ],
+    descriptions: `The Prachovské skály nature preserve is one of the most popular regions in the Czech Republic. It is one of the oldest nature preserves in the country.
         The area was declared a nature preserve in 1933. In 2002, the efforts made by conservationists resulted in incorporation of the Prachovské skály Nature Preserve in the Český Ráj Protected Landscape Area. It is recommended to start a tour round the Prachovské Skály from Jičín, an ancient town with a well-preserved central square and numerous historic monuments. The Prachovské Skály are some 6 km far from Jičín, in the direction towards Sobotka, via Holín and Prachov. There are two car parks at the entrance points.
         
         The short round tour is led through a narrow, only 35 cm wide rock gap; from there, you approach two best-known lookout points and return through the Císařská Chodba between robust rock blocks. The tour takes about 3/4 hour.
@@ -148,93 +141,69 @@ const gTrails = [
         
         In 1993, it was restituted and since 2000 the Schlik family has operated the tourist area of the Prachovské skály on its own.
         
-        `
-    },
+        `,
+  },
 
 
-    {
-        _id: 'jmq',
-        name: 'Snieżka',
-        country: 'Czech Republic',
-        difficulty: 'Advanced',
-        distance: '12.5km',
-        days: 'daliy',
-        location: 'x',
-        imgUrls: [
-            'https://www.thenerdyme.com/wp-content/uploads/2019/09/mount-sniezka-in-poland.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/8/8a/%C5%9Anie%C5%BCka_z_zachodu.jpg',
-            'https://farm2.staticflickr.com/1877/30260025348_bf82ef778f_b.jpg',
-            'https://s1.wklcdn.com/image_17/516188/3037323/1253692Master.jpg'
-        ],
+  {
+    _id: 'jmq',
+    name: 'Snieżka',
+    country: 'Czech Republic',
+    difficulty: 'Advanced',
+    distance: '12.5km',
+    days: 'daliy',
+    location: 'x',
+    imgUrls: [
+      'https://www.thenerdyme.com/wp-content/uploads/2019/09/mount-sniezka-in-poland.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/8/8a/%C5%9Anie%C5%BCka_z_zachodu.jpg',
+      'https://farm2.staticflickr.com/1877/30260025348_bf82ef778f_b.jpg',
+      'https://s1.wklcdn.com/image_17/516188/3037323/1253692Master.jpg',
+    ],
 
-        descriptions: `Sněžka has been climbed for nearly or even more than 500 years! In Obří důl (Giant Pit), the uppermost part of the Úpa Valley, metal ores were mined as early as the 16th century. The popularity of Śnieżka soared in the 19th century when it was the highpoint of Prussia. There are a few buildings on the summit, of which the chapel of St.Lawrence, built in 1681, is the oldest. The biggest is the Polish 'UFOs' from 1976, which used to house a weather station, a mountain hut and a restaurant. But in summer 2016 only a buffet was open on the ground floor. Another building is a Czech post office, where you can buy postcards and similar stuff. The fourth structure is the upper station of a Czech cable car. `
-    }
-
-
-
-]
+    descriptions: 'Sněžka has been climbed for nearly or even more than 500 years! In Obří důl (Giant Pit), the uppermost part of the Úpa Valley, metal ores were mined as early as the 16th century. The popularity of Śnieżka soared in the 19th century when it was the highpoint of Prussia. There are a few buildings on the summit, of which the chapel of St.Lawrence, built in 1681, is the oldest. The biggest is the Polish \'UFOs\' from 1976, which used to house a weather station, a mountain hut and a restaurant. But in summer 2016 only a buffet was open on the ground floor. Another building is a Czech post office, where you can buy postcards and similar stuff. The fourth structure is the upper station of a Czech cable car. ',
+  },
 
 
+];
 
-
-
+export default {
+  query,
+  getById,
+  remove,
+  add,
+};
 
 function query() {
-    return HttpService.get('trails')
+  return HttpService.get('trails');
 }
 
 
-
 function getById(trailId) {
-    return HttpService.get(`trails/${trailId}`)
+  return HttpService.get(`trails/${trailId}`);
 }
 
 
 function remove(id) {
-    return HttpService.delete(`trails/${id}`)
-
-
+  return HttpService.delete(`trails/${id}`);
 }
-
 
 
 async function add(trail) {
-    const addedTrail = await HttpService.post(`trails`, trail);
-    addedTrail._id = makeId()
-    return addedTrail
+  const addedTrail = await HttpService.post('trails', trail);
+  addedTrail._id = makeId();
+  return addedTrail;
 }
-
-
-
-// function save(trailToSave) {
-
-//     if (trailToSave._id) {
-//         const trailIdx = getById(trailToSave._id)
-//         gTrails[trailIdx] = trailToSave;
-//     } else {
-
-//         trailToSave._id = makeId()
-//         trailToSave.createdAt = Date.now()
-//         console.log(trailToSave);
-//         gTrails.push(trailToSave)
-//     }
-//     var res = Promise.resolve(trailToSave)
-//     return res;
-// }
-
-
 
 
 function makeId(length = 3) {
-    var text = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (let i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
 
-    return text;
+  return text;
 }
-
 
 //json-server --watch data.json --id=_id
