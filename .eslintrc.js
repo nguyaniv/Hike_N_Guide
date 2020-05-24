@@ -1,5 +1,5 @@
 module.exports = {
-  "parser": "/usr/local/lib/node_modules/babel-eslint",
+  "parser": "babel-eslint",
   "extends": [
     "airbnb/base",
     "plugin:react/recommended",

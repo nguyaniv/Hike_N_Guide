@@ -4,16 +4,15 @@ import { saveTrail } from '../store/actions/trailsActions';
 
 class TrailAdd extends React.Component {
     state = {
-        name: '',
-        country: '',
-        difficulty: '',
-        distance: '',
-        days: '',
-        location: 'x',
-        imgUrls: [],
-        createdAt: Date.now()
+      name: '',
+      country: '',
+      difficulty: '',
+      distance: '',
+      days: '',
+      location: 'x',
+      imgUrls: [],
+      createdAt: Date.now(),
     }
-
 
     inputHandler = ({ target }) => {
       const { name } = target;
@@ -21,27 +20,23 @@ class TrailAdd extends React.Component {
       this.setState({ [name]: value });
     }
 
-
     restForm = () => {
-        this.setState({
-            name: '',
-            country: '',
-            difficulty: '',
-            distance: '',
-            days: '',
-            location: 'x',
-            imgUrls: [],
-            createdAt: Date.now()
+      this.setState({
+        name: '',
+        country: '',
+        difficulty: '',
+        distance: '',
+        days: '',
+        location: 'x',
+        imgUrls: [],
+        createdAt: Date.now(),
 
-        })
+      });
     }
-
 
     handleSubmit = ev => {
       ev.preventDefault();
       const trail = this.state;
-      // console.log('trail from TrailAdd page:', trail);
-
       this.props.saveTrail(trail);
       this.restForm();
     };
@@ -50,11 +45,9 @@ class TrailAdd extends React.Component {
       const {
         name, country, difficulty, days, distance, imgUrls,
       } = this.state;
-
-
-        return (
+      return (
             <main className="">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={ this.handleSubmit }>
                     <label>
                         name:<input type="text" name="name" value={ name } onChange={ this.inputHandler } />
                     </label>
