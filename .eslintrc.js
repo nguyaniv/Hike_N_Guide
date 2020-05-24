@@ -1,5 +1,6 @@
 module.exports = {
-  "parser": "/usr/local/lib/node_modules/babel-eslint",
+  // "parser": "/usr/local/lib/node_modules/babel-eslint",
+  "parser": "babel-eslint",
   "extends": [
     "airbnb/base",
     "plugin:react/recommended",
@@ -29,6 +30,7 @@ module.exports = {
       "ReactRouterDOM": true,
   },
   "rules": {
+    "linebreak-style": 0,
     "import/no-cycle": 0,
     'import/extensions': ['error', 'always', {
       "js": 'never',
