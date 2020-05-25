@@ -1,86 +1,79 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
-import { BookingForm } from '../cmps/BookingForm';
+import { Link } from 'react-router-dom';
 
-//Components
+//services
+import userService from '../services/user.service'
+
+//Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
+import { BookingForm } from '../cmps/BookingForm';
 
 //Images
 import star from '../img/star.svg';
 import star_o from '../img/‏‏star-o.svg';
 
+
 class _BookingPage extends Component {
   state = {
-    guide: {
-      _id: '1234',
-      userName: 'poiki123',
-      password: '1234',
-      fullName: 'shoka koko',
-      imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png',
-      rating: 3.5,
-      reviewers_count: 30,
-      isAdmin: false,
-      languages: ['he', 'en'],
-      trails: [
-        {
-          _id: 'fg3d',
-          name: 'Sahara desert',
-          imgUrls: [
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Banias_river_%2849%29.jpg/1200px-Banias_river_%2849%29.jpg',
-            'https://res.cloudinary.com/liorapi/image/upload/v1590070000/sprint4/yvtt1dfnp45l4h9e1z3u.jpg',
-          ],
-        },
-      ], // id, name, country
-    },
-    user: {
-      _id: '312312',
-      fullName: 'Gabi Bubu',
-
-    },
+    guide: ''
   }
 
   componentDidMount() {
     // const { id } = this.props.match.params;
+    const id = '5ecbea3c2f2bd8a771af68b9';
+    this.loadGuide(id)
 
+  }
+
+  loadGuide = (id) => {
+    userService.getById(id)
+      .then(guide => {
+        this.setState({ guide })
+      })
   }
 
   render() {
     const { guide, user } = this.state;
     return (
       <main className="booking-page">
-        <BookingForm />
-        <img className="booking-page-img" src={ guide.imgUrl } width="75px" />
-        <p>{guide.fullName}</p>
-        <div className="booking-page-rate">
-          <p>Rating:</p>
-          <Rating
-            start={ 0 }
-            stop={ 5 }
-            initialRating={ guide.rating }
-            emptySymbol={ <img src={ star } width="30" /> }
-            fullSymbol={ <img src={ star_o } width="30" /> }
-            readonly
-          />
-          <p>(By {guide.reviewers_count} reviewers)</p>
-        </div>
-        <img src={ guide.trails[0].imgUrls[0] } width="100px" />
-        <img src={ guide.trails[0].imgUrls[1] } width="100px" />
-        <p>need to be here description</p>
+        {guide && <React.Fragment>
+          <BookingForm />
+          <img className="booking-page-img" src={guide.imgUrl} width="75px" />
+          <p>{guide.fullName}</p>
+          <div className="booking-page-rate">
+            <p>Rating:</p>
+            <Rating
+              start={0}
+              stop={5}
+              initialRating={guide.rating}
+              emptySymbol={<img src={star} width="18" />}
+              fullSymbol={<img src={star_o} width="18" />}
+              readonly
+            />
+            <p>(By {guide.reviewers_count} reviewers)</p>
+          </div>
+          <img src={guide.trails[0].imgUrls[0]} width="100px" />
+          <img src={guide.trails[0].imgUrls[1]} width="100px" />
+          <p>need to be here description</p>
 
-        <p>Write a review about {guide.fullName}</p>
-        <ReviewAdd user={ user } guide={ guide } />
+          <p>Write a review about {guide.fullName}</p>
+          {! this.props.loggedInUser
+            ? <ReviewAdd guide={guide} />
+            : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
+        </React.Fragment>}
       </main>
     );
   }
 }
 
-// const mapStateToProps = state => {
-//     return {
-
-//     };
-//   };
+const mapStateToProps = state => {
+  return {
+    loggedInUser: state.user.loggedInUser,
+  };
+};
 //   const mapDispatchToProps = {
 
 //   };
-export const BookingPage = connect()(_BookingPage);
+export const BookingPage = connect(mapStateToProps)(_BookingPage);

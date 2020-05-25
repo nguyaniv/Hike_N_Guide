@@ -1,5 +1,6 @@
 import HttpService from './http.service';
 
+const END_POINT = 'trail';
 
 export default {
   query,
@@ -9,38 +10,21 @@ export default {
 };
 
 function query() {
-  return HttpService.get('trails');
+  return HttpService.get(END_POINT);
 }
 
 
 function getById(trailId) {
-  return HttpService.get(`trails/${trailId}`);
+  return HttpService.get(`${END_POINT}/${trailId}`);
 }
 
 
 function remove(id) {
-  return HttpService.delete(`trails/${id}`);
+  return HttpService.delete(`${END_POINT}/${id}`);
 }
 
 
 async function add(trail) {
-  trail._id = makeId();
-  const addedTrail = await HttpService.post('trails', trail);
-  console.log(addedTrail);
-
+  const addedTrail = await HttpService.post(END_POINT, trail);
   return addedTrail;
 }
-
-
-function makeId(length = 3) {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-
-  return text;
-}
-
-//json-server --watch data.json --id=_id
