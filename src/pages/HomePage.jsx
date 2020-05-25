@@ -15,19 +15,21 @@ class _HomePage extends Component {
   render() {
     const { trails, users } = this.props;
     const guides = users.filter(user => user.trails);
+    const guidesToShow = guides.slice(0, 8).sort((a, b) => b.rating - a.rating);
+    const trailsToShow = trails.slice(0, 6).sort((a, b) => b.rating - a.rating);
     return (
       <main className="homepage">
         <img src="/img/main-background.jpg" alt="" className="homepage-background"/>
         <h2 className="homepage-main-heading">Find hiking trails and guides worldwide</h2>
         <h2 className="homepage-list-heading">Popular Trails</h2>
-        <List items={ trails.slice(0, 6) }/>
+        <List items={ trailsToShow }/>
         {/* <Link to="/trail">
           <button className="homepage-show-more-button">
             Show more
           </button>
         </Link> */}
         <h2 className="homepage-list-heading">Popular Guides</h2>
-        <List items={ guides.slice(0, 8) }/>
+        <List items={ guidesToShow }/>
         {/* <Link to="/guide">
           <button className="homepage-show-more-button">
             Show more

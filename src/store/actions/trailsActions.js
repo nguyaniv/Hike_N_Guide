@@ -1,6 +1,5 @@
 import trailService from '../../services/trail.service';
 
-
 export function loadTrails() {
   return async dispatch => {
     try {
@@ -11,7 +10,6 @@ export function loadTrails() {
     }
   };
 }
-
 
 export function loadTrail(id) {
   return async dispatch => {
@@ -33,6 +31,23 @@ export function saveTrail(trail) {
         type: 'ADD',
         trail: {
           ...currTrail,
+        },
+      });
+    } catch (err) {
+      console.log('error', err);
+    }
+  };
+}
+
+
+export function editTrail(trail) {
+  return async dispatch => {
+    try {
+      const currTrail = await trailService.edit(trail);
+      dispatch({
+        type: 'EDIT',
+        trail: {
+          currTrail,
         },
       });
     } catch (err) {
