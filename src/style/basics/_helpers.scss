@@ -55,7 +55,7 @@
 }
 
 .video-ratio {
-  @include aspect-ratio(160, 9);
+  @include aspect-ratio(16, 9);
 }
 
 .portrait-ratio {
