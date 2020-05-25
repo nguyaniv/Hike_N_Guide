@@ -160,7 +160,7 @@
             "fullName": "Meera Crewell",
             "password": "7MbgtkpJ",
             "isAdmin": false,
-            "imgUrl": "http: //randomuser.me/api/portraits/men/77.jpg",
+            "imgUrl": "http://randomuser.me/api/portraits/men/77.jpg",
             "rating": 5,
             "reviewers_count": 14,
             "languages": [
@@ -216,7 +216,7 @@
             "fullName": "Jessica Grigsby",
             "password": "Hmp9nhEy",
             "isAdmin": false,
-            "imgUrl": "http: //randomuser.me/api/portraits/women/93.jpg",
+            "imgUrl": "http://randomuser.me/api/portraits/women/93.jpg",
             "rating": 3,
             "reviewers_count": 8,
             "languages": [
@@ -230,7 +230,7 @@
             "fullName": "Melody Tubbytelly",
             "password": "HX238PyM",
             "isAdmin": false,
-            "imgUrl": "http: //randomuser.me/api/portraits/women/70.jpg",
+            "imgUrl": "http://randomuser.me/api/portraits/women/70.jpg",
             "rating": 5,
             "reviewers_count": 6,
             "languages": [
@@ -244,7 +244,7 @@
             "fullName": "Abdul Feldman",
             "password": "Y3OittiF",
             "isAdmin": false,
-            "imgUrl": "http: //randomuser.me/api/portraits/women/17.jpg",
+            "imgUrl": "http://randomuser.me/api/portraits/women/17.jpg",
             "rating": 4,
             "reviewers_count": 12,
             "languages": [
