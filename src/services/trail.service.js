@@ -1,36 +1,36 @@
 import HttpService from './http.service';
 
-
 export default {
   query,
   getById,
   remove,
   add,
+  edit
 };
 
 function query() {
   return HttpService.get('trails');
 }
 
-
 function getById(trailId) {
   return HttpService.get(`trails/${trailId}`);
 }
-
 
 function remove(id) {
   return HttpService.delete(`trails/${id}`);
 }
 
-
 async function add(trail) {
   trail._id = makeId();
   const addedTrail = await HttpService.post('trails', trail);
-  console.log(addedTrail);
-
   return addedTrail;
 }
 
+async function edit(trail) {
+ trail.isEditMode =false
+  const trailToEdit = await HttpService.put(`trails/${trail._id}`, trail)
+  return trailToEdit
+}
 
 function makeId(length = 3) {
   let text = '';
@@ -42,5 +42,3 @@ function makeId(length = 3) {
 
   return text;
 }
-
-//json-server --watch data.json --id=_id

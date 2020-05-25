@@ -12,7 +12,6 @@ import { loadTrails } from '../store/actions/trailsActions';
 class _TrailPage extends Component {
   componentDidMount() {
     this.props.loadTrails();
-    console.log(this.props.trails);
   }
 
   render() {
