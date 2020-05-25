@@ -133,8 +133,7 @@ class _TrailDetail extends Component {
               <section>
                 {selectedTrail.descriptions}
                 <p>difficulty: {selectedTrail.difficulty} </p>
-                {console.log(selectedTrail.difficulty)
-                }
+                
                 <p>country: {selectedTrail.country} </p>
                 <p>days: {selectedTrail.days} </p>
                 <p> Distance: {selectedTrail.distance} </p>

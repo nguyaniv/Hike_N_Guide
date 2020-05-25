@@ -47,7 +47,7 @@ export class TrailPreview extends React.Component {
     } = this.state;
     return (
       <article className="trail-preview">
-        <Link to={ `/trail/${_id}` }>
+        <Link to={ `/guide/${_id}` }>
           <img className="trail-preview-image" src={ imgUrls[0] } alt={ name }/>
           {/* <div className="trail-preview-info">
             <h2 className="trail-preview-name">{ name }</h2>
