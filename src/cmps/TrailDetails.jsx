@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadTrail, removeTrail, loadTrails, editTrail } from '../store/actions/trailsActions';
 import history from '../history';
 import ShowMoreText from 'react-show-more-text';
-
+import MapContainer from './MapContainer';
 class _TrailDetail extends Component {
 
 
@@ -149,33 +149,19 @@ class _TrailDetail extends Component {
               .then(() => history.push('/trail'))
           }
           }>Delete Trail</button>
-          {/* popular guids and link for all the guides of the trail starts here */}
           <section>
-            <h2>popular guids for this trail</h2>
-
-            <Link> <li>a guide picture</li></Link>
-            <Link>  <li>a guide picture</li></Link>
-            <Link>  <li>a guide picture</li></Link>
+           
 
             <button onClick={() => {
               this.onEditHandler()
             }}>edit</button>
           </section>
-          {/* trails information and map starts here*/}
-          <p>
+          
+          
+            {/* MAP */}
+            <MapContainer location={selectedTrail.location} />
 
-
-          </p>
-
-          <div>
-            {/* here will be map */}
-
-            
-
-
-
-
-          </div>
+          
           {/* reviews form starts here */}
           <section>
             <form action="">
