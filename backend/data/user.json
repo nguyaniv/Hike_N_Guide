@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "5b507e97f20dd52bb6e67a44",
+        "username":"admin",
+        "password": "admin",
+        "isAdmin": true
+    },
+    {
+        "_id": "5c437d76ef02d31ebe387ba1",
+        "username": "lior",
+        "password": "12345678",
+        "isAdmin": false
+    },
+    {
+        "_id": "e6bc232fe45fe3bb45f45900a",
+        "username": "mongol debil",
+        "password": "mongoli",
+        "isAdmin": false
+    }
+]

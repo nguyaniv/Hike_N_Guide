@@ -29,20 +29,20 @@ export class TrailPreview extends React.Component {
     } = this.state;
     return (
       <article className="trail-preview">
-        <Link to={ `/trail/${_id}` }>
-          <img className="trail-preview-image" src={ imgUrls[0] } alt={ name }/>
+        <Link to={`/trail/${_id}`}>
+          <img className="trail-preview-image" src={imgUrls[0]} alt={name} />
           <div className="guide-preview-info">
             <div className="trail-preview-main-info">
-                <span className="trail-preview-name">{ name }</span>
-                <Rating className="trail-preview-rating" start={ 0 }
-                  stop={ 5 }
-                  initialRating={ rating }
-                  emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
-                  fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
-                  onChange={ this.handleRatingChange }
-                />
+              <span className="trail-preview-name">{name}</span>
+              <Rating className="trail-preview-rating" start={0}
+                stop={5}
+                initialRating={rating}
+                emptySymbol={<img className="trail-preview-full-star" src={star} />}
+                fullSymbol={<img className="trail-preview-star" src={star_o} />}
+                readonly
+              />
             </div>
-            <span className="trail-preview-country">{ country }</span>
+            <span className="trail-preview-country">{country}</span>
           </div>
         </Link>
       </article>);
