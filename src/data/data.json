@@ -194,9 +194,16 @@
       "rating": 3,
       "reviewers_count": 4,
       "languages": [
-        "he"
+        "he",
+        "en"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "1a6",
+          "name": "Triglav National Park",
+          "country": "Slovenia"
+        }
+      ]
     },
     {
       "_id": "ZfRlDUZwJB",
@@ -210,7 +217,23 @@
       "languages": [
         "en"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "jmq",
+          "name": "Snieżka",
+          "country": "Czech Republic"
+        },
+        {
+          "_id": "s9j",
+          "name": "Herzogstand",
+          "country": "Germany"
+        },
+        {
+          "_id": "5u3",
+          "name": "Olympus Mountain",
+          "country": "Greece"
+        }
+      ]
     },
     {
       "_id": "ECE1MhOgcP",
@@ -222,9 +245,21 @@
       "rating": 4,
       "reviewers_count": 5,
       "languages": [
-        "he"
+        "he",
+        "en"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "zl4",
+          "name": "Tour de Monte Rosa",
+          "country": "Italy"
+        },
+        {
+          "_id": "v4g",
+          "name": "GR20",
+          "country": "France"
+        }
+      ]
     },
     {
       "_id": "K8JCRHqN21",
@@ -238,7 +273,13 @@
       "languages": [
         "he"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "zl4",
+          "name": "Tour de Monte Rosa",
+          "country": "Italy"
+        }
+      ]
     },
     {
       "_id": "JyHAWrdfz1",
@@ -252,7 +293,18 @@
       "languages": [
         "en"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "v4g",
+          "name": "GR20",
+          "country": "France"
+        },
+        {
+          "_id": "s9j",
+          "name": "Herzogstand",
+          "country": "Germany"
+        }
+      ]
     },
     {
       "_id": "wvahkUajdo",
@@ -266,7 +318,13 @@
       "languages": [
         "en"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "jmq",
+          "name": "Snieżka",
+          "country": "Czech Republic"
+        }
+      ]
     },
     {
       "_id": "nIa1jDhYo0",
@@ -280,7 +338,13 @@
       "languages": [
         "en"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "jmq",
+          "name": "Snieżka",
+          "country": "Czech Republic"
+        }
+      ]
     },
     {
       "_id": "ZmaX5EXPfv",
@@ -292,9 +356,21 @@
       "rating": 3,
       "reviewers_count": 8,
       "languages": [
-        "he"
+        "he",
+        "en"
       ],
-      "trails": "{}"
+      "trails": [
+        {
+          "_id": "v4g",
+          "name": "GR20",
+          "country": "France"
+        },
+        {
+          "_id": "s9j",
+          "name": "Herzogstand",
+          "country": "Germany"
+        }
+      ]
     },
     {
       "_id": "nbQBvvXdIu",
@@ -308,7 +384,18 @@
       "languages": [
         "he"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "jmq",
+          "name": "Snieżka",
+          "country": "Czech Republic"
+        },
+        {
+          "_id": "s9j",
+          "name": "Herzogstand",
+          "country": "Germany"
+        }
+      ]
     },
     {
       "_id": "0NwTpQ2Iz5",
@@ -322,7 +409,18 @@
       "languages": [
         "he"
       ],
-      "trails": {}
+      "trails": [
+        {
+          "_id": "jmq",
+          "name": "Snieżka",
+          "country": "Czech Republic"
+        },
+        {
+          "_id": "s9j",
+          "name": "Herzogstand",
+          "country": "Germany"
+        }
+      ]
     }
   ]
 }
