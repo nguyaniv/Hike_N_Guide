@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
+import { BookingForm } from '../cmps/BookingForm';
 
 //Components
 import { ReviewAdd } from '../cmps/ReviewAdd';
@@ -48,26 +49,27 @@ class _BookingPage extends Component {
     const { guide, user } = this.state;
     return (
       <main className="booking-page">
-        <img className="booking-page-img" src={guide.imgUrl} width="75px" />
+        <BookingForm />
+        <img className="booking-page-img" src={ guide.imgUrl } width="75px" />
         <p>{guide.fullName}</p>
         <div className="booking-page-rate">
           <p>Rating:</p>
           <Rating
-            start={0}
-            stop={5}
-            initialRating={guide.rating}
-            emptySymbol={<img src={star} width="30" />}
-            fullSymbol={<img src={star_o} width="30" />}
+            start={ 0 }
+            stop={ 5 }
+            initialRating={ guide.rating }
+            emptySymbol={ <img src={ star } width="30" /> }
+            fullSymbol={ <img src={ star_o } width="30" /> }
             readonly
           />
           <p>(By {guide.reviewers_count} reviewers)</p>
         </div>
-        <img src={guide.trails[0].imgUrls[0]} width="100px" />
-        <img src={guide.trails[0].imgUrls[1]} width="100px" />
+        <img src={ guide.trails[0].imgUrls[0] } width="100px" />
+        <img src={ guide.trails[0].imgUrls[1] } width="100px" />
         <p>need to be here description</p>
 
         <p>Write a review about {guide.fullName}</p>
-        <ReviewAdd user={user} guide={guide} />
+        <ReviewAdd user={ user } guide={ guide } />
       </main>
     );
   }
