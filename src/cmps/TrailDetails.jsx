@@ -62,6 +62,8 @@ class _TrailDetail extends Component {
   }
 
   render() {
+
+
     if (this.state.isEditMode) {
 
       const { name, country, difficulty, distance, days, imgUrls, descriptions } = this.state
@@ -104,21 +106,19 @@ class _TrailDetail extends Component {
 
     const { selectedTrail } = this.props.trails;
     return (
-      <main>
+      <main className="no-padding">
+
         {this.props.trails.selectedTrail && <React.Fragment>
+          <img className="homepage-background" alt="" src={selectedTrail.imgUrls[1]} />
 
           <h2>{selectedTrail.name}</h2>
           <Link className="a" to={'/trail'} > Back to List </Link>
           {/* imgs starts here */}
-          <div>
-            <img width="740" height="471" src={selectedTrail.imgUrls[0]} />
-            <img width="740" height="471" src={selectedTrail.imgUrls[1]} />
-            <img width="740" height="471" src={selectedTrail.imgUrls[2]} />
-            <img width="740" height="471" src={selectedTrail.imgUrls[3]} />
-          </div>
+
           {/* trail genertal info starts here */}
 
 
+            
           {
             <ShowMoreText
 
@@ -132,37 +132,45 @@ class _TrailDetail extends Component {
 
               <section>
                 {selectedTrail.descriptions}
+                <br />
+                <img className="card" alt="" src={selectedTrail.imgUrls[1]} />
+                <img className="card" alt="" src={selectedTrail.imgUrls[2]} />
+
+                <MapContainer location={selectedTrail.location} />
+
+
                 <p>difficulty: {selectedTrail.difficulty} </p>
-                
+
                 <p>country: {selectedTrail.country} </p>
                 <p>days: {selectedTrail.days} </p>
                 <p> Distance: {selectedTrail.distance} </p>
                 <p>rating: {selectedTrail.rating} </p>
               </section>
+
+
+
             </ShowMoreText>
           }
 
 
-          <button onClick={() => {
+          
+          
+            <button className="space-orange" onClick={() => {
+              this.onEditHandler()
+            }}>edit</button>
+            <button className="space-red" onClick={() => {
             this.props.removeTrail(selectedTrail._id)
               .then(() => history.push('/trail'))
           }
           }>Delete Trail</button>
-          <section>
-           
+        
 
-            <button onClick={() => {
-              this.onEditHandler()
-            }}>edit</button>
-          </section>
-          
-          
-            {/* MAP */}
-            <MapContainer location={selectedTrail.location} />
 
-          
+          {/* MAP */}
+
+
           {/* reviews form starts here */}
-          <section>
+          <section className="trail-review">
             <form action="">
               <textarea name="" id="" cols="80" rows="15"></textarea>
               <br />

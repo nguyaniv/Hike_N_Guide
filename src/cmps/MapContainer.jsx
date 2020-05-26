@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import history from '../history';
 
+
+const containerStyle = {
+    position: 'relative',
+    width: '100%',
+    height: '30vh'
+}
+
 export class MapContainer extends Component {
     state = {
         showingInfoWindow: false,
@@ -51,22 +58,7 @@ export class MapContainer extends Component {
         }
     };
 
-
-    onClick = (t, map, coord) => {
-        console.log(t, map, coord);
-
-    }
-
-
     render() {
-
-        const containerStyle = {
-            position: 'static',
-            width: '100%',
-            height: '40%',
-        }
-
-
         return (
             <Map
                 style={containerStyle}
