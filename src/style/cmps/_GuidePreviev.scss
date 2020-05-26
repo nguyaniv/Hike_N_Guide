@@ -1,18 +1,11 @@
 .guide-preview {
-  // width: calc((100% - 1rem) / 2);
-  // min-width: calc((100% - 1rem) / 2);
   width: 100%;
   min-width: 100%;
   height: auto;
   min-height: 13rem;
   border: 1px solid $clr3;
-  // border-radius: 0.25rem;
   transition: all 0.3s;
   margin-block-end: 1rem;
-
-  // &:not(:nth-child(2n)) {
-  //   margin-inline-end: 1rem;
-  // }
 
   & a {
     text-decoration: none;

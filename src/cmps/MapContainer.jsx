@@ -50,35 +50,56 @@ export class MapContainer extends Component {
       }
     };
 
-
-    onClick = (t, map, coord) => {
-      console.log(t, map, coord);
+    updateLatLng = (lat, lng) => {
+        // this.setState({lat,lng})
+        this.props.updateLatLng(lat, lng)
     }
+
+    onMapClicked = (props, map, clickEvent) => {
+        if (!this.state.fromAdd) return
+        const lat = clickEvent.latLng.lat()
+        const lng = clickEvent.latLng.lng()
+        console.log(lat)
+        console.log(lng)
+        this.updateLatLng(lat, lng)
+        console.log(this.state)
+        this.setState({ lat: lat, lng: lng })
+
+      if (this.state.showingInfoWindow) {
+        this.setState({
+          showingInfoWindow: false,
+          activeMarker: null,
+        });
+      }
+    };
 
 
     render() {
-      const containerStyle = {
+      const style = {
         position: 'static',
         width: '100%',
-        height: '40%',
+        height: '100%',
       };
-
-
       return (
             <Map
-                style={ containerStyle }
+                style={ style }
                 google={ this.props.google }
                 initialCenter={ this.props.location ? {
                   lat: this.props.location.lat,
                   lng: this.props.location.lng,
                 } : {
-                  lat: 41,
-                  lng: 24,
-                } }
-                onClick={ this.onMapClicked }
-                >
-                <Marker onClick={ this.onMarkerClick }
-                    name={ 'Current location' } />
+                        lat: 41,
+                        lng: 24
+                    }}
+                onClick={this.onMapClicked}
+            >
+                {this.state.lat ?
+
+                    <Marker onClick={this.onMarkerClick}
+                        position={{ lat: this.state.lat, lng: this.state.lng }}
+                        name={'Current location'} /> : <Marker onClick={this.onMarkerClick} name={'Current location'} />}
+
+
 
 
                 <InfoWindow

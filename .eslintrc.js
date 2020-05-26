@@ -42,6 +42,7 @@ module.exports = {
     "no-plusplus": 0,
     "no-param-reassign": 0,
     "no-console": 0,
+    "import/no-named-as-default": 0,
     "react/react-in-jsx-scope": 0,
     "class-methods-use-this": 0,
     "jsx-quotes": 1,
