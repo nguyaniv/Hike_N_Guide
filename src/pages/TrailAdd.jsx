@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { saveTrail, loadTrails } from '../store/actions/trailsActions';
-
+import MapContainer from '../cmps/MapContainer'
 class TrailAdd extends React.Component {
   state = {
     name: '',
@@ -9,11 +9,24 @@ class TrailAdd extends React.Component {
     difficulty: '',
     distance: '',
     days: '',
-    location: 'x',
+    location: {
+      lat: 0,
+      lng: 0
+    },
     imgUrls: [],
     descriptions: '',
     createdAt: Date.now(),
   }
+
+
+  updateLatLng = (lat,lng) => {
+    this.setState({
+      location :{
+        lat,lng
+      }
+    },console.log(this.state)
+    )
+}
 
   inputHandler = ({ target }) => {
     const { name } = target;
@@ -23,6 +36,19 @@ class TrailAdd extends React.Component {
     this.setState({ [name]: value });
   }
 
+
+  getLocation=({ target })=> {
+    const { name } = target;
+    const { value } = target
+    this.setState((prevstate) => ({
+      location: {
+        ...prevstate.location,
+        [name]: value
+      }
+    }))
+  }
+
+
   resetForm = () => {
     this.setState({
       name: '',
@@ -30,7 +56,10 @@ class TrailAdd extends React.Component {
       difficulty: '',
       distance: '',
       days: '',
-      location: 'x',
+      location: {
+        lat: 0,
+        lng: 0
+      },
       imgUrls: [],
       createdAt: Date.now(),
 
@@ -51,6 +80,9 @@ class TrailAdd extends React.Component {
     const {
       name, country, difficulty, days, distance, imgUrls, descriptions
     } = this.state;
+
+    const { lat, lng } = this.state.location
+
     return (
       <main className="">
         <form onSubmit={this.handleSubmit}>
@@ -75,14 +107,29 @@ class TrailAdd extends React.Component {
           </label>
 
           <label>
+            lat: <input type="number" value={lat} name="lat" onChange={this.getLocation} />
+          </label>
+          <label>
+            lng: <input type="number" value={lng} name="lng" onChange={this.getLocation} />
+          </label>
+
+          <label>
             imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
           </label>
-          <br/>
+          <br />
           <label>
             descriptions: <textarea cols="80" rows="30" value={descriptions} name="descriptions" onChange={this.inputHandler}></textarea>
           </label>
           <button className="">Add</button>
         </form>
+
+
+
+
+        <MapContainer updateLatLng={this.updateLatLng}/>
+
+
+
       </main>
 
     );

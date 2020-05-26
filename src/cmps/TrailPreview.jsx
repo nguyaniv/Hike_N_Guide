@@ -29,7 +29,7 @@ export class TrailPreview extends React.Component {
     } = this.state;
     return (
       <article className="trail-preview">
-        <Link to={ `/guide/${_id}` }>
+        <Link to={ `/trail/${_id}` }>
           <img className="trail-preview-image" src={ imgUrls[0] } alt={ name }/>
           <div className="guide-preview-info">
             <div className="trail-preview-main-info">
