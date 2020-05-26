@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import history from '../history';
 
-
-
-
 export class MapContainer extends Component {
     state = {
         showingInfoWindow: false,
@@ -15,12 +12,11 @@ export class MapContainer extends Component {
         fromAdd: false
     };
     componentDidMount() {
-        if (history.location.pathname==='/trail/add') {
-            this.setState({fromAdd:true})
+        if (history.location.pathname === '/trail/add') {
+            this.setState({ fromAdd: true })
 
         }
     }
-
 
     onMarkerClick = (props, marker, e) =>
         this.setState({
@@ -29,12 +25,10 @@ export class MapContainer extends Component {
             showingInfoWindow: true
         });
 
-    updateLatLng=(lat,lng)=>{
+    updateLatLng = (lat, lng) => {
         // this.setState({lat,lng})
-        this.props.updateLatLng(lat,lng)
+        this.props.updateLatLng(lat, lng)
     }
-
-    
 
     onMapClicked = (props, map, clickEvent) => {
         if (!this.state.fromAdd) return
@@ -42,9 +36,10 @@ export class MapContainer extends Component {
         const lng = clickEvent.latLng.lng()
         console.log(lat)
         console.log(lng)
-        this.updateLatLng(lat,lng)
+        this.updateLatLng(lat, lng)
         console.log(this.state)
-        
+        this.setState({ lat: lat, lng: lng })
+
 
         if (this.state.showingInfoWindow) {
             this.setState({
@@ -54,11 +49,7 @@ export class MapContainer extends Component {
         }
     };
 
-
-    
-
     render() {
-
         const containerStyle = {
             position: 'relative',
             width: '100%',
@@ -78,9 +69,14 @@ export class MapContainer extends Component {
                         lng: 24
                     }}
                 onClick={this.onMapClicked}
-                >
-                <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+            >
+                {this.state.lat ?
+
+                    <Marker onClick={this.onMarkerClick}
+                        position={{ lat: this.state.lat, lng: this.state.lng }}
+                        name={'Current location'} /> : <Marker onClick={this.onMarkerClick} name={'Current location'} />}
+
+
 
 
                 <InfoWindow
@@ -92,9 +88,6 @@ export class MapContainer extends Component {
                 </InfoWindow>
             </Map>
         )
-
-
-
     }
 }
 
