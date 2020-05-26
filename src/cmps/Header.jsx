@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import history from '../history';
 
@@ -57,10 +57,10 @@ export class Header extends React.Component {
           <nav
           className={ `main-header-nav ${this.state.navOpenedClass}` }
           onClick={ () => this.toggleMenu() }>
-            <Link className="main-header-link" to="/">Home</Link>
-            <Link className="main-header-link" to="/trail">Trails</Link>
-            <Link className="main-header-link" to="/guide">Guides</Link>
-            <Link className="main-header-link" to="/login">Login</Link>
+            <NavLink exact className="main-header-link" to="/" activeClassName="selected">Home</NavLink>
+            <NavLink className="main-header-link" to="/trail" activeClassName="selected">Trails</NavLink>
+            <NavLink className="main-header-link" to="/guide" activeClassName="selected">Guides</NavLink>
+            <NavLink className="main-header-link" to="/login" activeClassName="selected">Login</NavLink>
           </nav>
           <button
           className={ `hamburger hamburger--spin ${this.state.menuActiveClass}` }

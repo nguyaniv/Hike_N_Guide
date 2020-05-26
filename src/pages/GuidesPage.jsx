@@ -9,17 +9,19 @@ import { TrailDetails } from '../cmps/TrailDetails';
 class _GuidesPage extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.loadTrail(id);
+    if (id) {
+      this.props.loadTrail(id);
+    }
     this.props.loadUsers();
   }
 
-  // usersToShow = this.props.trail ?
-  //   this.props.users.filter(user=> user.trails.some(trail => trail._id === this.props.trail._id)) :
-  //   this.props.users;
+  // usersToShow = this.props.trail
+  //   ? this.props.users.filter(user => user.trails.some(trail => trail._id === this.props.trail._id))
+  //   : this.props.users;
   usersToShow = this.props.users;
 
   render() {
-    // const { users } = this.props;
+    console.log(this.usersToShow)
     const trailId = this.props.match.params.id;
     return (
       <main>
