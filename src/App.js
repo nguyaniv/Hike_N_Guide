@@ -16,6 +16,7 @@ function App() {
       <Switch>
         <Route path="/booking/" component={ BookingPage } />
         <Route path="/guide/:id" component={ GuidesPage } />
+        <Route path="/trail/:id" component={ GuidesPage } />
         <Route path="/trail" component={ TrailPage } />
         <Route exact path="/guide" component={ GuidesPage } />
         <Route exact path="/" component={ HomePage } />

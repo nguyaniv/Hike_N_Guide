@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import history from '../history';
 
@@ -46,21 +46,21 @@ export class Header extends React.Component {
   render() {
     return (
       <header className={ `main-header ${this.state.headerColorClass}` }>
-          <Link
+          <NavLink
           className="main-header-home-link"
           to="/"
           onClick={ () => { history.push('/'); this.setHeaderColor(); } }>
             <h1 className="main-header-logo">
               Hike & Guide
             </h1>
-          </Link>
+          </NavLink>
           <nav
           className={ `main-header-nav ${this.state.navOpenedClass}` }
           onClick={ () => this.toggleMenu() }>
-            <Link className="main-header-link" to="/">Home</Link>
-            <Link className="main-header-link" to="/trail">Trails</Link>
-            <Link className="main-header-link" to="/guide">Guides</Link>
-            <Link className="main-header-link" to="/login">Login</Link>
+            <NavLink className="main-header-link" to="/">Home</NavLink>
+            <NavLink className="main-header-link" to="/trail">Trails</NavLink>
+            <NavLink className="main-header-link" to="/guide">Guides</NavLink>
+            <NavLink className="main-header-link" to="/login">Login</NavLink>
           </nav>
           <button
           className={ `hamburger hamburger--spin ${this.state.menuActiveClass}` }
