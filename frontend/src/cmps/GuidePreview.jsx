@@ -53,28 +53,28 @@ export class GuidePreview extends React.Component {
     } = this.state;
     return (
       <article className="guide-preview">
-        <Link to={ `/guide/${_id}` }>
-          <img className="guide-preview-image square-ratio" src={ imgUrl } alt={ fullName }/>
+        <Link to={`/booking/${_id}`}>
+          <img className="guide-preview-image square-ratio" src={imgUrl} alt={fullName} />
           <div className="guide-preview-info">
             <div className="guide-preview-main-info">
-              <span className="guide-preview-name">{ fullName }</span>
-              <Rating start={ 0 }
-                stop={ 5 }
-                initialRating={ rating }
-                emptySymbol={ <img className="guide-preview-full-star" src={ star } /> }
-                fullSymbol={ <img className="guide-preview-star" src={ star_o } /> }
+              <span className="guide-preview-name">{fullName}</span>
+              <Rating start={0}
+                stop={5}
+                initialRating={rating}
+                emptySymbol={<img className="guide-preview-full-star" src={star} />}
+                fullSymbol={<img className="guide-preview-star" src={star_o} />}
                 readonly
               />
             </div>
             <p className="guide-preview-languages">
               <span className="guide-preview-heading">
                 Languages:&nbsp;
-              </span>{ this.getLangsToShow() }
+              </span>{this.getLangsToShow()}
             </p>
             <p className="guide-preview-trails">
               <span className="guide-preview-heading">
                 Trails:&nbsp;
-              </span>{ this.getTrailsToShow() }
+              </span>{this.getTrailsToShow()}
             </p>
           </div>
         </Link>

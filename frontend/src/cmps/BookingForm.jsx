@@ -17,19 +17,22 @@ class _BookingForm extends Component {
     const { peopleCount } = this.state;
 
     return (
-      <main>
+      <div className="booking-form">
         <h2>Trail name</h2>
         <form>
           <Calendar
-            onChange={ date => this.setState({ date }) }
-            value={ this.state.date }
-            minDate={ new Date() }
+            onChange={date => this.setState({ date })}
+            value={this.state.date}
+            minDate={new Date()}
           />
-          <label>How many people?</label>
-          <input type="number" name="peopleCount" value={peopleCount} min="1" />
+          <div>
+            <label>How many people?</label>
+            <input type="number" name="peopleCount" value={peopleCount} min="1" />
+          </div>
+          <p>Price: 100$</p>
           <button>Book</button>
         </form>
-      </main>
+      </div>
     );
   }
 }

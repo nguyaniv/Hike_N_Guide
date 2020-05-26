@@ -21,15 +21,17 @@ class _GuidesPage extends React.Component {
   render() {
     // const { users } = this.props;
     const trailId = this.props.match.params.id;
+    console.log('trailId:', trailId);
+
     return (
       <main>
         {trailId &&
 
           <div>
-            <TrailDetails id={ trailId } />
+            <TrailDetails id={trailId} />
           </div>
         }
-        <List items={ this.usersToShow } />
+        <List items={this.usersToShow} />
       </main>
     );
   }

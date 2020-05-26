@@ -4,7 +4,7 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
 //services
-import userService from '../services/user.service'
+import userService from '../services/user.service';
 
 //Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
@@ -17,21 +17,19 @@ import star_o from '../img/‏‏star-o.svg';
 
 class _BookingPage extends Component {
   state = {
-    guide: ''
+    guide: '',
   }
 
   componentDidMount() {
-    // const { id } = this.props.match.params;
-    const id = '5ecbea3c2f2bd8a771af68b9';
-    this.loadGuide(id)
-
+    const { id } = this.props.match.params;
+    this.loadGuide(id);
   }
 
-  loadGuide = (id) => {
+  loadGuide = id => {
     userService.getById(id)
       .then(guide => {
-        this.setState({ guide })
-      })
+        this.setState({ guide });
+      });
   }
 
   render() {
@@ -40,26 +38,29 @@ class _BookingPage extends Component {
       <main className="booking-page">
         {guide && <React.Fragment>
           <BookingForm />
-          <img className="booking-page-img" src={guide.imgUrl} width="75px" />
-          <p>{guide.fullName}</p>
-          <div className="booking-page-rate">
-            <p>Rating:</p>
+          <img className="booking-page-avatar" src={guide.imgUrl} width="75px" />
+          <p className="booking-page-full-name">{guide.fullName}</p>
+          <div className="booking-page-rate-box" >
+            <p className="pra-rating">Rating:</p>
             <Rating
               start={0}
               stop={5}
               initialRating={guide.rating}
-              emptySymbol={<img src={star} width="18" />}
-              fullSymbol={<img src={star_o} width="18" />}
+              emptySymbol={<img src={star} width="16" />}
+              fullSymbol={<img src={star_o} width="16" />}
               readonly
             />
-            <p>(By {guide.reviewers_count} reviewers)</p>
+
+            <p className="total-rating">({guide.reviewers_count})</p>
           </div>
-          <img src={guide.trails[0].imgUrls[0]} width="100px" />
-          <img src={guide.trails[0].imgUrls[1]} width="100px" />
+
+
+          {/* <img src={ guide.trails[0].imgUrls[0] } width="100px" />
+          <img src={ guide.trails[0].imgUrls[1] } width="100px" /> */}
           <p>need to be here description</p>
 
           <p>Write a review about {guide.fullName}</p>
-          {! this.props.loggedInUser
+          {!this.props.loggedInUser
             ? <ReviewAdd guide={guide} />
             : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
         </React.Fragment>}
@@ -68,11 +69,9 @@ class _BookingPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    loggedInUser: state.user.loggedInUser,
-  };
-};
+const mapStateToProps = state => ({
+  loggedInUser: state.user.loggedInUser,
+});
 //   const mapDispatchToProps = {
 
 //   };
