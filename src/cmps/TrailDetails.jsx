@@ -110,6 +110,7 @@ class _TrailDetail extends Component {
           <h2>{selectedTrail.name}</h2>
           <Link className="a" to={ '/trail' } > Back to List </Link>
           {
+            
             <ShowMoreText
 
               lines={ 3 }
@@ -121,7 +122,6 @@ class _TrailDetail extends Component {
               width={ 750 } >
 
               <section>
-                {selectedTrail.descriptions}
                 <br />
                 {selectedTrail.imgUrls.map((image, i) => <img
                   key={ i }
@@ -130,7 +130,6 @@ class _TrailDetail extends Component {
                   src={ selectedTrail.imgUrls[i] }
                 />)}
 
-                <MapContainer location={ selectedTrail.location } />
 
 
                 <p>difficulty: {selectedTrail.difficulty} </p>
@@ -139,9 +138,11 @@ class _TrailDetail extends Component {
                 <p>days: {selectedTrail.days} </p>
                 <p> Distance: {selectedTrail.distance} </p>
                 <p>rating: {selectedTrail.rating} </p>
+                {selectedTrail.descriptions}
               </section>
 
 
+              <MapContainer location={selectedTrail.location} />
             </ShowMoreText>
           }
 
