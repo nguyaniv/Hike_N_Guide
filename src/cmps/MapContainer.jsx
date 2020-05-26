@@ -3,11 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import history from '../history';
 
 
-const containerStyle = {
-    position: 'relative',
-    width: '100%',
-    height: '30vh'
-}
+
 
 export class MapContainer extends Component {
     state = {
@@ -58,10 +54,21 @@ export class MapContainer extends Component {
         }
     };
 
+
+    
+
     render() {
+
+        const containerStyle = {
+            position: 'relative',
+            width: '100%',
+            height: '30vh'
+        }
         return (
             <Map
-                style={containerStyle}
+                containerStyle={containerStyle}
+                height="400"
+                width="400"
                 google={this.props.google}
                 initialCenter={this.props.location ? {
                     lat: this.props.location.lat,

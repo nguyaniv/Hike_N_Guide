@@ -118,8 +118,10 @@ class _TrailDetail extends Component {
           {/* trail genertal info starts here */}
 
 
+          
             
           {
+            
             <ShowMoreText
 
               lines={3}
@@ -131,12 +133,10 @@ class _TrailDetail extends Component {
               width={750} >
 
               <section>
-                {selectedTrail.descriptions}
                 <br />
                 <img className="card" alt="" src={selectedTrail.imgUrls[1]} />
                 <img className="card" alt="" src={selectedTrail.imgUrls[2]} />
 
-                <MapContainer location={selectedTrail.location} />
 
 
                 <p>difficulty: {selectedTrail.difficulty} </p>
@@ -145,10 +145,11 @@ class _TrailDetail extends Component {
                 <p>days: {selectedTrail.days} </p>
                 <p> Distance: {selectedTrail.distance} </p>
                 <p>rating: {selectedTrail.rating} </p>
+                {selectedTrail.descriptions}
               </section>
 
 
-
+              <MapContainer location={selectedTrail.location} />
             </ShowMoreText>
           }
 
