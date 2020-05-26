@@ -1,0 +1,65 @@
+.trail-preview {
+  width: 100%;
+  min-width: 100%;
+  height: 16rem;
+  border: 1px solid $clr3;
+  transition: all 0.3s;
+  margin-block-end: 1rem;
+
+  & a {
+    text-decoration: none;
+    color: $clr1;
+  }
+
+  &-image {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+  }
+
+  &-info {
+    width: 100%;
+    padding: 0.5rem;
+    color: $clr1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &-main-info {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  &-name,
+  &-country {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  &-rating {
+    align-self: flex-end;
+  }
+
+  &-full-star,
+  &-star {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &-heading {
+    font-weight: 800;
+  }
+
+  @media (min-width: $desktop) {
+    width: calc((100% - 2rem) / 3);
+    min-width: calc((100% - 2rem) / 3);
+
+    &:not(:nth-child(3n)) {
+      margin-inline-end: 1rem;
+    }
+  }
+}
