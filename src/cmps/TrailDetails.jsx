@@ -10,6 +10,8 @@ import MapContainer from './MapContainer';
 
 class _TrailDetail extends Component {
   state = {
+    width: window.innerWidth,
+    height: window.innerHeight,
     isEditMode: false,
     name: '',
     country: '',
@@ -25,10 +27,10 @@ class _TrailDetail extends Component {
     console.log(isExpanded);
   }
 
-
   componentDidMount() {
+    window.addEventListener('resize', this.updateWindowDimensions.bind(this));
     this.props.loadTrails();
-    this.props.loadTrail(this.props.id)
+    this.props.loadTrail(this.props._id)
       .then(() => {
         this.setState({
           ...this.props.trails.selectedTrail,
@@ -36,6 +38,21 @@ class _TrailDetail extends Component {
       });
   }
 
+  // componentDidUpdate() {
+  //   console.log(this.state.width)
+  // }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState(prevState => ({
+      ...prevState,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }));
+  }
 
   inputHandler = ({ target }) => {
     const { name } = target;
@@ -64,8 +81,7 @@ class _TrailDetail extends Component {
         name, country, difficulty, distance, days, imgUrls, descriptions,
       } = this.state;
       return (
-
-        <main className="">
+        <div className="">
           <form onSubmit={ this.onFinishEditHandler }>
             <label>
               name:<input type="text" name="name" value={ name } onChange={ this.inputHandler } />
@@ -96,56 +112,64 @@ class _TrailDetail extends Component {
             </label>
             <button className="">Finish Edit</button>
           </form>
-        </main>
+        </div>
       );
     }
 
     const { selectedTrail } = this.props.trails;
     return (
-      <div className="no-padding">
-
-        {this.props.trails.selectedTrail && <div>
-          <img className="homepage-background" alt="" src={ selectedTrail.imgUrls[1] } />
-
-          <h2>{selectedTrail.name}</h2>
-          <Link className="a" to={ '/trail' } > Back to List </Link>
+      <div className="trail-details-container">
+        {this.props.trails.selectedTrail && <div className="trail-details">
+          <img
+            className="trail-details-main-image"
+            alt={ selectedTrail.name }
+            src={ selectedTrail.imgUrls[0] }
+          />
+          <h2 className="trail-details-heading">{selectedTrail.name}</h2>
+          <Link className="back-button" to={ '/trail' } > Back to List </Link>
           {
-            
             <ShowMoreText
-
               lines={ 3 }
               more="Show more"
               less="Show less"
               anchorClass=""
               onClick={ this.executeOnClick }
               expanded={ false }
-              width={ 750 } >
+              width={ this.state.width * 0.6 } >
 
-              <section>
-                <br />
-                {selectedTrail.imgUrls.map((image, i) => <img
-                  key={ i }
-                  className="card"
-                  alt={ selectedTrail.name }
-                  src={ selectedTrail.imgUrls[i] }
-                />)}
-
-
-
-                <p>difficulty: {selectedTrail.difficulty} </p>
-
-                <p>country: {selectedTrail.country} </p>
-                <p>days: {selectedTrail.days} </p>
-                <p> Distance: {selectedTrail.distance} </p>
-                <p>rating: {selectedTrail.rating} </p>
-                {selectedTrail.descriptions}
+              <section className="trail-details-info">
+                <p>
+                  {selectedTrail.descriptions}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Difficulty: </span>{selectedTrail.difficulty}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Country: </span>{selectedTrail.country}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Days: </span>{selectedTrail.days}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Distance: </span>{selectedTrail.distance}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Rating: </span>{selectedTrail.rating}
+                </p>
+                <div className="trail-details-images">
+                  {selectedTrail.imgUrls.map((image, i) => <img
+                    key={ i }
+                    className="trail-details-image"
+                    alt={ selectedTrail.name }
+                    src={ selectedTrail.imgUrls[i] }
+                  />)}
+                </div>
               </section>
-
-
-              <MapContainer location={selectedTrail.location} />
             </ShowMoreText>
           }
-
+          <div className="trail-details-map-container">
+            <MapContainer location={ selectedTrail.location } />
+          </div>
 
             <button className="space-orange" onClick={ () => {
               this.onEditHandler();
@@ -155,17 +179,12 @@ class _TrailDetail extends Component {
                 .then(() => history.push('/trail'));
             }
           }>Delete Trail</button>
-          <section>
 
-
-            <button onClick={ () => {
-              this.onEditHandler();
-            } }>edit</button>
-          </section>
           {/* reviews form starts here */}
-          <section className="trail-review">
-            <form action="">
-              <textarea name="" id="" cols="80" rows="15"></textarea>
+          <h2 className="trail-details-heading">Add review</h2>
+          <section className="trail-reviews">
+            <form action="" className="trail-reviews-add-form">
+              <textarea name="" id=""></textarea>
               <br />
               <button>Submit</button>
             </form>

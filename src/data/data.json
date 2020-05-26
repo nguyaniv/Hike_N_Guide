@@ -41,9 +41,8 @@
       ],
       "descriptions": "Mt. Olympus, the highest mountain in Greece, is a place of divine beauty! It was blessed by ancient Greek gods and chosen by Zeus to host their home. Discover its spectacular natural diversity. More than 1500 plant species, some of them rare and endemic, as well as wolves, jackals, deer and some endangered bird and butterfly species. Explore a monumental natural landscape with thickly forested slopes and steep rocky foggy and cloud covered peaks. Ideal for: nature lovers, hike and climb enthusiasts, flora and fauna beauty admirers."
     },
-
     {
-      "_id": "v4g",
+      "isEditMode": false,
       "name": "GR20",
       "country": "France",
       "difficulty": "Expert",
@@ -52,18 +51,17 @@
       "location": {
         "lat": 42.544856,
         "lng": 8.764562
-    },
-    "rating": 5,
+      },
       "imgUrls": [
-          "https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c5.jpg",
-          "https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c7.jpg",
-          "https://cdn1.sipurderech.co.il/512x512_fill_90/1429287072_990.jpeg",
-          "https://cdn1.sipurderech.co.il/512x512_fill_90/1440694242_30.jpeg"
+        "https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c5.jpg",
+        "https://www.eretz.com/wordpress_metropolis/wp-content/uploads/2016/09/c7.jpg",
+        "https://cdn1.sipurderech.co.il/512x512_fill_90/1429287072_990.jpeg",
+        "https://cdn1.sipurderech.co.il/512x512_fill_90/1440694242_30.jpeg"
       ],
-      "descriptions": "The 200km trail follows the granite backbone of mountains that divide the island in two, many of which soar above 2000m altitude.  The GR20 is the best  and toughest long \"distance\" hike out there!  Stunningly beautiful and varied. If you do a  stage per day, it takes roughly 16 \"days\", this will depend, of course, on your fitness and the weather. In the North,  you are constantly doing steep ascents and plunging descents. In the South, there are different challenges, such as, long technical exposed ridges."
-  },
-
-
+      "descriptions": "The 200km trail follows the granite backbone of mountains that divide the island in two, many of which soar above 2000m altitude.  The GR20 is the best  and toughest long \"distance\" hike out there!  Stunningly beautiful and varied. If you do a  stage per day, it takes roughly 16 \"days\", this will depend, of course, on your fitness and the weather. In the North,  you are constantly doing steep ascents and plunging descents. In the South, there are different challenges, such as, long technical exposed ridges.",
+      "_id": "v4g",
+      "rating": 5
+    },
     {
       "_id": "zl4",
       "name": "Tour de Monte Rosa",
