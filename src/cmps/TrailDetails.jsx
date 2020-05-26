@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadTrail, removeTrail, loadTrails, editTrail } from '../store/actions/trailsActions';
-import history from '../history';
 import ShowMoreText from 'react-show-more-text';
+import {
+  loadTrail, removeTrail, loadTrails, editTrail,
+} from '../store/actions/trailsActions';
+import history from '../history';
 import MapContainer from './MapContainer';
+
 class _TrailDetail extends Component {
-
-
   state = {
+    width: window.innerWidth,
+    height: window.innerHeight,
     isEditMode: false,
     name: '',
     country: '',
@@ -17,171 +20,179 @@ class _TrailDetail extends Component {
     days: '',
     location: '',
     imgUrls: '',
-    descriptions: ''
+    descriptions: '',
   }
 
   executeOnClick(isExpanded) {
     console.log(isExpanded);
   }
 
-
   componentDidMount() {
-    this.props.loadTrails()
-    this.props.loadTrail(this.props.id)
+    window.addEventListener('resize', this.updateWindowDimensions.bind(this));
+    this.props.loadTrails();
+    this.props.loadTrail(this.props._id)
       .then(() => {
         this.setState({
-          ...this.props.trails.selectedTrail
-        })
-      })
-
+          ...this.props.trails.selectedTrail,
+        });
+      });
   }
 
+  // componentDidUpdate() {
+  //   console.log(this.state.width)
+  // }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState(prevState => ({
+      ...prevState,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }));
+  }
 
   inputHandler = ({ target }) => {
-    const name = target.name
-    const value = target.value
-    this.setState({ [name]: value })
-
+    const { name } = target;
+    const { value } = target;
+    this.setState({ [name]: value });
   }
 
 
   onEditHandler = () => {
-    this.setState({ isEditMode: true })
+    this.setState({ isEditMode: true });
   }
 
-  onFinishEditHandler = (ev) => {
+  onFinishEditHandler = ev => {
     ev.preventDefault();
-    this.setState({ isEditMode: false })
-    let trail = this.state
+    this.setState({ isEditMode: false });
+    const trail = this.state;
     this.props.editTrail(trail)
       .then(() => {
         this.props.loadTrails();
-      })
-
-
+      });
   }
 
   render() {
-
-
     if (this.state.isEditMode) {
-
-      const { name, country, difficulty, distance, days, imgUrls, descriptions } = this.state
+      const {
+        name, country, difficulty, distance, days, imgUrls, descriptions,
+      } = this.state;
       return (
-
-        <main className="">
-          <form onSubmit={this.onFinishEditHandler}>
+        <div className="">
+          <form onSubmit={ this.onFinishEditHandler }>
             <label>
-              name:<input type="text" name="name" value={name} onChange={this.inputHandler} />
+              name:<input type="text" name="name" value={ name } onChange={ this.inputHandler } />
             </label>
             <label>
-              country: <input className="" type="text" value={country} name="country" onChange={this.inputHandler} />
+              country: <input className="" type="text" value={ country } name="country" onChange={ this.inputHandler } />
             </label>
             <label>
-              distance: <input className="" type="text" value={distance} name="distance" onChange={this.inputHandler} />
+              distance: <input className="" type="text" value={ distance } name="distance" onChange={ this.inputHandler } />
             </label>
             <label>
-              difficulty:<select name="difficulty" value={difficulty} onChange={this.inputHandler}>
+              difficulty:<select name="difficulty" value={ difficulty } onChange={ this.inputHandler }>
                 <option value="Beginner">Beginner</option>
                 <option value="Advanced">Advanced</option>
                 <option value="Expect">Expect</option>
               </select>
             </label>
             <label>
-              days: <input type="number" value={days} name="days" onChange={this.inputHandler} />
+              days: <input type="number" value={ days } name="days" onChange={ this.inputHandler } />
             </label>
 
             <label>
-              imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
+              imgs: <input type="text" value={ imgUrls } name="imgUrls" onChange={ this.inputHandler } />
             </label>
             <br />
             <label>
-              descriptions: <textarea cols="80" rows="30" value={descriptions} name="descriptions" onChange={this.inputHandler}></textarea>
+              descriptions: <textarea cols="80" rows="30" value={ descriptions } name="descriptions" onChange={ this.inputHandler }></textarea>
             </label>
             <button className="">Finish Edit</button>
           </form>
-        </main>
-      )
+        </div>
+      );
     }
 
     const { selectedTrail } = this.props.trails;
     return (
-      <main className="no-padding">
-
-        {this.props.trails.selectedTrail && <React.Fragment>
-          <img className="homepage-background" alt="" src={selectedTrail.imgUrls[1]} />
-
-          <h2>{selectedTrail.name}</h2>
-          <Link className="a" to={'/trail'} > Back to List </Link>
-          {/* imgs starts here */}
-
-          {/* trail genertal info starts here */}
-
-
-          
-            
+      <div className="trail-details-container">
+        {this.props.trails.selectedTrail && <div className="trail-details">
+          <img
+            className="trail-details-main-image"
+            alt={ selectedTrail.name }
+            src={ selectedTrail.imgUrls[0] }
+          />
+          <h2 className="trail-details-heading">{selectedTrail.name}</h2>
+          <Link className="back-button" to={ '/trail' } > Back to List </Link>
           {
-            
             <ShowMoreText
+              lines={ 3 }
+              more="Show more"
+              less="Show less"
+              anchorClass=""
+              onClick={ this.executeOnClick }
+              expanded={ false }
+              width={ this.state.width * 0.6 } >
 
-              lines={3}
-              more='Show more'
-              less='Show less'
-              anchorClass=''
-              onClick={this.executeOnClick}
-              expanded={false}
-              width={750} >
-
-              <section>
-                <br />
-                <img className="card" alt="" src={selectedTrail.imgUrls[1]} />
-                <img className="card" alt="" src={selectedTrail.imgUrls[2]} />
-
-
-
-                <p>difficulty: {selectedTrail.difficulty} </p>
-
-                <p>country: {selectedTrail.country} </p>
-                <p>days: {selectedTrail.days} </p>
-                <p> Distance: {selectedTrail.distance} </p>
-                <p>rating: {selectedTrail.rating} </p>
-                {selectedTrail.descriptions}
+              <section className="trail-details-info">
+                <p>
+                  {selectedTrail.descriptions}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Difficulty: </span>{selectedTrail.difficulty}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Country: </span>{selectedTrail.country}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Days: </span>{selectedTrail.days}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Distance: </span>{selectedTrail.distance}
+                </p>
+                <p>
+                  <span className="trail-details-info-heading">Rating: </span>{selectedTrail.rating}
+                </p>
+                <div className="trail-details-images">
+                  {selectedTrail.imgUrls.map((image, i) => <img
+                    key={ i }
+                    className="trail-details-image"
+                    alt={ selectedTrail.name }
+                    src={ selectedTrail.imgUrls[i] }
+                  />)}
+                </div>
               </section>
-
-
-              <MapContainer location={selectedTrail.location} />
             </ShowMoreText>
           }
+          <div className="trail-details-map-container">
+            <MapContainer location={ selectedTrail.location } />
+          </div>
 
-
-          
-          
-            <button className="space-orange" onClick={() => {
-              this.onEditHandler()
-            }}>edit</button>
-            <button className="space-red" onClick={() => {
-            this.props.removeTrail(selectedTrail._id)
-              .then(() => history.push('/trail'))
-          }
+            <button className="space-orange" onClick={ () => {
+              this.onEditHandler();
+            } }>edit</button>
+            <button className="space-red" onClick={ () => {
+              this.props.removeTrail(selectedTrail._id)
+                .then(() => history.push('/trail'));
+            }
           }>Delete Trail</button>
-        
-
-
-          {/* MAP */}
-
 
           {/* reviews form starts here */}
-          <section className="trail-review">
-            <form action="">
-              <textarea name="" id="" cols="80" rows="15"></textarea>
+          <h2 className="trail-details-heading">Add review</h2>
+          <section className="trail-reviews">
+            <form action="" className="trail-reviews-add-form">
+              <textarea name="" id=""></textarea>
               <br />
               <button>Submit</button>
             </form>
           </section>
           {/* reviews form ends here */}
-        </React.Fragment>}
-      </main>
-    )
+        </div>}
+      </div>
+    );
   }
 }
 
@@ -193,14 +204,6 @@ const mapDispatchToProps = {
   loadTrail,
   loadTrails,
   removeTrail,
-  editTrail
+  editTrail,
 };
 export const TrailDetails = connect(mapStateToProps, mapDispatchToProps)(_TrailDetail);
-
-
-
-
-
-
-
-

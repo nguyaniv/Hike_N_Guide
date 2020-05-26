@@ -11,6 +11,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 button {
@@ -25,24 +26,23 @@ a {
 }
 
 main {
+  width: 100vw;
   padding-block-start: 4rem;
   flex-grow: 1;
   flex-basis: calc(100vh - 4rem);
 }
 
-main.no-padding {
-  padding-block-start: 0;
+// .no-padding {
+//   padding-block-start: 0;
+// }
 
-}
-
-
-img.card {
-  padding: 20px;
-  width: 680px;
-  height: 448px;
-  border: 1px solid border;
-  border-radius: 50px;
-}
+// img.card {
+//   padding: 20px;
+//   width: 680px;
+//   height: 448px;
+//   border: 1px solid border;
+//   border-radius: 50px;
+// }
 
 .trail-review {
   margin-bottom: 35px;
