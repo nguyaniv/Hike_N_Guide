@@ -60,8 +60,8 @@ export class TrailPreview extends React.Component {
                   stop={ 5 }
                   initialRating={ rating }
                   emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
-                  fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
-                  onChange={ this.handleRatingChange }
+                fullSymbol={<img className="trail-preview-star" src={star_o} />}
+                readonly
                 />
             </div>
             <span className="trail-preview-country">{ country }</span>
