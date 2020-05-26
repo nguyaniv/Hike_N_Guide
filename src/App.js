@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/booking/" component={ BookingPage } />
+        <Route path="/booking/:id" component={ BookingPage } />
         <Route path="/trail/:id" component={ GuidesPage } />
         <Route path="/trail/add" component={ TrailAdd } />
         <Route path="/trail" component={ TrailPage } />
