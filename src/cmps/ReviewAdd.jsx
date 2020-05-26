@@ -37,21 +37,23 @@ class _ReviewAdd extends Component {
     const { rating, txt } = this.state;
     return (
       <section className="reviewAdd">
-        <p>Rate: </p>
-        <Rating start={ 0 }
-          stop={ 5 }
-          initialRating={ rating }
-          emptySymbol={ <img src={ star } width="30" /> }
-          fullSymbol={ <img src={ star_o } width="30" /> }
-          onChange={ rate => {
-            this.setState({ rating: rate });
-          } }
-        />
+        <div className="reviewAdd-rate-contain">
+          <p>Rate: </p>
+          <Rating start={ 0 }
+            stop={ 5 }
+            initialRating={ rating }
+            emptySymbol={ <img src={ star } className="img-star" /> }
+            fullSymbol={ <img src={ star_o } className="img-star" /> }
+            onChange={ rate => {
+              this.setState({ rating: rate });
+            } }
+          />
+        </div>
         <form onSubmit={ this.onSend }>
           <textarea name="txt" value={ txt } onChange={ this.handledChange }
             cols="30" rows="10" placeholder="What do you think about me?" required>
           </textarea>
-          <button>Send</button>
+          <button className="reviewAdd-submit-btn">Send</button>
         </form>
       </section>
     );

@@ -1,5 +1,59 @@
 .booking-form {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
+  height: 100%;
+  &-contain {
+    position: sticky;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    margin-inline-end: 100px;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 30px;
+    margin: 50px;
+  }
+
+  p {
+    margin: 0;
+  }
+  form {
+    font-size: larger;
+    input {
+      border: 2px solid black;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 15px;
+      width: 50px;
+    }
+  }
+  .booking-form-price-contain {
+    margin: 30px 0 10px;
+    .price {
+      display: inline-block;
+    }
+  }
+  &-title {
+    margin-inline-end: 10px;
+    font-weight: bolder;
+  }
+  .btn-submit {
+    font-weight: bolder;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .react-calendar {
+    width: 295px;
+    // height: ;
+  }
+
+  select {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-block-end: 10px;
+    font-size: 20px;
+  }
 }

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 //services
 import userService from '../services/user.service';
+import { langCodeToName } from '../services/language.service';
+
 
 //Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
@@ -18,6 +20,11 @@ import star_o from '../img/‏‏star-o.svg';
 class _BookingPage extends Component {
   state = {
     guide: '',
+    bookForm: {
+      trailSelected: 0,
+      peopleCount: 1,
+      date: new Date(),
+    },
   }
 
   componentDidMount() {
@@ -28,42 +35,61 @@ class _BookingPage extends Component {
   loadGuide = id => {
     userService.getById(id)
       .then(guide => {
-        this.setState({ guide });
+        this.setState({ guide }, () => { console.log('state:', this.state); });
       });
   }
 
+  handelInput = ev => {
+    const { name } = ev.target;
+    const value = ev.target.type === 'number' ? parseInt(ev.target.value) : ev.target.value;
+
+    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, [name]: value } }),
+      () => { console.log('state:', this.state); });
+  }
+
   render() {
-    const { guide, user } = this.state;
+    const { guide, bookForm } = this.state;
     return (
       <main className="booking-page">
-        {guide && <React.Fragment>
-          <BookingForm />
-          <img className="booking-page-avatar" src={guide.imgUrl} width="75px" />
-          <p className="booking-page-full-name">{guide.fullName}</p>
-          <div className="booking-page-rate-box" >
-            <p className="pra-rating">Rating:</p>
-            <Rating
-              start={0}
-              stop={5}
-              initialRating={guide.rating}
-              emptySymbol={<img src={star} width="16" />}
-              fullSymbol={<img src={star_o} width="16" />}
-              readonly
-            />
+        {guide
+          && <div className="booking-page-contain">
 
-            <p className="total-rating">({guide.reviewers_count})</p>
-          </div>
-
-
-          {/* <img src={ guide.trails[0].imgUrls[0] } width="100px" />
-          <img src={ guide.trails[0].imgUrls[1] } width="100px" /> */}
-          <p>need to be here description</p>
-
-          <p>Write a review about {guide.fullName}</p>
-          {!this.props.loggedInUser
-            ? <ReviewAdd guide={guide} />
-            : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
-        </React.Fragment>}
+            <BookingForm trails={ this.state.guide.trails } handelInput={ this.handelInput } bookForm={ this.state.bookForm } />
+            <section className="booking-page-content">
+              <div className="booking-page-details">
+                <img className="booking-page-avatar" src={ guide.imgUrl } width="75px" />
+                <p className="booking-page-full-name">{guide.fullName}</p>
+                <div className="booking-page-rate-box" >
+                  <p className="pra-rating">Rating:</p>
+                  <Rating
+                    start={ 0 }
+                    stop={ 5 }
+                    initialRating={ guide.rating }
+                    emptySymbol={ <img src={ star } width="16" /> }
+                    fullSymbol={ <img src={ star_o } width="16" /> }
+                    readonly
+                  />
+                  <p className="total-rating">({guide.reviewers_count})</p>
+                </div>
+                <div>
+                  <p className="booking-page-title">Languages:</p>
+                  <p>{guide.languages.map(langCodeToName).join(', ')}</p>
+                </div>
+                <section>
+                  <div>
+                    <p>need to be here description</p>
+                  </div>
+                <img className="booking-page-img-trail" src={ guide.trails[bookForm.trailSelected].imgUrls[0] } />
+                </section>
+              </div>
+            <section className="booking-page-add-review">
+              <p className="title">Write a review about {guide.fullName}</p>
+                {!this.props.loggedInUser
+                  ? <ReviewAdd guide={ guide } />
+                  : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
+              </section>
+            </section>
+          </div>}
       </main>
     );
   }

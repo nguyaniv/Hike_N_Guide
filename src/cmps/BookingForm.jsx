@@ -14,25 +14,44 @@ class _BookingForm extends Component {
   }
 
   render() {
-    const { peopleCount } = this.state;
+    const { bookForm, trails, handelInput } = this.props;
+
 
     return (
-      <div className="booking-form">
-        <h2>Trail name</h2>
-        <form>
-          <Calendar
-            onChange={date => this.setState({ date })}
-            value={this.state.date}
-            minDate={new Date()}
-          />
-          <div>
-            <label>How many people?</label>
-            <input type="number" name="peopleCount" value={peopleCount} min="1" />
+      <section className="booking-form">
+        <div className="booking-form-contain">
+          <div className="booking-form-container">
+            <form>
+              <select name="trailSelected" onChange={ handelInput } value={ bookForm.trailSelected }>
+                {
+                  trails.map((trail, idx) => {
+                    console.log('trail:', trail);
+                    return (
+                      <option key={ trail._id } value={ idx }>{trail.name}</option>);
+                  })
+                }
+              </select>
+              <Calendar
+                onChange={ date => this.setState({ date }) }
+                value={ bookForm.date }
+                minDate={ new Date() }
+              />
+              <div>
+                <label className="booking-form-title">How many people?</label>
+                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" />
+              </div>
+              <div>
+                <div className="booking-form-price-contain" >
+                  <label className="booking-form-title">Price:</label>
+                  <p className="price">$160</p>
+                </div>
+                <button className="btn-submit">Book</button>
+              </div>
+
+            </form>
           </div>
-          <p>Price: 100$</p>
-          <button>Book</button>
-        </form>
-      </div>
+        </div>
+      </section>
     );
   }
 }
