@@ -2,8 +2,7 @@
 
 # dependencies
 /node_modules
-
-/.pn
+/.pnp
 .pnp.js
 
 # testing
@@ -22,6 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Backend
-# /backend/node_modules
