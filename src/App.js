@@ -15,8 +15,8 @@ function App() {
       <Header />
       <Switch>
         <Route path="/booking/" component={ BookingPage } />
-        <Route path="/trail/:id" component={ GuidesPage } />
         <Route path="/trail/add" component={ TrailAdd } />
+        <Route path="/trail/:id" component={ GuidesPage } />
         <Route path="/trail" component={ TrailPage } />
         <Route exact path="/guide" component={ GuidesPage } />
         <Route exact path="/" component={ HomePage } />
