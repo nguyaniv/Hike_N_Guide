@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { saveTrail, loadTrails } from '../store/actions/trailsActions';
 import MapContainer from '../cmps/MapContainer'
+import Backpage from '../img/backpage.svg'
 class TrailAdd extends React.Component {
   state = {
     name: '',
@@ -19,14 +20,14 @@ class TrailAdd extends React.Component {
   }
 
 
-  updateLatLng = (lat,lng) => {
+  updateLatLng = (lat, lng) => {
     this.setState({
-      location :{
-        lat,lng
+      location: {
+        lat, lng
       }
-    },console.log(this.state)
+    }, console.log(this.state)
     )
-}
+  }
 
   inputHandler = ({ target }) => {
     const { name } = target;
@@ -37,7 +38,7 @@ class TrailAdd extends React.Component {
   }
 
 
-  getLocation=({ target })=> {
+  getLocation = ({ target }) => {
     const { name } = target;
     const { value } = target
     this.setState((prevstate) => ({
@@ -85,48 +86,73 @@ class TrailAdd extends React.Component {
 
     return (
       <main className="">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            name:<input type="text" name="name" value={name} onChange={this.inputHandler} />
-          </label>
-          <label>
-            country: <input className="" type="text" value={country} name="country" onChange={this.inputHandler} />
-          </label>
-          <label>
-            distance: <input className="" type="text" value={distance} name="distance" onChange={this.inputHandler} />
-          </label>
-          <label>
-            difficulty:<select name="difficulty" value={difficulty} onChange={this.inputHandler}>
-              <option value="Beginner">Beginner</option>
-              <option value="Advanced">Advanced</option>
-              <option value="Expect">Expect</option>
-            </select>
-          </label>
-          <label>
-            days: <input type="number" value={days} name="days" onChange={this.inputHandler} />
-          </label>
+        <h2>Add a trail</h2>
+        <form className="trail-add-form" onSubmit={this.handleSubmit}>
+          <div className="trail-add-container">
 
-          <label>
-            lat: <input type="number" value={lat} name="lat" onChange={this.getLocation} />
-          </label>
-          <label>
-            lng: <input type="number" value={lng} name="lng" onChange={this.getLocation} />
-          </label>
+            <div className="add-right-container">
 
-          <label>
-            imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
-          </label>
-          <br />
-          <label>
-            descriptions: <textarea cols="80" rows="30" value={descriptions} name="descriptions" onChange={this.inputHandler}></textarea>
-          </label>
-          <button className="">Add</button>
+              
+              <div className="add-set">
+                <label>
+                  name:<input type="text" name="name" value={name} onChange={this.inputHandler} />
+                </label>
+                <label>
+                  country: <input className="" type="text" value={country} name="country" onChange={this.inputHandler} />
+                </label>
+                <label>
+                  distance: <input className="" type="text" value={distance} name="distance" onChange={this.inputHandler} />
+                </label>
+              </div>
+
+
+              <div className="add-set">
+                <label>
+                  difficulty:<select name="difficulty" value={difficulty} onChange={this.inputHandler}>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Expect">Expect</option>
+                  </select>
+                </label>
+                <label>
+                  days: <input type="number" value={days} name="days" onChange={this.inputHandler} />
+                </label>
+
+                <label>
+                  imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
+                </label>
+              </div>
+
+              <div className="add-set">
+                <label>
+                  lat: <input type="number" value={lat} name="lat" onChange={this.getLocation} />
+                </label>
+                <label>
+                  lng: <input type="number" value={lng} name="lng" onChange={this.getLocation} />
+                </label>
+              </div>
+
+              <br />
+              <label>
+                descriptions:
+             <br />
+                <textarea cols="80" rows="30" value={descriptions} name="descriptions" onChange={this.inputHandler}></textarea>
+              </label>
+
+              <button className="">Add</button>
+            </div>
+          </div>
+
+          <MapContainer updateLatLng={this.updateLatLng} />
+
+
+
+
         </form>
 
 
 
 
-        <MapContainer updateLatLng={this.updateLatLng}/>
 
 
 
