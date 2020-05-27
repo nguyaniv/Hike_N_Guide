@@ -32,20 +32,14 @@ class _BookingPage extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    // console.log('this.props.match.params', this.props);
     this.loadGuide(id);
     //review load
     const reviews = await this.props.loadReviews({guideId: id})
     this.setState({ reviews }, () => { console.log(this.state) })
   }
 
-  // console.log(reviews)
-  // return reviews
-
-
-
-
   loadGuide = id => {
+    console.log('id', id);
     userService.getById(id)
       .then(guide => {
         this.setState({ guide })

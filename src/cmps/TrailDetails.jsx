@@ -118,18 +118,40 @@ class _TrailDetail extends Component {
 
     const { selectedTrail } = this.props.trails;
     return (
-      <div className="trail-details-container">
-        {this.props.trails.selectedTrail && <div className="trail-details">
-          <img
-            className="trail-details-main-image"
-            alt={ selectedTrail.name }
-            src={ selectedTrail.imgUrls[0] }
-          />
-          <h2 className="trail-details-heading">{selectedTrail.name}</h2>
-          <Link className="back-button" to={ '/trail' } > Back to List </Link>
+      <React.Fragment>
+        {selectedTrail && <div className="trail-details">
+          <section className="trail-details-controls">
+              <Link className="trail-details-button" to={ '/trail' } > Back to List </Link>
+              <button
+                className="trail-details-button"
+                onClick={ () => { this.onEditHandler(); } }>
+                  Edit trail
+                </button>
+                <button
+                  className="trail-details-button"
+                  onClick={ () => {
+                    this.props.removeTrail(selectedTrail._id)
+                      .then(() => history.push('/trail'));
+                  }
+                }>
+                  Delete Trail
+                </button>
+            </section>
+
+          <h2 className="trail-details-name">{selectedTrail.name}</h2>
+          <section className="trail-details-visual-info">
+            <img
+              className="trail-details-main-image"
+              alt={ selectedTrail.name }
+              src={ selectedTrail.imgUrls[0] }
+            />
+            <div className="trail-details-map-container">
+              <MapContainer location={ selectedTrail.location } />
+            </div>
+          </section>
           {
             <ShowMoreText
-              lines={ 3 }
+              lines={ 1 }
               more="Show more"
               less="Show less"
               anchorClass=""
@@ -167,31 +189,18 @@ class _TrailDetail extends Component {
               </section>
             </ShowMoreText>
           }
-          <div className="trail-details-map-container">
-            <MapContainer location={ selectedTrail.location } />
-          </div>
 
-            <button className="space-orange" onClick={ () => {
-              this.onEditHandler();
-            } }>edit</button>
-            <button className="space-red" onClick={ () => {
-              this.props.removeTrail(selectedTrail._id)
-                .then(() => history.push('/trail'));
-            }
-          }>Delete Trail</button>
-
-          {/* reviews form starts here */}
-          <h2 className="trail-details-heading">Add review</h2>
           <section className="trail-reviews">
+            <h2 className="trail-details-heading">Add review</h2>
             <form action="" className="trail-reviews-add-form">
               <textarea name="" id=""></textarea>
               <br />
               <button>Submit</button>
             </form>
           </section>
-          {/* reviews form ends here */}
         </div>}
-      </div>
+        <h2 className="trail-details-heading">Check a guide for this trail:</h2>
+      </React.Fragment>
     );
   }
 }

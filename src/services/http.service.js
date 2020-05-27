@@ -1,7 +1,6 @@
 import Axios from 'axios';
 import history from '../history';
 
-// const BASE_URL = process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000/';
 const BASE_URL = process.env.NODE_ENV === 'production'
   ? '/api/'
   : '//localhost:3030/api/';
@@ -24,7 +23,6 @@ export default {
     return ajax(endpoint, 'DELETE', data);
   },
 };
-
 
 async function ajax(endpoint, method = 'get', data = null) {
   try {

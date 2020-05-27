@@ -76,7 +76,7 @@ export class MapContainer extends Component {
 
     render() {
       const style = {
-        position: 'static',
+        position: 'relative',
         width: '100%',
         height: '100%',
       };
