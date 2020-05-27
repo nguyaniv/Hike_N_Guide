@@ -53,7 +53,7 @@ export class GuidePreview extends React.Component {
     } = this.state;
     return (
       <article className="guide-preview">
-        <Link to={ `/guide/${_id}` }>
+        <Link to={ `/booking/${_id}` }>
           <img className="guide-preview-image square-ratio" src={ imgUrl } alt={ fullName }/>
           <div className="guide-preview-info">
             <div className="guide-preview-main-info">
