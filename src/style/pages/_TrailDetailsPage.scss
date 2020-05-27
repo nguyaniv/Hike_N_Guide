@@ -1,0 +1,150 @@
+.trail-details {
+  width: 100%;
+  padding-block-start: 0;
+
+  &-main-image {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  &-main-header {
+    color: black;
+    margin: 0;
+    padding-block-start: 90vh;
+    font-size: 2rem;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 10px white);
+  }
+
+  &-container {
+    // position: absolute;
+    // top: 20vh;
+    // left: 20%;
+    width: 60%;
+    margin: 0 auto;
+    margin-block-start: -4.5rem;
+    background-color: white;
+  }
+
+  &-guides-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+  }
+
+  &-info-header {
+    font-size: 1.5rem;
+    padding-block-start: 1rem;
+    margin-block-end: 1rem;
+    text-align: center;
+  }
+
+  &-info {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  &-info-main {
+    width: 50%;
+    max-width: 50%;
+    padding: 1rem;
+    padding-block-start: 0;
+    text-align: start;
+  }
+
+  &-info-heading {
+    font-weight: bold;
+  }
+
+  &-images {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  &-image {
+    width: 100%;
+  }
+
+  &-image:not(:last-child) {
+    margin-block-end: 1rem;
+  }
+
+  &-info-aside {
+    width: 50%;
+    padding: 1rem;
+    padding-block-start: 0;
+  }
+
+  &-map-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+  }
+
+  &-add-review-form {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    & textarea {
+      width: 100%;
+      height: 10rem;
+    }
+  }
+
+  &-controls {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 3rem;
+    font-size: 1rem;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    margin-block-end: 1rem;
+    text-decoration: none;
+  }
+
+  &-back-button {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $clr4;
+    }
+  }
+
+  &-edit-button {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: yellow;
+    }
+  }
+
+  &-remove-button {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: red;
+    }
+  }
+}

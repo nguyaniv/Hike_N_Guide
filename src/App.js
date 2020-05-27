@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage';
 import { TrailPage } from './pages/TrailPage';
 import { BookingPage } from './pages/BookingPage';
 import { GuidesPage } from './pages/GuidesPage';
+import { TrailDetailsPage } from './pages/TrailDetailsPage';
 import TrailAdd from './pages/TrailAdd';
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
       <Header />
       <Switch>
         <Route path="/booking/:id" component={ BookingPage } />
-        <Route path="/trail/:id" component={ GuidesPage } />
         <Route path="/trail/add" component={ TrailAdd } />
+        <Route path="/trail/:id" component={ TrailDetailsPage } />
         <Route path="/trail" component={ TrailPage } />
         <Route exact path="/guide" component={ GuidesPage } />
         <Route exact path="/" component={ HomePage } />
