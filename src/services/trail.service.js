@@ -13,7 +13,7 @@ function query() {
 }
 
 function getById(trailId) {
-  return HttpService.get(`trails/${trailId}`);
+  return HttpService.get(`api/trails/${trailId}`);
 }
 
 function remove(id) {

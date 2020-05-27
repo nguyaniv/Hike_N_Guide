@@ -25,7 +25,6 @@ class _BookingForm extends Component {
               <select name="trailSelected" onChange={ handelInput } value={ bookForm.trailSelected }>
                 {
                   trails.map((trail, idx) => {
-                    console.log('trail:', trail);
                     return (
                       <option key={ trail._id } value={ idx }>{trail.name}</option>);
                   })

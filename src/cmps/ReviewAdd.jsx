@@ -15,6 +15,7 @@ class _ReviewAdd extends Component {
   }
 
   componentDidMount() {
+    
     const { user } = this.props;
     if (this.props.guide) {
       this.setState({ by: user, guide: this.props.guide });

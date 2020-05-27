@@ -3,24 +3,31 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TrailsFilter from '../cmps/TrailsFilter';
 import { List } from '../cmps/List';
+import { ReviewList } from '../cmps/ReviewList'
 
 
 import { loadTrails } from '../store/actions/trailsActions';
 
 
+
 class _TrailPage extends Component {
   componentDidMount() {
     this.props.loadTrails();
+    console.log('not from trail')
+    
+    
+    
   }
 
   render() {
+    
     const { trails } = this.props;
     return (
 
             <main className="trail-page">
                 {this.props.trails && <React.Fragment>
                     <h2>Choose your trail</h2>  <Link to="trail/add">Add Trail</Link>
-
+{/* {    console.log(this.props)} */}
                     <React.Fragment>
                         {/* < TrailAdd /> */}
 
@@ -45,7 +52,6 @@ class _TrailPage extends Component {
 
                     {/* uncomment when previews are ready */}
                     <List items={ trails } />
-
                 </React.Fragment>}
             </main>
     );
