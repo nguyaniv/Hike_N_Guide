@@ -70,12 +70,12 @@ export class GuidePreview extends React.Component {
             <p className="guide-preview-languages">
               <span className="guide-preview-heading">
                 Languages:&nbsp;
-              </span>{this.getLangsToShow()}
+              </span>{ this.getLangsToShow() }
             </p>
             <p className="guide-preview-trails">
               <span className="guide-preview-heading">
                 Trails:&nbsp;
-              </span>{this.getTrailsToShow()}
+              </span>{ this.getTrailsToShow() }
             </p>
           </div>
         </Link>

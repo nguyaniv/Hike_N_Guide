@@ -180,7 +180,6 @@ class _TrailDetail extends Component {
             }
           }>Delete Trail</button>
 
-
           {/* reviews form starts here */}
           <h2 className="trail-details-heading">Add review</h2>
           <section className="trail-reviews">
