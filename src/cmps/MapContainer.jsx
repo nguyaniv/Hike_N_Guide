@@ -4,7 +4,6 @@ import {
 } from 'google-maps-react';
 import history from '../history';
 
-
 export class MapContainer extends Component {
     state = {
       showingInfoWindow: false,
@@ -14,19 +13,42 @@ export class MapContainer extends Component {
       lng: 0,
       fromAdd: false,
     };
-    componentDidMount() {
-        if (history.location.pathname === '/trail/add') {
-            this.setState({ fromAdd: true })
 
-        }
+    componentDidMount() {
+      if (history.location.pathname === '/trail/add') {
+        this.setState({ fromAdd: true });
+      }
     }
 
-    onMarkerClick = (props, marker, e) =>
+
+    onMarkerClick = (props, marker, e) => this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+
+    updateLatLng=(lat, lng) => {
+      // this.setState({lat,lng})
+      this.props.updateLatLng(lat, lng);
+    }
+
+    onMapClicked = (props, map, clickEvent) => {
+      if (!this.state.fromAdd) return;
+      const lat = clickEvent.latLng.lat();
+      const lng = clickEvent.latLng.lng();
+      console.log(lat);
+      console.log(lng);
+      this.updateLatLng(lat, lng);
+      console.log(this.state);
+
+
+      if (this.state.showingInfoWindow) {
         this.setState({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true
+          showingInfoWindow: false,
+          activeMarker: null,
         });
+      }
+    };
 
     updateLatLng = (lat, lng) => {
         // this.setState({lat,lng})

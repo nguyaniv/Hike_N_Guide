@@ -53,17 +53,17 @@ export class GuidePreview extends React.Component {
     } = this.state;
     return (
       <article className="guide-preview">
-        <Link to={ `/guide/${_id}` }>
-          <img className="guide-preview-image square-ratio" src={ imgUrl } alt={ fullName }/>
+        <Link to={ `/booking/${_id}` }>
+          <img className="guide-preview-image square-ratio" src={ imgUrl } alt={ fullName } />
           <div className="guide-preview-info">
             <div className="guide-preview-main-info">
-              <span className="guide-preview-name">{ fullName }</span>
+              <span className="guide-preview-name">{fullName}</span>
               <Rating start={ 0 }
                 stop={ 5 }
                 initialRating={ rating }
                 emptySymbol={ <img className="guide-preview-full-star" src={ star } /> }
                 fullSymbol={ <img className="guide-preview-star" src={ star_o } /> }
-                onChange={ this.handleRatingChange }
+                readonly
               />
             </div>
             <p className="guide-preview-languages">
