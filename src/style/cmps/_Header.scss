@@ -1,11 +1,11 @@
 .main-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 100;
   width: 100%;
   height: 4rem;
   display: block;
-  background-color: transparent;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
   font-size: 1rem;
   transition: all 0.3s ease 0s;
 
@@ -17,14 +17,14 @@
   &-logo {
     height: 100%;
     float: left;
-    color: $clr2;
+    color: $clr1;
     text-transform: uppercase;
     margin: 0;
     margin-inline-start: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 0 10px $clr5);
+    // filter: drop-shadow(0 0 10px $clr2);
     font-size: 1rem;
   }
 
@@ -45,19 +45,20 @@
   &-link {
     width: 100%;
     height: 4rem;
-    color: $clr2;
+    color: $clr1;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid $clr2;
-    filter: drop-shadow(0 0 10px $clr5);
+    // filter: drop-shadow(0 0 10px $clr2);
     font-size: 1rem;
 
     &:hover,
     &:active,
     &focus {
-      color: $clr4;
+      // color: $clr4;
+      box-shadow: inset 0 -3px 0 $clr4;
     }
   }
 
