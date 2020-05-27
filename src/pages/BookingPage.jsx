@@ -29,13 +29,11 @@ class _BookingPage extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log('this.props.match.params', this.props);
     this.loadGuide(id);
   }
 
   loadGuide = id => {
     console.log('id', id);
-
     userService.getById(id)
       .then(guide => {
         this.setState({ guide }, () => { console.log('state:', this.state); });
