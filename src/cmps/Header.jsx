@@ -21,7 +21,7 @@ export class Header extends React.Component {
   }
 
   componentDidMount() {
-    this.setHeaderColor();
+    // this.setHeaderColor();
   }
 
   handleScroll = () => {
@@ -35,7 +35,7 @@ export class Header extends React.Component {
   }
 
   toggleMenu = () => {
-    this.setHeaderColor();
+    // this.setHeaderColor();
     this.setState(prevState => ({
       ...prevState,
       menuActiveClass: prevState.menuActiveClass === 'is-active' ? '' : 'is-active',
@@ -49,7 +49,8 @@ export class Header extends React.Component {
           <Link
           className="main-header-home-link"
           to="/"
-          onClick={ () => { history.push('/'); this.setHeaderColor(); } }>
+          // onClick={ () => { history.push('/'); this.setHeaderColor(); } }>
+          onClick={ () => { history.push('/'); } }>
             <h1 className="main-header-logo">
               Hike & Guide
             </h1>

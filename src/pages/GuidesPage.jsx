@@ -28,10 +28,10 @@ class _GuidesPage extends React.Component {
         {trailId &&
 
           <div>
-            <TrailDetails id={ trailId } />
+            <TrailDetails id={trailId} />
           </div>
         }
-        <List items={ this.usersToShow } />
+        <List items={this.usersToShow} />
       </main>
     );
   }

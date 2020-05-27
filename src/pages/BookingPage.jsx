@@ -1,84 +1,108 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 
-//Components
+//services
+import userService from '../services/user.service';
+import { langCodeToName } from '../services/language.service';
+
+
+//Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
+import { BookingForm } from '../cmps/BookingForm';
 
 //Images
 import star from '../img/star.svg';
 import star_o from '../img/‏‏star-o.svg';
 
+
 class _BookingPage extends Component {
-    state = {
-      guide: {
-        _id: '1234',
-        userName: 'poiki123',
-        password: '1234',
-        fullName: 'shoka koko',
-        imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png',
-        rating: 3.5,
-        reviewers_count: 30,
-        isAdmin: false,
-        languages: ['he', 'en'],
-        trails: [
-          {
-            _id: 'fg3d',
-            name: 'Sahara desert',
-            imgUrls: [
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Banias_river_%2849%29.jpg/1200px-Banias_river_%2849%29.jpg',
-              'https://res.cloudinary.com/liorapi/image/upload/v1590070000/sprint4/yvtt1dfnp45l4h9e1z3u.jpg',
-            ],
-          },
-        ], // id, name, country
-      },
-      user: {
-        _id: '312312',
-        fullName: 'Gabi Bubu',
+  state = {
+    guide: '',
+    bookForm: {
+      trailSelected: 0,
+      peopleCount: 1,
+      date: new Date(),
+    },
+  }
 
-      },
-    }
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    console.log('this.props.match.params', this.props);
+    this.loadGuide(id);
+  }
 
-    componentDidMount() {
-      // const { id } = this.props.match.params;
+  loadGuide = id => {
+    console.log('id', id);
 
-    }
+    userService.getById(id)
+      .then(guide => {
+        this.setState({ guide }, () => { console.log('state:', this.state); });
+      });
+  }
 
-    render() {
-      const { guide, user } = this.state;
-      return (
-            <section className="booking-page">
-                <img className="booking-page-img" src={ guide.imgUrl } width="75px" />
-                <p>{guide.fullName}</p>
-                <div className="booking-page-rate">
-                    <p>Rating:</p>
-                    <Rating
-                        start={ 0 }
-                        stop={ 5 }
-                        initialRating={ guide.rating }
-                        emptySymbol={ <img src={ star } width="30" /> }
-                        fullSymbol={ <img src={ star_o } width="30" /> }
-                        readonly
-                    />
-                    <p>(By {guide.reviewers_count} reviewers)</p>
+  handelInput = ev => {
+    const { name } = ev.target;
+    const value = ev.target.type === 'number' ? parseInt(ev.target.value, 10) : ev.target.value;
+
+    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, [name]: value } }),
+      () => { console.log('state:', this.state); });
+  }
+
+  render() {
+    const { guide, bookForm } = this.state;
+    return (
+      <main className="booking-page">
+        {guide
+          && <div className="booking-page-contain">
+
+          <BookingForm trails={ this.state.guide.trails } handelInput={ this.handelInput }
+            bookForm={ this.state.bookForm } />
+            <section className="booking-page-content">
+              <div className="booking-page-details">
+                <img className="booking-page-avatar" src={ guide.imgUrl } width="75px" />
+                <p className="booking-page-full-name">{guide.fullName}</p>
+                <div className="booking-page-rate-box" >
+                  <p className="pra-rating">Rating:</p>
+                  <Rating
+                    start={ 0 }
+                    stop={ 5 }
+                    initialRating={ guide.rating }
+                    emptySymbol={ <img src={ star } width="16" /> }
+                    fullSymbol={ <img src={ star_o } width="16" /> }
+                    readonly
+                  />
+                  <p className="total-rating">({guide.reviewers_count})</p>
                 </div>
-                <img src={ guide.trails[0].imgUrls[0] } width="100px" />
-                <img src={ guide.trails[0].imgUrls[1] } width="100px" />
-                <p>need to be here description</p>
-
-                <p>Write a review about {guide.fullName}</p>
-                <ReviewAdd user={ user } guide={ guide } />
+                <div>
+                  <p className="booking-page-title">Languages:</p>
+                  <p>{guide.languages.map(langCodeToName).join(', ')}</p>
+                </div>
+                <section>
+                  <div>
+                    <p>need to be here description</p>
+                  </div>
+                  <img className="booking-page-img-trail" src={ guide.trails[bookForm.trailSelected].imgUrls[0] } />
+                </section>
+              </div>
+              <section className="booking-page-add-review">
+                <p className="title">Write a review about {guide.fullName}</p>
+                {!this.props.loggedInUser
+                  ? <ReviewAdd guide={ guide } />
+                  : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
+              </section>
             </section>
-      );
-    }
+          </div>}
+      </main>
+    );
+  }
 }
 
-// const mapStateToProps = state => {
-//     return {
-
-//     };
-//   };
+const mapStateToProps = state => ({
+  loggedInUser: state.user.loggedInUser,
+});
 //   const mapDispatchToProps = {
 
 //   };
-export const BookingPage = connect()(_BookingPage);
+export const BookingPage = connect(mapStateToProps)(_BookingPage);

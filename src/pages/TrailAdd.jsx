@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { saveTrail, loadTrails } from '../store/actions/trailsActions';
-import MapContainer from '../cmps/MapContainer'
+import MapContainer from '../cmps/MapContainer';
+
 class TrailAdd extends React.Component {
   state = {
     name: '',
