@@ -1,6 +1,6 @@
 import HttpService from './http.service';
 
-const END_POINT = 'trails';
+const END_POINT = 'trail';
 
 export default {
   query,
@@ -8,6 +8,7 @@ export default {
   remove,
   add,
   edit,
+  getMiniTrailObj,
 };
 
 function query() {
@@ -31,4 +32,13 @@ async function edit(trail) {
   trail.isEditMode = false;
   const trailToEdit = await HttpService.put(`${END_POINT}/${trail._id}`, trail);
   return trailToEdit;
+}
+
+function getMiniTrailObj(trail) {
+  const { _id, name } = trail;
+  const miniTrail = {
+    _id,
+    name,
+  };
+  return miniTrail;
 }

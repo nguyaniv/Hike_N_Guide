@@ -1,5 +1,6 @@
 import HttpService from './http.service';
 
+
 const END_POINT = 'user';
 
 export default {
@@ -7,6 +8,7 @@ export default {
   save,
   remove,
   getById,
+  getMiniUserObj,
 };
 
 function query(filter = null) {
@@ -27,4 +29,15 @@ function remove(userID) {
 
 function getById(userId) {
   return HttpService.get(`${END_POINT}/${userId}`);
+}
+
+
+function getMiniUserObj(user) {
+  const { _id, username, fullName } = user;
+  const miniUser = {
+    _id,
+    username,
+    fullName,
+  };
+  return miniUser;
 }

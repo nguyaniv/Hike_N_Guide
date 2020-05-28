@@ -1,16 +1,19 @@
+//services
 import UserService from '../../services/user.service';
-// import { loading, doneLoading } from './SystemActions';
+import AuthService from '../../services/auth.service';
 
-export function loadUsers() {
+import { loading, doneLoading } from './loadingActions';
+
+export function loadUsers(filter) {
   return async dispatch => {
     try {
-      // dispatch(loading());
-      const users = await UserService.query();
+      dispatch(loading());
+      const users = await UserService.query(filter);
       dispatch(_setUsers(users));
     } catch (err) {
       console.log('UserActions: err in loadUsers', err);
     } finally {
-      // dispatch(doneLoading());
+      dispatch(doneLoading());
     }
   };
 }
@@ -55,24 +58,26 @@ export function setUser(user) {
   };
 }
 
-// export function login(userCreds) {
-//     return async dispatch => {
-//         const user = await UserService.login(userCreds);
-//         dispatch(setUser(user));
-//     };
-// }
-// export function signup(userCreds) {
-//     return async dispatch => {
-//         const user = await UserService.signup(userCreds);
-//         dispatch(setUser(user));
-//     };
-// }
-// export function logout() {
-//     return async dispatch => {
-//         await UserService.logout();
-//         dispatch(setUser(null));
-//     };
-// }
+export function login(userCreds) {
+  return async dispatch => {
+    const user = await AuthService.login(userCreds);
+    dispatch(setUser(user));
+  };
+}
+
+export function signup(userCreds) {
+  return async dispatch => {
+    const user = await AuthService.signup(userCreds);
+    dispatch(setUser(user));
+  };
+}
+
+export function logout() {
+  return async dispatch => {
+    await AuthService.logout();
+    dispatch(setUser(null));
+  };
+}
 
 function _setUsers(users) {
   return {

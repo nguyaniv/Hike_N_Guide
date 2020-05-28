@@ -55,7 +55,7 @@ class _TrailDetailsPage extends React.Component {
 
   onEditHandler = () => {
     this.setState(prevState => ({ ...prevState, isEditMode: true }));
-    console.log(this.state)
+    console.log(this.state);
   }
 
   onFinishEditHandler = ev => {
@@ -110,56 +110,56 @@ class _TrailDetailsPage extends React.Component {
     }
 
     const { selectedTrail } = this.state;
-    const usersToShow =
-      this.props.users.filter(
-        user => user.trails.some(
-          trail => trail._id === this.props.match.params.id,
-        ),
-      );
+    const usersToShow = !this.props.users.trails ? null : this.props.users.filter(
+      user => user.trails.some(
+        trail => trail._id === this.props.match.params.id,
+      ),
+    );
+
 
     return (<React.Fragment>
-      { selectedTrail && <main className="trail-details">
+      {selectedTrail && <main className="trail-details">
         <div className="trail-details-main-image" style={ { backgroundImage: `url(${selectedTrail.imgUrls[0]})` } }>
-        <h1 className="trail-details-main-header">{ selectedTrail.name }</h1>
+          <h1 className="trail-details-main-header">{selectedTrail.name}</h1>
         </div>
         <section className="trail-details-container">
           <h2 className="trail-details-info-header">
             Check guides for this trail
           </h2>
           <div className="trail-details-guides-list">
-            { usersToShow.map(guide => <GuidePreview key={ guide._id } guide={ guide } />) }
+            {usersToShow && usersToShow.map(guide => <GuidePreview key={ guide._id } guide={ guide } />)}
           </div>
           <section className="trail-details-info">
             <div className="trail-details-info-main">
               <h2 className="trail-details-info-header">
                 Trail info
               </h2>
-                <p>
-                  <span className="trail-details-info-heading">Description: </span>{selectedTrail.descriptions}
-                </p>
-                <p>
-                  <span className="trail-details-info-heading">Country: </span>{selectedTrail.country}
-                </p>
-                <p>
-                  <span className="trail-details-info-heading">Difficulty: </span>{selectedTrail.difficulty}
-                </p>
-                <p>
-                  <span className="trail-details-info-heading">Days: </span>{selectedTrail.days}
-                </p>
-                <p>
-                  <span className="trail-details-info-heading">Distance: </span>{selectedTrail.distance}
-                </p>
-                <p>
-                  <span className="trail-details-info-heading">Rating: </span>{selectedTrail.rating}
-                </p>
-                <div className="trail-details-images">
-                  {selectedTrail.imgUrls.map((image, i) => <img
-                    key={ i }
-                    className="trail-details-image"
-                    alt={ selectedTrail.name }
-                    src={ selectedTrail.imgUrls[i] }
-                  />)}
-                </div>
+              <p>
+                <span className="trail-details-info-heading">Description: </span>{selectedTrail.descriptions}
+              </p>
+              <p>
+                <span className="trail-details-info-heading">Country: </span>{selectedTrail.country}
+              </p>
+              <p>
+                <span className="trail-details-info-heading">Difficulty: </span>{selectedTrail.difficulty}
+              </p>
+              <p>
+                <span className="trail-details-info-heading">Days: </span>{selectedTrail.days}
+              </p>
+              <p>
+                <span className="trail-details-info-heading">Distance: </span>{selectedTrail.distance}
+              </p>
+              <p>
+                <span className="trail-details-info-heading">Rating: </span>{selectedTrail.rating}
+              </p>
+              <div className="trail-details-images">
+                {selectedTrail.imgUrls.map((image, i) => <img
+                  key={ i }
+                  className="trail-details-image"
+                  alt={ selectedTrail.name }
+                  src={ selectedTrail.imgUrls[i] }
+                />)}
+              </div>
             </div>
             <div className="trail-details-info-aside">
               <h2 className="trail-details-info-header">
@@ -178,7 +178,7 @@ class _TrailDetailsPage extends React.Component {
                 <textarea name="review" id="review"></textarea>
                 <br />
                 <button type="submit">Add</button>
-            </form>
+              </form>
             </div>
           </section>
         </section>
@@ -187,20 +187,20 @@ class _TrailDetailsPage extends React.Component {
           <button
             className="trail-details-button trail-details-edit-button"
             onClick={ () => { this.onEditHandler(); } }>
-              Edit trail
+            Edit trail
             </button>
-            <button
-              className="trail-details-button trail-details-remove-button"
-              onClick={ () => {
-                this.props.removeTrail(selectedTrail._id)
-                  .then(() => history.push('/trail'));
-              }
+          <button
+            className="trail-details-button trail-details-remove-button"
+            onClick={ () => {
+              this.props.removeTrail(selectedTrail._id)
+                .then(() => history.push('/trail'));
+            }
             }>
-              Delete Trail
+            Delete Trail
             </button>
-          </section>
+        </section>
       </main>}
-      </ React.Fragment>
+    </ React.Fragment>
     );
   }
 }
@@ -208,6 +208,7 @@ class _TrailDetailsPage extends React.Component {
 const mapStateToProps = state => ({
   users: state.user.users,
   trail: state.trail,
+  isLoading: state.loading.isLoading,
 });
 const mapDispatchToProps = {
   loadUsers,

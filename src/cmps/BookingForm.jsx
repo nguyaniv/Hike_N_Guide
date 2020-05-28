@@ -14,7 +14,9 @@ class _BookingForm extends Component {
   }
 
   render() {
-    const { bookForm, trails, handelInput } = this.props;
+    const {
+      bookForm, trails, handelInput, handelDate,
+    } = this.props;
 
 
     return (
@@ -24,20 +26,18 @@ class _BookingForm extends Component {
             <form>
               <select name="trailSelected" onChange={ handelInput } value={ bookForm.trailSelected }>
                 {
-                  trails.map((trail, idx) => {
-                    return (
-                      <option key={ trail._id } value={ idx }>{trail.name}</option>);
-                  })
+                  trails.map((trail, idx) => (
+                      <option key={ trail._id } value={ idx }>{trail.name}</option>))
                 }
               </select>
               <Calendar
-                onChange={ date => this.setState({ date }) }
+                onChange={ date => { handelDate(date); } }
                 value={ bookForm.date }
                 minDate={ new Date() }
               />
               <div>
                 <label className="booking-form-title">How many people?</label>
-                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" />
+                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ handelInput } />
               </div>
               <div>
                 <div className="booking-form-price-contain" >
