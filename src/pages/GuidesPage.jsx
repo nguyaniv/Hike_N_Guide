@@ -3,34 +3,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { List } from '../cmps/List';
 import { loadUsers } from '../store/actions/userAction';
-import { loadTrail } from '../store/actions/trailsActions';
-import { TrailDetails } from '../cmps/TrailDetails';
 
 class _GuidesPage extends React.Component {
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    // if (id) {
-    //   this.props.loadTrail(id);
-    // }
-    this.props.loadUsers();
+  state = {
+    usersToShow: [],
   }
 
-  // usersToShow = this.props.trail
-  //   ? this.props.users.filter(user => user.trails.some(trail => trail._id === this.props.trail._id))
-  //   : this.props.users;
-  usersToShow = this.props.users;
+  componentDidMount() {
+    this.props.loadUsers()
+      .then(() => {
+        this.setState(prevState => ({
+          ...prevState,
+          usersToShow: this.props.users
+            .filter(user => user.trails)
+            .sort((a, b) => b.rating - a.rating),
+        }));
+      });
+  }
 
   render() {
-    // const trailId = this.props.match.params.id;
+    const { usersToShow } = this.state;
     return (
       <main>
-        <List items={this.usersToShow} />
-        {/* {trailId &&
-          <div>
-            <TrailDetails id={trailId} />
-          </div>
-        } */}
-        {/* <List items={this.usersToShow} /> */}
+        <List items={ usersToShow } />
       </main>
     );
   }
@@ -42,6 +37,5 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = {
   loadUsers,
-  loadTrail,
 };
 export const GuidesPage = connect(mapStateToProps, mapDispatchToProps)(_GuidesPage);

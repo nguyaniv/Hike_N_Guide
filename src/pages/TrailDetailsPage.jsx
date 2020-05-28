@@ -17,6 +17,11 @@ import MapContainer from '../cmps/MapContainer';
 class _TrailDetailsPage extends React.Component {
   state = {
     isEditMode: false,
+    usersToShow: [
+      {
+        trails: [],
+      },
+    ],
     selectedTrail: {
       name: '',
       country: '',
@@ -37,6 +42,13 @@ class _TrailDetailsPage extends React.Component {
         this.setState(prevState => ({
           ...prevState,
           selectedTrail: this.props.trail.selectedTrail,
+          usersToShow: this.props.users
+            .filter(
+              user => (!user.trails ? false : user.trails.some(
+                trail => trail._id === this.props.trail.selectedTrail.id,
+              )),
+            )
+            .sort((a, b) => b.rating - a.rating),
         }));
       });
   }
@@ -109,13 +121,7 @@ class _TrailDetailsPage extends React.Component {
       );
     }
 
-    const { selectedTrail } = this.state;
-    const usersToShow = !this.props.users.trails ? null : this.props.users.filter(
-      user => user.trails.some(
-        trail => trail._id === this.props.match.params.id,
-      ),
-    );
-
+    const { selectedTrail, usersToShow } = this.state;
 
     return (<React.Fragment>
       {selectedTrail && <main className="trail-details">
@@ -127,7 +133,7 @@ class _TrailDetailsPage extends React.Component {
             Check guides for this trail
           </h2>
           <div className="trail-details-guides-list">
-            {usersToShow && usersToShow.map(guide => <GuidePreview key={ guide._id } guide={ guide } />)}
+            {usersToShow.map(guide => <GuidePreview key={ guide._id } guide={ guide } />)}
           </div>
           <section className="trail-details-info">
             <div className="trail-details-info-main">
