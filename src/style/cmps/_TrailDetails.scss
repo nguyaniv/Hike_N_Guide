@@ -1,122 +1,126 @@
-.trail-details {
-  width: 100%;
-  padding: 1rem;
-  margin: 0 auto;
+// .trail-details {
+//   width: 100%;
+//   padding-inline-start: 1rem;
+//   padding-inline-end: 2rem;
+//   margin: 0 auto;
 
-  &-controls {
-    position: fixed;
-    top: 5rem;
-    left: 1rem;
-    display: flex;
-  }
+//   &-controls {
+//     position: fixed;
+//     top: 4rem;
+//     left: 1rem;
+//     display: flex;
+//   }
 
-  &-visual-info {
-    width: 100%;
-    height: 50vh;
-    display: flex;
-    flex-flow: row wrap;
-    margin-block-end: calc(30vh + 1rem);
-  }
+//   &-visual-info {
+//     width: 100%;
+//     height: 50vh;
+//     display: flex;
+//     flex-flow: row wrap;
+//     margin-block-end: calc(30vh + 1rem);
+//   }
 
-  &-main-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+//   &-main-image {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
 
-  &-name {
-    font-size: 2rem;
-    text-transform: uppercase;
-  }
+//   &-name {
+//     font-size: 2rem;
+//     text-transform: uppercase;
+//   }
 
-  &-heading {
-    font-size: 1.5rem;
-  }
+//   &-heading {
+//     font-size: 1.5rem;
+//   }
 
-  &-info {
-    width: 60vw;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+//   &-info {
+//     width: 60vw;
+//     margin: 0 auto;
+//     display: flex;
+//     flex-flow: column nowrap;
+//     justify-content: flex-start;
+//     align-items: flex-start;
 
-    &-heading {
-      font-weight: 800;
-    }
+//     &-heading {
+//       font-weight: 800;
+//     }
 
-    & p {
-      width: 100%;
-      text-align: start;
-    }
-  }
+//     & p {
+//       width: 100%;
+//       text-align: start;
+//     }
+//   }
 
-  &-images {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: row wrap;
-    align-items: start;
-  }
+//   &-images {
+//     width: 100%;
+//     display: flex;
+//     justify-content: flex-start;
+//     flex-flow: row wrap;
+//     align-items: start;
+//   }
 
-  &-image {
-    width: calc((100% - 1rem) / 2);
-    height: 40vh;
-    object-fit: cover;
-    margin-block-end: 1rem;
+//   &-image {
+//     width: calc((100% - 1rem) / 2);
+//     height: 40vh;
+//     object-fit: cover;
+//     margin-block-end: 1rem;
 
-    &:not(:nth-child(even)) {
-      margin-inline-end: 1rem;
-    }
-  }
+//     &:not(:nth-child(even)) {
+//       margin-inline-end: 1rem;
+//     }
+//   }
 
-  &-map-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
+//   &-map-container {
+//     width: 100%;
+//     height: 100%;
+//     position: relative;
+//   }
 
-  @media (min-width: $tablet) {
-    // width: 60%;
+//   @media (min-width: $tablet) {
+//     // width: 60%;
 
-    &-visual-info {
-      flex-flow: row nowrap;
-      margin-block-end: 1rem;
-    }
+//     &-visual-info {
+//       flex-flow: row nowrap;
+//       margin-block-end: 1rem;
+//     }
 
-    &-main-image {
-      width: 60%;
-      margin-inline-end: 1rem;
-    }
+//     &-main-image {
+//       width: 60%;
+//       margin-inline-end: 1rem;
+//     }
 
-    &-map-container {
-      width: calc(40% - 1rem);
-    }
-  }
-}
+//     &-map-container {
+//       width: calc(40% - 1rem);
+//     }
+//   }
+// }
 
-.trail-details-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 7rem;
-  height: 3rem;
-  background-color: #fff;
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  margin-inline-end: 1rem;
-}
+// .trail-details-button {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 7rem;
+//   height: 3rem;
+//   font-size: 1rem;
+//   color: black;
+//   background-color: #fff;
+//   border: 1px solid black;
+//   border-radius: 0.5rem;
+//   margin-inline-end: 1rem;
+//   text-decoration: none;
+// }
 
-.trail-reviews {
-  width: 100%;
+// .trail-reviews {
+//   width: 100%;
 
-  &-add-form {
-    width: 60%;
-    margin: 0 auto;
+//   &-add-form {
+//     width: 60%;
+//     margin: 0 auto;
 
-    & textarea {
-      width: 100%;
-      height: 15rem;
-    }
-  }
-}
+//     & textarea {
+//       width: 10rem;
+//       height: 5rem;
+//     }
+//   }
+// }
