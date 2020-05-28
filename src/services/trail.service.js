@@ -1,6 +1,6 @@
 import HttpService from './http.service';
 
-const END_POINT = 'trails';
+const END_POINT = 'trail';
 
 export default {
   query,
