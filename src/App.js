@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/global.scss';
 import { Switch, Route } from 'react-router-dom';
-import { Header } from './cmps/Header';
+import { Navbar } from './cmps/Navbar';
 import { Footer } from './cmps/Footer';
 import { HomePage } from './pages/HomePage';
 import { TrailPage } from './pages/TrailPage';
@@ -13,7 +13,7 @@ import TrailAdd from './pages/TrailAdd';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Navbar />
       <Switch>
         <Route path="/booking/:id" component={ BookingPage } />
         <Route path="/trail/add" component={ TrailAdd } />

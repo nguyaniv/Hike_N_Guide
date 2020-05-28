@@ -47,7 +47,7 @@
       "country": "France",
       "difficulty": "Expert",
       "distance": "180km",
-      "days": 14,
+      "days": "15",
       "location": {
         "lat": 42.544856,
         "lng": 8.764562

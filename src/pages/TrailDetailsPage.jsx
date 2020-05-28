@@ -16,14 +16,15 @@ import MapContainer from '../cmps/MapContainer';
 
 class _TrailDetailsPage extends React.Component {
   state = {
-    trail: {
+    isEditMode: false,
+    selectedTrail: {
       name: '',
       country: '',
       difficulty: '',
       distance: '',
       days: '',
       location: '',
-      imgUrls: '',
+      imgUrls: [],
       descriptions: '',
     },
   }
@@ -43,18 +44,25 @@ class _TrailDetailsPage extends React.Component {
   inputHandler = ({ target }) => {
     const { name } = target;
     const { value } = target;
-    this.setState({ [name]: value });
+    this.setState(prevState => ({
+      ...prevState,
+      selectedTrail: {
+        ...prevState.selectedTrail,
+        [name]: value,
+      },
+    }));
   }
 
   onEditHandler = () => {
-    this.setState({ isEditMode: true });
+    this.setState(prevState => ({ ...prevState, isEditMode: true }));
+    console.log(this.state)
   }
 
   onFinishEditHandler = ev => {
     ev.preventDefault();
     this.setState({ isEditMode: false });
-    const trail = this.state;
-    this.props.editTrail(trail)
+    const { selectedTrail } = this.state;
+    this.props.editTrail(selectedTrail)
       .then(() => {
         this.props.loadTrails();
       });
@@ -64,10 +72,10 @@ class _TrailDetailsPage extends React.Component {
     if (this.state.isEditMode) {
       const {
         name, country, difficulty, distance, days, imgUrls, descriptions,
-      } = this.state;
+      } = this.state.selectedTrail;
       return (
         <div className="">
-          <form onSubmit={ this.onFinishEditHandler }>
+          <form className="trail-details-edit-form" onSubmit={ this.onFinishEditHandler }>
             <label>
               name:<input type="text" name="name" value={ name } onChange={ this.inputHandler } />
             </label>
@@ -121,9 +129,6 @@ class _TrailDetailsPage extends React.Component {
           <div className="trail-details-guides-list">
             { usersToShow.map(guide => <GuidePreview key={ guide._id } guide={ guide } />) }
           </div>
-          {/* <h2 className="trail-details-info-header">
-              Trail details
-          </h2> */}
           <section className="trail-details-info">
             <div className="trail-details-info-main">
               <h2 className="trail-details-info-header">

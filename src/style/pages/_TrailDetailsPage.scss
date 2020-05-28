@@ -10,18 +10,15 @@
   }
 
   &-main-header {
-    color: black;
+    color: white;
     margin: 0;
     padding-block-start: 90vh;
     font-size: 2rem;
     text-transform: uppercase;
-    filter: drop-shadow(0 0 10px white);
+    filter: drop-shadow(0 0 10px black);
   }
 
   &-container {
-    // position: absolute;
-    // top: 20vh;
-    // left: 20%;
     width: 60%;
     margin: 0 auto;
     margin-block-start: -4.5rem;
@@ -146,5 +143,9 @@
     &:focus {
       background-color: red;
     }
+  }
+
+  &-edit-form {
+    margin-block-start: 5rem;
   }
 }

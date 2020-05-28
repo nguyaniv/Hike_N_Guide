@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
-// import history from '../history';
+import { Link } from 'react-router-dom';
 import { List } from '../cmps/List';
 import { loadTrails } from '../store/actions/trailsActions';
 import { loadUsers } from '../store/actions/userAction';
@@ -19,22 +18,23 @@ class _HomePage extends Component {
     const trailsToShow = trails.slice(0, 6).sort((a, b) => b.rating - a.rating);
     return (
       <main className="homepage">
-        <img src="/img/main-background.jpg" alt="" className="homepage-background"/>
-        <h2 className="homepage-main-heading">Find hiking trails and guides worldwide</h2>
+        <div className="homepage-header">
+          <h2 className="homepage-main-heading">Find hiking trails and guides worldwide</h2>
+        </div>
         <h2 className="homepage-list-heading">Popular Trails</h2>
         <List items={ trailsToShow }/>
-        {/* <Link to="/trail">
+        <Link to="/trail" style={ { textDecoration: 'none' } }>
           <button className="homepage-show-more-button">
             Show more
           </button>
-        </Link> */}
+        </Link>
         <h2 className="homepage-list-heading">Popular Guides</h2>
         <List items={ guidesToShow }/>
-        {/* <Link to="/guide">
+        <Link to="/guide" style={ { textDecoration: 'none' } }>
           <button className="homepage-show-more-button">
             Show more
           </button>
-        </Link> */}
+        </Link>
       </main>
     );
   }
