@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-
 //services
 import userService from '../services/user.service';
 import { langCodeToName } from '../services/language.service';
 
+//actions
+import { loadReviews } from '../store/actions/reviewActions'
 
 //Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
+import { ReviewList } from '../cmps/ReviewList'
 import { BookingForm } from '../cmps/BookingForm';
 
 //Images
@@ -27,18 +29,19 @@ class _BookingPage extends Component {
     },
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { id } = this.props.match.params;
     this.loadGuide(id);
+    //review load
+    const reviews = await this.props.loadReviews({guideId: id})
+    this.setState({ reviews })
   }
 
   loadGuide = id => {
-    console.log('id', id);
     userService.getById(id)
       .then(guide => {
-        this.setState({ guide }, () => { console.log('state:', this.state); });
-      });
-  }
+        this.setState({ guide })
+  })}
 
   handelInput = ev => {
     const { name } = ev.target;
@@ -70,16 +73,16 @@ class _BookingPage extends Component {
             bookForm={ this.state.bookForm } handelDate={ this.handelDate } onBook={ this.onBook } />
             <section className="booking-page-content">
               <div className="booking-page-details">
-                <img className="booking-page-avatar" src={ guide.imgUrl } width="75px" />
+                <img className="booking-page-avatar" src={guide.imgUrl} width="75px" />
                 <p className="booking-page-full-name">{guide.fullName}</p>
                 <div className="booking-page-rate-box" >
                   <p className="pra-rating">Rating:</p>
                   <Rating
-                    start={ 0 }
-                    stop={ 5 }
-                    initialRating={ guide.rating }
-                    emptySymbol={ <img src={ star } width="16" /> }
-                    fullSymbol={ <img src={ star_o } width="16" /> }
+                    start={0}
+                    stop={5}
+                    initialRating={guide.rating}
+                    emptySymbol={<img src={star} width="16" />}
+                    fullSymbol={<img src={star_o} width="16" />}
                     readonly
                   />
                   <p className="total-rating">({guide.reviewers_count})</p>
@@ -92,17 +95,23 @@ class _BookingPage extends Component {
                   <div>
                     <p>need to be here description</p>
                   </div>
-                  <img className="booking-page-img-trail" src={ guide.trails[bookForm.trailSelected].imgUrls[0] } />
+                  <img className="booking-page-img-trail" src={guide.trails[bookForm.trailSelected].imgUrls[0]} />
                 </section>
               </div>
               <section className="booking-page-add-review">
                 <p className="title">Write a review about {guide.fullName}</p>
-                {!this.props.loggedInUser
-                  ? <ReviewAdd guide={ guide } />
+                {this.props.loggedInUser
+                  ? <ReviewAdd guide={guide} />
                   : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
               </section>
             </section>
           </div>}
+        {guide && this.state.reviews &&
+          <ReviewList reviews={this.state.reviews} />
+        }
+
+
+
       </main>
     );
   }
@@ -110,8 +119,10 @@ class _BookingPage extends Component {
 
 const mapStateToProps = state => ({
   loggedInUser: state.user.loggedInUser,
-});
-//   const mapDispatchToProps = {
+  reviews: state.review.reviews,
 
-//   };
-export const BookingPage = connect(mapStateToProps)(_BookingPage);
+});
+const mapDispatchToProps = {
+  loadReviews
+};
+export const BookingPage = connect(mapStateToProps, mapDispatchToProps)(_BookingPage);

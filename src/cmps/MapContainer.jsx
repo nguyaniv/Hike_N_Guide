@@ -98,10 +98,7 @@ export class MapContainer extends Component {
                     <Marker onClick={this.onMarkerClick}
                         position={{ lat: this.state.lat, lng: this.state.lng }}
                         name={'Current location'} /> : <Marker onClick={this.onMarkerClick} name={'Current location'} />}
-
-
-
-
+             
                 <InfoWindow
                     marker={ this.state.activeMarker }
                     visible={ this.state.showingInfoWindow }>
