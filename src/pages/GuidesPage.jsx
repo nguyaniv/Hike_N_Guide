@@ -21,7 +21,6 @@ class _GuidesPage extends React.Component {
   usersToShow = this.props.users;
 
   render() {
-    console.log(this.usersToShow)
     const trailId = this.props.match.params.id;
     return (
       <main>
