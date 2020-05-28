@@ -1,6 +1,9 @@
 const initialState = {
   users: [],
-  loggedInUser: '',
+  loggedInUser: {
+    "_id": "ZfRlDUZwJB",
+        "fullName": "Renee Denard"
+  },
 };
 
 export default function (state = initialState, action = {}) {
