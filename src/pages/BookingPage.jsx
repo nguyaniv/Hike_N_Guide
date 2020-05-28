@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { Review } from '../cmps/Review'
 //services
 import userService from '../services/user.service';
 import { langCodeToName } from '../services/language.service';
@@ -35,11 +34,10 @@ class _BookingPage extends Component {
     this.loadGuide(id);
     //review load
     const reviews = await this.props.loadReviews({guideId: id})
-    this.setState({ reviews }, () => { console.log(this.state) })
+    this.setState({ reviews })
   }
 
   loadGuide = id => {
-    console.log('id', id);
     userService.getById(id)
       .then(guide => {
         this.setState({ guide })
@@ -91,7 +89,7 @@ class _BookingPage extends Component {
               </div>
               <section className="booking-page-add-review">
                 <p className="title">Write a review about {guide.fullName}</p>
-                {!this.props.loggedInUser
+                {this.props.loggedInUser
                   ? <ReviewAdd guide={guide} />
                   : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
               </section>

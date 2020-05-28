@@ -1,11 +1,13 @@
 import reviewService from '../../services/review.service'
+
+
+
+
 export function loadReviews(filter) {
     console.log('filter', filter);
-    
     return async dispatch => {
         try {
             const reviews = await reviewService.query(filter)
-                
             dispatch(setReviews(reviews));
             return reviews
         } catch (err) {
@@ -35,7 +37,8 @@ export function saveReview(review) {
                 review: {
                     ...currReview,
                 },
-            });
+            })
+            return currReview
         } catch (err) {
             console.log('error', err);
         }

@@ -33,15 +33,17 @@ function remove(id) {
 }
 
 async function add(review) {
+    console.log(review)
+    review.at = Date.now()
     review._id = makeId();
-    const addedTrail = await HttpService.post('reviews', review);
-    return addedTrail;
+    const addedReview = await HttpService.post('reviews', review);
+    return addedReview;
 }
 
 async function edit(review) {
     review.isEditMode = false
-    const trailToEdit = await HttpService.put(`reviews/${review._id}`, review)
-    return trailToEdit
+    const reviewToEdit = await HttpService.put(`reviews/${review._id}`, review)
+    return reviewToEdit
 }
 
 
