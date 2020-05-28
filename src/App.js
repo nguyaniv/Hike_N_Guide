@@ -7,6 +7,8 @@ import { HomePage } from './pages/HomePage';
 import { TrailPage } from './pages/TrailPage';
 import { BookingPage } from './pages/BookingPage';
 import { GuidesPage } from './pages/GuidesPage';
+import { LogIn } from './pages/LogIn';
+import { UserProfile } from './pages/UserProfile';
 import TrailAdd from './pages/TrailAdd';
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
+        <Route path="/profile" component={UserProfile } />
+        <Route path="/login" component={ LogIn } />
         <Route path="/booking/:id" component={ BookingPage } />
         <Route path="/trail/:id" component={ GuidesPage } />
         <Route path="/trail/add" component={ TrailAdd } />

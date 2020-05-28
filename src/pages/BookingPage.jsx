@@ -48,6 +48,17 @@ class _BookingPage extends Component {
       () => { console.log('state:', this.state); });
   }
 
+  handelDate = date => {
+    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, date } }),
+      () => { console.log('state:', this.state); });
+  }
+
+  onBook = ev => {
+    ev.preventDefault();
+    const order = this.state
+    
+  }
+
   render() {
     const { guide, bookForm } = this.state;
     return (
@@ -56,7 +67,7 @@ class _BookingPage extends Component {
           && <div className="booking-page-contain">
 
           <BookingForm trails={ this.state.guide.trails } handelInput={ this.handelInput }
-            bookForm={ this.state.bookForm } />
+            bookForm={ this.state.bookForm } handelDate={ this.handelDate } onBook={ this.onBook } />
             <section className="booking-page-content">
               <div className="booking-page-details">
                 <img className="booking-page-avatar" src={ guide.imgUrl } width="75px" />

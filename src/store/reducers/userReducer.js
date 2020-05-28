@@ -1,6 +1,9 @@
+let localLoggedinUser = null;
+if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
+
 const initialState = {
   users: [],
-  loggedInUser: '',
+  loggedInUser: localLoggedinUser,
 };
 
 export default function (state = initialState, action = {}) {
@@ -9,6 +12,8 @@ export default function (state = initialState, action = {}) {
       return { ...state, users: action.users };
 
     case 'SET_USER':
+      console.log('SET_USER', action.user);
+
       return { ...state, loggedInUser: action.user };
 
     case 'UPDATE_USER':

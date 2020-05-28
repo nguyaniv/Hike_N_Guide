@@ -40,8 +40,7 @@ export class GuidePreview extends React.Component {
   getTrailsToShow() {
     if (this.state.trails) return;
     const trailsToShow = this.state.trails
-      .map(trail => `${trail.name}`)
-      .join(', ');
+      .map(trail => `${trail.name}`).join(', ');
     return trailsToShow;
   }
 
