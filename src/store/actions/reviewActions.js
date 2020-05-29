@@ -38,7 +38,6 @@ export function saveReview(review) {
                     ...currReview,
                 },
             })
-            return currReview
         } catch (err) {
             console.log('error', err);
         }

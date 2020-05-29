@@ -10,11 +10,10 @@ export default {
 
 async function query(filter = null) {
     
-    const reviews = await HttpService.get('reviews')
+    const reviews = await HttpService.get('review')
     if (!filter) return reviews
     return reviews.filter(review => {
         if (review.guide) {
-            console.log('review:', review);
             return review.guide._id === filter.guideId
         } else {
             return review.trail._id === filter.trailId
@@ -25,24 +24,22 @@ async function query(filter = null) {
 
 
 function getById(reviewId) {
-    return HttpService.get(`reviews/${reviewId}`);
+    return HttpService.get(`review/${reviewId}`);
 }
 
 function remove(id) {
-    return HttpService.delete(`reviews/${id}`);
+    return HttpService.delete(`review/${id}`);
 }
 
 async function add(review) {
-    console.log(review)
     review.at = Date.now()
-    review._id = makeId();
-    const addedReview = await HttpService.post('reviews', review);
+    const addedReview = await HttpService.post('review', review);
     return addedReview;
 }
 
 async function edit(review) {
     review.isEditMode = false
-    const reviewToEdit = await HttpService.put(`reviews/${review._id}`, review)
+    const reviewToEdit = await HttpService.put(`review/${review._id}`, review)
     return reviewToEdit
 }
 

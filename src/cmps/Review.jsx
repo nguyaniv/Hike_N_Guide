@@ -9,16 +9,14 @@ export class Review extends Component {
   render() {
  
 
-      console.log(this.props.review)
       const wtittenBy = this.props.review.by.fullName
       const writtedId = this.props.review.by._id
-      console.log(wtittenBy,writtedId);
       const {txt,rate} = this.props.review
       
       
     if (this.props) {
       return (
-        <main>
+        <section>
           <div className="review-container">
 
           <Rating className="trail-preview-rating" start={ 0 }
@@ -37,7 +35,7 @@ export class Review extends Component {
               <p>{txt}</p>
             </div>
           </div>
-        </main>
+        </section>
       )
     }
 

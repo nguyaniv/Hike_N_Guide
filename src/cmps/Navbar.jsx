@@ -33,10 +33,10 @@ class _Navbar extends React.Component {
   };
 
   componentDidMount() {
-    // this.setState(prevState => ({
-    //   ...prevState,
-    //   loggedInUser: this.props.loggedInUser
-    // }));
+    this.setState(prevState => ({
+      ...prevState,
+      loggedInUser: this.props.loggedInUser
+    }));
   }
 
   setHeaderColor = () => {

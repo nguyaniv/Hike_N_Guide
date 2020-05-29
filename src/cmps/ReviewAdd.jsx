@@ -27,7 +27,6 @@ class _ReviewAdd extends Component {
       _id: id
     }
     this.setState({ by: miniUser, guide: miniGuide }, () => {
-      console.log(this.state)
     })
     // } else if (this.props.user) {
     // this.setState({ by: user, user: this.props.user });

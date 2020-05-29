@@ -18,7 +18,6 @@ export default function (state = initialState, action = {}) {
       return {
         ...state,
         review: state.review.map(review => {
-          console.log(action.review)
           if (review._id === action.review._id) return action.review;
           action.review.currTrail.isEditMode = false
           return review;
