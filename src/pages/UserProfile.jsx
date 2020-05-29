@@ -6,37 +6,34 @@ import UserService from '../services/user.service';
 
 class _UserProfile extends Component {
     state = {
-        user: '',
+      user: '',
     }
 
-
     componentDidMount() {
-        const { id } = this.props.match.params;
-        const user = UserService.getById(id);
-        console.log(user);
+      const { id } = this.props.match.params;
+      const user = UserService.getById(id);
+      console.log(user);
 
-        if (!this.props.loggedInUser) {
-            this.props.history.goBack();
-        }
+      if (!this.props.loggedInUser) {
+        this.props.history.goBack();
+      }
     }
 
     render() {
-        const { user } = this.state;
-        return (
-            <main>
-                {user
-                    && <img src={user.imgUrl} />
-                    //   <p>Hello {user.fullName} </p>
-
-                }
-
-            </main>
-        );
+      const { user } = this.state;
+      return (
+        <main>
+          {user
+              && <img src={ user.imgUrl } alt={ user.fullName } />
+              //   <p>Hello {user.fullName} </p>
+          }
+        </main>
+      );
     }
 }
 
 const mapStateToProps = state => ({
-    loggedInUser: state.user.loggedInUser,
+  loggedInUser: state.user.loggedInUser,
 });
 const mapDispatchToProps = {
 

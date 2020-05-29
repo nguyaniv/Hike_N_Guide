@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import TrailsFilter from '../cmps/TrailsFilter';
+// import TrailsFilter from '../cmps/TrailsFilter';
 import { List } from '../cmps/List';
-import { ReviewList } from '../cmps/ReviewList';
+// import { ReviewList } from '../cmps/ReviewList';
 
 
 import { loadTrails } from '../store/actions/trailsActions';
@@ -12,7 +12,7 @@ import { loadTrails } from '../store/actions/trailsActions';
 class _TrailPage extends Component {
   componentDidMount() {
     this.props.loadTrails();
-    console.log('not from trail');
+    // console.log('not from trail');
   }
 
   render() {

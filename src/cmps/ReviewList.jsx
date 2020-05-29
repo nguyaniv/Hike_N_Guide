@@ -1,12 +1,11 @@
 import React from 'react';
-import {Review} from '../cmps/Review'
+import { Review } from './Review';
+
 export const ReviewList = props => (
-    
+
     <main>
-    {console.log(props)}
+    {/* {console.log(props)} */}
     <h2>helloooo</h2>
-    { props.reviews.map(review => {
-              return <Review key={ review._id } review ={review} />;
-            }) }
+    { props.reviews.map(review => <Review key={ review._id } review ={ review } />) }
 </main>
-)
+);

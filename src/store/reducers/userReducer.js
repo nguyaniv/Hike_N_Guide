@@ -1,27 +1,25 @@
-let localLoggedinUser = null;
+let localLoggedinUser = {
+  _id: 'nbQBvvXdIu',
+  userName: 'sarah32',
+  fullName: 'Sarah Tubbaly',
+  password: 'HX238PyM',
+  email: 'sarah@gmail.com',
+  isAdmin: false,
+  imgUrl: 'https://randomuser.me/api/portraits/women/91.jpg',
+  rating: 5,
+  reviewers_count: 6,
+  languages: [
+    'he',
+  ],
+};
+
 if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
-// const initialState = {
-//   users: [],
-//   loggedInUser: localLoggedinUser,
-// };
 const initialState = {
   users: [],
-  loggedInUser: {
-    _id: 'nbQBvvXdIu',
-    userName: 'sarah32',
-    fullName: 'Sarah Tubbaly',
-    password: 'HX238PyM',
-    email: 'sarah@gmail.com',
-    isAdmin: false,
-    imgUrl: 'https://randomuser.me/api/portraits/women/91.jpg',
-    rating: 5,
-    reviewers_count: 6,
-    languages: [
-      'he',
-    ],
-  },
+  loggedInUser: localLoggedinUser,
 };
+
 
 export default function (state = initialState, action = {}) {
   switch (action.type) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { saveReview } from '../store/actions/reviewActions'
 import Rating from 'react-rating';
+import { saveReview } from '../store/actions/reviewActions';
 
 //Images
 import star from '../img/star.svg';
@@ -13,22 +13,22 @@ class _ReviewAdd extends Component {
     rate: 1,
     by: {},
     txt: '',
-    guide: {}
+    guide: {},
   }
 
   componentDidMount() {
-    let { _id, fullName } = this.props.user;
-    const miniUser = { _id, fullName }
-    const { guide } = this.props
-    const id = guide._id
-    const guideName = guide.fullName
+    const { _id, fullName } = this.props.user;
+    const miniUser = { _id, fullName };
+    const { guide } = this.props;
+    const id = guide._id;
+    const guideName = guide.fullName;
     const miniGuide = {
       fullName: guideName,
-      _id: id
-    }
+      _id: id,
+    };
     this.setState({ by: miniUser, guide: miniGuide }, () => {
-      console.log(this.state)
-    })
+      // console.log(this.state);
+    });
     // } else if (this.props.user) {
     // this.setState({ by: user, user: this.props.user });
     // }
@@ -42,7 +42,7 @@ class _ReviewAdd extends Component {
   onSend = ev => {
     ev.preventDefault();
     const review = this.state;
-    this.props.saveReview(review)
+    this.props.saveReview(review);
   }
 
   render() {
@@ -51,35 +51,33 @@ class _ReviewAdd extends Component {
       <section className="reviewAdd">
         <div className="reviewAdd-rate-contain">
           <p>Rate: </p>
-          <Rating start={0}
-            stop={5}
-            initialRating={rate}
-            emptySymbol={<img src={star} className="img-star" />}
-            fullSymbol={<img src={star_o} className="img-star" />}
-            onChange={rate => {
+          <Rating start={ 0 }
+            stop={ 5 }
+            initialRating={ rate }
+            emptySymbol={ <img src={ star } alt="star" className="img-star" /> }
+            fullSymbol={ <img src={ star_o } alt="full-star" className="img-star" /> }
+            onChange={ rate => {
               this.setState({ rate });
-            }}
+            } }
           />
         </div>
-        <form onSubmit={this.onSend}>
+        <form onSubmit={ this.onSend }>
 
-          <textarea name="txt" value={txt} onChange={this.handledChange}
+          <textarea name="txt" value={ txt } onChange={ this.handledChange }
             cols="30" rows="10" placeholder="What do you think about me?" required>
           </textarea>
           <button className="reviewAdd-submit-btn">Send</button>
         </form>
       </section>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    reviews: state.review.reviews,
-    user: state.user.loggedInUser
-  };
-};
+const mapStateToProps = state => ({
+  reviews: state.review.reviews,
+  user: state.user.loggedInUser,
+});
 const mapDispatchToProps = {
-  saveReview
+  saveReview,
 };
 export const ReviewAdd = connect(mapStateToProps, mapDispatchToProps)(_ReviewAdd);

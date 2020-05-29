@@ -17,11 +17,7 @@ import MapContainer from '../cmps/MapContainer';
 class _TrailDetailsPage extends React.Component {
   state = {
     isEditMode: false,
-    usersToShow: [
-      {
-        trails: [],
-      },
-    ],
+    usersToShow: null,
     selectedTrail: {
       name: '',
       country: '',
@@ -133,7 +129,9 @@ class _TrailDetailsPage extends React.Component {
             Check guides for this trail
           </h2>
           <div className="trail-details-guides-list">
-            {usersToShow.map(guide => <GuidePreview key={ guide._id } guide={ guide } />)}
+            {usersToShow
+              && usersToShow
+                .map(guide => <GuidePreview key={ guide._id } guide={ guide } />)}
           </div>
           <section className="trail-details-info">
             <div className="trail-details-info-main">
