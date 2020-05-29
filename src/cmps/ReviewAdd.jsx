@@ -13,24 +13,47 @@ class _ReviewAdd extends Component {
     rate: 1,
     by: {},
     txt: '',
-    guide: {}
+    type: {},
+    title: '',
+    editMode: false
   }
 
   componentDidMount() {
-    let { _id, fullName } = this.props.user;
-    const miniUser = { _id, fullName }
-    const { guide } = this.props
-    const id = guide._id
-    const guideName = guide.fullName
-    const miniGuide = {
-      fullName: guideName,
-      _id: id
+
+    if (this.props.guide) {
+      let { _id, fullName } = this.props.user;
+      const miniUser = { _id, fullName }
+      const { guide } = this.props
+      const id = guide._id
+      const guideName = guide.fullName
+      const miniGuide = {
+        guide: {
+          fullName: guideName,
+          _id: id
+        }
+       
+      }
+      this.setState({ by: miniUser, type: miniGuide }, () => {
+     console.log(this.state)
+      })
     }
-    this.setState({ by: miniUser, guide: miniGuide }, () => {
-    })
-    // } else if (this.props.user) {
-    // this.setState({ by: user, user: this.props.user });
-    // }
+    if (this.props.trail) {
+      console.log(this.props.trail)
+      
+      let { _id, fullName } = this.props.user;
+      const miniUser = { _id, fullName }
+      const { trail } = this.props
+      const id = trail._id
+      const trailName = trail.name
+      const miniTrail = {
+        trail :{
+          _id : id,
+          name : trailName
+        }
+      }
+      this.setState({by:miniUser, type: miniTrail},()=>{console.log(this.state)
+      })
+    }
   }
 
   handledChange = ev => {
@@ -45,7 +68,7 @@ class _ReviewAdd extends Component {
   }
 
   render() {
-    const { rate, txt } = this.state;
+    const { rate, txt, title } = this.state;
     return (
       <section className="reviewAdd">
         <div className="reviewAdd-rate-contain">
@@ -61,7 +84,7 @@ class _ReviewAdd extends Component {
           />
         </div>
         <form onSubmit={this.onSend}>
-
+          <span>title</span> <input type="text" name="title" value={title} onChange={this.handledChange} />
           <textarea name="txt" value={txt} onChange={this.handledChange}
             cols="30" rows="10" placeholder="What do you think about me?" required>
           </textarea>

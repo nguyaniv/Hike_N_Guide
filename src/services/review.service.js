@@ -13,10 +13,10 @@ async function query(filter = null) {
     const reviews = await HttpService.get('review')
     if (!filter) return reviews
     return reviews.filter(review => {
-        if (review.guide) {
-            return review.guide._id === filter.guideId
-        } else {
-            return review.trail._id === filter.trailId
+        if (review.type.guide) {
+            return review.type.guide._id === filter.guideId
+        } else {                
+            return review.type.trail._id === filter.trailId
         }
     })
 }
@@ -38,6 +38,7 @@ async function add(review) {
 }
 
 async function edit(review) {
+    console.log(review)
     review.isEditMode = false
     const reviewToEdit = await HttpService.put(`review/${review._id}`, review)
     return reviewToEdit

@@ -504,104 +504,22 @@
   ],
   "review": [
     {
-      "_id": "5lff",
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "rate": 3,
-      "at": 8948,
-      "trail": {
-        "name": "GR20",
-        "_id": "v4g"
-      },
-      "txt": "Great Trail!"
-    },
-    {
-      "_id": "df1",
-      "by": {
-        "_id": "ECE1MhOgcP",
-        "fullName": "Aisha Magano"
-      },
-      "rate": 3,
-      "at": 7678,
-      "guide": {
-        "_id": "aRmDjhBd4b",
-        "fullName": "Rogelio Geisbauer"
-      },
-      "txt": "Great Guide!"
-    },
-    {
       "rate": 1,
       "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
+        "_id": "nbQBvvXdIu",
+        "fullName": "Sarah Tubbaly"
       },
-      "txt": "this is after test",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
+      "txt": "i was looking for a guide with a great skills - and Rogelio Geisbauer is just what I wanted",
+      "type": {
+        "guide": {
+          "fullName": "Rogelio Geisbauer",
+          "_id": "aRmDjhBd4b"
+        }
       },
-      "at": 1590666707943,
-      "_id": "h9P"
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "new test",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "at": 1590669054700,
-      "_id": "yNK"
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "lior test",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "rating": 4,
-      "at": 1590669482056,
-      "_id": "iuz"
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "dsadsadsd",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "rating": 4,
-      "at": 1590669574792,
-      "_id": "CNE"
-    },
-    {
-      "rate": 3,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "test 3",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "at": 1590669615449,
-      "_id": "jQu"
+      "title": "a great guide",
+      "at": 1590750376828,
+      "_id": 1,
+      "isEditMode": false
     },
     {
       "rate": 1,
@@ -609,27 +527,17 @@
         "_id": "nbQBvvXdIu",
         "fullName": "Sarah Tubbaly"
       },
-      "txt": "test",
-      "guide": {
-        "fullName": "Sarah Tubbaly",
-        "_id": "nbQBvvXdIu"
+      "txt": "i was looking for a guide with a great skills - and Rogelio Geisbauer is just what I wanted\n",
+      "type": {
+        "guide": {
+          "fullName": "Rogelio Geisbauer",
+          "_id": "aRmDjhBd4b"
+        }
       },
-      "at": 1590743196105,
-      "_id": "NSCjgeq"
-    },
-    {
-      "rate": 5,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "this is reall nice guide",
-      "guide": {
-        "fullName": "Sarah Tubbaly",
-        "_id": "nbQBvvXdIu"
-      },
-      "at": 1590743225482,
-      "_id": "KaYMqQE"
+      "title": "a great guide 1",
+      "at": 1590751550343,
+      "_id": 2,
+      "isEditMode": false
     },
     {
       "rate": 1,
@@ -637,13 +545,17 @@
         "_id": "nbQBvvXdIu",
         "fullName": "Sarah Tubbaly"
       },
-      "txt": "dsadsadsa",
-      "guide": {
-        "fullName": "Sarah Tubbaly",
-        "_id": "nbQBvvXdIu"
+      "txt": "namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename",
+      "type": {
+        "trail": {
+          "_id": "5u3",
+          "name": "Olympus Mountain"
+        }
       },
-      "at": 1590743233577,
-      "_id": "a0t5a-U"
+      "title": "namenamenamenamename",
+      "editMode": false,
+      "at": 1590778374171,
+      "_id": 3
     },
     {
       "rate": 1,
@@ -651,13 +563,17 @@
         "_id": "nbQBvvXdIu",
         "fullName": "Sarah Tubbaly"
       },
-      "txt": "test",
-      "guide": {
-        "fullName": "Renee Denard",
-        "_id": "ZfRlDUZwJB"
+      "txt": "new test for TRIGLAVnew test for TRIGLAV",
+      "type": {
+        "trail": {
+          "_id": "1a6",
+          "name": "Triglav National Park"
+        }
       },
-      "at": 1590744382935,
-      "_id": "GLVqV9F"
+      "title": "new test for TRIGLAV",
+      "editMode": false,
+      "at": 1590778977673,
+      "_id": 4
     },
     {
       "rate": 1,
@@ -665,13 +581,17 @@
         "_id": "nbQBvvXdIu",
         "fullName": "Sarah Tubbaly"
       },
-      "txt": "this is awsome guide",
-      "guide": {
-        "fullName": "Rogelio Geisbauer",
-        "_id": "aRmDjhBd4b"
+      "txt": "for Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympus",
+      "type": {
+        "trail": {
+          "_id": "5u3",
+          "name": "Olympus Mountain"
+        }
       },
-      "at": 1590744509616,
-      "_id": "UEiSPLm"
+      "title": "for Mt. Olympus",
+      "editMode": false,
+      "at": 1590779097232,
+      "_id": 5
     },
     {
       "rate": 1,
@@ -679,13 +599,35 @@
         "_id": "nbQBvvXdIu",
         "fullName": "Sarah Tubbaly"
       },
-      "txt": "test",
-      "guide": {
-        "fullName": "Rogelio Geisbauer",
-        "_id": "aRmDjhBd4b"
+      "txt": "Prachovské skályPrachovské skályPrachovské skályPrachovské skályPrachovské skály",
+      "type": {
+        "trail": {
+          "_id": "j1v",
+          "name": "‪Prachovské skály‬"
+        }
       },
-      "at": 1590744565565,
-      "_id": "B3605Z5"
+      "title": "Prachovské skály",
+      "editMode": false,
+      "at": 1590779119766,
+      "_id": 6
+    },
+    {
+      "rate": 1,
+      "by": {
+        "_id": "nbQBvvXdIu",
+        "fullName": "Sarah Tubbaly"
+      },
+      "txt": "YOSSI IS RIGHT YOSSI IS RIGHT YOSSI IS RIGHT",
+      "type": {
+        "guide": {
+          "fullName": "James Curtis",
+          "_id": "JyHAWrdfz1"
+        }
+      },
+      "title": "YOSSI IS RIGHT",
+      "editMode": false,
+      "at": 1590779493026,
+      "_id": 7
     }
   ]
 }
