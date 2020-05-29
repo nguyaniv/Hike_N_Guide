@@ -6,7 +6,7 @@ import { Footer } from './cmps/Footer';
 import { HomePage } from './pages/HomePage';
 import { TrailPage } from './pages/TrailPage';
 import { BookingPage } from './pages/BookingPage';
-import { GuidesPage } from './pages/GuidesPage';
+import { GuidePage } from './pages/GuidePage';
 import { LogIn } from './pages/LogIn';
 import { UserProfile } from './pages/UserProfile';
 import { TrailDetailsPage } from './pages/TrailDetailsPage';
@@ -23,7 +23,7 @@ function App() {
         <Route path="/trail/add" component={ TrailAdd } />
         <Route path="/trail/:id" component={ TrailDetailsPage } />
         <Route path="/trail" component={ TrailPage } />
-        <Route exact path="/guide" component={ GuidesPage } />
+        <Route exact path="/guide" component={ GuidePage } />
         <Route exact path="/" component={ HomePage } />
       </Switch>
       <Footer />

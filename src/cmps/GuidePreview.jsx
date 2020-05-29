@@ -38,10 +38,11 @@ export class GuidePreview extends React.Component {
   }
 
   getTrailsToShow() {
-    if (this.state.trails) return;
-    const trailsToShow = this.state.trails
-      .map(trail => `${trail.name}`).join(', ');
-    return trailsToShow;
+    if (!this.state.trails) return;
+    // eslint-disable-next-line consistent-return
+    return this.state.trails
+      .map(trail => `${trail.name}`)
+      .join(', ');
   }
 
   render() {

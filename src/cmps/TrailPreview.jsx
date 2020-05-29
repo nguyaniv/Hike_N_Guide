@@ -24,6 +24,9 @@ export class TrailPreview extends React.Component {
       _id,
       name,
       country,
+      difficulty,
+      days,
+      distance,
       rating,
       imgUrls,
     } = this.state;
@@ -31,7 +34,7 @@ export class TrailPreview extends React.Component {
       <article className="trail-preview">
         <Link to={ `/trail/${_id}` }>
           <img className="trail-preview-image" src={ imgUrls[0] } alt={ name } />
-          <div className="guide-preview-info">
+          <div className="trail-preview-info">
             <div className="trail-preview-main-info">
               <span className="trail-preview-name">{name}</span>
               <Rating className="trail-preview-rating" start={ 0 }
@@ -42,7 +45,18 @@ export class TrailPreview extends React.Component {
                 readonly
               />
             </div>
-            <span className="trail-preview-country">{country}</span>
+              <p className="trail-preview-row">
+                <span className="trail-preview-heading">Country: </span>{country}
+              </p>
+              <p className="trail-preview-row">
+                <span className="trail-preview-heading">Difficulty: </span>{difficulty}
+              </p>
+              <p className="trail-preview-row">
+                <span className="trail-preview-heading">Days: </span>{days}
+              </p>
+              <p className="trail-preview-row">
+                <span className="trail-preview-heading">Distance: </span>{distance}
+              </p>
           </div>
         </Link>
       </article>);
