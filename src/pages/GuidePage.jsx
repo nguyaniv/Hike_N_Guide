@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { List } from '../cmps/List';
 import { loadUsers } from '../store/actions/userAction';
 
-class _GuidesPage extends React.Component {
+class _GuidePage extends React.Component {
   state = {
     usersToShow: [],
   }
@@ -24,7 +24,10 @@ class _GuidesPage extends React.Component {
   render() {
     const { usersToShow } = this.state;
     return (
-      <main>
+      <main className="guide-page">
+        <h1 className="guide-page-main-heading">
+          Choose your guide
+        </h1>
         <List items={ usersToShow } />
       </main>
     );
@@ -38,4 +41,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   loadUsers,
 };
-export const GuidesPage = connect(mapStateToProps, mapDispatchToProps)(_GuidesPage);
+export const GuidePage = connect(mapStateToProps, mapDispatchToProps)(_GuidePage);
