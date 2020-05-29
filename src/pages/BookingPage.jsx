@@ -7,11 +7,11 @@ import userService from '../services/user.service';
 import { langCodeToName } from '../services/language.service';
 
 //actions
-import { loadReviews } from '../store/actions/reviewActions'
+import { loadReviews } from '../store/actions/reviewActions';
 
 //Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
-import { ReviewList } from '../cmps/ReviewList'
+import { ReviewList } from '../cmps/ReviewList';
 import { BookingForm } from '../cmps/BookingForm';
 
 //Images
@@ -33,15 +33,16 @@ class _BookingPage extends Component {
     const { id } = this.props.match.params;
     this.loadGuide(id);
     //review load
-    const reviews = await this.props.loadReviews({guideId: id})
-    this.setState({ reviews })
+    const reviews = await this.props.loadReviews({ guideId: id });
+    this.setState({ reviews });
   }
 
   loadGuide = id => {
     userService.getById(id)
       .then(guide => {
-        this.setState({ guide })
-  })}
+        this.setState({ guide });
+      });
+  }
 
   handelInput = ev => {
     const { name } = ev.target;
@@ -58,8 +59,7 @@ class _BookingPage extends Component {
 
   onBook = ev => {
     ev.preventDefault();
-    const order = this.state
-    
+    // const order = this.state
   }
 
   render() {
@@ -73,16 +73,16 @@ class _BookingPage extends Component {
             bookForm={ this.state.bookForm } handelDate={ this.handelDate } onBook={ this.onBook } />
             <section className="booking-page-content">
               <div className="booking-page-details">
-                <img className="booking-page-avatar" src={guide.imgUrl} width="75px" />
+                <img className="booking-page-avatar" alt={ guide.fullName } src={ guide.imgUrl } width="75px" />
                 <p className="booking-page-full-name">{guide.fullName}</p>
                 <div className="booking-page-rate-box" >
                   <p className="pra-rating">Rating:</p>
                   <Rating
-                    start={0}
-                    stop={5}
-                    initialRating={guide.rating}
-                    emptySymbol={<img src={star} width="16" />}
-                    fullSymbol={<img src={star_o} width="16" />}
+                    start={ 0 }
+                    stop={ 5 }
+                    initialRating={ guide.rating }
+                    emptySymbol={ <img src={ star } alt="star" width="16" /> }
+                    fullSymbol={ <img src={ star_o } alt="full-star" width="16" /> }
                     readonly
                   />
                   <p className="total-rating">({guide.reviewers_count})</p>
@@ -95,21 +95,24 @@ class _BookingPage extends Component {
                   <div>
                     <p>need to be here description</p>
                   </div>
-                  <img className="booking-page-img-trail" src={guide.trails[bookForm.trailSelected].imgUrls[0]} />
+                  <img
+                    className="booking-page-img-trail"
+                    alt={ guide.trails[bookForm.trailSelected].name }
+                    src={ guide.trails[bookForm.trailSelected].imgUrls[0] }
+                  />
                 </section>
               </div>
               <section className="booking-page-add-review">
                 <p className="title">Write a review about {guide.fullName}</p>
                 {this.props.loggedInUser
-                  ? <ReviewAdd guide={guide} /> 
+                  ? <ReviewAdd guide={ guide } />
                   : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
               </section>
             </section>
           </div>}
-        {guide && this.state.reviews &&
-          <ReviewList reviews={this.state.reviews} />
+        {guide && this.state.reviews
+          && <ReviewList reviews={ this.state.reviews } />
         }
-
 
 
       </main>
@@ -123,6 +126,6 @@ const mapStateToProps = state => ({
 
 });
 const mapDispatchToProps = {
-  loadReviews
+  loadReviews,
 };
 export const BookingPage = connect(mapStateToProps, mapDispatchToProps)(_BookingPage);

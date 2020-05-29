@@ -35,7 +35,7 @@ class _Navbar extends React.Component {
   componentDidMount() {
     this.setState(prevState => ({
       ...prevState,
-      loggedInUser: this.props.loggedInUser
+      loggedInUser: this.props.loggedInUser,
     }));
   }
 
@@ -98,7 +98,7 @@ class _Navbar extends React.Component {
                   className="main-header-link"
                   activeClassName="selected"
                 >
-                  <img src={ loggedInUser.imgUrl } className="user-profile-link-image"/>
+                  <img src={ loggedInUser.imgUrl } alt={ loggedInUser.fullName } className="user-profile-link-image"/>
                 </NavLink
             >}
           </nav>

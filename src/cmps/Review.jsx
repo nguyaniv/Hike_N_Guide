@@ -49,15 +49,9 @@ class _Review extends Component {
     }))
   }
 
-
-
   render() {
-
-
     const wtittenBy = this.props.review.by.fullName
     const { txt, rate, title, } = this.state.review
-
-
     return (
       <section>
         {this.state.review && this.state.editMode&& 
@@ -102,20 +96,9 @@ class _Review extends Component {
               this.reviewEditMode()
             }}>edit</button>
           </div>
-          
           }
-
-
-
-
       </section>
-
-
     )
-
-
-
-
   }
 
 }
@@ -130,53 +113,3 @@ const mapDispatchToProps = {
   editReview
 };
 export const Review = connect(mapStateToProps, mapDispatchToProps)(_Review);
-
-
-
-
-{/* <form className="" onSubmit={this.onEdit}>
-          <span>title</span> <input type="text" name="title" value={title} onChange={this.handledChange} />
-          <br />
-          <textarea name="txt" value={txt} onChange={this.handledChange}
-            cols="30" rows="10" placeholder="What do you think about me?" required>
-          </textarea>
-          <button className="">Send</button>
-        </form> */}
-
-
-
-
-
-
-
-
-
-
-
-
-        // <div className="review-container">
-        //     <div className="review-name-date">
-        //       <Rating className="guide-preview-rating" start={0}
-        //         stop={5}
-        //         initialRating={rate}
-        //         emptySymbol={<img className="trail-preview-full-star" src={star} />}
-        //         fullSymbol={<img className="trail-preview-star" src={star_o} />}
-        //         readonly
-        //       />
-        //       <br />
-        //       <div>
-        //         <p className="review-guide-title">{title}</p>
-        //       </div>
-        //       <br />
-        //       <p> {wtittenBy} </p>
-        //     </div>
-        //     <div className="review-msg">
-        //       <p>{txt}</p>
-        //     </div>
-        //     <button onClick={() => {
-        //       this.onDeleteGuideReview()
-        //     }}>Delete</button>
-        //     <button onClick={() => {
-        //       this.reviewEditMode()
-        //     }}>edit</button>
-        //   </div>

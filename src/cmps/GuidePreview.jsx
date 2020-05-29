@@ -62,8 +62,8 @@ export class GuidePreview extends React.Component {
               <Rating start={ 0 }
                 stop={ 5 }
                 initialRating={ rating }
-                emptySymbol={ <img className="guide-preview-full-star" src={ star } /> }
-                fullSymbol={ <img className="guide-preview-star" src={ star_o } /> }
+                emptySymbol={ <img className="guide-preview-full-star" src={ star } alt="star" /> }
+                fullSymbol={ <img className="guide-preview-star" src={ star_o } alt="full-star" /> }
                 readonly
               />
             </div>
