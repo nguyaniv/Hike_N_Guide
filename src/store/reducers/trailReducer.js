@@ -20,7 +20,6 @@ export default function (state = initialState, action = {}) {
         ...state,
         
         trails: state.trails.map(trail => {
-          console.log(action.trail)
           if (trail._id === action.trail._id) return action.trail;
           action.trail.currTrail.isEditMode = false
           return trail;
