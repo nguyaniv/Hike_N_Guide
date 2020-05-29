@@ -45,19 +45,21 @@ export function saveReview(review) {
 
 
 export function editReview(review) {
-  return async dispatch => {
-    try {
-      const currReview = await reviewService.edit(review);
-      dispatch({
-        type: 'EDIT',
-        review: {
-          currReview,
-        },
-      });
-    } catch (err) {
-      console.log('error', err);
-    }
-  };
+    console.log(review)
+    
+    return async dispatch => {
+        try {
+            const currReview = await reviewService.edit(review.review);
+            dispatch({
+                type: 'EDIT',
+                review: {
+                    currReview,
+                },
+            });
+        } catch (err) {
+            console.log('error', err);
+        }
+    };
 }
 
 

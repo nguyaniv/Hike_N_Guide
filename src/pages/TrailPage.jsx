@@ -12,7 +12,7 @@ import { loadTrails } from '../store/actions/trailsActions';
 class _TrailPage extends Component {
   componentDidMount() {
     this.props.loadTrails();
-    // console.log('not from trail');
+    
   }
 
   render() {
@@ -60,3 +60,5 @@ const mapDispatchToProps = {
   loadTrails,
 };
 export const TrailPage = connect(mapStateToProps, mapDispatchToProps)(_TrailPage);
+
+

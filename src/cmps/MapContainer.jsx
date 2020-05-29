@@ -36,10 +36,8 @@ export class MapContainer extends Component {
       if (!this.state.fromAdd) return;
       const lat = clickEvent.latLng.lat();
       const lng = clickEvent.latLng.lng();
-      console.log(lat);
-      console.log(lng);
+   
       this.updateLatLng(lat, lng);
-      console.log(this.state);
 
 
       if (this.state.showingInfoWindow) {
@@ -59,10 +57,8 @@ export class MapContainer extends Component {
         if (!this.state.fromAdd) return
         const lat = clickEvent.latLng.lat()
         const lng = clickEvent.latLng.lng()
-        console.log(lat)
-        console.log(lng)
+        
         this.updateLatLng(lat, lng)
-        console.log(this.state)
         this.setState({ lat: lat, lng: lng })
 
       if (this.state.showingInfoWindow) {
