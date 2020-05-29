@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TrailsFilter from '../cmps/TrailsFilter';
 import { List } from '../cmps/List';
-import { ReviewList } from '../cmps/ReviewList'
+import { ReviewList } from '../cmps/ReviewList';
 
 
 import { loadTrails } from '../store/actions/trailsActions';
-
 
 
 class _TrailPage extends Component {
@@ -17,13 +16,12 @@ class _TrailPage extends Component {
   }
 
   render() {
-    
     const { trails } = this.props;
     return (
 
             <main className="trail-page">
                 {this.props.trails && <React.Fragment>
-                    <h2>Choose your trail</h2>  <Link to="trail/add">Add Trail</Link>
+                    <h2 className="trail-page-main-heading">Choose your trail</h2>  <Link to="trail/add">Add Trail</Link>
 {/* {    console.log(this.props)} */}
                     <React.Fragment>
                         {/* < TrailAdd /> */}

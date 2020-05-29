@@ -2,6 +2,10 @@
   position: relative;
   width: 100%;
   padding-block-start: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
 
   &-background {
     width: 100%;
@@ -22,13 +26,13 @@
   &-main-heading {
     position: absolute;
     text-align: center;
-    line-height: 2.2rem;
+    line-height: 2.5rem;
     width: 100%;
-    top: 5rem;
+    top: 8rem;
     margin: 0;
-    color: $clr2;
-    font-size: 2.2rem;
-    filter: drop-shadow(0 0 10px $clr5);
+    color: $clr4;
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px $clr2);
   }
 
   &-list-heading {
@@ -48,8 +52,6 @@
     background-color: #fff;
     border: 1px solid black;
     border-radius: 0.5rem;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
     text-decoration: none;
 
     &:hover,
