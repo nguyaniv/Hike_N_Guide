@@ -18,7 +18,7 @@ class _Review extends Component {
     this.setState({
       review: this.props.review
     }, () => {
-      // console.log(this.state.review)
+      console.log(this.state.review)
     })
   }
 

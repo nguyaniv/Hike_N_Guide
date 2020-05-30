@@ -6,8 +6,7 @@ export const ReviewList = props => (
     { props.reviews.map(review => {
       return (
         <div>
-          {console.log(props)
-          }
+          
           <Review key={review._id} review={review} />
         </div>
 

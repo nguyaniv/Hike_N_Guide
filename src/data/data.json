@@ -509,79 +509,7 @@
         "_id": "nbQBvvXdIu",
         "fullName": "Sarah Tubbaly"
       },
-      "txt": "i was looking for a guide with a great skills - and Rogelio Geisbauer is just what I wanted",
-      "type": {
-        "guide": {
-          "fullName": "Rogelio Geisbauer",
-          "_id": "aRmDjhBd4b"
-        }
-      },
-      "title": "a great guide",
-      "at": 1590750376828,
-      "_id": 1,
-      "isEditMode": false
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "i was looking for a guide with a great skills - and Rogelio Geisbauer is just what I wanted\n",
-      "type": {
-        "guide": {
-          "fullName": "Rogelio Geisbauer",
-          "_id": "aRmDjhBd4b"
-        }
-      },
-      "title": "a great guide 1",
-      "at": 1590751550343,
-      "_id": 2,
-      "isEditMode": false
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename",
-      "type": {
-        "trail": {
-          "_id": "5u3",
-          "name": "Olympus Mountain"
-        }
-      },
-      "title": "namenamenamenamename",
-      "editMode": false,
-      "at": 1590778374171,
-      "_id": 3
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "new test for TRIGLAVnew test for TRIGLAV",
-      "type": {
-        "trail": {
-          "_id": "1a6",
-          "name": "Triglav National Park"
-        }
-      },
-      "title": "new test for TRIGLAV",
-      "editMode": false,
-      "at": 1590778977673,
-      "_id": 4
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "for Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympus",
+      "txt": "for Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympus ",
       "type": {
         "trail": {
           "_id": "5u3",
@@ -591,43 +519,8 @@
       "title": "for Mt. Olympus",
       "editMode": false,
       "at": 1590779097232,
-      "_id": 5
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "Prachovské skályPrachovské skályPrachovské skályPrachovské skályPrachovské skály",
-      "type": {
-        "trail": {
-          "_id": "j1v",
-          "name": "‪Prachovské skály‬"
-        }
-      },
-      "title": "Prachovské skály",
-      "editMode": false,
-      "at": 1590779119766,
-      "_id": 6
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "nbQBvvXdIu",
-        "fullName": "Sarah Tubbaly"
-      },
-      "txt": "YOSSI IS RIGHT YOSSI IS RIGHT YOSSI IS RIGHT",
-      "type": {
-        "guide": {
-          "fullName": "James Curtis",
-          "_id": "JyHAWrdfz1"
-        }
-      },
-      "title": "YOSSI IS RIGHT",
-      "editMode": false,
-      "at": 1590779493026,
-      "_id": 7
+      "_id": 5,
+      "isEditMode": false
     }
   ]
 }
