@@ -106,7 +106,7 @@ class _BookingPage extends Component {
                 <p className="title">Write a review about {guide.fullName}</p>
                 {this.props.loggedInUser
                   ? <ReviewAdd guide={ guide } />
-                  : <div><Link>Sign up</Link > or <Link>Log in</Link> to write your comment </div>}
+                  : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
               </section>
             </section>
           </div>}

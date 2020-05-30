@@ -30,6 +30,7 @@ export function saveReview(review) {
   return async dispatch => {
     try {
       const currReview = await reviewService.add(review);
+      // console.log('reviev from saveReview action: ', currReview);
       dispatch({
         type: 'ADD',
         review: {
@@ -45,21 +46,21 @@ export function saveReview(review) {
 
 
 export function editReview(review) {
-    console.log(review)
-    
-    return async dispatch => {
-        try {
-            const currReview = await reviewService.edit(review.review);
-            dispatch({
-                type: 'EDIT',
-                review: {
-                    currReview,
-                },
-            });
-        } catch (err) {
-            console.log('error', err);
-        }
-    };
+  console.log(review);
+
+  return async dispatch => {
+    try {
+      const currReview = await reviewService.edit(review.review);
+      dispatch({
+        type: 'EDIT',
+        review: {
+          currReview,
+        },
+      });
+    } catch (err) {
+      console.log('error', err);
+    }
+  };
 }
 
 

@@ -12,7 +12,6 @@ import { loadTrails } from '../store/actions/trailsActions';
 class _TrailPage extends Component {
   componentDidMount() {
     this.props.loadTrails();
-    
   }
 
   render() {
@@ -21,7 +20,8 @@ class _TrailPage extends Component {
 
             <main className="trail-page">
                 {this.props.trails && <React.Fragment>
-                    <h2 className="trail-page-main-heading">Choose your trail</h2>  <Link to="trail/add">Add Trail</Link>
+                    <h2 className="trail-page-main-heading">Choose your trail</h2>
+                    <Link to="trail/add">Add Trail</Link>
 {/* {    console.log(this.props)} */}
                     <React.Fragment>
                         {/* < TrailAdd /> */}
@@ -60,5 +60,3 @@ const mapDispatchToProps = {
   loadTrails,
 };
 export const TrailPage = connect(mapStateToProps, mapDispatchToProps)(_TrailPage);
-
-
