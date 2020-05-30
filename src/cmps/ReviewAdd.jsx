@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { saveReview, loadReviews } from '../store/actions/reviewActions'
 import Rating from 'react-rating';
-import { saveReview } from '../store/actions/reviewActions';
 
 //Images
 import star from '../img/star.svg';
@@ -28,32 +28,27 @@ class _ReviewAdd extends Component {
       const miniGuide = {
         guide: {
           fullName: guideName,
-          _id: id,
-        },
+          _id: id
+        }
 
-      };
-      this.setState(prevState => ({ ...prevState, by: miniUser, type: miniGuide }), () => {
-        // console.log(this.state);
-      });
+      }
+      this.setState({ by: miniUser, type: miniGuide })
     }
     if (this.props.trail) {
-      console.log(this.props.trail);
-
-      const { _id, fullName } = this.props.user;
-      const miniUser = { _id, fullName };
-      const { trail } = this.props;
-      const id = trail._id;
-      const trailName = trail.name;
+      let { _id, fullName } = this.props.user;
+      const miniUser = { _id, fullName }
+      const { trail } = this.props
+      const id = trail._id
+      const trailName = trail.name
       const miniTrail = {
         trail: {
           _id: id,
-          name: trailName,
-        },
-      };
-      this.setState(prevState => ({ ...prevState, by: miniUser, type: miniTrail }),
-        () => {
-          // console.log(this.state);
-        });
+          name: trailName
+        }
+      }
+      this.setState({ by: miniUser, type: miniTrail }, () => {
+        console.log(this.state)
+      })
     }
   }
 
@@ -62,7 +57,7 @@ class _ReviewAdd extends Component {
     this.setState({ [name]: value });
   }
 
-  onSend = ev => {
+   onSend = ev => {
     ev.preventDefault();
     const review = this.state;
     // console.log(review);
@@ -103,11 +98,14 @@ class _ReviewAdd extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  reviews: state.review.reviews,
-  user: state.user.loggedInUser,
-});
+const mapStateToProps = state => {
+  return {
+    reviews: state.review.review,
+    user: state.user.loggedInUser
+  };
+};
 const mapDispatchToProps = {
   saveReview,
+  loadReviews
 };
 export const ReviewAdd = connect(mapStateToProps, mapDispatchToProps)(_ReviewAdd);

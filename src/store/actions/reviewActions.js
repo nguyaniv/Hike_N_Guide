@@ -1,17 +1,18 @@
 import reviewService from '../../services/review.service';
 
 
-export function loadReviews(filter) {
-  // console.log('filter', filter);
-  return async dispatch => {
-    try {
-      const reviews = await reviewService.query(filter);
-      dispatch(setReviews(reviews));
-      return reviews;
-    } catch (err) {
-      console.log('ReviewActions: err in loadReviews', err);
-    }
-  };
+export function loadReviews() {
+    return async dispatch => {
+        try {
+            const reviews = await reviewService.query()
+            console.log(reviews)
+
+            dispatch(setReviews(reviews));
+            return reviews
+        } catch (err) {
+            console.log('ReviewActions: err in loadReviews', err);
+        }
+    };
 }
 
 export function LoadReview(id) {
@@ -27,21 +28,17 @@ export function LoadReview(id) {
 
 
 export function saveReview(review) {
-  return async dispatch => {
-    try {
-      const currReview = await reviewService.add(review);
-      // console.log('reviev from saveReview action: ', currReview);
-      dispatch({
-        type: 'ADD',
-        review: {
-          ...currReview,
-        },
-      });
-      return currReview;
-    } catch (err) {
-      console.log('error', err);
-    }
-  };
+    console.log(review)
+    console.log(review)
+    
+    return async dispatch => {
+        try {
+            const currReview = await reviewService.add(review);
+           return dispatch(_addReview(currReview));
+        } catch (err) {
+            console.log('error', err);
+        }
+    };
 }
 
 
@@ -73,10 +70,10 @@ export function removeReview(reviewId) {
 
 
 export function setReviews(reviews) {
-  return {
-    type: 'SET_REVIEWS',
-    reviews,
-  };
+    return {
+        type: 'SET_REVIEWS',
+        review:reviews,
+    };
 }
 
 
@@ -85,4 +82,15 @@ export function _removeReview(reviewId) {
     type: 'DELETE',
     reviewId,
   };
+}
+
+
+
+
+
+function _addReview(review) {
+    return {
+        type: 'ADD',
+        review:review
+    };
 }
