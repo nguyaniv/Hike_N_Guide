@@ -15,19 +15,16 @@ class _ReviewAdd extends Component {
     txt: '',
     type: {},
     title: '',
-    editMode: false
+    editMode: false,
   }
 
   componentDidMount() {
-    this.props.loadReviews()
-    console.log(this.props.reviews)
-
     if (this.props.guide) {
-      let { _id, fullName } = this.props.user;
-      const miniUser = { _id, fullName }
-      const { guide } = this.props
-      const id = guide._id
-      const guideName = guide.fullName
+      const { _id, fullName } = this.props.user;
+      const miniUser = { _id, fullName };
+      const { guide } = this.props;
+      const id = guide._id;
+      const guideName = guide.fullName;
       const miniGuide = {
         guide: {
           fullName: guideName,
@@ -62,35 +59,41 @@ class _ReviewAdd extends Component {
 
    onSend = ev => {
     ev.preventDefault();
-     this.props.saveReview(this.state)
-    console.log(this.props)
-    
+    const review = this.state;
+    // console.log(review);
+    this.props.saveReview(review);
   }
 
   render() {
     const { rate, txt, title } = this.state;
+    const loggedInUser = this.props.user;
     return (
-      <section className="reviewAdd">
-        <div className="reviewAdd-rate-contain">
-          <p>Rate: </p>
-          <Rating start={ 0 }
-            stop={ 5 }
-            initialRating={ rate }
-            emptySymbol={ <img src={ star } alt="star" className="img-star" /> }
-            fullSymbol={ <img src={ star_o } alt="full-star" className="img-star" /> }
-            onChange={ rate => {
-              this.setState({ rate });
-            } }
-          />
-        </div>
-        <form onSubmit={this.onSend}>
-          <span>title</span> <input type="text" name="title" value={title} onChange={this.handledChange} />
-          <textarea name="txt" value={txt} onChange={this.handledChange}
-            cols="30" rows="10" placeholder="What do you think about me?" required>
-          </textarea>
-          <button className="reviewAdd-submit-btn">Send</button>
-        </form>
-      </section>
+      <React.Fragment>
+        {loggedInUser && <section className="review-add">
+          <div className="review-add-rate-container">
+            <span className="review-add-rate-label">Rate:</span>
+            <Rating start={ 0 }
+              stop={ 5 }
+              initialRating={ rate }
+              emptySymbol={ <img src={ star } alt="star" className="img-star" /> }
+              fullSymbol={ <img src={ star_o } alt="full-star" className="img-star" /> }
+              onChange={ rate => {
+                this.setState({ rate });
+              } }
+            />
+          </div>
+          <form className="review-add-form" onSubmit={ this.onSend }>
+            <label htmlFor="title">Review title:</label>
+            <input className="review-add-title" type="text" id="title" name="title" value={ title } onChange={ this.handledChange } />
+            <label htmlFor="text">Review text:</label>
+            <textarea className="review-add-textarea" id="text"
+              name="txt" value={ txt } onChange={ this.handledChange }
+              cols="30" rows="10" placeholder="What do you think about me?" required>
+            </textarea>
+            <button className="review-add-submit-btn">Send</button>
+          </form>
+        </section>}
+      </React.Fragment>
     );
   }
 }

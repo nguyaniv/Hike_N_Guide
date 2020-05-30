@@ -52,6 +52,8 @@
     border-bottom: 1px solid $clr2;
     // filter: drop-shadow(0 0 10px $clr2);
     font-size: 1.2rem;
+    background-color: transparent;
+    border: none;
 
     &:hover,
     &:active,

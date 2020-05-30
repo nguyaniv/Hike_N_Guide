@@ -1,41 +1,39 @@
 import React, { Component } from 'react';
-import star from '../img/star.svg';
-import star_o from '../img/‏‏star-o.svg';
 import Rating from 'react-rating';
 import { connect } from 'react-redux';
-import { removeReview, editReview } from '../store/actions/reviewActions'
-
+import star from '../img/star.svg';
+import star_o from '../img/‏‏star-o.svg';
+import { removeReview, editReview } from '../store/actions/reviewActions';
 
 
 class _Review extends Component {
-
   state = {
     review: {},
-    editMode: false
+    editMode: false,
   }
 
   componentDidMount() {
     this.setState({
-      review: this.props.review
+      review: this.props.review,
     }, () => {
-      console.log(this.state.review)
-    })
+      // console.log(this.state.review)
+    });
   }
 
 
   onDeleteGuideReview = () => {
-    this.props.removeReview(this.props.review._id)
+    this.props.removeReview(this.props.review._id);
   }
 
   reviewEditMode = () => {
-    this.setState({ editMode: true })
+    this.setState({ editMode: true });
   }
 
   onEdit = ev => {
     ev.preventDefault();
     const review = this.state;
-    console.log(this.state)
-    this.props.editReview(review)
+    console.log(this.state);
+    this.props.editReview(review);
   }
 
 
@@ -44,63 +42,65 @@ class _Review extends Component {
     this.setState(prevState => ({
       review: {
         ...prevState.review,
-        [name]: value
-      }
-    }))
+        [name]: value,
+      },
+    }));
   }
 
   render() {
-    const wtittenBy = this.props.review.by.fullName
-    const { txt, rate, title, } = this.state.review
+    const writtenBy = this.props.review.by.fullName;
+    const { txt, rate, title } = this.state.review;
     return (
-      <section>
-        {this.state.review && this.state.editMode&& 
-
-          <form className="" onSubmit={this.onEdit}>
-          <span>title</span> <input type="text" name="title" value={title} onChange={this.handledChange} />
+      <section className="review-container">
+        {this.state.review && this.state.editMode
+          && <form className="" onSubmit={ this.onEdit }>
+          <span>title</span> <input type="text" name="title" value={ title } onChange={ this.handledChange } />
           <br />
-          <textarea name="txt" value={txt} onChange={this.handledChange}
+          <textarea name="txt" value={ txt } onChange={ this.handledChange }
             cols="30" rows="10" placeholder="What do you think about me?" required>
           </textarea>
           <button className="">Send</button>
-        </form> 
+        </form>
         }
 
-          {this.state.review && 
-          
-          
-         
-        <div className="review-container">
-            <div className="review-name-date">
-              <Rating className="guide-preview-rating" start={0}
-                stop={5}
-                initialRating={rate}
-                emptySymbol={<img className="trail-preview-full-star" src={star} />}
-                fullSymbol={<img className="trail-preview-star" src={star_o} />}
+        {this.state.review
+        && <div className="review">
+            <div className="review-info">
+              <p className="review-info-row review-info-title-row">
+                <span className="review-info-heading">Title:</span>
+                {title}
+              </p>
+              <p className="review-info-row">
+                <span className="review-info-heading">By:</span>
+                {writtenBy}
+              </p>
+              <p className="review-info-row">
+                <span className="review-info-heading">Rating:</span>
+                <Rating className="guide-preview-rating" start={ 0 }
+                stop={ 5 }
+                initialRating={ rate }
+                emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
+                fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
                 readonly
               />
-              <br />
-              <div>
-                <p className="review-guide-title">{title}</p>
-              </div>
-              <br />
-              <p> {wtittenBy} </p>
+              </p>
             </div>
-            <div className="review-msg">
-              <p>{txt}</p>
+            <p className="review-text">
+              {txt}
+            </p>
+            <div className="review-buttons">
+              <button className="review-button review-delete-button" onClick={ () => {
+                this.onDeleteGuideReview();
+              } }>Delete</button>
+              <button className="review-button review-edit-button" onClick={ () => {
+                this.reviewEditMode();
+              } }>Edit</button>
             </div>
-            <button onClick={() => {
-              this.onDeleteGuideReview()
-            }}>Delete</button>
-            <button onClick={() => {
-              this.reviewEditMode()
-            }}>edit</button>
           </div>
           }
       </section>
-    )
+    );
   }
-
 }
 
 
@@ -110,6 +110,6 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = {
   removeReview,
-  editReview
+  editReview,
 };
 export const Review = connect(mapStateToProps, mapDispatchToProps)(_Review);

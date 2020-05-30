@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history';
 import { loadUsers } from '../store/actions/userAction';
-import { loadReviews } from '../store/actions/reviewActions'
+import { loadReviews } from '../store/actions/reviewActions';
 // import { loadTrail } from '../store/actions/trailsActions';
 import {
   loadTrail,
@@ -15,7 +15,7 @@ import {
 import { GuidePreview } from '../cmps/GuidePreview';
 import MapContainer from '../cmps/MapContainer';
 import { ReviewList } from '../cmps/ReviewList';
-import { ReviewAdd } from '../cmps/ReviewAdd'
+import { ReviewAdd } from '../cmps/ReviewAdd';
 
 class _TrailDetailsPage extends React.Component {
   state = {
@@ -31,16 +31,13 @@ class _TrailDetailsPage extends React.Component {
       imgUrls: [],
       descriptions: '',
     },
-    reviews: []
+    reviews: [],
   }
 
   async componentDidMount() {
     const { id } = this.props.match.params;
     this.props.loadUsers();
-    const reviews = await this.props.loadReviews()
-
-
-
+    const reviews = await this.props.loadReviews();
 
 
     this.props.loadTrail(id)
@@ -59,21 +56,17 @@ class _TrailDetailsPage extends React.Component {
       });
 
 
-
     if (reviews) {
-
       const trailReviews = reviews.filter(review => {
-        console.log(review)
-        return review.type.trail
-      }).filter(review => {
-        return review.type.trail._id === id
-      })
+        // console.log(review);
+        return review.type.trail;
+      }).filter(review => review.type.trail._id === id);
 
       this.setState(prevState => ({
         ...prevState,
-        reviews: trailReviews
+        reviews: trailReviews,
       }
-      ))
+      ));
     }
   }
 
@@ -112,33 +105,33 @@ class _TrailDetailsPage extends React.Component {
 
       return (
         <div className="">
-          <form className="trail-details-edit-form" onSubmit={this.onFinishEditHandler}>
+          <form className="trail-details-edit-form" onSubmit={ this.onFinishEditHandler }>
             <label>
-              name:<input type="text" name="name" value={name} onChange={this.inputHandler} />
+              name:<input type="text" name="name" value={ name } onChange={ this.inputHandler } />
             </label>
             <label>
-              country: <input className="" type="text" value={country} name="country" onChange={this.inputHandler} />
+              country: <input className="" type="text" value={ country } name="country" onChange={ this.inputHandler } />
             </label>
             <label>
-              distance: <input className="" type="text" value={distance} name="distance" onChange={this.inputHandler} />
+              distance: <input className="" type="text" value={ distance } name="distance" onChange={ this.inputHandler } />
             </label>
             <label>
-              difficulty:<select name="difficulty" value={difficulty} onChange={this.inputHandler}>
+              difficulty:<select name="difficulty" value={ difficulty } onChange={ this.inputHandler }>
                 <option value="Beginner">Beginner</option>
                 <option value="Advanced">Advanced</option>
                 <option value="Expect">Expect</option>
               </select>
             </label>
             <label>
-              days: <input type="number" value={days} name="days" onChange={this.inputHandler} />
+              days: <input type="number" value={ days } name="days" onChange={ this.inputHandler } />
             </label>
 
             <label>
-              imgs: <input type="text" value={imgUrls} name="imgUrls" onChange={this.inputHandler} />
+              imgs: <input type="text" value={ imgUrls } name="imgUrls" onChange={ this.inputHandler } />
             </label>
             <br />
             <label>
-              descriptions: <textarea cols="80" rows="30" value={descriptions} name="descriptions" onChange={this.inputHandler}></textarea>
+              descriptions: <textarea cols="80" rows="30" value={ descriptions } name="descriptions" onChange={ this.inputHandler }></textarea>
             </label>
             <button className="">Finish Edit</button>
           </form>
@@ -147,13 +140,9 @@ class _TrailDetailsPage extends React.Component {
     }
 
     const { selectedTrail, usersToShow, reviews } = this.state;
-    {
-      // this.props.users ? console.log(this.props.users) : console.log('loading')
-
-    }
     return (<React.Fragment>
       {selectedTrail && <main className="trail-details">
-        <div className="trail-details-main-image" style={{ backgroundImage: `url(${selectedTrail.imgUrls[0]})` }}>
+        <div className="trail-details-main-image" style={ { backgroundImage: `url(${selectedTrail.imgUrls[0]})` } }>
           <h1 className="trail-details-main-header">{selectedTrail.name}</h1>
         </div>
         <section className="trail-details-container">
@@ -190,10 +179,10 @@ class _TrailDetailsPage extends React.Component {
               </p>
               <div className="trail-details-images">
                 {selectedTrail.imgUrls.map((image, i) => <img
-                  key={i}
+                  key={ i }
                   className="trail-details-image"
-                  alt={selectedTrail.name}
-                  src={selectedTrail.imgUrls[i]}
+                  alt={ selectedTrail.name }
+                  src={ selectedTrail.imgUrls[i] }
                 />)}
               </div>
             </div>
@@ -202,41 +191,38 @@ class _TrailDetailsPage extends React.Component {
                 Trail location
               </h2>
               <div className="trail-details-map-container">
-                <MapContainer location={selectedTrail.location} />
+                <MapContainer location={ selectedTrail.location } />
               </div>
               <h2 className="trail-details-info-header">
                 Add review
               </h2>
 
-              {selectedTrail.imgUrls.length > 0 &&
-                <ReviewAdd trail={selectedTrail}
-                />
-              }
+              {this.props.loggedInUser
+                ? <ReviewAdd trail={ this.props.trail.selectedTrail } />
+                : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
 
-              <h2 className="trail-details-info-header">
+              <h2 className="trail-details-info-header no-padding-start">
                 Trail reviews
               </h2>
-
-              {this.state.reviews.length > 0 &&
-                // console.log(this.state.reviews)
-
-                <ReviewList reviews={reviews} />
-              }
+              {/* {this.state.reviews.length > 0
+                && <ReviewList reviews={ reviews } />
+              } */}
+              <ReviewList reviews={ reviews } />
 
 
             </div>
           </section>
         </section>
         <section className="trail-details-controls">
-          <Link className="trail-details-button trail-details-back-button" to={'/trail'} > Back to List </Link>
+          <Link className="trail-details-button trail-details-back-button" to={ '/trail' } > Back to List </Link>
           <button
             className="trail-details-button trail-details-edit-button"
-            onClick={() => { this.onEditHandler(); }}>
+            onClick={ () => { this.onEditHandler(); } }>
             Edit trail
             </button>
           <button
             className="trail-details-button trail-details-remove-button"
-            onClick={() => {
+            onClick={ () => {
               this.props.removeTrail(selectedTrail._id)
                 .then(() => history.push('/trail'));
             }
@@ -256,10 +242,11 @@ class _TrailDetailsPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  loggedInUser: state.user.loggedInUser,
   users: state.user.users,
   trail: state.trail,
   isLoading: state.loading.isLoading,
-  reviews: state.review.reviews
+  reviews: state.review.reviews,
 });
 const mapDispatchToProps = {
   loadUsers,
@@ -267,6 +254,6 @@ const mapDispatchToProps = {
   loadTrails,
   removeTrail,
   editTrail,
-  loadReviews
+  loadReviews,
 };
 export const TrailDetailsPage = connect(mapStateToProps, mapDispatchToProps)(_TrailDetailsPage);
