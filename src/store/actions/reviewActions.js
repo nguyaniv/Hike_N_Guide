@@ -2,17 +2,17 @@ import reviewService from '../../services/review.service';
 
 
 export function loadReviews() {
-    return async dispatch => {
-        try {
-            const reviews = await reviewService.query()
-            console.log(reviews)
+  return async dispatch => {
+    try {
+      const reviews = await reviewService.query();
+      console.log(reviews);
 
-            dispatch(setReviews(reviews));
-            return reviews
-        } catch (err) {
-            console.log('ReviewActions: err in loadReviews', err);
-        }
-    };
+      dispatch(setReviews(reviews));
+      return reviews;
+    } catch (err) {
+      console.log('ReviewActions: err in loadReviews', err);
+    }
+  };
 }
 
 export function LoadReview(id) {
@@ -28,17 +28,17 @@ export function LoadReview(id) {
 
 
 export function saveReview(review) {
-    console.log(review)
-    console.log(review)
-    
-    return async dispatch => {
-        try {
-            const currReview = await reviewService.add(review);
-           return dispatch(_addReview(currReview));
-        } catch (err) {
-            console.log('error', err);
-        }
-    };
+  console.log(review);
+  console.log(review);
+
+  return async dispatch => {
+    try {
+      const currReview = await reviewService.add(review);
+      return dispatch(_addReview(currReview));
+    } catch (err) {
+      console.log('error', err);
+    }
+  };
 }
 
 
@@ -70,10 +70,10 @@ export function removeReview(reviewId) {
 
 
 export function setReviews(reviews) {
-    return {
-        type: 'SET_REVIEWS',
-        review:reviews,
-    };
+  return {
+    type: 'SET_REVIEWS',
+    review: reviews,
+  };
 }
 
 
@@ -85,12 +85,9 @@ export function _removeReview(reviewId) {
 }
 
 
-
-
-
 function _addReview(review) {
-    return {
-        type: 'ADD',
-        review:review
-    };
+  return {
+    type: 'ADD',
+    review,
+  };
 }
