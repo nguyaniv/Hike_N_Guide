@@ -1,6 +1,4 @@
-import reviewService from '../../services/review.service'
-
-
+import reviewService from '../../services/review.service';
 
 
 export function loadReviews() {
@@ -18,14 +16,14 @@ export function loadReviews() {
 }
 
 export function LoadReview(id) {
-    return async dispatch => {
-        try {
-            const review = await reviewService.getById(id);
-            dispatch({ type: 'SET_REVIEW', review });
-        } catch (err) {
-            console.log('ops', err);
-        }
-    };
+  return async dispatch => {
+    try {
+      const review = await reviewService.getById(id);
+      dispatch({ type: 'SET_REVIEW', review });
+    } catch (err) {
+      console.log('ops', err);
+    }
+  };
 }
 
 
@@ -63,10 +61,10 @@ export function editReview(review) {
 
 
 export function removeReview(reviewId) {
-    return async dispatch => {
-        await reviewService.remove(reviewId);
-        dispatch(_removeReview(reviewId));
-    };
+  return async dispatch => {
+    await reviewService.remove(reviewId);
+    dispatch(_removeReview(reviewId));
+  };
 }
 
 
@@ -79,10 +77,10 @@ export function setReviews(reviews) {
 
 
 export function _removeReview(reviewId) {
-    return {
-        type: 'DELETE',
-        reviewId,
-    };
+  return {
+    type: 'DELETE',
+    reviewId,
+  };
 }
 
 

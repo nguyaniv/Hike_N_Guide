@@ -1,12 +1,12 @@
 import HttpService from './http.service';
 
 export default {
-    query,
-    getById,
-    remove,
-    add,
-    edit
-}
+  query,
+  getById,
+  remove,
+  add,
+  edit,
+};
 
 async function query(filter = null) {
     
@@ -20,7 +20,6 @@ async function query(filter = null) {
         }
     })
 }
-
 
 
 function getById(reviewId) {
@@ -46,12 +45,12 @@ async function edit(review) {
 
 
 function makeId(length = 3) {
-    let text = '';
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (let i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
 
-    return text;
+  return text;
 }

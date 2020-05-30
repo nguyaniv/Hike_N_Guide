@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { saveReview, loadReviews } from '../store/actions/reviewActions'
+=======
+>>>>>>> 8fc73970bff1981ef73ff663c47ac05cc9fefcc5
 import Rating from 'react-rating';
+import { saveReview } from '../store/actions/reviewActions';
 
 //Images
 import star from '../img/star.svg';
@@ -73,14 +77,14 @@ class _ReviewAdd extends Component {
       <section className="reviewAdd">
         <div className="reviewAdd-rate-contain">
           <p>Rate: </p>
-          <Rating start={0}
-            stop={5}
-            initialRating={rate}
-            emptySymbol={<img src={star} className="img-star" />}
-            fullSymbol={<img src={star_o} className="img-star" />}
-            onChange={rate => {
+          <Rating start={ 0 }
+            stop={ 5 }
+            initialRating={ rate }
+            emptySymbol={ <img src={ star } alt="star" className="img-star" /> }
+            fullSymbol={ <img src={ star_o } alt="full-star" className="img-star" /> }
+            onChange={ rate => {
               this.setState({ rate });
-            }}
+            } }
           />
         </div>
         <form onSubmit={this.onSend}>
@@ -91,7 +95,7 @@ class _ReviewAdd extends Component {
           <button className="reviewAdd-submit-btn">Send</button>
         </form>
       </section>
-    )
+    );
   }
 }
 
