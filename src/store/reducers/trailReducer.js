@@ -4,7 +4,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action = {}) {
-
   switch (action.type) {
     case 'ADD':
       return {
@@ -16,13 +15,13 @@ export default function (state = initialState, action = {}) {
       };
     case 'EDIT':
       return {
-       
+
         ...state,
-        
+
         trails: state.trails.map(trail => {
-          console.log(action.trail)
+          console.log(action.trail);
           if (trail._id === action.trail._id) return action.trail;
-          action.trail.currTrail.isEditMode = false
+          action.trail.currTrail.isEditMode = false;
           return trail;
         }),
       };
