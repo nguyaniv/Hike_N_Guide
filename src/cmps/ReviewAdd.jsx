@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import { saveReview, loadReviews } from '../store/actions/reviewActions'
-=======
->>>>>>> 8fc73970bff1981ef73ff663c47ac05cc9fefcc5
 import Rating from 'react-rating';
-import { saveReview } from '../store/actions/reviewActions';
 
 //Images
 import star from '../img/star.svg';
