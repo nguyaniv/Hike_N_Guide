@@ -33,8 +33,15 @@ class _BookingPage extends Component {
     const { id } = this.props.match.params;
     this.loadGuide(id);
     //review load
+<<<<<<< HEAD
+    
+    const reviews = await this.props.loadReviews({guideId: id})    
+    this.setState({ reviews },()=>{    console.log(this.props.reviews);
+    })
+=======
     const reviews = await this.props.loadReviews({ guideId: id });
     this.setState({ reviews });
+>>>>>>> 8fc73970bff1981ef73ff663c47ac05cc9fefcc5
   }
 
   loadGuide = id => {
@@ -110,8 +117,8 @@ class _BookingPage extends Component {
               </section>
             </section>
           </div>}
-        {guide && this.state.reviews
-          && <ReviewList reviews={ this.state.reviews } />
+        {guide && this.state.reviews &&
+          <ReviewList reviews={this.props.reviews} />
         }
 
 
@@ -122,7 +129,7 @@ class _BookingPage extends Component {
 
 const mapStateToProps = state => ({
   loggedInUser: state.user.loggedInUser,
-  reviews: state.review.reviews,
+  reviews: state.review.review,
 
 });
 const mapDispatchToProps = {
