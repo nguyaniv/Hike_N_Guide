@@ -20,37 +20,34 @@ class _BookingForm extends Component {
 
 
     return (
-      <section className="booking-form">
-        <div className="booking-form-contain">
-          <div className="booking-form-container">
-            <form>
-              <select name="trailSelected" onChange={ handelInput } value={ bookForm.trailSelected }>
-                {
-                  trails.map((trail, idx) => (
-                      <option key={ trail._id } value={ idx }>{trail.name}</option>))
-                }
-              </select>
-              <Calendar
-                onChange={ date => { handelDate(date); } }
-                value={ bookForm.date }
-                minDate={ new Date() }
-              />
-              <div>
-                <label className="booking-form-title">How many people?</label>
-                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ handelInput } />
-              </div>
-              <div>
-                <div className="booking-form-price-contain" >
-                  <label className="booking-form-title">Price:</label>
-                  <p className="price">$160</p>
-                </div>
-                <button className="btn-submit">Book</button>
-              </div>
-
-            </form>
+        <form className="booking-form">
+          <select
+          className="booking-form-selected-trail"
+          name="trailSelected"
+          onChange={ handelInput }
+          value={ bookForm.trailSelected }>
+            {
+              trails.map((trail, idx) => (
+                  <option key={ trail._id } value={ idx }>{trail.name}</option>))
+            }
+          </select>
+          <Calendar
+            onChange={ date => { handelDate(date); } }
+            value={ bookForm.date }
+            minDate={ new Date() }
+          />
+          <div className="booking-form-people-count-container">
+            <label className="booking-form-title">How many people?</label>
+            <input className="booking-form-people-count" type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ handelInput } />
           </div>
-        </div>
-      </section>
+          <div>
+            <div className="booking-form-price-container" >
+              <label className="booking-form-title">Price:</label>
+              <span className="price">${ bookForm.peopleCount * this.props.price}</span>
+            </div>
+            <button className="booking-form-submit-button">Book</button>
+          </div>
+        </form>
     );
   }
 }

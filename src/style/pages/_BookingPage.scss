@@ -1,69 +1,92 @@
 .booking-page {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row nowrap;
   justify-content: center;
-  p {
-    display: inline-block;
-    margin: 0;
-  }
-  &-contain {
+
+  &-container {
+    width: 100%;
     display: flex;
   }
+
   &-content {
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-around;
-    width: 600px;
+    justify-content: flex-start;
+    width: 50%;
+    margin-inline-end: 1rem;
   }
+
   &-details {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
+
   &-avatar {
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-block-end: 1rem;
   }
+
   &-full-name {
     font-size: 25px;
     font-weight: bold;
     padding: 0;
     margin: 0;
   }
+
   &-rate-box {
     display: flex;
-    justify-content: center;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
     align-items: center;
-    p {
-      font-weight: bold;
-      margin: 0;
-      padding: 0;
-    }
+    margin: 0;
+
     .pra-rating {
-      font-size: 17px;
-      margin-inline-end: 5px;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-inline-end: 0.5rem;
     }
+
     img {
       position: relative;
-      top: 4px;
+      top: 2px;
+      width: 15px;
+      height: 15px;
     }
   }
+
   &-rate {
     margin-inline-start: 5px;
   }
+
   .total-rating {
     position: relative;
     top: 2px;
     font-size: 11px;
   }
+
   &-title {
     font-weight: bolder;
     margin-inline-end: 10px;
   }
+
+  &-description {
+    //
+  }
+
   &-img-trail {
     width: 400px;
   }
+
   &-add-review {
     .title {
       font-size: 20px;
