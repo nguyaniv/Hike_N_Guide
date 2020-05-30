@@ -12,9 +12,9 @@ class _LogIn extends Component {
   }
 
   componentDidMount() {
-    if (this.props.loggedInUser) {
-      this.props.history.goBack();
-    }
+    // if (this.props.loggedInUser) {
+    //   this.props.history.goBack();
+    // }
   }
 
   handleChange = ev => {
@@ -31,6 +31,7 @@ class _LogIn extends Component {
     // }
     const userCreds = { password, email };
     this.props.login(userCreds);
+    this.props.history.goBack();
   }
 
   render() {

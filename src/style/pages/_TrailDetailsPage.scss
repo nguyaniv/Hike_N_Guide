@@ -12,7 +12,7 @@
   &-main-header {
     color: white;
     margin: 0;
-    padding-block-start: 90vh;
+    padding-block-start: 60vh;
     font-size: 2rem;
     text-transform: uppercase;
     filter: drop-shadow(0 0 10px black);
@@ -21,14 +21,14 @@
   &-container {
     width: 60%;
     margin: 0 auto;
-    margin-block-start: -4.5rem;
+    margin-block-start: -21rem;
     background-color: white;
   }
 
   &-guides-list {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: center;
     padding-inline-start: 1rem;
     padding-inline-end: 1rem;
   }
@@ -38,6 +38,10 @@
     padding-block-start: 1rem;
     margin-block-end: 1rem;
     text-align: center;
+  }
+
+  .no-padding-start {
+    padding-block-start: 0;
   }
 
   &-info {

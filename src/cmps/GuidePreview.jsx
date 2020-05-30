@@ -38,10 +38,11 @@ export class GuidePreview extends React.Component {
   }
 
   getTrailsToShow() {
-    if (this.state.trails) return;
-    const trailsToShow = this.state.trails
-      .map(trail => `${trail.name}`).join(', ');
-    return trailsToShow;
+    if (!this.state.trails) return;
+    // eslint-disable-next-line consistent-return
+    return this.state.trails
+      .map(trail => `${trail.name}`)
+      .join(', ');
   }
 
   render() {
@@ -61,8 +62,8 @@ export class GuidePreview extends React.Component {
               <Rating start={ 0 }
                 stop={ 5 }
                 initialRating={ rating }
-                emptySymbol={ <img className="guide-preview-full-star" src={ star } /> }
-                fullSymbol={ <img className="guide-preview-star" src={ star_o } /> }
+                emptySymbol={ <img className="guide-preview-full-star" src={ star } alt="star" /> }
+                fullSymbol={ <img className="guide-preview-star" src={ star_o } alt="full-star" /> }
                 readonly
               />
             </div>

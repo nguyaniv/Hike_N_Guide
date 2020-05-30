@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
-
+import { logout } from '../store/actions/userAction';
 import history from '../history';
 
 class _Navbar extends React.Component {
@@ -9,34 +9,15 @@ class _Navbar extends React.Component {
     headerColorClass: '',
     menuActiveClass: '',
     navOpenedClass: '',
-    loggedInUser: {
-      _id: 'aRmDjhBd4b',
-      userName: 'rogeliog',
-      fullName: 'Rogelio Geisbauer',
-      password: '5zxjlm9A',
-      isAdmin: false,
-      imgUrl: 'http://randomuser.me/api/portraits/men/29.jpg',
-      rating: 3,
-      reviewers_count: 4,
-      languages: [
-        'he',
-        'en',
-      ],
-      trails: [
-        {
-          _id: '1a6',
-          name: 'Triglav National Park',
-          country: 'Slovenia',
-        },
-      ],
-    },
+    // loggedInUser: null,
   };
 
   componentDidMount() {
     // this.setState(prevState => ({
     //   ...prevState,
-    //   loggedInUser: this.props.loggedInUser
-    // }));
+    //   loggedInUser: this.props.loggedInUser,
+    // }), () => { console.log(this.state.loggedInUser);
+    // });
   }
 
   setHeaderColor = () => {
@@ -68,8 +49,17 @@ class _Navbar extends React.Component {
     }));
   }
 
+  handleLoginClick = () => {
+    history.push('/login');
+  }
+
+  handleLogoutClick = () => {
+    this.props.logout();
+    this.setState(prevState => ({ ...prevState, loggedInUser: null }));
+  }
+
   render() {
-    const { loggedInUser } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <header className={ `main-header ${this.state.headerColorClass}` }>
           <Link
@@ -86,19 +76,20 @@ class _Navbar extends React.Component {
             <NavLink exact className="main-header-link" to="/" activeClassName="selected">Home</NavLink>
             <NavLink className="main-header-link" to="/trail" activeClassName="selected">Trails</NavLink>
             <NavLink className="main-header-link" to="/guide" activeClassName="selected">Guides</NavLink>
-            <NavLink
+            <button
               className="main-header-link"
-              to={ loggedInUser ? '/logout' : '/login' }
-              activeClassName="selected">
+              onClick={ loggedInUser ? this.handleLogoutClick : this.handleLoginClick }>
+              {/* to={ loggedInUser ? '/logout' : '/login' }
+              activeClassName="selected"> */}
                 {loggedInUser ? 'Logout' : 'Login'}
-            </NavLink>
+            </button>
             { loggedInUser
               && <NavLink
                   to={ `profile/${loggedInUser._id}` }
                   className="main-header-link"
                   activeClassName="selected"
                 >
-                  <img src={ loggedInUser.imgUrl } className="user-profile-link-image"/>
+                  <img src={ loggedInUser.imgUrl } alt={ loggedInUser.fullName } className="user-profile-link-image"/>
                 </NavLink
             >}
           </nav>
@@ -119,4 +110,8 @@ const mapStateToProps = state => ({
   loggedInUser: state.user.loggedInUser,
 });
 
-export const Navbar = connect(mapStateToProps)(_Navbar);
+const mapDispatchToProps = {
+  logout,
+};  
+
+export const Navbar = connect(mapStateToProps, mapDispatchToProps)(_Navbar);

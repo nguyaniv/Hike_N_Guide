@@ -1,52 +1,115 @@
 import React, { Component } from 'react';
+import Rating from 'react-rating';
+import { connect } from 'react-redux';
 import star from '../img/star.svg';
 import star_o from '../img/‏‏star-o.svg';
-import Rating from 'react-rating';
+import { removeReview, editReview } from '../store/actions/reviewActions';
 
-export class Review extends Component {
 
+class _Review extends Component {
+  state = {
+    review: {},
+    editMode: false,
+  }
+
+  componentDidMount() {
+    this.setState({
+      review: this.props.review,
+    }, () => {
+      // console.log(this.state.review)
+    });
+  }
+
+
+  onDeleteGuideReview = () => {
+    this.props.removeReview(this.props.review._id);
+  }
+
+  reviewEditMode = () => {
+    this.setState({ editMode: true });
+  }
+
+  onEdit = ev => {
+    ev.preventDefault();
+    const review = this.state;
+    console.log(this.state);
+    this.props.editReview(review);
+  }
+
+
+  handledChange = ev => {
+    const { name, value } = ev.target;
+    this.setState(prevState => ({
+      review: {
+        ...prevState.review,
+        [name]: value,
+      },
+    }));
+  }
 
   render() {
- 
+    const writtenBy = this.props.review.by.fullName;
+    const { txt, rate, title } = this.state.review;
+    return (
+      <section className="review-container">
+        {this.state.review && this.state.editMode
+          && <form className="" onSubmit={ this.onEdit }>
+          <span>title</span> <input type="text" name="title" value={ title } onChange={ this.handledChange } />
+          <br />
+          <textarea name="txt" value={ txt } onChange={ this.handledChange }
+            cols="30" rows="10" placeholder="What do you think about me?" required>
+          </textarea>
+          <button className="">Send</button>
+        </form>
+        }
 
-      console.log(this.props.review)
-      const wtittenBy = this.props.review.by.fullName
-      const writtedId = this.props.review.by._id
-      console.log(wtittenBy,writtedId);
-      const {txt,rate} = this.props.review
-      
-      
-    if (this.props) {
-      return (
-        <main>
-          <div className="review-container">
-
-          <Rating className="trail-preview-rating" start={ 0 }
+        {this.state.review
+        && <div className="review">
+            <div className="review-info">
+              <p className="review-info-row review-info-title-row">
+                <span className="review-info-heading">Title:</span>
+                {title}
+              </p>
+              <p className="review-info-row">
+                <span className="review-info-heading">By:</span>
+                {writtenBy}
+              </p>
+              <p className="review-info-row">
+                <span className="review-info-heading">Rating:</span>
+                <Rating className="guide-preview-rating" start={ 0 }
                 stop={ 5 }
                 initialRating={ rate }
                 emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
                 fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
                 readonly
               />
-
-
-            <div className="review-name-date">
-              <p>created by: {wtittenBy} </p>
+              </p>
             </div>
-            <div className="review-msg">
-              <p>{txt}</p>
+            <p className="review-text">
+              {txt}
+            </p>
+            <div className="review-buttons">
+              <button className="review-button review-delete-button" onClick={ () => {
+                this.onDeleteGuideReview();
+              } }>Delete</button>
+              <button className="review-button review-edit-button" onClick={ () => {
+                this.reviewEditMode();
+              } }>Edit</button>
             </div>
           </div>
-        </main>
-      )
-    }
-
-    return (
-      <div>
-        <h2>no reviews</h2>
-      </div>
-    )
+          }
+      </section>
+    );
   }
 }
 
 
+const mapStateToProps = state => ({
+  reviews: state.review.reviews,
+
+});
+const mapDispatchToProps = {
+  removeReview,
+  editReview,
+};
+export const Review = connect(mapStateToProps, mapDispatchToProps)(_Review);

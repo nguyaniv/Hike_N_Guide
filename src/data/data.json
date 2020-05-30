@@ -1,5 +1,5 @@
 {
-  "trails": [
+  "trail": [
     {
       "isEditMode": false,
       "name": "Triglav National Park",
@@ -345,7 +345,7 @@
       "languages": [
         "en"
       ],
-      "trails": [
+      "trail": [
         {
           "_id": "jmq",
           "name": "Snieżka",
@@ -502,106 +502,25 @@
       ]
     }
   ],
-  "reviews": [
-    {
-      "_id": "5lff",
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "rate": 3,
-      "at": 8948,
-      "trail": {
-        "name": "GR20",
-        "_id": "v4g"
-      },
-      "txt": "Great Trail!"
-    },
-    {
-      "_id": "df1",
-      "by": {
-        "_id": "ECE1MhOgcP",
-        "fullName": "Aisha Magano"
-      },
-      "rate": 3,
-      "at": 7678,
-      "guide": {
-        "_id": "aRmDjhBd4b",
-        "fullName": "Rogelio Geisbauer"
-      },
-      "txt": "Great Guide!"
-    },
+  "review": [
     {
       "rate": 1,
       "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
+        "_id": "nbQBvvXdIu",
+        "fullName": "Sarah Tubbaly"
       },
-      "txt": "this is after test",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
+      "txt": "for Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympusfor Mt. Olympus ",
+      "type": {
+        "trail": {
+          "_id": "5u3",
+          "name": "Olympus Mountain"
+        }
       },
-      "at": 1590666707943,
-      "_id": "h9P"
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "new test",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "at": 1590669054700,
-      "_id": "yNK"
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "lior test",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "rating": 4,
-      "at": 1590669482056,
-      "_id": "iuz"
-    },
-    {
-      "rate": 1,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "dsadsadsd",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "rating": 4,
-      "at": 1590669574792,
-      "_id": "CNE"
-    },
-    {
-      "rate": 3,
-      "by": {
-        "_id": "ZfRlDUZwJB",
-        "fullName": "Renee Denard"
-      },
-      "txt": "test 3",
-      "guide": {
-        "fullName": "Meera Crewell",
-        "_id": "K8JCRHqN21"
-      },
-      "at": 1590669615449,
-      "_id": "jQu"
+      "title": "for Mt. Olympus",
+      "editMode": false,
+      "at": 1590779097232,
+      "_id": 5,
+      "isEditMode": false
     }
   ]
 }
