@@ -29,6 +29,7 @@ export function LoadReview(id) {
 
 export function saveReview(review) {
     console.log(review)
+    console.log(review)
     
     return async dispatch => {
         try {
