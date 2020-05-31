@@ -57,45 +57,48 @@ class _ReviewAdd extends Component {
     this.setState({ [name]: value });
   }
 
-   onSend = ev => {
-     ev.preventDefault();
-     const review = this.state;
-     // console.log(review);
-     this.props.saveReview(review);
-   }
+  onSend = (ev) => {
+    ev.preventDefault();
+    const review = this.state;
+    const saveReview = this.props.saveReview(review).then(() => {
+      console.log(saveReview)
+    })
 
-   render() {
-     const { rate, txt, title } = this.state;
-     const loggedInUser = this.props.user;
-     return (
+    this.props.loadReviews()
+  }
+
+  render() {
+    const { rate, txt, title } = this.state;
+    const loggedInUser = this.props.user;
+    return (
       <React.Fragment>
         {loggedInUser && <section className="review-add">
           <div className="review-add-rate-container">
             <span className="review-add-rate-label">Rate:</span>
-            <Rating start={ 0 }
-              stop={ 5 }
-              initialRating={ rate }
-              emptySymbol={ <img src={ star } alt="star" className="img-star" /> }
-              fullSymbol={ <img src={ star_o } alt="full-star" className="img-star" /> }
-              onChange={ rate => {
+            <Rating start={0}
+              stop={5}
+              initialRating={rate}
+              emptySymbol={<img src={star} alt="star" className="img-star" />}
+              fullSymbol={<img src={star_o} alt="full-star" className="img-star" />}
+              onChange={rate => {
                 this.setState({ rate });
-              } }
+              }}
             />
           </div>
-          <form className="review-add-form" onSubmit={ this.onSend }>
+          <form className="review-add-form" onSubmit={this.onSend}>
             <label htmlFor="title">Review title:</label>
-            <input className="review-add-title" type="text" id="title" name="title" value={ title } onChange={ this.handledChange } />
+            <input className="review-add-title" type="text" id="title" name="title" value={title} onChange={this.handledChange} />
             <label htmlFor="text">Review text:</label>
             <textarea className="review-add-textarea" id="text"
-              name="txt" value={ txt } onChange={ this.handledChange }
+              name="txt" value={txt} onChange={this.handledChange}
               cols="30" rows="10" placeholder="What do you think about me?" required>
             </textarea>
             <button className="review-add-submit-btn">Send</button>
           </form>
         </section>}
       </React.Fragment>
-     );
-   }
+    );
+  }
 }
 
 const mapStateToProps = state => ({
