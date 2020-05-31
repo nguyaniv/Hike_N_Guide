@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { saveReview, loadReviews } from '../store/actions/reviewActions'
 import Rating from 'react-rating';
+import { saveReview, loadReviews } from '../store/actions/reviewActions';
 
 //Images
 import star from '../img/star.svg';
@@ -28,27 +28,26 @@ class _ReviewAdd extends Component {
       const miniGuide = {
         guide: {
           fullName: guideName,
-          _id: id
-        }
-
-      }
-      this.setState({ by: miniUser, type: miniGuide })
+          _id: id,
+        },
+      };
+      this.setState({ by: miniUser, type: miniGuide });
     }
     if (this.props.trail) {
-      let { _id, fullName } = this.props.user;
-      const miniUser = { _id, fullName }
-      const { trail } = this.props
-      const id = trail._id
-      const trailName = trail.name
+      const { _id, fullName } = this.props.user;
+      const miniUser = { _id, fullName };
+      const { trail } = this.props;
+      const id = trail._id;
+      const trailName = trail.name;
       const miniTrail = {
         trail: {
           _id: id,
-          name: trailName
-        }
-      }
+          name: trailName,
+        },
+      };
       this.setState({ by: miniUser, type: miniTrail }, () => {
-        console.log(this.state)
-      })
+        console.log(this.state);
+      });
     }
   }
 
@@ -58,16 +57,16 @@ class _ReviewAdd extends Component {
   }
 
    onSend = ev => {
-    ev.preventDefault();
-    const review = this.state;
-    // console.log(review);
-    this.props.saveReview(review);
-  }
+     ev.preventDefault();
+     const review = this.state;
+     // console.log(review);
+     this.props.saveReview(review);
+   }
 
-  render() {
-    const { rate, txt, title } = this.state;
-    const loggedInUser = this.props.user;
-    return (
+   render() {
+     const { rate, txt, title } = this.state;
+     const loggedInUser = this.props.user;
+     return (
       <React.Fragment>
         {loggedInUser && <section className="review-add">
           <div className="review-add-rate-container">
@@ -94,18 +93,16 @@ class _ReviewAdd extends Component {
           </form>
         </section>}
       </React.Fragment>
-    );
-  }
+     );
+   }
 }
 
-const mapStateToProps = state => {
-  return {
-    reviews: state.review.review,
-    user: state.user.loggedInUser
-  };
-};
+const mapStateToProps = state => ({
+  reviews: state.review.review,
+  user: state.user.loggedInUser,
+});
 const mapDispatchToProps = {
   saveReview,
-  loadReviews
+  loadReviews,
 };
 export const ReviewAdd = connect(mapStateToProps, mapDispatchToProps)(_ReviewAdd);

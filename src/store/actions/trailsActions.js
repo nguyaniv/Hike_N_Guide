@@ -23,6 +23,7 @@ export function loadTrail(id) {
 }
 
 
+
 export function saveTrail(trail) {
   return async dispatch => {
     try {

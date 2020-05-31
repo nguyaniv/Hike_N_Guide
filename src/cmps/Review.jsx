@@ -39,32 +39,29 @@ class _Review extends Component {
 
   handledChange = ev => {
     const { name, value } = ev.target;
-    this.setState(prevState => ({
-      review: {
-        ...prevState.review,
-        [name]: value,
-      },
-    }));
+    this.setState(prevState => ({ review: { ...prevState.review, [name]: value } }), () => {
+      console.log(this.state.review);
+    });
   }
 
   render() {
-    const writtenBy = this.props.review.by.fullName;
+    const writtenBy = this.props.review ? this.props.review.by.fullName : null;
     const { txt, rate, title } = this.state.review;
     return (
       <section className="review-container">
         {this.state.review && this.state.editMode
           && <form className="" onSubmit={ this.onEdit }>
-          <span>title</span> <input type="text" name="title" value={ title } onChange={ this.handledChange } />
-          <br />
-          <textarea name="txt" value={ txt } onChange={ this.handledChange }
-            cols="30" rows="10" placeholder="What do you think about me?" required>
-          </textarea>
-          <button className="">Send</button>
-        </form>
+            <span>title</span> <input type="text" name="title" value={ title } onChange={ this.handledChange } />
+            <br />
+            <textarea name="txt" value={ txt } onChange={ this.handledChange }
+              cols="30" rows="10" placeholder="What do you think about me?" required>
+            </textarea>
+            <button className="">Send</button>
+          </form>
         }
 
         {this.state.review
-        && <div className="review">
+          && <div className="review">
             <div className="review-info">
               <p className="review-info-row review-info-title-row">
                 <span className="review-info-heading">Title:</span>
@@ -77,12 +74,12 @@ class _Review extends Component {
               <p className="review-info-row">
                 <span className="review-info-heading">Rating:</span>
                 <Rating className="guide-preview-rating" start={ 0 }
-                stop={ 5 }
-                initialRating={ rate }
-                emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
-                fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
-                readonly
-              />
+                  stop={ 5 }
+                  initialRating={ rate }
+                  emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
+                  fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
+                  readonly
+                />
               </p>
             </div>
             <p className="review-text">
@@ -97,7 +94,7 @@ class _Review extends Component {
               } }>Edit</button>
             </div>
           </div>
-          }
+        }
       </section>
     );
   }

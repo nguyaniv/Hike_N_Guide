@@ -12,7 +12,7 @@ export default {
 function query(filter = null) {
   let queryStr = '?';
   if (filter.guideId) queryStr += `guideId=${filter.guideId}`;
-  else if (filter.userId) queryStr += `userId${filter.userId}`;
+  else if (filter.userId) queryStr += `userId${filter.userId}`;  
   return HttpService.get(END_POINT + queryStr);
 }
 

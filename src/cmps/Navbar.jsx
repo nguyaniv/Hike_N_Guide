@@ -85,7 +85,7 @@ class _Navbar extends React.Component {
             </button>
             { loggedInUser
               && <NavLink
-                  to={ `profile/${loggedInUser._id}` }
+                  to={ `/profile/${loggedInUser._id}` }
                   className="main-header-link"
                   activeClassName="selected"
                 >

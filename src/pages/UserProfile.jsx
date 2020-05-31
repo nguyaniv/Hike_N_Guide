@@ -26,23 +26,31 @@ class _UserProfile extends Component {
 
   render() {
     const { user, customersOrders } = this.state;
+    console.log('user', user);
     return (
-      <main>
+      <main className="user-profile">
         {user
           && <React.Fragment>
-            <section>
-              <img src={ user.imgUrl } alt={ user.fullName } />
-              <p>{user.fullName}</p>
-              <p>Email:</p><p>{user.email}</p>
-            </section>
-            <section>
+            <section className="user-detail">
+            <div className="box box-img">
+                <img className="profile-img" src={ user.imgUrl } alt={ user.fullName } />
+                <p className="title-name">{user.fullName}</p>
+            </div>
+            <div className="box box-detail">
+              <div className="row flex space-between">
+                <p className="title">Username</p><p>{user.userName}</p>
+            </div>
+            <div className="row flex space-between">
+                <p className="title">Email</p><p>{user.email}</p>
+              </div>
+            </div>
               <div className="btns-panel">
-                <button>My orders</button>
-                <button>Customer orders</button>
+              <button className="btn">My orders</button>
+              <button className="btn">Customer orders</button>
               </div>
-              <div>
-              {customersOrders && <ListCustomerOrders customersOrders={ customersOrders } />}
-              </div>
+            </section>
+            <section className="">
+                {customersOrders && <ListCustomerOrders customersOrders={ customersOrders } />}
             </section>
           </React.Fragment>
         }
