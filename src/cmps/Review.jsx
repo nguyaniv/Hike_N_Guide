@@ -25,6 +25,10 @@ class _Review extends Component {
     this.props.removeReview(this.props.review._id);
   }
 
+  // reviewEditMode = () => {
+  //   this.setState({ editMode: true });
+  // }
+
   reviewEditMode = () => {
     this.state.editMode ? this.setState({ editMode: false }) : this.setState({ editMode: true });
     

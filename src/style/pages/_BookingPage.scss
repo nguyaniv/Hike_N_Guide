@@ -40,10 +40,12 @@
   }
 
   &-full-name {
+    align-self: center;
     font-size: 25px;
     font-weight: bold;
     padding: 0;
     margin: 0;
+    margin-block-end: 1rem;
   }
 
   &-rate-box {
@@ -52,6 +54,7 @@
     justify-content: flex-start;
     align-items: center;
     margin: 0;
+    margin-block-end: 1rem;
 
     .pra-rating {
       font-weight: 800;
@@ -68,18 +71,19 @@
   }
 
   &-rate {
-    margin-inline-start: 5px;
+    margin-inline-start: 0.5rem;
   }
 
   .total-rating {
     position: relative;
-    top: 2px;
-    font-size: 11px;
+    // top: 1px;
+    font-size: 1rem;
+    margin-inline-start: 0.2rem;
   }
 
   &-title {
     font-weight: bolder;
-    margin-inline-end: 10px;
+    margin-inline-end: 0.5rem;
   }
 
   &-description {
@@ -97,7 +101,6 @@
       font-size: 20px;
       font-weight: bold;
       margin: 10px 0;
-      text-decoration: underline;
     }
   }
 }

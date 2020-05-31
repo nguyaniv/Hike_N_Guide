@@ -25,6 +25,7 @@ class _BookingPage extends Component {
   state = {
     guide: '',
     trailIdx: 0,
+    reviewsToShow: [],
   }
 
   async componentDidMount() {
@@ -35,8 +36,16 @@ class _BookingPage extends Component {
     this.setState({ guide }, () => { this.setCurrTrailIdx(currTrail); });
 
 
+    // const reviews = await this.props.loadReviews({ guideId: id });
+    // this.setState({ reviews });
+
     const reviews = await this.props.loadReviews({ guideId: id });
-    this.setState({ reviews });
+    // console.log('reviews from booking page cdm: ', reviews);
+    const reviewsToShow = reviews
+      .filter(review => review.type.guide)
+      .filter(review => review.type.guide._id === id);
+    // console.log('reviewsToShow from booking page cdm: ', reviewsToShow);
+    this.setState(prevState => ({ ...prevState, reviewsToShow }));
   }
 
   setCurrTrailIdx = currTrail => {
@@ -55,7 +64,10 @@ class _BookingPage extends Component {
   }
 
   render() {
-    const { guide, trailIdx } = this.state;
+    const { guide, trailIdx, reviewsToShow } = this.state;
+    // console.log('reviewsToShow from booking page render: ', reviewsToShow);
+
+
     return (
       <main className="booking-page">
         {guide
@@ -74,7 +86,7 @@ class _BookingPage extends Component {
                     fullSymbol={ <img src={ star_o } alt="full-star" width="16" /> }
                     readonly
                   />
-                  <p className="total-rating">({guide.reviewers_count})</p>
+                  <span className="total-rating">({guide.reviewers_count})</span>
                 </p>
                 <div>
                   <span className="booking-page-title">Languages:</span>
@@ -97,8 +109,8 @@ class _BookingPage extends Component {
                 {this.props.loggedInUser
                   ? <ReviewAdd guide={ guide } />
                   : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
-                {guide && this.state.reviews
-                  && <ReviewList reviews={ this.props.reviews } />
+                {guide && this.state.reviewsToShow
+                  && <ReviewList reviews={ reviewsToShow } />
                 }
               </section>
             </section>
