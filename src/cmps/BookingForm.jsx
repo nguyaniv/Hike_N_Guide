@@ -3,50 +3,93 @@ import { connect } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
+//services
+import userService from '../services/user.service';
+import trailService from '../services/trail.service';
+import orderService from '../services/order.service';
+
 class _BookingForm extends Component {
   state = {
-    peopleCount: 1,
-    date: new Date(),
+    bookForm: {
+      trailIdx: this.props.trailIdx,
+      peopleCount: 1,
+      date: new Date(),
+    },
   };
 
-  componentDidMount() {
+  handelInput = ev => {
+    const { name } = ev.target;
+    const value = ev.target.type === 'number' ? parseInt(ev.target.value, 10) : ev.target.value;
 
+    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, [name]: value } }),
+      () => { console.log('state:', this.state); });
   }
 
+  handelTrailIdx = ev => {
+    this.props.setTrailIdx(ev);
+    this.handelInput(ev);
+  }
+
+  handelDate = date => {
+    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, date } }));
+  }
+
+  onBook = async ev => {
+    ev.preventDefault();
+    let newOrder = this.getNewOrder();
+    newOrder = await orderService.save(newOrder);
+    console.log('newOrder', newOrder);
+  }
+
+  getNewOrder() {
+    const { guide } = this.props;
+    const { peopleCount, date, trailIdx } = this.state.bookForm;
+
+    const newOrder = {
+      peopleCount,
+      trailAt: Date.parse(date),
+    };
+    newOrder.buyerUser = this.props.loggedInUser;
+    newOrder.guide = userService.getMiniUserObj(this.props.guide);
+    const selectedTrail = guide.trails[trailIdx];
+    newOrder.trail = trailService.getMiniTrailObj(selectedTrail);
+    newOrder.price = guide.price;
+    return newOrder;
+  }
+
+
   render() {
-    const {
-      bookForm, trails, handelInput, handelDate,
-    } = this.props;
+    const { guide, trailIdx } = this.props;
+    const { bookForm } = this.state;
 
 
     return (
       <section className="booking-form">
         <div className="booking-form-contain">
           <div className="booking-form-container">
-            <form>
-              <select name="trailSelected" onChange={ handelInput } value={ bookForm.trailSelected }>
+            <form onSubmit={ this.onBook }>
+              <select name="trailIdx" onChange={ this.handelTrailIdx } value={ trailIdx }>
                 {
-                  trails.map((trail, idx) => (
-                      <option key={ trail._id } value={ idx }>{trail.name}</option>))
+                  guide.trails.map((trail, idx) => (
+                    <option key={ trail._id } value={ idx }>{trail.name}</option>))
                 }
               </select>
               <Calendar
-                onChange={ date => { handelDate(date); } }
+                onChange={ date => { this.handelDate(date); } }
                 value={ bookForm.date }
                 minDate={ new Date() }
               />
               <div>
                 <label className="booking-form-title">How many people?</label>
-                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ handelInput } />
+                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ this.handelInput } />
               </div>
               <div>
                 <div className="booking-form-price-contain" >
                   <label className="booking-form-title">Price:</label>
-                  <p className="price">$160</p>
+                  <p className="price">{guide.price}$</p>
                 </div>
                 <button className="btn-submit">Book</button>
               </div>
-
             </form>
           </div>
         </div>
@@ -56,7 +99,8 @@ class _BookingForm extends Component {
 }
 
 const mapStateToProps = state => ({
-
+  currTrail: state.trail.selectedTrail,
+  loggedInUser: state.user.loggedInUser,
 });
 const mapDispatchToProps = {
 

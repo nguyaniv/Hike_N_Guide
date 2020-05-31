@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Switch>
-        <Route path="/profile" component={UserProfile } />
+        <Route path="/profile/:id" component={ UserProfile } />
         <Route path="/login" component={ LogIn } />
         <Route path="/booking/:id" component={ BookingPage } />
         <Route path="/trail/add" component={ TrailAdd } />
