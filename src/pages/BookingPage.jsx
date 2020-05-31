@@ -3,19 +3,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-//services
+
+// services
 import userService from '../services/user.service';
 import { langCodeToName } from '../services/language.service';
 
-//actions
+// actions
 import { loadReviews } from '../store/actions/reviewActions';
 
-//Components/Pages
+// Components/Pages
 import { ReviewAdd } from '../cmps/ReviewAdd';
 import { ReviewList } from '../cmps/ReviewList';
 import { BookingForm } from '../cmps/BookingForm';
 
-//Images
+// Images
 import star from '../img/star.svg';
 import star_o from '../img/‏‏star-o.svg';
 
@@ -23,51 +24,38 @@ import star_o from '../img/‏‏star-o.svg';
 class _BookingPage extends Component {
   state = {
     guide: '',
-    bookForm: {
-      trailSelected: 0,
-      peopleCount: 1,
-      date: new Date(),
-    },
+    trailIdx: 0,
   }
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    this.loadGuide(id);
-    //review load
+    const guide = await userService.getById(id);
+
+    const { currTrail } = this.props;
+    this.setState({ guide }, () => { this.setCurrTrailIdx(currTrail); });
+
 
     const reviews = await this.props.loadReviews({ guideId: id });
-    this.setState({ reviews }, () => {
-      console.log(this.props.reviews);
-    });
+    this.setState({ reviews });
   }
 
-  loadGuide = id => {
-    userService.getById(id)
-      .then(guide => {
-        this.setState({ guide });
-      });
+  setCurrTrailIdx = currTrail => {
+    if (currTrail) {
+      const trailIdx = this.state.guide.trails.findIndex(trail => (
+        trail._id === currTrail._id));
+      if (trailIdx !== -1) this.setState({ trailIdx });
+    }
   }
 
-  handelInput = ev => {
+  setTrailIdx = ev => {
     const { name } = ev.target;
-    const value = ev.target.type === 'number' ? parseInt(ev.target.value, 10) : ev.target.value;
+    const value = parseInt(ev.target.value, 10);
 
-    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, [name]: value } }),
-      () => { console.log('state:', this.state); });
-  }
-
-  handelDate = date => {
-    this.setState(prevState => ({ bookForm: { ...prevState.bookForm, date } }),
-      () => { console.log('state:', this.state); });
-  }
-
-  onBook = ev => {
-    ev.preventDefault();
-    // const order = this.state
+    this.setState({ [name]: value });
   }
 
   render() {
-    const { guide, bookForm } = this.state;
+    const { guide, trailIdx } = this.state;
     return (
       <main className="booking-page">
         {guide
@@ -100,8 +88,7 @@ class _BookingPage extends Component {
                   </div>
                   <img
                     className="booking-page-img-trail"
-                    alt={ guide.trails[bookForm.trailSelected].name }
-                    src={ guide.trails[bookForm.trailSelected].imgUrls[0] }
+                    src={ guide.trails[trailIdx].imgUrls[0] }
                   />
                 </section>
               </div>
@@ -115,16 +102,8 @@ class _BookingPage extends Component {
                 }
               </section>
             </section>
-            <BookingForm
-              price={ this.state.guide.prise }
-              trails={ this.state.guide.trails }
-              handelInput={ this.handelInput }
-              bookForm={ this.state.bookForm }
-              handelDate={ this.handelDate }
-              onBook={ this.onBook }
-             />
-          </div>
-        }
+          <BookingForm guide={ guide } setTrailIdx={ this.setTrailIdx } trailIdx={ trailIdx } />
+          </div>}
       </main>
     );
   }
@@ -133,7 +112,7 @@ class _BookingPage extends Component {
 const mapStateToProps = state => ({
   loggedInUser: state.user.loggedInUser,
   reviews: state.review.review,
-
+  currTrail: state.trail.selectedTrail,
 });
 const mapDispatchToProps = {
   loadReviews,

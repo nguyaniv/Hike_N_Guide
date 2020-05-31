@@ -6,10 +6,14 @@ export default {
   query,
   save,
   remove,
+  getById,
 };
 
 function query(filter = null) {
-  return HttpService.get(END_POINT, filter);
+  let queryStr = '?';
+  if (filter.guideId) queryStr += `guideId=${filter.guideId}`;
+  else if (filter.userId) queryStr += `userId${filter.userId}`;
+  return HttpService.get(END_POINT + queryStr);
 }
 
 function save(order) {
@@ -21,4 +25,8 @@ function save(order) {
 
 function remove(orderId) {
   return HttpService.delete(`${END_POINT}/${orderId}`);
+}
+
+function getById(orderId) {
+  return HttpService.get(`${END_POINT}/${orderId}`);
 }
