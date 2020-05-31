@@ -31,7 +31,7 @@ export default function (state = initialState, action = {}) {
         review: state.review.filter(review => review.id !== action.reviewId),
       };
     case 'SET_REVIEWS':
-      console.log(action.review)
+      // console.log(action.review)
       return { ...state, review: action.review };
 
     case 'SET_REVIEW':

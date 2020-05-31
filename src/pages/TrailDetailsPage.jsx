@@ -21,25 +21,13 @@ class _TrailDetailsPage extends React.Component {
   state = {
     isEditMode: false,
     usersToShow: null,
-    selectedTrail: {
-      name: '',
-      country: '',
-      difficulty: '',
-      distance: '',
-      days: '',
-      location: '',
-      imgUrls: [],
-      descriptions: '',
-    },
     reviews: [],
   }
 
   async componentDidMount() {
-    const { id } = this.props.match.params;
     this.props.loadUsers();
-    const reviews = await this.props.loadReviews();
 
-
+    const { id } = this.props.match.params;
     this.props.loadTrail(id)
       .then(() => {
         this.setState(prevState => ({
@@ -56,11 +44,11 @@ class _TrailDetailsPage extends React.Component {
       });
 
 
+    const reviews = await this.props.loadReviews({ trailId: id });
     if (reviews) {
-      const trailReviews = reviews.filter(review => {
-        // console.log(review);
-        return review.type.trail;
-      }).filter(review => review.type.trail._id === id);
+      const trailReviews = reviews
+        .filter(review => review.type.trail)
+        .filter(review => review.type.trail._id === id);
 
       this.setState(prevState => ({
         ...prevState,
@@ -198,7 +186,7 @@ class _TrailDetailsPage extends React.Component {
               </h2>
 
               {this.props.loggedInUser
-                ? <ReviewAdd trail={ this.props.trail.selectedTrail } />
+                ? <ReviewAdd trail={ this.state.selectedTrail } />
                 : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
 
               <h2 className="trail-details-info-header no-padding-start">
