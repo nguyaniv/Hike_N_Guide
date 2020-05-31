@@ -4,7 +4,7 @@
 
   &-main-image {
     width: 100%;
-    height: 100vh;
+    height: 98vh;
     background-size: cover;
     background-attachment: fixed;
   }
@@ -12,7 +12,7 @@
   &-main-header {
     color: white;
     margin: 0;
-    padding-block-start: 60vh;
+    padding-block-start: 86vh;
     font-size: 2rem;
     text-transform: uppercase;
     filter: drop-shadow(0 0 10px black);
@@ -21,8 +21,9 @@
   &-container {
     width: 60%;
     margin: 0 auto;
-    margin-block-start: -21rem;
+    margin-block-start: -5rem;
     background-color: white;
+    border-radius: 1rem;
   }
 
   &-guides-list {
@@ -36,7 +37,7 @@
   &-info-header {
     font-size: 1.5rem;
     padding-block-start: 1rem;
-    margin-block-end: 1rem;
+    margin-block-end: 2rem;
     text-align: center;
   }
 
@@ -130,6 +131,8 @@
     &:active,
     &:focus {
       background-color: $clr4;
+      border: none;
+      color: $clr2;
     }
   }
 
@@ -138,6 +141,8 @@
     &:active,
     &:focus {
       background-color: yellow;
+      border: none;
+      color: $clr2;
     }
   }
 
@@ -146,6 +151,8 @@
     &:active,
     &:focus {
       background-color: red;
+      border: none;
+      color: $clr2;
     }
   }
 

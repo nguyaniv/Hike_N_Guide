@@ -7,10 +7,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
 import store from './store/store';
+import ScrollToTop from './cmps/ScrollToTop';
 
 ReactDOM.render(
   <Provider store={ store }>
     <Router history={ history }>
+      <ScrollToTop />
       <App />
     </Router>
   </Provider>,

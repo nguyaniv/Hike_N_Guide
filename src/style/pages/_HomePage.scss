@@ -21,6 +21,7 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    margin-block-end: 1rem;
   }
 
   &-main-heading {
@@ -30,9 +31,9 @@
     width: 100%;
     top: 8rem;
     margin: 0;
-    color: $clr4;
+    color: $clr2;
     font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px $clr2);
+    filter: drop-shadow(0 0 10px gray);
   }
 
   &-list-heading {
@@ -53,15 +54,18 @@
     border: 1px solid black;
     border-radius: 0.5rem;
     text-decoration: none;
+    margin-block-end: 2rem;
 
     &:hover,
     &:active,
     &:focus {
       background-color: $clr4;
+      border: none;
+      color: $clr2;
     }
   }
 
-  &-show-more-button:not(:last-child) {
-    margin-block-end: 1rem;
+  &-show-more-button:last-child {
+    margin-block-end: 2rem;
   }
 }

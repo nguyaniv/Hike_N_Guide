@@ -21,7 +21,7 @@ class _TrailPage extends Component {
             <main className="trail-page">
                 {this.props.trails && <React.Fragment>
                     <h2 className="trail-page-main-heading">Choose your trail</h2>
-                    <Link to="trail/add">Add Trail</Link>
+                    {/* <Link to="trail/add">Add Trail</Link> */}
 {/* {    console.log(this.props)} */}
                     <React.Fragment>
                         {/* < TrailAdd /> */}
