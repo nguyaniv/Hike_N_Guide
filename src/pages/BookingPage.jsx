@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
@@ -33,10 +34,11 @@ class _BookingPage extends Component {
     const { id } = this.props.match.params;
     this.loadGuide(id);
     //review load
-    
-    const reviews = await this.props.loadReviews({guideId: id})    
-    this.setState({ reviews },()=>{    console.log(this.props.reviews);
-    })
+
+    const reviews = await this.props.loadReviews({ guideId: id });
+    this.setState({ reviews }, () => {
+      console.log(this.props.reviews);
+    });
   }
 
   loadGuide = id => {
@@ -69,16 +71,13 @@ class _BookingPage extends Component {
     return (
       <main className="booking-page">
         {guide
-          && <div className="booking-page-contain">
-
-          <BookingForm trails={ this.state.guide.trails } handelInput={ this.handelInput }
-            bookForm={ this.state.bookForm } handelDate={ this.handelDate } onBook={ this.onBook } />
+          && <div className="booking-page-container">
             <section className="booking-page-content">
               <div className="booking-page-details">
                 <img className="booking-page-avatar" alt={ guide.fullName } src={ guide.imgUrl } width="75px" />
                 <p className="booking-page-full-name">{guide.fullName}</p>
-                <div className="booking-page-rate-box" >
-                  <p className="pra-rating">Rating:</p>
+                <p className="booking-page-rate-box" >
+                  <span className="pra-rating">Rating:</span>
                   <Rating
                     start={ 0 }
                     stop={ 5 }
@@ -88,14 +87,16 @@ class _BookingPage extends Component {
                     readonly
                   />
                   <p className="total-rating">({guide.reviewers_count})</p>
-                </div>
+                </p>
                 <div>
-                  <p className="booking-page-title">Languages:</p>
-                  <p>{guide.languages.map(langCodeToName).join(', ')}</p>
+                  <span className="booking-page-title">Languages:</span>
+                  <span>{guide.languages.map(langCodeToName).join(', ')}</span>
                 </div>
                 <section>
                   <div>
-                    <p>need to be here description</p>
+                    <p className="booking-page-description">
+                      I’ve traveled to over 100 countries and territories, traveled hundreds of thousands of miles, slept in over a thousand hostels, tried weird food (including fried maggots), made lifelong friends, learned multiple languages, and, most importantly, made it my mission now to help travelers like YOURSELF to realize YOUR travel dreams the same way those five backpackers helped me realize mine.
+                    </p>
                   </div>
                   <img
                     className="booking-page-img-trail"
@@ -109,14 +110,21 @@ class _BookingPage extends Component {
                 {this.props.loggedInUser
                   ? <ReviewAdd guide={ guide } />
                   : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
+                {guide && this.state.reviews
+                  && <ReviewList reviews={ this.props.reviews } />
+                }
               </section>
             </section>
-          </div>}
-        {guide && this.state.reviews &&
-          <ReviewList reviews={this.props.reviews} />
+            <BookingForm
+              price={ this.state.guide.prise }
+              trails={ this.state.guide.trails }
+              handelInput={ this.handelInput }
+              bookForm={ this.state.bookForm }
+              handelDate={ this.handelDate }
+              onBook={ this.onBook }
+             />
+          </div>
         }
-
-
       </main>
     );
   }
