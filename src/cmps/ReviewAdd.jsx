@@ -63,12 +63,9 @@ class _ReviewAdd extends Component {
      console.log('review was sent from ReviewAdd page: ', review)
      this.props.saveReview(review)
        .then(() => {
-        // this.props.loadReviews();
+        this.props.getReviewToShow();
        })
    }
-
-    this.props.loadReviews()
-  }
 
   render() {
     const { rate, txt, title } = this.state;

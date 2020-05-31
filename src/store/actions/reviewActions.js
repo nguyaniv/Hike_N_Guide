@@ -5,7 +5,7 @@ export function loadReviews() {
   return async dispatch => {
     try {
       const reviews = await reviewService.query();
-      // console.log(reviews);
+      console.log(reviews);
 
       dispatch(setReviews(reviews));
       return reviews;
@@ -28,8 +28,6 @@ export function LoadReview(id) {
 
 
 export function saveReview(review) {
-  console.log(review);
-  console.log(review);
 
   return async dispatch => {
     try {

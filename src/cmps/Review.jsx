@@ -23,6 +23,7 @@ class _Review extends Component {
 
   onDeleteGuideReview = () => {
     this.props.removeReview(this.props.review._id);
+    this.props.getReviewToShow();
   }
 
   // reviewEditMode = () => {
