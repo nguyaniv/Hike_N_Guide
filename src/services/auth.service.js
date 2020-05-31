@@ -1,4 +1,5 @@
 import HttpService from './http.service';
+import UserService from './user.service';
 
 export default {
   login,
@@ -18,6 +19,7 @@ async function logout() {
   sessionStorage.clear();
 }
 function _handleLogin(user) {
+  user = UserService.getMiniUserObj(user);
   sessionStorage.setItem('user', JSON.stringify(user));
   return user;
 }

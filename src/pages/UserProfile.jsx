@@ -1,35 +1,54 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+
+//Services
 import UserService from '../services/user.service';
-// import {  } from '../store/actions/user';
+import OrderService from '../services/order.service';
+
+//Pages/Components
+import { ListCustomerOrders } from '../cmps/ListCustomerOrders';
 
 
 class _UserProfile extends Component {
-    state = {
-      user: '',
-    }
+  state = {
+    user: '',
+    customersOrders: '',
+  }
 
-    componentDidMount() {
-      const { id } = this.props.match.params;
-      const user = UserService.getById(id);
-      console.log(user);
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    const user = await UserService.getById(id);
+    this.setState({ user });
+    const customersOrders = await OrderService.query({ guideId: user._id });
+    this.setState({ customersOrders });
+  }
 
-      if (!this.props.loggedInUser) {
-        this.props.history.goBack();
-      }
-    }
-
-    render() {
-      const { user } = this.state;
-      return (
-        <main>
-          {user
-              && <img src={ user.imgUrl } alt={ user.fullName } />
-              //   <p>Hello {user.fullName} </p>
-          }
-        </main>
-      );
-    }
+  render() {
+    const { user, customersOrders } = this.state;
+    return (
+      <main>
+        {user
+          && <React.Fragment>
+            <section>
+              <img src={ user.imgUrl } alt={ user.fullName } />
+              <p>{user.fullName}</p>
+              <p>Email:</p><p>{user.email}</p>
+            </section>
+            <section>
+              <div className="btns-panel">
+                <button>My orders</button>
+                <button>Customer orders</button>
+              </div>
+              <div>
+              {customersOrders && <ListCustomerOrders customersOrders={ customersOrders } />}
+              </div>
+            </section>
+          </React.Fragment>
+        }
+      </main>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
