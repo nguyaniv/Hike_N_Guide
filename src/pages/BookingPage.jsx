@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Rating from 'react-rating';
@@ -28,18 +29,22 @@ class _BookingPage extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    this.loadGuide(id);
-
+    const guide = await userService.getById(id);
 
     const { currTrail } = this.props;
+    this.setState({ guide }, () => { this.setCurrTrailIdx(currTrail); });
+
+
+    const reviews = await this.props.loadReviews({ guideId: id });
+    this.setState({ reviews });
+  }
+
+  setCurrTrailIdx = currTrail => {
     if (currTrail) {
       const trailIdx = this.state.guide.trails.findIndex(trail => (
         trail._id === currTrail._id));
       if (trailIdx !== -1) this.setState({ trailIdx });
     }
-
-    const reviews = await this.props.loadReviews({ guideId: id });
-    this.setState({ reviews });
   }
 
   setTrailIdx = ev => {
@@ -49,25 +54,18 @@ class _BookingPage extends Component {
     this.setState({ [name]: value });
   }
 
-  loadGuide = id => {
-    userService.getById(id)
-      .then(guide => {
-        this.setState({ guide });
-      });
-  }
-
   render() {
     const { guide, trailIdx } = this.state;
     return (
       <main className="booking-page">
         {guide
-          && <div className="booking-page-contain">
+          && <div className="booking-page-container">
             <section className="booking-page-content">
               <div className="booking-page-details">
                 <img className="booking-page-avatar" alt={ guide.fullName } src={ guide.imgUrl } width="75px" />
                 <p className="booking-page-full-name">{guide.fullName}</p>
-                <div className="booking-page-rate-box" >
-                  <p className="pra-rating">Rating:</p>
+                <p className="booking-page-rate-box" >
+                  <span className="pra-rating">Rating:</span>
                   <Rating
                     start={ 0 }
                     stop={ 5 }
@@ -77,14 +75,16 @@ class _BookingPage extends Component {
                     readonly
                   />
                   <p className="total-rating">({guide.reviewers_count})</p>
-                </div>
+                </p>
                 <div>
-                  <p className="booking-page-title">Languages:</p>
-                  <p>{guide.languages.map(langCodeToName).join(', ')}</p>
+                  <span className="booking-page-title">Languages:</span>
+                  <span>{guide.languages.map(langCodeToName).join(', ')}</span>
                 </div>
                 <section>
                   <div>
-                    <p>need to be here description</p>
+                    <p className="booking-page-description">
+                      I’ve traveled to over 100 countries and territories, traveled hundreds of thousands of miles, slept in over a thousand hostels, tried weird food (including fried maggots), made lifelong friends, learned multiple languages, and, most importantly, made it my mission now to help travelers like YOURSELF to realize YOUR travel dreams the same way those five backpackers helped me realize mine.
+                    </p>
                   </div>
                   <img
                     className="booking-page-img-trail"
@@ -97,14 +97,13 @@ class _BookingPage extends Component {
                 {this.props.loggedInUser
                   ? <ReviewAdd guide={ guide } />
                   : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
+                {guide && this.state.reviews
+                  && <ReviewList reviews={ this.props.reviews } />
+                }
               </section>
             </section>
-          <BookingForm guide={guide} setTrailIdx={this.setTrailIdx} trailIdx={trailIdx} />
+          <BookingForm guide={ guide } setTrailIdx={ this.setTrailIdx } trailIdx={ trailIdx } />
           </div>}
-        {guide && this.state.reviews
-          && <ReviewList reviews={ this.props.reviews } />
-        }
-
       </main>
     );
   }

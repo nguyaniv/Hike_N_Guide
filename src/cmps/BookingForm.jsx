@@ -59,41 +59,38 @@ class _BookingForm extends Component {
 
 
   render() {
-    const { guide, trailIdx } = this.props;
+    const { guide } = this.props;
     const { bookForm } = this.state;
 
-
     return (
-      <section className="booking-form">
-        <div className="booking-form-contain">
-          <div className="booking-form-container">
-            <form onSubmit={ this.onBook }>
-              <select name="trailIdx" onChange={ this.handelTrailIdx } value={ trailIdx }>
-                {
-                  guide.trails.map((trail, idx) => (
-                    <option key={ trail._id } value={ idx }>{trail.name}</option>))
-                }
-              </select>
-              <Calendar
-                onChange={ date => { this.handelDate(date); } }
-                value={ bookForm.date }
-                minDate={ new Date() }
-              />
-              <div>
-                <label className="booking-form-title">How many people?</label>
-                <input type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ this.handelInput } />
-              </div>
-              <div>
-                <div className="booking-form-price-contain" >
-                  <label className="booking-form-title">Price:</label>
-                  <p className="price">{guide.price}$</p>
-                </div>
-                <button className="btn-submit">Book</button>
-              </div>
-            </form>
+        <form className="booking-form">
+          <select
+          className="booking-form-selected-trail"
+          name="trailSelected"
+          onChange={ this.handelInput }
+          value={ bookForm.trailSelected }>
+            {
+              guide.trails.map((trail, idx) => (
+                  <option key={ trail._id } value={ idx }>{trail.name}</option>))
+            }
+          </select>
+          <Calendar
+          onChange={ date => { this.handelDate(date); } }
+            value={ bookForm.date }
+            minDate={ new Date() }
+          />
+          <div className="booking-form-people-count-container">
+            <label className="booking-form-title">How many people?</label>
+          <input className="booking-form-people-count" type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ this.handelInput } />
           </div>
-        </div>
-      </section>
+          <div>
+            <div className="booking-form-price-container" >
+              <label className="booking-form-title">Price:</label>
+              <span className="price">${ bookForm.peopleCount * guide.price}</span>
+            </div>
+            <button className="booking-form-submit-button">Book</button>
+          </div>
+        </form>
     );
   }
 }
