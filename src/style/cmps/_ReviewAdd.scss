@@ -69,6 +69,8 @@
     &:active,
     &:focus {
       background-color: $clr4;
+      border: none;
+      color: $clr2;
     }
   }
 }

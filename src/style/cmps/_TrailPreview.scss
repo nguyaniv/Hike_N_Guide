@@ -4,7 +4,7 @@
   min-height: 18rem;
   border-bottom: 1px solid $clr3;
   transition: all 0.3s;
-  margin-block-end: 1rem;
+  margin-block-end: 2rem;
 
   & a {
     text-decoration: none;
@@ -19,7 +19,8 @@
 
   &-info {
     width: 100%;
-    // padding: 0.5rem;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
     color: $clr1;
     display: flex;
     flex-flow: column nowrap;
@@ -43,7 +44,7 @@
   &-row {
     font-size: 0.8rem;
     font-weight: 400;
-    color: darkgray;
+    color: dimgray;
     margin: 0;
   }
 
@@ -59,6 +60,7 @@
 
   &-heading {
     font-weight: 800;
+    color: black;
   }
 
   @media (min-width: $desktop) {

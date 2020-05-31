@@ -73,6 +73,8 @@
     &:active,
     &:focus {
       background-color: red;
+      border: none;
+      color: $clr2;
     }
   }
 
@@ -81,6 +83,8 @@
     &:active,
     &:focus {
       background-color: yellow;
+      border: none;
+      color: $clr2;
     }
   }
 }
