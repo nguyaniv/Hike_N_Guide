@@ -30,10 +30,6 @@ class _ReviewAdd extends Component {
           fullName: guideName,
           _id: id,
         },
-<<<<<<< HEAD
-=======
-
->>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
       };
       this.setState({ by: miniUser, type: miniGuide });
     }
