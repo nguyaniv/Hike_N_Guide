@@ -36,7 +36,7 @@ export class MapContainer extends Component {
       if (!this.state.fromAdd) return;
       const lat = clickEvent.latLng.lat();
       const lng = clickEvent.latLng.lng();
-   
+
       this.updateLatLng(lat, lng);
 
 
@@ -49,17 +49,17 @@ export class MapContainer extends Component {
     };
 
     updateLatLng = (lat, lng) => {
-        // this.setState({lat,lng})
-        this.props.updateLatLng(lat, lng)
+      // this.setState({lat,lng})
+      this.props.updateLatLng(lat, lng);
     }
 
     onMapClicked = (props, map, clickEvent) => {
-        if (!this.state.fromAdd) return
-        const lat = clickEvent.latLng.lat()
-        const lng = clickEvent.latLng.lng()
-        
-        this.updateLatLng(lat, lng)
-        this.setState({ lat: lat, lng: lng })
+      if (!this.state.fromAdd) return;
+      const lat = clickEvent.latLng.lat();
+      const lng = clickEvent.latLng.lng();
+
+      this.updateLatLng(lat, lng);
+      this.setState({ lat, lng });
 
       if (this.state.showingInfoWindow) {
         this.setState({
@@ -84,17 +84,17 @@ export class MapContainer extends Component {
                   lat: this.props.location.lat,
                   lng: this.props.location.lng,
                 } : {
-                        lat: 41,
-                        lng: 24
-                    }}
-                onClick={this.onMapClicked}
+                  lat: 41,
+                  lng: 24,
+                } }
+                onClick={ this.onMapClicked }
             >
-                {this.state.lat ?
+                {this.state.lat
 
-                    <Marker onClick={this.onMarkerClick}
-                        position={{ lat: this.state.lat, lng: this.state.lng }}
-                        name={'Current location'} /> : <Marker onClick={this.onMarkerClick} name={'Current location'} />}
-             
+                  ? <Marker onClick={ this.onMarkerClick }
+                        position={ { lat: this.state.lat, lng: this.state.lng } }
+                        name={ 'Current location' } /> : <Marker onClick={ this.onMarkerClick } name={ 'Current location' } />}
+
                 <InfoWindow
                     marker={ this.state.activeMarker }
                     visible={ this.state.showingInfoWindow }>

@@ -45,16 +45,13 @@ class _Review extends Component {
 
   handledChange = ev => {
     const { name, value } = ev.target;
-    this.setState(prevState => ({
-      review: {
-        ...prevState.review,
-        [name]: value,
-      },
-    }));
+    this.setState(prevState => ({ review: { ...prevState.review, [name]: value } }), () => {
+      console.log(this.state.review);
+    });
   }
 
   render() {
-    const writtenBy = this.props.review.by.fullName;
+    const writtenBy = this.props.review ? this.props.review.by.fullName : null;
     const { txt, rate, title } = this.state.review;
     return (
       <section className="review-container">

@@ -30,7 +30,6 @@ class _ReviewAdd extends Component {
           fullName: guideName,
           _id: id,
         },
-
       };
       this.setState({ by: miniUser, type: miniGuide });
     }
@@ -67,10 +66,10 @@ class _ReviewAdd extends Component {
        })
    }
 
-  render() {
-    const { rate, txt, title } = this.state;
-    const loggedInUser = this.props.user;
-    return (
+   render() {
+     const { rate, txt, title } = this.state;
+     const loggedInUser = this.props.user;
+     return (
       <React.Fragment>
         {loggedInUser && <section className="review-add">
           <div className="review-add-rate-container">
@@ -97,8 +96,8 @@ class _ReviewAdd extends Component {
           </form>
         </section>}
       </React.Fragment>
-    );
-  }
+     );
+   }
 }
 
 const mapStateToProps = state => ({
