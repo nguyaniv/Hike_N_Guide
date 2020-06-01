@@ -114,6 +114,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   logout,
-};  
+};
 
 export const Navbar = connect(mapStateToProps, mapDispatchToProps)(_Navbar);

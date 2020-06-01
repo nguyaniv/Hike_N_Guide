@@ -1,28 +1,27 @@
 import React from 'react';
 
+// Services
+import OrderServer from '../services/order.service';
+
 //Pages/Components
-import { CustomerOrder } from './CustomerOrder';
-import { UserOrder } from './UserOrder';
+import { Order } from './Order';
 
-export function OrdersList({ orders, cmpToRend }) {
-  switch (cmpToRend) {
-    case 'customersOrders':
-      return (
-        <div className="orders-list">
-          <h2 className="order-list-title">Customer orders</h2>
-          {orders && orders.map(order => <CustomerOrder key={ order._id } order={ order } />)}
-        </div>
-      );
-
-    case 'userOrder':
-      return (
-        <div className="orders-list">
-          <p className="title">My orders</p>
-          {orders && orders.map(order => <UserOrder key={ order._id } order={ order } />)}
-        </div>
-      );
-
-    default:
-      return 'Sorry! We have some problem :(';
+export function OrdersList({ orders, orderType, loadOrders }) {
+  async function onDelete(orderId) {
+    await OrderServer.remove(orderId);
+    loadOrders();
   }
+
+  async function orderUpdate(orderUpdated) {
+    await OrderServer.save(orderUpdated);
+    loadOrders();
+  }
+
+  const isGuide = orderType === 'customerOrder';
+  return (
+    <div>
+      {orders && orders.map(order => <Order key={order._id} order={order} onDelete={onDelete} orderUpdate={ orderUpdate } isGuide={ isGuide } />)}
+    </div>
+
+  );
 }
