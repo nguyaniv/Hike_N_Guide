@@ -38,7 +38,7 @@ class _BookingPage extends Component {
     // const reviews = await this.props.loadReviews({ guideId: id });
     // this.setState({ reviews });
 
-    this.getReviewToShow()
+    this.getReviewToShow();
   }
 
   getReviewToShow = async () => {
