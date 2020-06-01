@@ -19,9 +19,9 @@ export function OrdersList({ orders, orderType, loadOrders }) {
 
   const isGuide = orderType === 'customerOrder';
   return (
-    <div>
+    <section className="order-list">
       {orders && orders.map(order => <Order key={order._id} order={order} onDelete={onDelete} orderUpdate={ orderUpdate } isGuide={ isGuide } />)}
-    </div>
+    </section>
 
   );
 }

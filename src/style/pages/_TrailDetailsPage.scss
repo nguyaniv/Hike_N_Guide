@@ -12,18 +12,23 @@
   &-main-header {
     color: white;
     margin: 0;
-    padding-block-start: 86vh;
+    padding-block-start: 50vh;
     font-size: 2rem;
     text-transform: uppercase;
     filter: drop-shadow(0 0 10px black);
   }
 
   &-container {
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
-    margin-block-start: -5rem;
+    margin-block-start: -4rem;
     background-color: white;
     border-radius: 1rem;
+
+    @media (min-width: $tablet) {
+      width: 60%;
+      margin-block-start: -5rem;
+    }
   }
 
   &-guides-list {
@@ -48,15 +53,19 @@
   &-info {
     width: 100%;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
   }
 
   &-info-main {
-    width: 50%;
-    max-width: 50%;
+    width: 100%;
     padding: 1rem;
     padding-block-start: 0;
     text-align: start;
+
+    @media (min-width: $tablet) {
+      width: 50%;
+      max-width: 50%;
+    }
   }
 
   &-info-heading {
@@ -78,9 +87,14 @@
   }
 
   &-info-aside {
-    width: 50%;
+    width: 100%;
     padding: 1rem;
     padding-block-start: 0;
+
+    @media (min-width: $tablet) {
+      width: 50%;
+      max-width: 50%;
+    }
   }
 
   &-map-container {
@@ -104,18 +118,28 @@
 
   &-controls {
     z-index: 100;
-    position: fixed;
-    bottom: 0;
-    left: 1rem;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      width: auto;
+      padding: 0;
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      flex-flow: column nowrap;
+    }
   }
 
   &-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7rem;
+    width: 6rem;
     height: 3rem;
     font-size: 1rem;
     color: black;
