@@ -74,6 +74,12 @@
       border: none;
       color: $clr2;
     }
+
+    @media (min-width: $tablet) {
+      width: 60%;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+    }
   }
 
   &-row {
