@@ -1,78 +1,89 @@
 .user-profile {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: flex-start;
 
-  p {
-    margin: 0;
-  }
-
-  .box {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
-
-    &-img {
-      color: black;
-      padding: 0 0 25px;
-    }
-
-    &-detail {
-      color: #6f6f6f;
-      padding-bottom: 20px;
-    }
+  &-img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-block-end: 0.5rem;
+    align-self: center;
   }
 
   .user-details {
     padding: 1rem;
-    width: 60%;
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      width: 35%;
+    }
   }
 
-  .btns-panel {
+  .order-list {
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      width: 65%;
+    }
+  }
+
+  &-name {
+    font-size: 1.7em;
+    font-weight: bold;
+    margin: 0;
+    margin-block-end: 1rem;
+  }
+
+  &-title {
+    font-size: 1rem;
+    color: $clr1;
+    margin-inline-end: 0.5rem;
+    font-weight: bold;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  &-btn {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    margin-block-end: 1rem;
 
-    .btn {
-      box-shadow: 0px 1px 0px 0px #caefab;
-      background: linear-gradient(to bottom, #12da7d 5%, #23bb74 100%);
-      background-color: #77d42a;
-      border-radius: 6px;
-      border: 1px solid #23bb74;
-      display: inline-block;
-      color: #fbfbfb;
-      font-family: Arial, sans-serif;
-      font-size: 15px;
-      font-weight: bold;
-      padding: 10px 24px;
-      text-decoration: none;
-      text-shadow: 0 -1 0 #aade7c;
-      margin: 3px;
-      transition: background-color 400ms;
-
-      &:hover {
-        background: linear-gradient(to bottom, #23bb74 5%, #12da7d 100%);
-        background-color: #12da7d;
-      }
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $clr4;
+      border: none;
+      color: $clr2;
     }
   }
 
-  .row {
-    padding: 1px 10px;
+  &-row {
+    margin: 0;
+    margin-block-end: 1rem;
   }
 
-  .profile-img {
-    width: 150px;
-    border-radius: 50%;
+  @media (min-width: $tablet) {
+    width: 60%;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
   }
-
-  .title {
-    &-name {
-      font-size: 1.7em;
-      font-weight: bold;
-      margin-top: 5px;
-    }
-  }
-
 }

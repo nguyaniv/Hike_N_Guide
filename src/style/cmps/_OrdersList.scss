@@ -1,18 +1,18 @@
-.orders-list {
-  width: 60%;
-
-  &-title {
-    font-size: 1rem;
-    color: $clr1;
-  }
-}
-
 .order {
+  width: 100%;
   border: 1px solid black;
   margin-bottom: 1rem;
 
   &-row {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    margin-block-end: 1rem;
+
+    &:last-child {
+      margin-block-end: 0;
+    }
   }
 
   &-header {
@@ -21,9 +21,25 @@
     align-items: center;
     background-color: #ddd;
     padding: 0.5rem;
+
+    & p {
+      margin: 0;
+    }
+  }
+
+  &-avatar-img {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid $clr3;
+    border-radius: 50%;
+    background-color: $clr2;
+    object-fit: cover;
+    margin-inline-start: 0.5rem;
   }
 
   &-title {
+    font-size: 1rem;
+    color: $clr1;
     margin-inline-end: 0.5rem;
     font-weight: bold;
 
@@ -38,7 +54,18 @@
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  &-details {
+    text-align: center;
+  }
+
+  &-status {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
   }
 
   &-btn-panel {
@@ -91,17 +118,6 @@
       }
     }
 
-
-  &-details {
-    p:not(.title) {
-      text-align: left;
-      width: 75px;
-    }
-    width: 220px;
-    color: #646464;
-    text-align: center;
-  }
-
     &:last-child {
       margin-block-end: 0;
     }
@@ -111,4 +127,3 @@
     margin-block-end: 0;
   }
 }
-

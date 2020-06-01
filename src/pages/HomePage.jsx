@@ -25,14 +25,14 @@ class _HomePage extends Component {
         <List items={ trailsToShow }/>
         <Link to="/trail" style={ { textDecoration: 'none' } }>
           <button className="homepage-show-more-button">
-            Show more
+            Show all
           </button>
         </Link>
         <h2 className="homepage-list-heading">Popular Guides</h2>
         <List items={ guidesToShow }/>
         <Link to="/guide" style={ { textDecoration: 'none' } }>
           <button className="homepage-show-more-button">
-            Show more
+            Show all
           </button>
         </Link>
       </main>
