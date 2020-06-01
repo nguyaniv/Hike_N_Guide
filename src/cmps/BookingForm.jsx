@@ -48,6 +48,8 @@ class _BookingForm extends Component {
     const newOrder = {
       peopleCount,
       trailAt: Date.parse(date),
+      isConfirmed: false,
+      isCanceled: false,
     };
 
     newOrder.buyerUser = this.props.loggedInUser;
@@ -64,25 +66,25 @@ class _BookingForm extends Component {
     const { bookForm } = this.state;
 
     return (
-      <form className="booking-form" onClick={this.onBook}>
+      <form className="booking-form" onClick={ this.onBook }>
         <select
           className="booking-form-selected-trail"
           name="trailSelected"
-          onChange={this.handelInput}
-          value={bookForm.trailSelected}>
+          onChange={ this.handelInput }
+          value={ bookForm.trailSelected }>
           {
             guide.trails.map((trail, idx) => (
-              <option key={trail._id} value={idx}>{trail.name}</option>))
+              <option key={ trail._id } value={ idx }>{trail.name}</option>))
           }
         </select>
         <Calendar
-          onChange={date => { this.handelDate(date); }}
-          value={bookForm.date}
-          minDate={new Date()}
+          onChange={ date => { this.handelDate(date); } }
+          value={ bookForm.date }
+          minDate={ new Date() }
         />
         <div className="booking-form-people-count-container">
           <label className="booking-form-title">How many people?</label>
-          <input className="booking-form-people-count" type="number" name="peopleCount" value={bookForm.peopleCount} min="1" onChange={this.handelInput} />
+          <input className="booking-form-people-count" type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ this.handelInput } />
         </div>
         <div>
           <div className="booking-form-price-container" >
