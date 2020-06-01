@@ -9,8 +9,8 @@ export function OrdersList({ orders, cmpToRend }) {
     case 'customersOrders':
       return (
         <div className="orders-list">
-          <p className="title">Customer orders</p>
-          {orders && orders.map(order => <CustomerOrder key={order._id} order={order} />)}
+          <h2 className="order-list-title">Customer orders</h2>
+          {orders && orders.map(order => <CustomerOrder key={ order._id } order={ order } />)}
         </div>
       );
 
@@ -18,7 +18,7 @@ export function OrdersList({ orders, cmpToRend }) {
       return (
         <div className="orders-list">
           <p className="title">My orders</p>
-          {orders && orders.map(order => <UserOrder key={order._id} order={order} />)}
+          {orders && orders.map(order => <UserOrder key={ order._id } order={ order } />)}
         </div>
       );
 

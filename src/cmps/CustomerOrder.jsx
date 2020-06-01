@@ -3,37 +3,37 @@ import moment from 'moment';
 
 export function CustomerOrder({ order }) {
   return (
-    <aside className="customer-order">
-      <header >
-        <div className="row">
-          <p className="title">Create at</p><p>{moment(order.createAt).format('L')}</p>
-        </div>
-        <div className="row">
-          <p className="title">By</p>
-          <p>{order.buyerUser.fullName}</p>
-        </div>
+    <article className="order">
+      <header className="order-header">
+        <p className="order-row">
+          <span className="order-title">Created at</span><span>{moment(order.createAt).format('L')}</span>
+        </p>
+        <p className="order-row">
+          <span className="order-title">By</span>
+          <span>{order.buyerUser.fullName}</span>
+        </p>
       </header>
-      <main>
+      <main className="order-main">
         <div>
-          <div className="row">
-            <p className="title">Trail date</p>
-            <p>{moment(order.trailAt).format('L')}</p>
-          </div>
-          <div className="row">
-            <p className="title">People</p><p>{order.peopleCount}</p>
-          </div>
-          <div className="row">
-            <p className="title">Price</p><p>{order.price}$</p>
-          </div>
+          <p className="order-row">
+            <span className="order-title">Trail date</span>
+            <span>{moment(order.trailAt).format('L')}</span>
+          </p>
+          <p className="order-row">
+            <span className="order-title">People</span><span>{order.peopleCount}</span>
+          </p>
+          <p className="order-row">
+            <span className="order-title">Price</span><span>{order.price}$</span>
+          </p>
         </div>
-        <div className="btn-panel">
-          {order.isConfirmed
-            ? <button className="btn">Cancel</button>
-            : <button className="btn confirm">Confirm</button>
-          }
-          <button className="btn delete">Delete</button>
-        </div>
+        <div className="order-btn-panel">
+                  {order.isConfirmed
+                    ? <button className="order-btn order-btn-cancel">Cancel</button>
+                    : <button className="order-btn order-btn-confirm">Confirm</button>
+                  }
+                  <button className="order-btn order-btn-delete">Delete</button>
+              </div>
       </main>
-    </aside>
+    </article>
   );
 }

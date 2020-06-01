@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { logout } from '../store/actions/userAction';
 import history from '../history';
+import logo from '../logo.svg';
 
 class _Navbar extends React.Component {
   state = {
@@ -66,9 +67,10 @@ class _Navbar extends React.Component {
           className="main-header-home-link"
           to="/"
           onClick={ () => { history.push('/'); } }>
-            <h1 className="main-header-logo">
+            {/* <h1 className="main-header-logo">
               Hike & Guide
-            </h1>
+            </h1> */}
+            <img src={ logo } alt="HIKE&GUIDE" className="main-header-logo"/>
           </Link>
           <nav
           className={ `main-header-nav ${this.state.navOpenedClass}` }
@@ -76,13 +78,13 @@ class _Navbar extends React.Component {
             <NavLink exact className="main-header-link" to="/" activeClassName="selected">Home</NavLink>
             <NavLink className="main-header-link" to="/trail" activeClassName="selected">Trails</NavLink>
             <NavLink className="main-header-link" to="/guide" activeClassName="selected">Guides</NavLink>
-            <button
+            <div
               className="main-header-link"
               onClick={ loggedInUser ? this.handleLogoutClick : this.handleLoginClick }>
               {/* to={ loggedInUser ? '/logout' : '/login' }
               activeClassName="selected"> */}
                 {loggedInUser ? 'Logout' : 'Login'}
-            </button>
+            </div>
             { loggedInUser
               && <NavLink
                   to={ `/profile/${loggedInUser._id}` }

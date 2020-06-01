@@ -34,34 +34,30 @@ class _UserProfile extends Component {
 
   render() {
     const { user, orders, ordersType } = this.state;
-    console.log('user', user);
-    return (
+    // console.log('user', user);
+    return user && (
       <main className="user-profile">
-        {user
-          && <React.Fragment>
-            <section className="user-detail">
-              <div className="box box-img">
-                <img className="profile-img" src={ user.imgUrl } alt={ user.fullName } />
-                <p className="title-name">{user.fullName}</p>
-              </div>
-              <div className="box box-detail">
-                <div className="row flex space-between">
-                  <p className="title">Username</p><p>{user.userName}</p>
-                </div>
-                <div className="row flex space-between">
-                  <p className="title">Email</p><p>{user.email}</p>
-                </div>
-              </div>
-              <div className="btns-panel">
-                <button className="btn" onClick={ () => { this.setState({ ordersType: 'userOrder' }, this.loadOrders); } }>My orders</button>
-                <button className="btn" onClick={ () => { this.setState({ ordersType: 'customersOrders' }, this.loadOrders); } }>Customer orders</button>
-              </div>
-            </section>
-            <section className="order-list">
-              {orders && <OrdersList orders={ orders } cmpToRend={ ordersType } />}
-            </section>
-          </React.Fragment>
-        }
+        <section className="user-details">
+          <div className="box box-img">
+            <img className="profile-img" src={ user.imgUrl } alt={ user.fullName } />
+            <p className="title-name">{user.fullName}</p>
+          </div>
+          <div className="box box-detail">
+            <div className="row flex space-between">
+              <p className="title">Username</p><p>{user.userName}</p>
+            </div>
+            <div className="row flex space-between">
+              <p className="title">Email</p><p>{user.email}</p>
+            </div>
+          </div>
+          <div className="btns-panel">
+            <button className="btn" onClick={ () => { this.setState({ ordersType: 'userOrder' }, this.loadOrders); } }>My orders</button>
+            <button className="btn" onClick={ () => { this.setState({ ordersType: 'customersOrders' }, this.loadOrders); } }>Customer orders</button>
+          </div>
+        </section>
+        {/* <section className="order-list"> */}
+          {orders && <OrdersList orders={ orders } cmpToRend={ ordersType } />}
+        {/* </section> */}
       </main>
     );
   }
@@ -70,6 +66,7 @@ class _UserProfile extends Component {
 const mapStateToProps = state => ({
   loggedInUser: state.user.loggedInUser,
 });
+
 const mapDispatchToProps = {
 
 };

@@ -1,6 +1,5 @@
 .booking-page {
-  width: 60%;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: row nowrap;
   justify-content: center;
@@ -102,5 +101,13 @@
       font-weight: bold;
       margin: 10px 0;
     }
+  }
+
+  @media (min-width: $tablet) {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: center;
   }
 }
