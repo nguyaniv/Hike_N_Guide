@@ -14,8 +14,8 @@ class _HomePage extends Component {
   render() {
     const { trails, users } = this.props;
     const guides = users.filter(user => user.trails);
-    const guidesToShow = guides.slice(0, 8).sort((a, b) => b.rating - a.rating);
-    const trailsToShow = trails.slice(0, 6).sort((a, b) => b.rating - a.rating);
+    const guidesToShow = guides.sort((a, b) => b.rating - a.rating).slice(0, 8);
+    const trailsToShow = trails.sort((a, b) => b.rating - a.rating).slice(0, 6);
     return (
       <main className="homepage">
         <div className="homepage-header">

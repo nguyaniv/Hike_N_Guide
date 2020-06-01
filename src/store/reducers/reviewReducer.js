@@ -5,6 +5,11 @@ const initialState = {
 
 export default function (state = initialState, action = {}) {
   switch (action.type) {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
     case 'ADD':
       return {
         ...state,
@@ -29,7 +34,10 @@ export default function (state = initialState, action = {}) {
         review: state.review.filter(review => review.id !== action.reviewId),
       };
     case 'SET_REVIEWS':
+<<<<<<< HEAD
       console.log(action.review);
+=======
+>>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
       return { ...state, review: action.review };
 
     case 'SET_REVIEW':

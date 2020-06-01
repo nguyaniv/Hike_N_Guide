@@ -10,7 +10,7 @@ import star_o from '../img/‏‏star-o.svg';
 
 class _ReviewAdd extends Component {
   state = {
-    rate: 1,
+    rate: 5,
     by: {},
     txt: '',
     type: {},
@@ -30,6 +30,10 @@ class _ReviewAdd extends Component {
           fullName: guideName,
           _id: id,
         },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
       };
       this.setState({ by: miniUser, type: miniGuide });
     }
@@ -45,8 +49,13 @@ class _ReviewAdd extends Component {
           name: trailName,
         },
       };
+<<<<<<< HEAD
       this.setState({ by: miniUser, type: miniTrail }, () => {
         console.log(this.state);
+=======
+      this.setState(prevState => ({ ...prevState, by: miniUser, type: miniTrail }), () => {
+        // console.log(this.state);
+>>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
       });
     }
   }
@@ -59,8 +68,16 @@ class _ReviewAdd extends Component {
    onSend = ev => {
      ev.preventDefault();
      const review = this.state;
+<<<<<<< HEAD
      // console.log(review);
      this.props.saveReview(review);
+=======
+     console.log('review was sent from ReviewAdd page: ', review)
+     this.props.saveReview(review)
+       .then(() => {
+        this.props.getReviewToShow();
+       })
+>>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
    }
 
    render() {
@@ -71,22 +88,22 @@ class _ReviewAdd extends Component {
         {loggedInUser && <section className="review-add">
           <div className="review-add-rate-container">
             <span className="review-add-rate-label">Rate:</span>
-            <Rating start={ 0 }
-              stop={ 5 }
-              initialRating={ rate }
-              emptySymbol={ <img src={ star } alt="star" className="img-star" /> }
-              fullSymbol={ <img src={ star_o } alt="full-star" className="img-star" /> }
-              onChange={ rate => {
+            <Rating start={0}
+              stop={5}
+              initialRating={rate}
+              emptySymbol={<img src={star} alt="star" className="img-star" />}
+              fullSymbol={<img src={star_o} alt="full-star" className="img-star" />}
+              onChange={rate => {
                 this.setState({ rate });
-              } }
+              }}
             />
           </div>
-          <form className="review-add-form" onSubmit={ this.onSend }>
+          <form className="review-add-form" onSubmit={this.onSend}>
             <label htmlFor="title">Review title:</label>
-            <input className="review-add-title" type="text" id="title" name="title" value={ title } onChange={ this.handledChange } />
+            <input className="review-add-title" type="text" id="title" name="title" value={title} onChange={this.handledChange} />
             <label htmlFor="text">Review text:</label>
             <textarea className="review-add-textarea" id="text"
-              name="txt" value={ txt } onChange={ this.handledChange }
+              name="txt" value={txt} onChange={this.handledChange}
               cols="30" rows="10" placeholder="What do you think about me?" required>
             </textarea>
             <button className="review-add-submit-btn">Send</button>

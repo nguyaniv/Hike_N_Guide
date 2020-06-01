@@ -1,6 +1,6 @@
 .booking-form {
   height: fit-content;
-  width: 50%;
+  width: 30%;
   position: sticky;
   top: 1rem;
   flex-flow: column nowrap;
@@ -48,6 +48,8 @@
     &:active,
     &:focus {
       background-color: $clr4;
+      border: none;
+      color: $clr2;
     }
   }
 
