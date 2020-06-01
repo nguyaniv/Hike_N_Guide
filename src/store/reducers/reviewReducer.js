@@ -5,11 +5,8 @@ const initialState = {
 
 export default function (state = initialState, action = {}) {
   switch (action.type) {
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
     case 'ADD':
       return {
         ...state,

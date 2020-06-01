@@ -45,13 +45,8 @@ class _ReviewAdd extends Component {
           name: trailName,
         },
       };
-<<<<<<< HEAD
-      this.setState({ by: miniUser, type: miniTrail }, () => {
-        console.log(this.state);
-=======
       this.setState(prevState => ({ ...prevState, by: miniUser, type: miniTrail }), () => {
         // console.log(this.state);
->>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
       });
     }
   }
@@ -64,16 +59,11 @@ class _ReviewAdd extends Component {
    onSend = ev => {
      ev.preventDefault();
      const review = this.state;
-<<<<<<< HEAD
-     // console.log(review);
-     this.props.saveReview(review);
-=======
      console.log('review was sent from ReviewAdd page: ', review)
      this.props.saveReview(review)
        .then(() => {
         this.props.getReviewToShow();
        })
->>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
    }
 
    render() {

@@ -55,54 +55,6 @@ class _Review extends Component {
     const { txt, rate, title } = this.state.review;
     return (
       <section className="review-container">
-<<<<<<< HEAD
-        {this.state.review && this.state.editMode
-          && <form className="" onSubmit={ this.onEdit }>
-            <span>title</span> <input type="text" name="title" value={ title } onChange={ this.handledChange } />
-            <br />
-            <textarea name="txt" value={ txt } onChange={ this.handledChange }
-              cols="30" rows="10" placeholder="What do you think about me?" required>
-            </textarea>
-            <button className="">Send</button>
-          </form>
-        }
-
-        {this.state.review
-          && <div className="review">
-            <div className="review-info">
-              <p className="review-info-row review-info-title-row">
-                <span className="review-info-heading">Title:</span>
-                {title}
-              </p>
-              <p className="review-info-row">
-                <span className="review-info-heading">By:</span>
-                {writtenBy}
-              </p>
-              <p className="review-info-row">
-                <span className="review-info-heading">Rating:</span>
-                <Rating className="guide-preview-rating" start={ 0 }
-                  stop={ 5 }
-                  initialRating={ rate }
-                  emptySymbol={ <img className="trail-preview-full-star" src={ star } /> }
-                  fullSymbol={ <img className="trail-preview-star" src={ star_o } /> }
-                  readonly
-                />
-              </p>
-            </div>
-            <p className="review-text">
-              {txt}
-            </p>
-            <div className="review-buttons">
-              <button className="review-button review-delete-button" onClick={ () => {
-                this.onDeleteGuideReview();
-              } }>Delete</button>
-              <button className="review-button review-edit-button" onClick={ () => {
-                this.reviewEditMode();
-              } }>Edit</button>
-            </div>
-          </div>
-        }
-=======
         {this.state.review && this.state.editMode ? 
            <form className="" onSubmit={ this.onEdit }>
           <span>title</span> <input type="text" name="title" value={ title } onChange={ this.handledChange } />
@@ -149,7 +101,6 @@ class _Review extends Component {
     </div> }
 
         
->>>>>>> 74bf077e76c8f96b26c2e69ab178175b1bc6c8b2
       </section>
     );
   }
