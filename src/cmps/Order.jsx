@@ -13,20 +13,20 @@ export function Order({
       color: getColorStyle(),
     };
     status.msg = getMsg();
-    status.isFinished = order.trailAt > Date.now();
+    status.isFinished = order.trailAt < Date.now();
 
     return status;
   }
 
   function getColorStyle() {
     if (order.isCanceled) return '#a10b00';
-    if (order.isConfirmed || order.trailAt > Date.now()) return '#4CAF50';
+    if (order.isConfirmed || order.trailAt < Date.now()) return '#4CAF50';
     return '#eb8900';
   }
 
   function getMsg() {
     if (order.isCanceled) return 'Canceled';
-    if (order.trailAt > Date.now()) return 'Finished';
+    if (order.trailAt < Date.now()) return 'Finished';
     if (order.isConfirmed) return 'Confirmed';
     return 'Waiting for confirm';
   }
@@ -52,14 +52,14 @@ export function Order({
           && <p className="order-row">
             <span className="order-title">Guide</span>
             <span>{order.guide.fullName}</span>
-            <img className="order-avatar-img" src={ order.guide.imgUrl } />
+            <img className="order-avatar-img" src={order.guide.imgUrl} />
           </p>}
 
         {isGuide
           && <p className="order-row">
             <span className="order-title">By</span>
             <span>{order.buyerUser.fullName}</span>
-            <img className="order-avatar-img" src={ order.buyerUser.imgUrl } />
+            <img className="order-avatar-img" src={order.buyerUser.imgUrl} />
           </p>}
       </header>
       <main className="order-main">
@@ -79,23 +79,23 @@ export function Order({
           <p className="order-row">
             <span className="order-title">Status</span>
 
-            <span className="order-status-msg" style={ status.style }>{status.msg}</span>
+            <span className="order-status-msg" style={status.style}>{status.msg}</span>
 
           </p>
           {isGuide
             && <div className="order-btn-panel">
               {!(order.isCanceled || status.isFinished) && (order.isConfirmed
-                ? <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
-                : <button className="order-btn order-btn-confirm" onClick={ onConfirm } >Confirm</button>
+                ? <button className="order-btn order-btn-delete" onClick={onCancel}>Cancel</button>
+                : <button className="order-btn order-btn-confirm" onClick={onConfirm} >Confirm</button>
               )}
               {(order.isCanceled || status.isFinished)
-                && <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order); } }>Delete</button>}
+                && <button className="order-btn order-btn-delete" onClick={() => { onDelete(order); }}>Delete</button>}
             </div>}
           {!isGuide
             && <div className="btn-panel">
               {(order.isCanceled || status.isFinished)
-                ? <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order); } }>Delete</button>
-                : <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
+                ? <button className="order-btn order-btn-delete" onClick={() => { onDelete(order); }}>Delete</button>
+                : <button className="order-btn order-btn-delete" onClick={onCancel}>Cancel</button>
               }
             </div>}
         </section>
