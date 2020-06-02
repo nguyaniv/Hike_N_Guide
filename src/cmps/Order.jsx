@@ -6,6 +6,8 @@ export function Order({
 }) {
   moment.locale('il');
 
+
+
   function getStatus() {
     const status = {};
 
@@ -31,6 +33,9 @@ export function Order({
     return 'Waiting for confirm';
   }
 
+
+
+
   function onCancel() {
     order.isCanceled = true;
     orderUpdate(order);
@@ -40,7 +45,7 @@ export function Order({
     order.isConfirmed = true;
     orderUpdate(order);
   }
- 
+
   const status = getStatus();
   return (
     <article className="order">
@@ -52,18 +57,22 @@ export function Order({
           && <p className="order-row">
             <span className="order-title">Guide</span>
             <span>{order.guide.fullName}</span>
-            <img className="order-avatar-img" src={order.guide.imgUrl} />
+            <img className="order-avatar-img" src={ order.guide.imgUrl } />
           </p>}
 
         {isGuide
           && <p className="order-row">
             <span className="order-title">By</span>
             <span>{order.buyerUser.fullName}</span>
-            <img className="order-avatar-img" src={order.buyerUser.imgUrl} />
+            <img className="order-avatar-img" src={ order.buyerUser.imgUrl } />
           </p>}
       </header>
       <main className="order-main">
         <section className="order-details">
+          <p className="order-row">
+            <span className="order-title">Trail date</span>
+            <span>{order.trail.name}</span>
+          </p>
           <p className="order-row">
             <span className="order-title">Trail date</span>
             <span>{moment(order.trailAt).format('DD/MM/YY')}</span>
@@ -79,23 +88,25 @@ export function Order({
           <p className="order-row">
             <span className="order-title">Status</span>
 
-            <span className="order-status-msg" style={status.style}>{status.msg}</span>
+
+            <span className="order-status-msg" style={ status.style }>{status.msg}</span>
+ 
 
           </p>
           {isGuide
             && <div className="order-btn-panel">
               {!(order.isCanceled || status.isFinished) && (order.isConfirmed
-                ? <button className="order-btn order-btn-delete" onClick={onCancel}>Cancel</button>
-                : <button className="order-btn order-btn-confirm" onClick={onConfirm} >Confirm</button>
+                ? <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
+                : <button className="order-btn order-btn-confirm" onClick={ onConfirm } >Confirm</button>
               )}
               {(order.isCanceled || status.isFinished)
-                && <button className="order-btn order-btn-delete" onClick={() => { onDelete(order); }}>Delete</button>}
+                && <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order); } }>Delete</button>}
             </div>}
           {!isGuide
             && <div className="btn-panel">
               {(order.isCanceled || status.isFinished)
-                ? <button className="order-btn order-btn-delete" onClick={() => { onDelete(order); }}>Delete</button>
-                : <button className="order-btn order-btn-delete" onClick={onCancel}>Cancel</button>
+                ? <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order); } }>Delete</button>
+                : <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
               }
             </div>}
         </section>
