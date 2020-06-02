@@ -27,8 +27,8 @@ export function OrdersList({ orders, orderType, loadOrders }) {
   const isGuide = orderType === 'customerOrder';
   return (
     <section className="order-list">
+      <h2 className="order-list-title">{isGuide ? 'Customer orders' : 'My orders'}</h2>
       {orders && orders.map(order => <Order key={ order._id } order={ order } onDelete={ onDelete } orderUpdate={ orderUpdate } isGuide={ isGuide } />)}
     </section>
-
   );
 }
