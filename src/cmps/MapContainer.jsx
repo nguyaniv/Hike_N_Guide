@@ -3,7 +3,7 @@ import {
   Map, InfoWindow, Marker, GoogleApiWrapper,
 } from 'google-maps-react';
 import history from '../history';
-
+import mapStyle from '../style/mapStyle'
 export class MapContainer extends Component {
     state = {
       showingInfoWindow: false,
@@ -78,7 +78,8 @@ export class MapContainer extends Component {
       };
       return (
             <Map
-                style={ style }
+                styles={ mapStyle }
+                zoom ={10}
                 google={ this.props.google }
                 initialCenter={ this.props.location ? {
                   lat: this.props.location.lat,
