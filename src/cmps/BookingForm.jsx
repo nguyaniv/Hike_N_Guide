@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import history from '../history';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar';
+import history from '../history';
 import 'react-calendar/dist/Calendar.css';
 
 //services
@@ -42,7 +42,6 @@ class _BookingForm extends Component {
     ev.preventDefault();
     let newOrder = this.getNewOrder();
     newOrder = await orderService.save(newOrder);
-    console.log("porps", this.props);
     history.push(`/profile/${newOrder.buyerUser._id}`);
   }
 
@@ -73,7 +72,7 @@ class _BookingForm extends Component {
     const { bookForm } = this.state;
 
     return (
-      <form className="booking-form" onClick={this.onBook}>
+      <form className="booking-form" onSubmit={this.onBook}>
         <select
           className="booking-form-selected-trail"
           name="trailIdx"
@@ -98,10 +97,9 @@ class _BookingForm extends Component {
             <label className="booking-form-title">Price:</label>
             <span className="price">${bookForm.peopleCount * guide.price}</span>
           </div>
-          <button className="booking-form-submit-button">Book</button>
+          <button type="submit" className="booking-form-submit-button">Book</button>
         </div>
       </form>
-
     );
   }
 }

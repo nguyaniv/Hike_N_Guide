@@ -33,7 +33,9 @@ function getById(userId) {
 
 
 function getMiniUserObj(user) {
-  const { _id, userName, fullName, imgUrl } = user;
+  const {
+    _id, userName, fullName, imgUrl,
+  } = user;
   const miniUser = {
     _id,
     userName,
