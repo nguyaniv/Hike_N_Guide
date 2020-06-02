@@ -202,13 +202,20 @@ class _TrailDetailsPage extends React.Component {
             </div>
           </section>
         </section>
+        {console.log(this.props.loggedInUser)
+        }
+        {this.props.loggedInUser.isAdmin &&
+        
+        
         <section className="trail-details-controls">
+       
           <Link className="trail-details-button trail-details-back-button" to={'/trail'} > Back to List </Link>
           <button
             className="trail-details-button trail-details-edit-button"
             onClick={() => { this.onEditHandler(); }}>
             Edit trail
             </button>
+        
           <button
             className="trail-details-button trail-details-remove-button"
             onClick={() => {
@@ -218,7 +225,7 @@ class _TrailDetailsPage extends React.Component {
             }>
             Delete Trail
             </button>
-        </section>
+        </section>}
 
         <section>
 
