@@ -10,8 +10,8 @@ import store from './store/store';
 import ScrollToTop from './cmps/ScrollToTop';
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <Router history={ history }>
+  <Provider store={store}>
+    <Router history={history}>
       <ScrollToTop />
       <App />
     </Router>
