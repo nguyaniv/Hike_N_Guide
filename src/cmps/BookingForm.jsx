@@ -38,7 +38,6 @@ class _BookingForm extends Component {
     ev.preventDefault();
     let newOrder = this.getNewOrder();
     newOrder = await orderService.save(newOrder);
-    console.log('newOrder', newOrder);
   }
 
   getNewOrder() {
@@ -53,7 +52,9 @@ class _BookingForm extends Component {
     };
 
     newOrder.buyerUser = this.props.loggedInUser;
+    newOrder.buyerUser.isDeleted = false;
     newOrder.guide = userService.getMiniUserObj(this.props.guide);
+    newOrder.guide.isDeleted = false;
     const selectedTrail = guide.trails[trailIdx];
     newOrder.trail = trailService.getMiniTrailObj(selectedTrail);
     newOrder.price = guide.price;
@@ -69,8 +70,8 @@ class _BookingForm extends Component {
       <form className="booking-form" onClick={ this.onBook }>
         <select
           className="booking-form-selected-trail"
-          name="trailSelected"
-          onChange={ this.handelInput }
+          name="trailIdx"
+          onChange={ this.handelTrailIdx }
           value={ bookForm.trailSelected }>
           {
             guide.trails.map((trail, idx) => (

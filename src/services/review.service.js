@@ -40,15 +40,3 @@ async function edit(review) {
   const reviewToEdit = await HttpService.put(`review/${review._id}`, review);
   return reviewToEdit;
 }
-
-
-function makeId(length = 3) {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-
-  return text;
-}

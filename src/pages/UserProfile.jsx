@@ -28,7 +28,6 @@ class _UserProfile extends Component {
        : { userId: this.state.user._id };
 
      const orders = await OrderService.query(query);
-     console.log('orders', orders);
      this.setState({ orders });
    }
 
