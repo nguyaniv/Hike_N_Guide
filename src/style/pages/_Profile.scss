@@ -33,6 +33,10 @@
     @media (min-width: $tablet) {
       width: 65%;
     }
+    &-title {
+      text-align: center;
+      font-size: 2rem;
+    }
   }
 
   &-name {

@@ -79,16 +79,16 @@ class _BookingPage extends Component {
           && <div className="booking-page-container">
             <section className="booking-page-content">
               <div className="booking-page-details">
-                <img className="booking-page-avatar" alt={guide.fullName} src={guide.imgUrl} width="75px" />
+                <img className="booking-page-avatar" alt={ guide.fullName } src={ guide.imgUrl } width="75px" />
                 <p className="booking-page-full-name">{guide.fullName}</p>
                 <p className="booking-page-rate-box" >
                   <span className="pra-rating">Rating:</span>
                   <Rating
-                    start={0}
-                    stop={5}
-                    initialRating={guide.rating}
-                    emptySymbol={<img src={star} alt="star" width="16" />}
-                    fullSymbol={<img src={star_o} alt="full-star" width="16" />}
+                    start={ 0 }
+                    stop={ 5 }
+                    initialRating={ guide.rating }
+                    emptySymbol={ <img src={ star } alt="star" width="16" /> }
+                    fullSymbol={ <img src={ star_o } alt="full-star" width="16" /> }
                     readonly
                   />
                   <span className="total-rating">({guide.reviewers_count})</span>
@@ -105,21 +105,21 @@ class _BookingPage extends Component {
                   </div>
                   <img
                     className="booking-page-img-trail"
-                    src={guide.trails[trailIdx].imgUrls[0]}
+                    src={ guide.trails[trailIdx].imgUrls[0] }
                   />
                 </section>
               </div>
               <section className="booking-page-add-review">
                 <p className="title">Write a review about {guide.fullName}</p>
                 {this.props.loggedInUser
-                  ? <ReviewAdd guide={guide} getReviewToShow={this.getReviewToShow} />
+                  ? <ReviewAdd guide={ guide } getReviewToShow={ this.getReviewToShow } />
                   : <div><Link to="/signup">Sign up</Link> or <Link to="/login">Log in</Link> to write your review</div>}
                 {guide && this.state.reviewsToShow
-                  && <ReviewList reviews={reviewsToShow} getReviewToShow={this.getReviewToShow} />
+                  && <ReviewList reviews={ reviewsToShow } getReviewToShow={ this.getReviewToShow } />
                 }
               </section>
             </section>
-            <BookingForm guide={guide} setTrailIdx={this.setTrailIdx} trailIdx={trailIdx} />
+            <BookingForm guide={ guide } setTrailIdx={ this.setTrailIdx } trailIdx={ trailIdx } />
           </div>}
       </main>
     );

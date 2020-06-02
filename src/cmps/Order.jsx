@@ -1,12 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 
-
-
 export function Order({
   order, onDelete, isGuide, orderUpdate,
 }) {
-    moment.locale('il');
+  moment.locale('il');
 
   function getStatus() {
     const status = {};
@@ -44,96 +42,64 @@ export function Order({
   }
 
   const status = getStatus();
-  // return (
-  //   <article className="order">
-  //     <header className="order-header">
-  //       <p className="order-order-row">
-  //         <span className="order-order-title">Created at</span><span>{moment(order.createAt).format('L')}</span>
-  //       </p>
-  //       <p className="order-order-row">
-  //         <span className="order-order-title">By</span>
-  //         <span>{order.buyerUser.fullName}</span>
-  //       </p>
-  //     </header>
-  //     <main className="order-main">
-  //       <div>
-  //         <p className="order-order-row">
-  //           <span className="order-order-title">Trail date</span>
-  //           <span>{moment(order.trailAt).format('L')}</span>
-  //         </p>
-  //         <p className="order-order-row">
-  //           <span className="order-order-title">People</span><span>{order.peopleCount}</span>
-  //         </p>
-  //         <p className="order-order-row">
-  //           <span className="order-order-title">Price</span><span>{order.price}$</span>
-  //         </p>
-  //       </div>
-  //       <div className="order-btn-panel">
-  //                 {order.isConfirmed
-  //                   ? <button className="order-btn order-btn-cancel">Cancel</button>
-  //                   : <button className="order-btn order-btn-confirm">Confirm</button>
-  //                 }
-  //                 <button className="order-btn order-btn-delete">Delete</button>
-  //             </div>
-  //     </main>
-  //   </article>
-  // );
   return (
-        <article className="order">
-            <header className="order-header">
-                <p className="order-row">
-                  <span className="order-title">Create at</span><span>{moment(order.createAt).format('DD/MM/YY')}</span>
-                </p>
-                {!isGuide
-                    && <p className="order-row">
-                        <span className="order-title">Guide</span>
-                        <span>{order.guide.fullName}</span>
-                        <img className="order-avatar-img" src={ order.guide.imgUrl } />
-                  </p>}
+    <article className="order">
+      <header className="order-header">
+        <p className="order-row">
+          <span className="order-title">Create at</span><span>{moment(order.createAt).format('DD/MM/YY')}</span>
+        </p>
+        {!isGuide
+          && <p className="order-row">
+            <span className="order-title">Guide</span>
+            <span>{order.guide.fullName}</span>
+            <img className="order-avatar-img" src={ order.guide.imgUrl } />
+          </p>}
 
-                {isGuide
-                    && <p className="order-row">
-                        <span className="order-title">By</span>
-                        <span>{order.buyerUser.fullName}</span>
-                        <img className="order-avatar-img" src={ order.buyerUser.imgUrl } />
-                    </p>}
-            </header>
-            <main className="order-main">
-                <section className="order-details">
-                  <p className="order-row">
-                    <span className="order-title">Trail date</span>
-                    <span>{moment(order.trailAt).format('DD/MM/YY')}</span>
-                  </p>
-                  <p className="order-row">
-                    <span className="order-title">People</span><span>{order.peopleCount}</span>
-                  </p>
-                  <p className="order-row">
-                    <span className="order-title">Price</span><span>{order.price}$</span>
-                  </p>
-                </section>
-                <section className="order-status">
-                  <p className="order-row">
-                    <span className="order-title">Status</span>
-                    <span className="order-status-msg" style={ status.style }>{status.msg}</span>
-                  </p>
-                  {isGuide
-                    && <div className="order-btn-panel">
-                      {!(order.isCanceled || status.isFinished) && (order.isConfirmed
-                        ? <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
-                        : <button className="order-btn order-btn-confirm" onClick={ onConfirm } >Confirm</button>
-                      )}
-                      {(order.isCanceled || status.isFinished)
-                          && <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order._id); } }>Delete</button>}
-                       </div>}
-                  {!isGuide
-                    && <div className="btn-panel">
-                        {(order.isCanceled || status.isFinished)
-                          ? <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order._id); } }>Delete</button>
-                          : <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
-                        }
-                       </div>}
-                </section>
-            </main>
-        </article>
+        {isGuide
+          && <p className="order-row">
+            <span className="order-title">By</span>
+            <span>{order.buyerUser.fullName}</span>
+            <img className="order-avatar-img" src={ order.buyerUser.imgUrl } />
+          </p>}
+      </header>
+      <main className="order-main">
+        <section className="order-details">
+          <p className="order-row">
+            <span className="order-title">Trail date</span>
+            <span>{moment(order.trailAt).format('DD/MM/YY')}</span>
+          </p>
+          <p className="order-row">
+            <span className="order-title">People</span><span>{order.peopleCount}</span>
+          </p>
+          <p className="order-row">
+            <span className="order-title">Price</span><span>{order.price}$</span>
+          </p>
+        </section>
+        <section className="order-status">
+          <p className="order-row">
+            <span className="order-title">Status</span>
+
+            <span className="order-status-msg" style={ status.style }>{status.msg}</span>
+
+          </p>
+          {isGuide
+            && <div className="order-btn-panel">
+              {!(order.isCanceled || status.isFinished) && (order.isConfirmed
+                ? <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
+                : <button className="order-btn order-btn-confirm" onClick={ onConfirm } >Confirm</button>
+              )}
+              {(order.isCanceled || status.isFinished)
+                && <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order); } }>Delete</button>}
+            </div>}
+          {!isGuide
+            && <div className="btn-panel">
+              {(order.isCanceled || status.isFinished)
+                ? <button className="order-btn order-btn-delete" onClick={ () => { onDelete(order); } }>Delete</button>
+                : <button className="order-btn order-btn-delete" onClick={ onCancel }>Cancel</button>
+              }
+            </div>}
+        </section>
+      </main>
+    </article>
   );
 }

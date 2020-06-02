@@ -7,8 +7,15 @@ import OrderServer from '../services/order.service';
 import { Order } from './Order';
 
 export function OrdersList({ orders, orderType, loadOrders }) {
-  async function onDelete(orderId) {
-    await OrderServer.remove(orderId);
+  async function onDelete(order) {
+    if (isGuide) {
+      order.guide.isDeleted = true;
+    } else order.buyerUser.isDeleted = true;
+
+    if (order.buyerUser.isDeleted && order.guide.isDeleted) {
+      await OrderServer.remove(order._id);
+    } else await OrderServer.save(order);
+
     loadOrders();
   }
 
@@ -20,8 +27,8 @@ export function OrdersList({ orders, orderType, loadOrders }) {
   const isGuide = orderType === 'customerOrder';
   return (
     <section className="order-list">
-      {orders && orders.map(order => <Order key={order._id} order={order} onDelete={onDelete} orderUpdate={ orderUpdate } isGuide={ isGuide } />)}
+      <h2 className="order-list-title">{isGuide ? 'Customer orders' : 'My orders'}</h2>
+      {orders && orders.map(order => <Order key={ order._id } order={ order } onDelete={ onDelete } orderUpdate={ orderUpdate } isGuide={ isGuide } />)}
     </section>
-
   );
 }

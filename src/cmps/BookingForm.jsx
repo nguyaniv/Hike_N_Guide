@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import history from '../history';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -7,6 +8,9 @@ import 'react-calendar/dist/Calendar.css';
 import userService from '../services/user.service';
 import trailService from '../services/trail.service';
 import orderService from '../services/order.service';
+
+// Components/Pages
+import { Modal } from './Modal';
 
 class _BookingForm extends Component {
   state = {
@@ -38,7 +42,8 @@ class _BookingForm extends Component {
     ev.preventDefault();
     let newOrder = this.getNewOrder();
     newOrder = await orderService.save(newOrder);
-    console.log('newOrder', newOrder);
+    console.log("porps", this.props);
+    history.push(`/profile/${newOrder.buyerUser._id}`);
   }
 
   getNewOrder() {
@@ -53,7 +58,9 @@ class _BookingForm extends Component {
     };
 
     newOrder.buyerUser = this.props.loggedInUser;
+    newOrder.buyerUser.isDeleted = false;
     newOrder.guide = userService.getMiniUserObj(this.props.guide);
+    newOrder.guide.isDeleted = false;
     const selectedTrail = guide.trails[trailIdx];
     newOrder.trail = trailService.getMiniTrailObj(selectedTrail);
     newOrder.price = guide.price;
@@ -66,25 +73,25 @@ class _BookingForm extends Component {
     const { bookForm } = this.state;
 
     return (
-      <form className="booking-form" onClick={ this.onBook }>
+      <form className="booking-form" onClick={this.onBook}>
         <select
           className="booking-form-selected-trail"
-          name="trailSelected"
-          onChange={ this.handelInput }
-          value={ bookForm.trailSelected }>
+          name="trailIdx"
+          onChange={this.handelTrailIdx}
+          value={bookForm.trailSelected}>
           {
             guide.trails.map((trail, idx) => (
-              <option key={ trail._id } value={ idx }>{trail.name}</option>))
+              <option key={trail._id} value={idx}>{trail.name}</option>))
           }
         </select>
         <Calendar
-          onChange={ date => { this.handelDate(date); } }
-          value={ bookForm.date }
-          minDate={ new Date() }
+          onChange={date => { this.handelDate(date); }}
+          value={bookForm.date}
+          minDate={new Date()}
         />
         <div className="booking-form-people-count-container">
           <label className="booking-form-title">How many people?</label>
-          <input className="booking-form-people-count" type="number" name="peopleCount" value={ bookForm.peopleCount } min="1" onChange={ this.handelInput } />
+          <input className="booking-form-people-count" type="number" name="peopleCount" value={bookForm.peopleCount} min="1" onChange={this.handelInput} />
         </div>
         <div>
           <div className="booking-form-price-container" >
@@ -94,6 +101,7 @@ class _BookingForm extends Component {
           <button className="booking-form-submit-button">Book</button>
         </div>
       </form>
+
     );
   }
 }

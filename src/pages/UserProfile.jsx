@@ -28,11 +28,10 @@ class _UserProfile extends Component {
        : { userId: this.state.user._id };
 
      const orders = await OrderService.query(query);
-     console.log('orders', orders);
      this.setState({ orders });
    }
 
-   render() {
+  render() {
      const { user, orders, orderType } = this.state;
      return user && (
       <main className="user-profile">
@@ -49,7 +48,7 @@ class _UserProfile extends Component {
            <button className="user-profile-btn" onClick={ () => { this.setState({ orderType: 'userOrder' }, this.loadOrders); } }>My orders</button>
            <button className="user-profile-btn" onClick={ () => { this.setState({ orderType: 'customerOrder' }, this.loadOrders); } }>Customer orders</button>
           </div>
-        </section>
+         </section>
         {orders && <OrdersList orders={ orders } orderType={ orderType } loadOrders={ this.loadOrders } />}
       </main>
      );
