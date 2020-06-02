@@ -1,13 +1,17 @@
 .booking-form {
   height: fit-content;
-  width: 30%;
-  position: sticky;
-  top: 1rem;
+  width: 100%;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   border: 1px solid black;
   padding: 1rem;
+
+  @media (min-width: $tablet) {
+    width: 30%;
+    position: sticky;
+    top: 1rem;
+  }
 
   &-selected-trail {
     border: 1px solid black;
