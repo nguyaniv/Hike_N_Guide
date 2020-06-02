@@ -40,7 +40,7 @@ export function Order({
     order.isConfirmed = true;
     orderUpdate(order);
   }
-
+ 
   const status = getStatus();
   return (
     <article className="order">
