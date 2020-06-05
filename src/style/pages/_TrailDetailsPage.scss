@@ -12,8 +12,11 @@
   &-main-header {
     color: white;
     margin: 0;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
     padding-block-start: 50vh;
     font-size: 2rem;
+    line-height: 3rem;
     text-transform: uppercase;
     filter: drop-shadow(0 0 10px black);
   }
