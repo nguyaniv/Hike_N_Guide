@@ -3,9 +3,9 @@ import history from '../history';
 
 const BASE_URL = process.env.NODE_ENV === 'production'
   ? '/api/'
-  // : '//localhost:3030/api/';
-  // : '//localhost:3000/';
-  : '//192.168.0.15:3030/api/';
+  : '//localhost:3030/api/'; // localhost backend
+  // : '//localhost:3000/'; // json-server
+  // : '//192.168.0.15:3030/api/'; // Yossi's local network
 
 const axios = Axios.create({
   withCredentials: true,
