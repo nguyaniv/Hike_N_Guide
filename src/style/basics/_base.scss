@@ -29,20 +29,8 @@ main {
   width: 100vw;
   padding-block-start: 4rem;
   flex-grow: 1;
-  flex-basis: calc(100vh - 4rem);
+  min-height: calc(100vh - 4rem);
 }
-
-// .no-padding {
-//   padding-block-start: 0;
-// }
-
-// img.card {
-//   padding: 20px;
-//   width: 680px;
-//   height: 448px;
-//   border: 1px solid border;
-//   border-radius: 50px;
-// }
 
 .trail-review {
   margin-bottom: 35px;
