@@ -6,8 +6,8 @@ class _LogIn extends Component {
   state = {
     msg: '',
     logIn: {
-      password: 'admin',
-      email: 'admin@gmail.com',
+      password: '5zxjlm9A',
+      email: 'rogeliog@gmail.com',
     },
   }
 
